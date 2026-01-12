@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter with Platform Limits - Twitter, Instagram, SMS | OnlineToolFree</title>
+    <meta name="description" content="Free character counter with real-time counting for Twitter, Instagram, LinkedIn, SMS. Count characters, words, sentences, and reading time.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/productivity/character-counter.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+                <h1 class="tool-title">Character Counter</h1>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <textarea id="text-input" class="form-input" rows="10" placeholder="Type or paste your text here..."></textarea>
+                    </div>
+                    <div class="tool-section output-section">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-4);">
+                            <div style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg); text-align: center;">
+                                <div style="font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--primary-600);"><span id="char-count">0</span></div>
+                                <div style="font-size: var(--text-sm); color: var(--text-secondary);">Characters</div>
+                            </div>
+                            <div style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg); text-align: center;">
+                                <div style="font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--success-600);"><span id="word-count">0</span></div>
+                                <div style="font-size: var(--text-sm); color: var(--text-secondary);">Words</div>
+                            </div>
+                            <div style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg); text-align: center;">
+                                <div style="font-size: var(--text-3xl); font-weight: var(--font-bold);"><span id="sentence-count">0</span></div>
+                                <div style="font-size: var(--text-sm); color: var(--text-secondary);">Sentences</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: var(--space-4); padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <h3 style="margin-bottom: var(--space-3);">Platform Limits</h3>
+                            <div style="display: grid; gap: var(--space-2);">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Twitter:</span>
+                                    <span id="twitter-status">0 / 280</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Instagram Caption:</span>
+                                    <span id="instagram-status">0 / 2,200</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span>SMS:</span>
+                                    <span id="sms-status">0 / 160</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Productivity', url: '/tools/productivity/index.html' },
+            { name: 'Character Counter' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'character-counter');
+        Components.renderToolSchema('Character Counter', 'productivity', 'Character Counter - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            
+            const input = document.getElementById('text-input');
+            input.addEventListener('input', () => {
+                const text = input.value;
+                const chars = text.length;
+                const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+                const sentences = text.split(/[.!?]+/).filter(s => s.trim()).length;
+                
+                document.getElementById('char-count').textContent = chars;
+                document.getElementById('word-count').textContent = words;
+                document.getElementById('sentence-count').textContent = sentences;
+                document.getElementById('twitter-status').textContent = `${chars} / 280`;
+                document.getElementById('instagram-status').textContent = `${chars} / 2,200`;
+                document.getElementById('sms-status').textContent = `${chars} / 160`;
+            });
+        });
+    </script>
+    <footer class="footer"></footer>
+</body>
+</html>

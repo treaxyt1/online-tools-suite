@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap - OnlineToolFree | All Free Online Tools</title>
+    <meta name="description"
+        content="View a complete list of all 100+ free online tools available on OnlineToolFree. Text tools, image converters, calculators, and more.">
+    <link rel="canonical" href="https://onlinetoolfree.com/sitemap.html">
+    <link rel="stylesheet" href="css/design-system.css">
+
+    <script src="js/tools.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+
+    <style>
+        .sitemap-section {
+            padding: var(--space-8);
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-8);
+        }
+
+        .sitemap-category-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-6);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: var(--space-4);
+        }
+
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .sitemap-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+
+        .sitemap-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .sitemap-icon {
+            color: var(--primary);
+        }
+
+        .static-links {
+            margin-top: var(--space-12);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--border-light);
+        }
+    </style>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+
+    <div class="page-header" style="background: var(--gradient-subtle); padding: var(--space-16) 0;">
+        <div class="container text-center">
+            <h1 class="page-title">HTML Sitemap</h1>
+            <p class="page-description">Explore our complete collection of free online tools.</p>
+        </div>
+    </div>
+
+    <main class="container" style="padding-top: var(--space-12);">
+        <div id="sitemap-content">
+            <!-- Dynamic content loaded here -->
+        </div>
+
+        <div class="static-links sitemap-section">
+            <div class="sitemap-category-title">General Pages</div>
+            <div class="sitemap-grid">
+                <a href="/index.html" class="sitemap-link">Home</a>
+                <a href="/about.html" class="sitemap-link">About Us</a>
+                <a href="/contact.html" class="sitemap-link">Contact</a>
+                <a href="/privacy.html" class="sitemap-link">Privacy Policy</a>
+                <a href="/terms.html" class="sitemap-link">Terms of Service</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderMobileMenu();
+            Components.renderFooter();
+
+            if (window.ThemeManager) ThemeManager.init();
+
+            // Render Tools
+            if (window.TOOLS_REGISTRY) {
+                const container = document.getElementById('sitemap-content');
+                const categories = {};
+
+                // Group by category
+                TOOLS_REGISTRY.forEach(tool => {
+                    if (!categories[tool.category]) {
+                        categories[tool.category] = [];
+                    }
+                    categories[tool.category].push(tool);
+                });
+
+                // Render groups
+                Object.keys(categories).sort().forEach(cat => {
+                    const tools = categories[cat];
+                    const section = document.createElement('div');
+                    section.className = 'sitemap-section';
+
+                    section.innerHTML = `
+                        <h2 class="sitemap-category-title">
+                            ${cat}
+                            <span style="font-size: var(--text-sm); color: var(--text-muted); font-weight: normal;">(${tools.length} tools)</span>
+                        </h2>
+                        <div class="sitemap-grid">
+                            \${tools.map(tool => \`
+                                <a href="/\${tool.url}" class="sitemap-link">
+                                    <i data-lucide="\${tool.icon || 'box'}" class="sitemap-icon"></i>
+                                    <span>\${tool.name}</span>
+                                </a>
+                            \`).join('')}
+                        </div>
+                    \`;
+                    container.appendChild(section);
+                });
+
+                // Re-init icons if needed (though UI.js might handle it via MutationObserver if implemented, otherwise strictly lucide.createIcons or similar if used)
+                // Assuming feather/lucide icons are handled by UI.js or simple SVG replacement.
+                // In this codebase, we see feather.replace() usually.
+                if (window.feather) feather.replace();
+            }
+        });
+    </script>
+</body>
+
+</html>

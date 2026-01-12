@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Create Grayscale PNG - Free Online Image Filter | OnlineToolFree</title><meta name="description"
+ content="Free online PNG grayscale tool. Convert color PNG images to high-quality black and white or grayscale instantly. Secure and client-side."><link rel="canonical" href="https://onlinetoolfree.com/tools/png/grayscale.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><main class="container"><div class="layout-grid"><div class="layout-main"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Create Grayscale PNG</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert your colored PNGs into professional grayscale images.
+ </p></div></div></div><div class="tool-interface"><div class="drop-zone" id="drop-zone"><div class="drop-zone-content"><svg class="icon icon-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+ stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20"></path></svg><p>Drag & drop PNG image or <span>browse</span></p><input type="file" id="file-input" accept="image/png" hidden></div></div><div id="editor-container" style="margin-top: var(--space-8); display: none"><div class="tool-grid"><div class="tool-section"><div class="output-header"><span class="tool-section-title">Original</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="resetImage()">Change</button></div></div><div class="canvas-wrapper transparency-grid"><img id="source-img" class="preview-img"></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Grayscale Result</span><div class="output-actions"><button id="download-btn" class="btn btn-ghost btn-sm">Download</button></div></div><div class="canvas-wrapper transparency-grid"><canvas id="result-canvas"></canvas></div></div></div><div class="tool-controls glass -xl" style="margin-top: var(--space-6); padding: var(--space-6); border-radius: var(--radius-lg)"><div class="md:grid-cols-2" style="display: grid; display: grid; gap: var(--space-6); align-items: center"><div><label class="form-label">Grayscale Intensity</label><input type="range" id="intensity" min="0" max="100" value="100" class="form-range"><div class="text-xs" style="justify-content: space-between; margin-top: var(--space-1); display: flex"><span>Original</span><span id="intensity-val">100%</span><span>Full Grayscale</span></div></div><div><button onclick="applyFilter()" class="btn btn-primary" style="width: 100%;">Apply Filter</button></div></div></div></div></div><div id="faq-container" style="margin-top: var(--space-12)"></div></div><aside class="layout-sidebar"><div id="sidebar-container"></div></aside></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><footer class="footer" style="margin-top: var(--space-24)"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Png', url: '/tools/png/index.html' },
+            { name: 'Grayscale' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'grayscale');
+        Components.renderToolSchema('Grayscale', 'png', 'Grayscale - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ let originalImgData = null;
+ const sourceImg = document.getElementById('source-img');
+ const resultCanvas = document.getElementById('result-canvas');
+ const ctx = resultCanvas.getContext('2d');
+ const intensityInput = document.getElementById('intensity');
+
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderSidebar('sidebar-container', 'PNG Tools');
+ Components.renderFAQ('faq-container', [
+ { q: "How does the grayscale filter work?", a: "It calculates the luminance of each pixel using the formula (0.299*R + 0.587*G + 0.114*B) and replaces the color while preserving the original alpha (transparency) channel." },
+ { q: "Can I adjust the intensity?", a: "Yes, you can use the slider to blend the grayscale effect with the original colors." }
+ ]);
+ Components.renderFooter();
+ });
+
+ const dropZone = document.getElementById('drop-zone');
+ const fileInput = document.getElementById('file-input');
+ const editorContainer = document.getElementById('editor-container');
+
+ dropZone.onclick = () => fileInput.click();
+ fileInput.onchange = (e) => handleFile(e.target.files[0]);
+
+ function handleFile(file) {
+ if (!file) return;
+ const reader = new FileReader();
+ reader.onload = (e) => {
+ sourceImg.src = e.target.result;
+ sourceImg.onload = () => {
+ resultCanvas.width = sourceImg.naturalWidth;
+ resultCanvas.height = sourceImg.naturalHeight;
+ // Get original image data via a temporary canvas
+ const tempCanvas = document.createElement('canvas');
+ tempCanvas.width = sourceImg.naturalWidth;
+ tempCanvas.height = sourceImg.naturalHeight;
+ const tempCtx = tempCanvas.getContext('2d');
+ tempCtx.drawImage(sourceImg, 0, 0);
+ originalImgData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+
+ editorContainer.classList.remove('hidden');
+ dropZone.classList.add('hidden');
+ applyFilter();
+ };
+ };
+ reader.readAsDataURL(file);
+ }
+
+ function applyFilter() {
+ if (!originalImgData) return;
+ const intensity = parseInt(intensityInput.value) / 100;
+ document.getElementById('intensity-val').innerText = `${Math.round(intensity * 100)}%`;
+
+ const imgData = new ImageData(new Uint8ClampedArray(originalImgData.data), originalImgData.width, originalImgData.height);
+ const data = imgData.data;
+
+ for (let i = 0; i < data.length; i += 4) {
+ const r = data[i];
+ const g = data[i + 1];
+ const b = data[i + 2];
+
+ // standard luminance formula
+ const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+
+ data[i] = r * (1 - intensity) + gray * intensity;
+ data[i + 1] = g * (1 - intensity) + gray * intensity;
+ data[i + 2] = b * (1 - intensity) + gray * intensity;
+ }
+
+ ctx.putImageData(imgData, 0, 0);
+ }
+
+ intensityInput.oninput = () => {
+ document.getElementById('intensity-val').innerText = `${intensityInput.value}%`;
+ debounce(applyFilter, 100)();
+ };
+
+ document.getElementById('download-btn').onclick = () => {
+ const link = document.createElement('a');
+ link.download = 'grayscale.png';
+ link.href = resultCanvas.toDataURL('image/png');
+ link.click();
+ Toast.success('Downloaded Grayscale PNG!');
+ };
+
+ function resetImage() {
+ editorContainer.classList.add('hidden');
+ dropZone.classList.remove('hidden');
+ fileInput.value = '';
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script><style>
+ .canvas-wrapper {
+ background: #f8fafc;
+ border-radius: 8px;
+ overflow: hidden;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ min-height: 200px;
+ padding: 10px;
+ }
+
+ .preview-img,
+ canvas {
+ max-width: 100%;
+ height: auto;
+ border: 1px solid #ddd;
+ }
+
+ .transparency-grid {
+ background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%);
+ background-size: 20px 20px;
+ background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+ }
+ </style></body></html>
+
+

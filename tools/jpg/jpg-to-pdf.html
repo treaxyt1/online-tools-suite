@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>JPG to PDF Converter - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Convert JPG images to PDF document online. Adjust page size and margins. Free and secure client-side conversion."><link rel="canonical" href="https://onlinetoolfree.com/tools/jpg/jpg-to-pdf.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">JPG to PDF Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert your JPG image into a PDF document instantly.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section" style="margin-bottom: var(--space-4); display: none" id="settings-panel"><div class="output-header"><span class="tool-section-title">PDF Settings</span></div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4)"><div class="form-group"><label>Page Size</label><select id="page-size" class="form-select"><option value="a4">A4</option><option value="letter">Letter</option><option value="image">Fit to Image</option></select></div><div class="form-group"><label>Orientation</label><select id="orientation" class="form-select"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div class="form-group"><label>Margins (mm)</label><input type="number" id="margin" class="form-input" value="10" min="0"></div></div><button class="btn btn-primary" style="margin-top: var(--space-2); width: 100%" onclick="generatePDF()">Download PDF</button></div><div class="file-drop-area" id="drop-area"><input type="file" id="file-input" accept="image/jpeg,image/jpg" hidden><div class="drop-icon"><svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div><p class="drop-text">Drag & drop JPG here or <span>browse</span></p></div><div class="tool-section" id="preview-panel" style="margin-top: var(--space-4); display: none"><div class="output-header"><span class="tool-section-title">Image Preview</span><button class="btn btn-ghost btn-sm" onclick="reset()">Remove</button></div><div class="overflow-" style="padding: var(--space-4); background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; justify-content: center; display: flex; display: none"><img id="preview-img" style="max-height: 300px; max-width: 100%;"></div></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Jpg', url: '/tools/jpg/index.html' },
+            { name: 'Jpg To Pdf' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'jpg-to-pdf');
+        Components.renderToolSchema('Jpg To Pdf', 'jpg', 'Jpg To Pdf - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const { jsPDF } = window.jspdf;
+ const dropArea = document.getElementById('drop-area');
+ const fileInput = document.getElementById('file-input');
+ const settingsPanel = document.getElementById('settings-panel');
+ const previewPanel = document.getElementById('preview-panel');
+ const previewImg = document.getElementById('preview-img');
+
+ let loadedImg = null;
+ let originalName = 'document';
+
+ ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+ dropArea.addEventListener(eventName, preventDefaults, false);
+ });
+ function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+ dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+ dropArea.addEventListener('click', () => fileInput.click());
+ fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+ function handleFiles(files) {
+ if (files.length > 0) {
+ const file = files[0];
+ if (!file.type.match('image/jpeg')) {
+ Toast.error('Please upload a JPG image.');
+ return;
+ }
+ originalName = file.name.replace(/\.[^/.]+$/, "");
+ const reader = new FileReader();
+ reader.onload = function (e) {
+ const img = new Image();
+ img.onload = function () {
+ loadedImg = img;
+ previewImg.src = img.src;
+ settingsPanel.classList.remove('hidden');
+ previewPanel.classList.remove('hidden');
+ dropArea.classList.add('hidden');
+ };
+ img.src = e.target.result;
+ };
+ reader.readAsDataURL(file);
+ }
+ }
+
+ function generatePDF() {
+ if (!loadedImg) return;
+
+ const pageSize = document.getElementById('page-size').value;
+ const orientation = document.getElementById('orientation').value;
+ const margin = parseInt(document.getElementById('margin').value) || 0;
+
+ let pdf;
+
+ if (pageSize === 'image') {
+ // Fit PDF to image size
+ // Convert pixels to mm approx (1px = 0.264583 mm)
+ const pxToMm = 0.264583;
+ const w = loadedImg.width * pxToMm;
+ const h = loadedImg.height * pxToMm;
+ pdf = new jsPDF({
+ orientation: w > h ? 'l' : 'p',
+ unit: 'mm',
+ format: [w, h]
+ });
+ pdf.addImage(loadedImg, 'JPEG', 0, 0, w, h);
+ } else {
+ pdf = new jsPDF({
+ orientation: orientation,
+ unit: 'mm',
+ format: pageSize
+ });
+
+ const pageWidth = pdf.internal.pageSize.getWidth();
+ const pageHeight = pdf.internal.pageSize.getHeight();
+
+ const availableWidth = pageWidth - (margin * 2);
+ const availableHeight = pageHeight - (margin * 2);
+
+ // Calculate scaling to fit
+ const imgRatio = loadedImg.width / loadedImg.height;
+ const pageRatio = availableWidth / availableHeight;
+
+ let renderW, renderH;
+
+ if (imgRatio > pageRatio) {
+ renderW = availableWidth;
+ renderH = availableWidth / imgRatio;
+ } else {
+ renderH = availableHeight;
+ renderW = availableHeight * imgRatio;
+ }
+
+ const x = margin + (availableWidth - renderW) / 2;
+ const y = margin + (availableHeight - renderH) / 2;
+
+ pdf.addImage(loadedImg, 'JPEG', x, y, renderW, renderH);
+ }
+
+ pdf.save(originalName + '.pdf');
+ Toast.success('PDF Downloaded!');
+ }
+
+ function reset() {
+ loadedImg = null;
+ settingsPanel.classList.add('hidden');
+ previewPanel.classList.add('hidden');
+ dropArea.classList.remove('hidden');
+ fileInput.value = '';
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Title Generator - Create Catchy Titles Free | OnlineToolFree</title>
+    <meta name="description" content="Free YouTube title generator. Create catchy, SEO-optimized video titles. Boost views and engagement.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/social/youtube-title-generator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">YouTube Title Generator</h1>
+                <p class="tool-description">Generate catchy YouTube video titles.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label>Video Topic</label>
+                        <input type="text" id="topic" class="form-input" placeholder="e.g., cooking pasta">
+                        <div style="margin-top: var(--space-3);"><label>Style</label><select id="style" class="form-input"><option>How-to</option><option>Listicle</option><option>Question</option><option>Clickbait</option><option>Tutorial</option></select></div>
+                        <button id="generate" class="btn btn-primary" style="margin-top: var(--space-2);">Generate Titles</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none;"><div id="titles"></div></div>
+                </div>
+                <script>
+                    const templates = {
+                        'How-to': ['How to {topic} in 5 Minutes', 'How to {topic} Like a Pro', 'The Ultimate Guide to {topic}'],
+                        'Listicle': ['10 Amazing {topic} Tips', '5 Best Ways to {topic}', 'Top 7 {topic} Hacks You Need'],
+                        'Question': ['Why is {topic} So Popular?', 'What is {topic}? (Explained)', 'Is {topic} Worth It?'],
+                        'Clickbait': ['You Won\'t Believe This {topic} Trick!', 'This {topic} Method Changed My Life', 'The Secret to {topic} Nobody Tells You'],
+                        'Tutorial': ['{topic} Tutorial for Beginners', 'Complete {topic} Guide 2024', 'Learn {topic} Step by Step']
+                    };
+                    document.getElementById('generate').addEventListener('click', () => {
+                        const topic = document.getElementById('topic').value || 'this';
+                        const style = document.getElementById('style').value;
+                        const titles = templates[style].map(t => t.replace('{topic}', topic));
+                        document.getElementById('titles').innerHTML = titles.map(title => 
+                            \`<div style="padding: var(--space-3); background: var(--bg-tertiary); border-radius: var(--radius-md); margin-bottom: var(--space-2); display: flex; justify-content: space-between; align-items: center;">
+                                <span>\${title}</span>
+                                <button onclick="navigator.clipboard.writeText('\${title}').then(() => Toast.success('Copied!'))" class="btn btn-ghost btn-sm">Copy</button>
+                            </div>\`
+                        ).join('');
+                        document.getElementById('result').style.display = 'block';
+                    });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "YouTube Title Generator - Create Catchy Titles Free", "description": "Free YouTube title generator. Create catchy, SEO-optimized video titles. Boost views and engagement."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Social', url: '/tools/social/index.html' },
+            { name: 'Youtube Title Generator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'youtube-title-generator');
+        Components.renderToolSchema('Youtube Title Generator', 'social', 'Youtube Title Generator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Meta Tag Generator - Free SEO Tool | OnlineToolFree</title><meta name="description" content="Generate HTML meta tags for SEO optimization. Free online meta tag generator."><link rel="canonical" href="https://onlinetoolfree.com/tools/seo/meta-tags.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Meta Tag Generator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Generate SEO-optimized HTML meta tags for your website.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="form-group"><label>Page Title <span style="color: var(--text-secondary); font-size: var(--text-sm)">(<span
+ id="title-count">0</span>/60)</span></label><input type="text" id="title" class="form-input" placeholder="My Awesome Page" maxlength="70"></div><div class="form-group"><label>Description <span style="color: var(--text-secondary); font-size: var(--text-sm)">(<span
+ id="desc-count">0</span>/160)</span></label><textarea id="description" class="form-textarea" rows="3"
+ placeholder="A brief description of your page..." maxlength="170"></textarea></div><div class="form-group"><label>Keywords <span style="color: var(--text-secondary); font-size: var(--text-sm)">(comma-separated)</span></label><input type="text" id="keywords" class="form-input" placeholder="keyword1, keyword2, keyword3"></div><div class="form-group"><label>Author</label><input type="text" id="author" class="form-input" placeholder="John Doe"></div><div class="form-group"><label>Canonical URL</label><input type="url" id="canonical" class="form-input" placeholder="https://example.com/page"></div><div class="tool-section" style="margin-top: var(--space-4);"><div class="output-header"><span class="tool-section-title">Open Graph (Social Media)</span></div><div class="form-group"><label>OG Image URL</label><input type="url" id="og-image" class="form-input"
+ placeholder="https://example.com/image.jpg"></div><div class="form-group"><label>Site Name</label><input type="text" id="og-site" class="form-input" placeholder="My Website"></div></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Generated Meta Tags</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy</button></div></div><textarea id="output" class="form-textarea code" style="height:400px" readonly></textarea></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Seo', url: '/tools/seo/index.html' },
+            { name: 'Meta Tags' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'meta-tags');
+        Components.renderToolSchema('Meta Tags', 'seo', 'Meta Tags - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const title = document.getElementById('title');
+ const description = document.getElementById('description');
+ const keywords = document.getElementById('keywords');
+ const author = document.getElementById('author');
+ const canonical = document.getElementById('canonical');
+ const ogImage = document.getElementById('og-image');
+ const ogSite = document.getElementById('og-site');
+ const output = document.getElementById('output');
+ const titleCount = document.getElementById('title-count');
+ const descCount = document.getElementById('desc-count');
+
+ function generate() {
+ titleCount.textContent = title.value.length;
+ descCount.textContent = description.value.length;
+
+ let meta = '';
+
+ // Basic meta tags
+ meta += `<meta charset="UTF-8">\n`;
+ meta += `<meta name="viewport" content="width=device-width, initial-scale=1.0">\n`;
+
+ if (title.value) {
+ meta += `<title>${escapeHtml(title.value)}</title>\n`;
+ }
+ if (description.value) {
+ meta += `<meta name="description" content="${escapeHtml(description.value)}">\n`;
+ }
+ if (keywords.value) {
+ meta += `<meta name="keywords" content="${escapeHtml(keywords.value)}">\n`;
+ }
+ if (author.value) {
+ meta += `<meta name="author" content="${escapeHtml(author.value)}">\n`;
+ }
+ if (canonical.value) {
+ meta += `<link rel="canonical" href="${escapeHtml(canonical.value)}">\n`;
+ }
+
+ // Open Graph
+ meta += `\n<!-- Open Graph / Social Media -->\n`;
+ meta += `<meta property="og:type" content="website">\n`;
+ if (title.value) {
+ meta += `<meta property="og:title" content="${escapeHtml(title.value)}">\n`;
+ }
+ if (description.value) {
+ meta += `<meta property="og:description" content="${escapeHtml(description.value)}">\n`;
+ }
+ if (canonical.value) {
+ meta += `<meta property="og:url" content="${escapeHtml(canonical.value)}">\n`;
+ }
+ if (ogImage.value) {
+ meta += `<meta property="og:image" content="${escapeHtml(ogImage.value)}">\n`;
+ }
+ if (ogSite.value) {
+ meta += `<meta property="og:site_name" content="${escapeHtml(ogSite.value)}">\n`;
+ }
+
+ // Twitter Card
+ meta += `\n<!-- Twitter Card -->\n`;
+ meta += `<meta name="twitter:card" content="summary_large_image">\n`;
+ if (title.value) {
+ meta += `<meta name="twitter:title" content="${escapeHtml(title.value)}">\n`;
+ }
+ if (description.value) {
+ meta += `<meta name="twitter:description" content="${escapeHtml(description.value)}">\n`;
+ }
+ if (ogImage.value) {
+ meta += `<meta name="twitter:image" content="${escapeHtml(ogImage.value)}">\n`;
+ }
+
+ output.value = meta;
+ }
+
+ function escapeHtml(str) {
+ return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+ }
+
+ [title, description, keywords, author, canonical, ogImage, ogSite].forEach(el => {
+ el.addEventListener('input', generate);
+ });
+
+ generate();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

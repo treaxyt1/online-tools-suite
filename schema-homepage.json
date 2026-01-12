@@ -1,0 +1,37 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://onlinetoolfree.com/#website",
+      "url": "https://onlinetoolfree.com",
+      "name": "OnlineToolFree",
+      "description": "Free online tools for everyone. 400+ calculators, converters, PDF tools, developer tools, and more. 100% free, no signup required.",
+      "publisher": {
+        "@id": "https://onlinetoolfree.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://onlinetoolfree.com/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://onlinetoolfree.com/#organization",
+      "name": "OnlineToolFree",
+      "url": "https://onlinetoolfree.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://onlinetoolfree.com/images/logo.png"
+      },
+      "sameAs": [
+        "https://twitter.com/onlinetoolfree",
+        "https://github.com/onlinetoolfree"
+      ]
+    }
+  ]
+}

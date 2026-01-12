@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HSL to RGB Color Converter - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Free online HSL to RGB color converter. Convert Hue, Saturation, Lightness values to RGB format."><link rel="canonical" href="https://onlinetoolfree.com/tools/color/hsl-to-rgb.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .color-preview {
+ width: 100%;
+ height: 100px;
+ border-radius: var(--radius-md);
+ border: 1px solid var(--border-color);
+ margin-bottom: 1rem;
+ transition: background-color 0.2s;
+ }
+
+ .color-inputs {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 1rem;
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">HSL to RGB Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert HSL (Hue, Saturation, Lightness) color values to RGB format.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div class="tool-section"><div class="output-header"><span class="tool-section-title">HSL Input</span></div><div class="color-inputs"><div class="form-group"><label>Hue (0-360)</label><input type="number" id="h-input" class="form-input" value="217" min="0" max="360"></div><div class="form-group"><label>Sat % (0-100)</label><input type="number" id="s-input" class="form-input" value="90" min="0" max="100"></div><div class="form-group"><label>Light % (0-100)</label><input type="number" id="l-input" class="form-input" value="61" min="0" max="100"></div></div><div style="margin-top: var(--space-4);"><label>CSS HSL String</label><input type="text" id="hsl-string" class="form-input" readonly></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">RGB Output</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('rgb-output'))">Copy</button></div></div><div id="preview" class="color-preview"></div><div class="form-group"><label>RGB String</label><input type="text" id="rgb-output" class="form-input" readonly></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Color', url: '/tools/color/index.html' },
+            { name: 'Hsl To Rgb' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'hsl-to-rgb');
+        Components.renderToolSchema('Hsl To Rgb', 'color', 'Hsl To Rgb - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const hInput = document.getElementById('h-input');
+ const sInput = document.getElementById('s-input');
+ const lInput = document.getElementById('l-input');
+ const hslString = document.getElementById('hsl-string');
+ const rgbOutput = document.getElementById('rgb-output');
+ const preview = document.getElementById('preview');
+
+ function hslToRgb(h, s, l) {
+ h /= 360;
+ s /= 100;
+ l /= 100;
+ let r, g, b;
+
+ if (s === 0) {
+ r = g = b = l; // achromatic
+ } else {
+ const hue2rgb = (p, q, t) => {
+ if (t < 0) t += 1;
+ if (t > 1) t -= 1;
+ if (t < 1 / 6) return p + (q - p) * 6 * t;
+ if (t < 1 / 2) return q;
+ if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+ return p;
+ };
+ const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+ const p = 2 * l - q;
+ r = hue2rgb(p, q, h + 1 / 3);
+ g = hue2rgb(p, q, h);
+ b = hue2rgb(p, q, h - 1 / 3);
+ }
+ return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+ }
+
+ function update() {
+ const h = Math.min(360, Math.max(0, parseInt(hInput.value) || 0));
+ const s = Math.min(100, Math.max(0, parseInt(sInput.value) || 0));
+ const l = Math.min(100, Math.max(0, parseInt(lInput.value) || 0));
+
+ const [r, g, b] = hslToRgb(h, s, l);
+ const rgbStr = `rgb(${r}, ${g}, ${b})`;
+ const hslStr = `hsl(${h}, ${s}%, ${l}%)`;
+
+ rgbOutput.value = rgbStr;
+ hslString.value = hslStr;
+ preview.style.backgroundColor = rgbStr;
+ }
+
+ [hInput, sInput, lInput].forEach(el => el.addEventListener('input', update));
+ update();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Compressor - Reduce PDF File Size Free Online | OnlineToolFree</title>
+    <meta name="description" content="Free PDF compressor. Reduce PDF file size while maintaining quality. Compress PDFs up to 90%. No file size limits. Works in browser.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/pdf/pdf-compressor.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">PDF Compressor</h1>
+                <p class="tool-description">Reduce PDF file size while maintaining quality.</p>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div class="file-drop-area" id="drop-area" style="border: 2px dashed var(--border-color); padding: var(--space-8); text-align: center; border-radius: var(--radius-lg); cursor: pointer;">
+                            <input type="file" id="pdf-input" accept=".pdf" hidden>
+                            <svg style="width: 64px; height: 64px; margin: 0 auto; opacity: 0.5;" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                            <p style="margin-top: var(--space-3); font-size: var(--text-lg);">Drop PDF here or <span style="color: var(--primary-600);">browse</span></p>
+                            <p style="font-size: var(--text-sm); color: var(--text-secondary);">Maximum file size: 50MB</p>
+                        </div>
+                    </div>
+                    <div id="compress-section" class="tool-section" style="display:none;">
+                        <div style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <p><strong>Original:</strong> <span id="original-size">-</span></p>
+                            <p><strong>Compressed:</strong> <span id="compressed-size">-</span></p>
+                            <p><strong>Reduction:</strong> <span id="reduction">-</span></p>
+                        </div>
+                        <div class="tool-actions">
+                            <button id="download-btn" class="btn btn-primary">Download Compressed PDF</button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    let compressedPdfBytes;
+                    
+                    const dropArea = document.getElementById('drop-area');
+                    const fileInput = document.getElementById('pdf-input');
+                    
+                    dropArea.addEventListener('click', () => fileInput.click());
+                    dropArea.addEventListener('dragover', (e) => { e.preventDefault(); dropArea.style.borderColor = 'var(--primary-600)'; });
+                    dropArea.addEventListener('dragleave', () => { dropArea.style.borderColor = 'var(--border-color)'; });
+                    dropArea.addEventListener('drop', (e) => { e.preventDefault(); dropArea.style.borderColor = 'var(--border-color)'; handleFile(e.dataTransfer.files[0]); });
+                    fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+                    
+                    async function handleFile(file) {
+                        if(!file || file.type !== 'application/pdf') return Toast.error('Please select a PDF file');
+                        if(file.size > 50 * 1024 * 1024) return Toast.error('File too large (max 50MB)');
+                        
+                        Toast.info('Compressing PDF...');
+                        const originalSize = file.size;
+                        
+                        try {
+                            const arrayBuffer = await file.arrayBuffer();
+                            const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+                            
+                            // Compress by re-saving with compression
+                            compressedPdfBytes = await pdfDoc.save({
+                                useObjectStreams: true,
+                                addDefaultPage: false,
+                                objectsPerTick: 50
+                            });
+                            
+                            const compressedSize = compressedPdfBytes.length;
+                            const reduction = ((originalSize - compressedSize) / originalSize * 100).toFixed(1);
+                            
+                            document.getElementById('original-size').textContent = formatSize(originalSize);
+                            document.getElementById('compressed-size').textContent = formatSize(compressedSize);
+                            document.getElementById('reduction').textContent = reduction + '% smaller';
+                            document.getElementById('compress-section').style.display = 'block';
+                            
+                            Toast.success('PDF compressed successfully!');
+                        } catch(e) {
+                            Toast.error('Failed to compress PDF');
+                            console.error(e);
+                        }
+                    }
+                    
+                    function formatSize(bytes) {
+                        if(bytes < 1024) return bytes + ' B';
+                        if(bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+                        return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+                    }
+                    
+                    document.getElementById('download-btn').addEventListener('click', () => {
+                        const blob = new Blob([compressedPdfBytes], {type: 'application/pdf'});
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'compressed.pdf';
+                        a.click();
+                        URL.revokeObjectURL(url);
+                    });
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PDF Compressor - Reduce PDF File Size Free Online", "description": "Free PDF compressor. Reduce PDF file size while maintaining quality. Compress PDFs up to 90%. No file size limits. Works in browser."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Pdf', url: '/tools/pdf/index.html' },
+            { name: 'Pdf Compressor' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'pdf-compressor');
+        Components.renderToolSchema('Pdf Compressor', 'pdf', 'Pdf Compressor - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

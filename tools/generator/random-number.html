@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator - Generate Random Numbers Free | OnlineToolFree</title>
+    <meta name="description" content="Free random number generator. Generate random numbers with custom range, quantity, and options. Perfect for games, lottery, and more.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/generator/random-number.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Random Number Generator</h1>
+                <p class="tool-description">Generate random numbers with custom settings.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3);">
+                            <div><label>Minimum</label><input type="number" id="min" class="form-input" value="1"></div>
+                            <div><label>Maximum</label><input type="number" id="max" class="form-input" value="100"></div>
+                            <div><label>Quantity</label><input type="number" id="qty" class="form-input" value="1" min="1" max="100"></div>
+                        </div>
+                        <div style="margin-top: var(--space-3);">
+                            <label><input type="checkbox" id="unique"> Unique numbers (no duplicates)</label>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button id="gen-num" class="btn btn-primary">Generate Numbers</button>
+                    </div>
+                    <div id="num-result" class="tool-section output-section" style="display:none;">
+                        <div id="numbers" style="display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center;"></div>
+                    </div>
+                </div>
+                <script>
+                    document.getElementById('gen-num').addEventListener('click', () => {
+                        const min = parseInt(document.getElementById('min').value);
+                        const max = parseInt(document.getElementById('max').value);
+                        const qty = parseInt(document.getElementById('qty').value);
+                        const unique = document.getElementById('unique').checked;
+                        
+                        if(min >= max) return Toast.error('Min must be less than max');
+                        if(unique && (max - min + 1) < qty) return Toast.error('Range too small for unique numbers');
+                        
+                        const numbers = [];
+                        while(numbers.length < qty) {
+                            const num = Math.floor(Math.random() * (max - min + 1)) + min;
+                            if(!unique || !numbers.includes(num)) numbers.push(num);
+                        }
+                        
+                        document.getElementById('numbers').innerHTML = numbers.map(n => 
+                            `<div style="padding: var(--space-3) var(--space-5); background: var(--primary-600); color: white; border-radius: var(--radius-lg); font-size: 1.5rem; font-weight: bold;">${n}</div>`
+                        ).join('');
+                        document.getElementById('num-result').style.display = 'block';
+                    });
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Random Number Generator - Generate Random Numbers Free", "description": "Free random number generator. Generate random numbers with custom range, quantity, and options. Perfect for games, lottery, and more."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Generator', url: '/tools/generator/index.html' },
+            { name: 'Random Number' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'random-number');
+        Components.renderToolSchema('Random Number', 'generator', 'Random Number - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

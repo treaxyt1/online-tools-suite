@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Unix Timestamp to Date Converter - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Convert Unix timestamps to human-readable dates. Supports milliseconds and seconds."><link rel="canonical" href="https://onlinetoolfree.com/tools/datetime/unix-to-date.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Unix Timestamp to Date</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert Unix timestamps (epoch time) to human-readable dates.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div class="tool-section"><div class="output-header"><span class="tool-section-title">Unix Timestamp</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="useNow()">Current Time</button></div></div><input type="text" id="input" class="form-input" placeholder="e.g. 1704067200"><div class="option-group" style="margin-top: var(--space-4);"><input type="checkbox" id="is-ms"><label for="is-ms">Timestamp is in milliseconds</label></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Converted Date</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy</button></div></div><textarea id="output" class="form-textarea" style="height: 150px;" readonly></textarea></div></div><div class="tool-actions"><button id="convert-btn" class="btn btn-primary btn-lg">Convert to Date</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Datetime', url: '/tools/datetime/index.html' },
+            { name: 'Unix To Date' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'unix-to-date');
+        Components.renderToolSchema('Unix To Date', 'datetime', 'Unix To Date - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const input = document.getElementById('input');
+ const output = document.getElementById('output');
+ const isMs = document.getElementById('is-ms');
+
+ function convert() {
+ let ts = parseInt(input.value);
+ if (isNaN(ts)) {
+ output.value = 'Please enter a valid timestamp';
+ return;
+ }
+
+ // Auto-detect if it's milliseconds (> year 2100 in seconds)
+ if (ts > 4102444800 && !isMs.checked) {
+ isMs.checked = true;
+ }
+
+ if (!isMs.checked) ts *= 1000;
+
+ const date = new Date(ts);
+
+ output.value = `UTC: ${date.toUTCString()}
+Local: ${date.toString()}
+ISO 8601: ${date.toISOString()}
+Date: ${date.toLocaleDateString()}
+Time: ${date.toLocaleTimeString()}`;
+ }
+
+ function useNow() {
+ input.value = Math.floor(Date.now() / 1000);
+ isMs.checked = false;
+ convert();
+ }
+
+ input.addEventListener('input', debounce(convert, 300));
+ isMs.addEventListener('change', convert);
+ document.getElementById('convert-btn').addEventListener('click', () => { convert(); Toast.success('Converted!'); });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

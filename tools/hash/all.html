@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- SEO Meta Tags --><title>All Hash Generator - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Generate MD5, SHA1, SHA256, SHA512 hashes instantly. Free online multi-hash generator tool. Fast, secure, and private."><link rel="canonical" href="https://onlinetoolfree.com/tools/hash/all.html"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+ rel="stylesheet"><!-- Styles --><link rel="stylesheet" href="../../css/design-system.css"><style>
+ .hash-results {
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-4);
+ }
+
+ .hash-item {
+ background: var(--bg-primary);
+ border: 1px solid var(--border-light);
+ border-radius: var(--radius-lg);
+ padding: var(--space-4);
+ }
+
+ .hash-label {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: var(--space-2);
+ }
+
+ .hash-label span {
+ font-weight: var(--font-semibold);
+ color: var(--primary-600);
+ }
+
+ .hash-value {
+ font-family: var(--font-mono);
+ font-size: var(--text-xs);
+ word-break: break-all;
+ color: var(--text-secondary);
+ background: var(--bg-tertiary);
+ padding: var(--space-2);
+ border-radius: var(--radius-md);
+ }
+ </style><!-- Crypto Library --><script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script><!-- Scripts --><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><!-- Header --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div
+ style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">All Hash Generator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Generate multiple hash types (MD5, SHA1, SHA256, SHA512) at once.
+ </p></div></div></div><!-- Tool Interface --><div class="tool-interface"><!-- Input Section --><div class="tool-section"><label class="tool-section-title" for="input"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg>
+ Input Text
+ </label><textarea id="input" class="form-textarea" rows="4"
+ placeholder="Enter text to generate hashes..." spellcheck="false"></textarea></div><!-- Actions --><div class="tool-actions"><button id="generate-btn" class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+ Generate All Hashes
+ </button><button id="clear-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+ Clear
+ </button><button id="sample-btn" class="btn btn-ghost">Sample</button></div><!-- Hash Results --><div class="tool-section" id="results-section" style="display: none;"><label class="tool-section-title"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /></svg>
+ Generated Hashes
+ </label><div class="hash-results" id="hash-results"></div></div></div><!-- Information Section --><section class="info-section"
+ style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);"><h2
+ style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">
+ About Hash Functions</h2><p style="margin-bottom: var(--space-4);">
+ Hash functions convert input data into a fixed-size string. They are commonly used for:
+ </p><ul style="padding-left: var(--space-6); color: var(--text-secondary);"><li><strong>MD5:</strong> 128-bit, fast but not cryptographically secure</li><li><strong>SHA1:</strong> 160-bit, deprecated for security use</li><li><strong>SHA256:</strong> 256-bit, secure, widely used</li><li><strong>SHA512:</strong> 512-bit, most secure</li></ul></section></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Hash', url: '/tools/hash/index.html' },
+            { name: 'All' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'all');
+        Components.renderToolSchema('All', 'hash', 'All - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ const input = document.getElementById('input');
+ const resultsSection = document.getElementById('results-section');
+ const hashResults = document.getElementById('hash-results');
+
+ function generateHashes() {
+ const text = input.value;
+ if (!text) {
+ Toast.warning('Please enter text to hash');
+ return;
+ }
+
+ if (typeof CryptoJS === 'undefined') {
+ Toast.error('Crypto library not loaded');
+ return;
+ }
+
+ const hashes = [
+ { name: 'MD5', value: CryptoJS.MD5(text).toString() },
+ { name: 'SHA1', value: CryptoJS.SHA1(text).toString() },
+ { name: 'SHA256', value: CryptoJS.SHA256(text).toString() },
+ { name: 'SHA512', value: CryptoJS.SHA512(text).toString() },
+ { name: 'SHA3-256', value: CryptoJS.SHA3(text, { outputLength: 256 }).toString() },
+ { name: 'RIPEMD160', value: CryptoJS.RIPEMD160(text).toString() }
+ ];
+
+ hashResults.innerHTML = hashes.map(hash => `
+ <div class="hash-item"><div class="hash-label"><span>${hash.name}</span><button class="btn btn-ghost btn-sm" onclick="Clipboard.copy('${hash.value}')">Copy</button></div><div class="hash-value">${hash.value}</div></div>
+ `).join('');
+
+ resultsSection.style.display = 'block';
+ Toast.success('Hashes generated!');
+ }
+
+ document.getElementById('generate-btn').addEventListener('click', generateHashes);
+
+ document.getElementById('clear-btn').addEventListener('click', () => {
+ input.value = '';
+ resultsSection.style.display = 'none';
+ hashResults.innerHTML = '';
+ Toast.success('Cleared');
+ });
+
+ document.getElementById('sample-btn').addEventListener('click', () => {
+ input.value = 'Hello, World!';
+ Toast.success('Sample loaded');
+ });
+
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>

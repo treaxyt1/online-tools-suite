@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator - Create Memes Free Online | OnlineToolFree</title>
+    <meta name="description" content="Free meme generator. Add text to images. Create funny memes. Download and share. No watermark.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/generator/meme-generator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Meme Generator</h1>
+                <p class="tool-description">Create memes with custom text.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label>Upload Image</label>
+                        <input type="file" id="image" class="form-input" accept="image/*">
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-3);">
+                            <div><label>Top Text</label><input type="text" id="top-text" class="form-input" placeholder="TOP TEXT"></div>
+                            <div><label>Bottom Text</label><input type="text" id="bottom-text" class="form-input" placeholder="BOTTOM TEXT"></div>
+                        </div>
+                        <button id="generate" class="btn btn-primary" style="margin-top: var(--space-2);">Generate Meme</button>
+                    </div>
+                    <div class="tool-section output-section" style="text-align: center;">
+                        <canvas id="canvas" style="max-width: 100%; border: 1px solid var(--border-color); border-radius: var(--radius-lg);"></canvas>
+                        <div style="margin-top: var(--space-4);"><button id="download" class="btn btn-primary">Download Meme</button></div>
+                    </div>
+                </div>
+                <script>
+                    let img;
+                    document.getElementById('image').addEventListener('change', (e) => {
+                        const file = e.target.files[0];
+                        if(!file) return;
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            img = new Image();
+                            img.onload = () => generateMeme();
+                            img.src = event.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                    function generateMeme() {
+                        if(!img) return;
+                        const canvas = document.getElementById('canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0);
+                        ctx.fillStyle = 'white';
+                        ctx.strokeStyle = 'black';
+                        ctx.lineWidth = 3;
+                        ctx.font = 'bold 40px Impact';
+                        ctx.textAlign = 'center';
+                        const topText = document.getElementById('top-text').value.toUpperCase();
+                        const bottomText = document.getElementById('bottom-text').value.toUpperCase();
+                        if(topText) { ctx.strokeText(topText, canvas.width/2, 50); ctx.fillText(topText, canvas.width/2, 50); }
+                        if(bottomText) { ctx.strokeText(bottomText, canvas.width/2, canvas.height-20); ctx.fillText(bottomText, canvas.width/2, canvas.height-20); }
+                    }
+                    document.getElementById('generate').addEventListener('click', generateMeme);
+                    document.getElementById('download').addEventListener('click', () => {
+                        const link = document.createElement('a');
+                        link.download = 'meme.png';
+                        link.href = document.getElementById('canvas').toDataURL();
+                        link.click();
+                    });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Meme Generator - Create Memes Free Online", "description": "Free meme generator. Add text to images. Create funny memes. Download and share. No watermark."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Generator', url: '/tools/generator/index.html' },
+            { name: 'Meme Generator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'meme-generator');
+        Components.renderToolSchema('Meme Generator', 'generator', 'Meme Generator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

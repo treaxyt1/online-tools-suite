@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Generator - Create Social Media Bios Free | OnlineToolFree</title>
+    <meta name="description" content="Free bio generator for Instagram, Twitter, TikTok. Create catchy bios with emojis. Stand out on social media. No sign-up required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/social/bio-generator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Bio Generator</h1>
+                <p class="tool-description">Create catchy social media bios.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+                            <div><label>Name/Brand</label><input type="text" id="name" class="form-input" placeholder="Your name"></div>
+                            <div><label>Profession</label><input type="text" id="profession" class="form-input" placeholder="e.g., Designer"></div>
+                        </div>
+                        <div style="margin-top: var(--space-3);"><label>Interests (comma-separated)</label><input type="text" id="interests" class="form-input" placeholder="Travel, Coffee, Tech"></div>
+                        <div style="margin-top: var(--space-3);"><label>Platform</label><select id="platform" class="form-input"><option>Instagram</option><option>Twitter</option><option>TikTok</option><option>LinkedIn</option></select></div>
+                    </div>
+                    <div class="tool-actions"><button id="generate" class="btn btn-primary">Generate Bios</button></div>
+                    <div id="result" class="tool-section output-section" style="display:none;"><div id="bios"></div></div>
+                </div>
+                <script>
+                    document.getElementById('generate').addEventListener('click', () => {
+                        const name = document.getElementById('name').value || 'Creative Soul';
+                        const prof = document.getElementById('profession').value || 'Creator';
+                        const interests = document.getElementById('interests').value.split(',').map(i => i.trim()).filter(i => i);
+                        const platform = document.getElementById('platform').value;
+                        
+                        const templates = [
+                            `${name} | ${prof} ✨\n${interests.slice(0,3).join(' • ')} 🌟`,
+                            `${prof} 💼 | ${interests[0] || 'Passionate'} enthusiast 🔥\n${name}`,
+                            `✨ ${name}\n${prof} | ${interests.join(' | ')}\n📍 Living my best life`,
+                            `${prof.toUpperCase()} 🎯\n${interests.map(i => '• ' + i).join('\n')}\n${name}`,
+                            `${name} 🌈\n${prof} | ${interests[0]} lover\nDM for collabs 📧`
+                        ];
+                        
+                        document.getElementById('bios').innerHTML = templates.map(bio => 
+                            `<div style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg); margin-bottom: var(--space-3); white-space: pre-wrap; font-family: monospace;">${bio}<button onclick="navigator.clipboard.writeText(\`${bio}\`).then(() => Toast.success('Copied!'))" class="btn btn-ghost btn-sm" style="margin-top: var(--space-2);">Copy</button></div>`
+                        ).join('');
+                        document.getElementById('result').style.display = 'block';
+                    });
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Bio Generator - Create Social Media Bios Free", "description": "Free bio generator for Instagram, Twitter, TikTok. Create catchy bios with emojis. Stand out on social media. No sign-up required."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Social', url: '/tools/social/index.html' },
+            { name: 'Bio Generator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'bio-generator');
+        Components.renderToolSchema('Bio Generator', 'social', 'Bio Generator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

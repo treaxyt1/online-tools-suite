@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Roman Numerals Converter - Free Online Tool | OnlineToolFree</title><meta name="description" content="Convert numbers to Roman numerals and vice-versa."><link rel="canonical" href="https://onlinetoolfree.com/tools/number/roman-numerals.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Roman Numerals Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert numbers to Roman numerals and Roman numerals back to numbers.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div class="tool-section"><div class="output-header"><span class="tool-section-title">Decimal Number</span></div><textarea id="decimal" class="form-textarea" placeholder="e.g. 2024"></textarea></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Roman Numeral</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('roman'))">Copy</button></div></div><textarea id="roman" class="form-textarea" placeholder="e.g. MMXXIV"></textarea></div></div><div class="tool-actions"><button id="to-roman-btn" class="btn btn-primary">To Roman &rarr;</button><button id="from-roman-btn" class="btn btn-primary">&larr; To Decimal</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Number', url: '/tools/number/index.html' },
+            { name: 'Roman Numerals' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'roman-numerals');
+        Components.renderToolSchema('Roman Numerals', 'number', 'Roman Numerals - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const decimalInput = document.getElementById('decimal');
+ const romanInput = document.getElementById('roman');
+
+ function decToRoman(num) {
+ num = parseInt(num);
+ if (isNaN(num) || num <= 0 || num > 3999) return "Invalid (Range: 1-3999)";
+ const map = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
+ let result = '';
+ for (let i in map) {
+ while (num >= map[i]) {
+ result += i;
+ num -= map[i];
+ }
+ }
+ return result;
+ }
+
+ function romanToDec(roman) {
+ roman = roman.toUpperCase().trim();
+ if (!roman) return "";
+ const map = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+ let result = 0;
+ for (let i = 0; i < roman.length; i++) {
+ const current = map[roman[i]];
+ const next = map[roman[i + 1]];
+ if (!current) return "Invalid Character";
+ if (next && current < next) {
+ result -= current;
+ } else {
+ result += current;
+ }
+ }
+ return result;
+ }
+
+ document.getElementById('to-roman-btn').addEventListener('click', () => {
+ romanInput.value = decToRoman(decimalInput.value);
+ Toast.success('Converted to Roman!');
+ });
+
+ document.getElementById('from-roman-btn').addEventListener('click', () => {
+ decimalInput.value = romanToDec(romanInput.value);
+ Toast.success('Converted to Decimal!');
+ });
+
+ decimalInput.addEventListener('input', debounce(() => {
+ if (decimalInput.value) romanInput.value = decToRoman(decimalInput.value);
+ }, 200));
+
+ romanInput.addEventListener('input', debounce(() => {
+ if (romanInput.value) decimalInput.value = romanToDec(romanInput.value);
+ }, 200));
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

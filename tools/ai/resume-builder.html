@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Builder - Create ATS-Optimized Resume Free | OnlineToolFree</title>
+    <meta name="description" content="Free AI resume builder. Create professional ATS-optimized resumes in minutes. Multiple templates. Download as PDF. No sign-up required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/ai/resume-builder.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">AI Resume Builder</h1>
+                <p class="tool-description">Create a professional ATS-optimized resume.</p>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <h3>Personal Information</h3>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+                            <input type="text" id="name" class="form-input" placeholder="Full Name">
+                            <input type="email" id="email" class="form-input" placeholder="Email">
+                            <input type="tel" id="phone" class="form-input" placeholder="Phone">
+                            <input type="text" id="location" class="form-input" placeholder="Location">
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <h3>Professional Summary</h3>
+                        <textarea id="summary" class="form-input" rows="3" placeholder="Brief professional summary..."></textarea>
+                    </div>
+                    <div class="tool-section">
+                        <h3>Work Experience</h3>
+                        <div id="experience-list"></div>
+                        <button onclick="addExperience()" class="btn btn-ghost btn-sm">+ Add Experience</button>
+                    </div>
+                    <div class="tool-section">
+                        <h3>Education</h3>
+                        <textarea id="education" class="form-input" rows="3" placeholder="Degree, University, Year"></textarea>
+                    </div>
+                    <div class="tool-section">
+                        <h3>Skills</h3>
+                        <textarea id="skills" class="form-input" rows="2" placeholder="Skill 1, Skill 2, Skill 3..."></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button id="generate-resume" class="btn btn-primary">Generate Resume PDF</button>
+                    </div>
+                </div>
+                <script>
+                    let expCount = 0;
+                    
+                    function addExperience() {
+                        const div = document.createElement('div');
+                        div.className = 'exp-item';
+                        div.style.marginBottom = 'var(--space-3)';
+                        div.innerHTML = `
+                            <input type="text" class="form-input exp-title" placeholder="Job Title" style="margin-bottom: 5px;">
+                            <input type="text" class="form-input exp-company" placeholder="Company" style="margin-bottom: 5px;">
+                            <input type="text" class="form-input exp-dates" placeholder="Jan 2020 - Present" style="margin-bottom: 5px;">
+                            <textarea class="form-input exp-desc" rows="2" placeholder="Job description..."></textarea>
+                        `;
+                        document.getElementById('experience-list').appendChild(div);
+                        expCount++;
+                    }
+                    
+                    // Add one experience field by default
+                    addExperience();
+                    
+                    document.getElementById('generate-resume').addEventListener('click', () => {
+                        const { jsPDF } = window.jspdf;
+                        const doc = new jsPDF();
+                        
+                        let y = 20;
+                        
+                        // Header
+                        doc.setFontSize(20);
+                        doc.text(document.getElementById('name').value || 'Your Name', 105, y, {align: 'center'});
+                        y += 10;
+                        
+                        doc.setFontSize(10);
+                        const contact = [
+                            document.getElementById('email').value,
+                            document.getElementById('phone').value,
+                            document.getElementById('location').value
+                        ].filter(x => x).join(' | ');
+                        doc.text(contact, 105, y, {align: 'center'});
+                        y += 15;
+                        
+                        // Summary
+                        if(document.getElementById('summary').value) {
+                            doc.setFontSize(12);
+                            doc.setFont(undefined, 'bold');
+                            doc.text('PROFESSIONAL SUMMARY', 20, y);
+                            y += 7;
+                            doc.setFont(undefined, 'normal');
+                            doc.setFontSize(10);
+                            const summary = doc.splitTextToSize(document.getElementById('summary').value, 170);
+                            doc.text(summary, 20, y);
+                            y += summary.length * 5 + 10;
+                        }
+                        
+                        // Experience
+                        const expItems = document.querySelectorAll('.exp-item');
+                        if(expItems.length > 0) {
+                            doc.setFontSize(12);
+                            doc.setFont(undefined, 'bold');
+                            doc.text('WORK EXPERIENCE', 20, y);
+                            y += 7;
+                            
+                            expItems.forEach(item => {
+                                doc.setFontSize(11);
+                                doc.setFont(undefined, 'bold');
+                                doc.text(item.querySelector('.exp-title').value || 'Job Title', 20, y);
+                                y += 5;
+                                doc.setFont(undefined, 'normal');
+                                doc.setFontSize(10);
+                                doc.text(item.querySelector('.exp-company').value || 'Company', 20, y);
+                                doc.text(item.querySelector('.exp-dates').value || 'Dates', 190, y, {align: 'right'});
+                                y += 5;
+                                const desc = doc.splitTextToSize(item.querySelector('.exp-desc').value || '', 170);
+                                doc.text(desc, 20, y);
+                                y += desc.length * 5 + 5;
+                            });
+                            y += 5;
+                        }
+                        
+                        // Education
+                        if(document.getElementById('education').value) {
+                            doc.setFontSize(12);
+                            doc.setFont(undefined, 'bold');
+                            doc.text('EDUCATION', 20, y);
+                            y += 7;
+                            doc.setFont(undefined, 'normal');
+                            doc.setFontSize(10);
+                            const edu = doc.splitTextToSize(document.getElementById('education').value, 170);
+                            doc.text(edu, 20, y);
+                            y += edu.length * 5 + 10;
+                        }
+                        
+                        // Skills
+                        if(document.getElementById('skills').value) {
+                            doc.setFontSize(12);
+                            doc.setFont(undefined, 'bold');
+                            doc.text('SKILLS', 20, y);
+                            y += 7;
+                            doc.setFont(undefined, 'normal');
+                            doc.setFontSize(10);
+                            doc.text(document.getElementById('skills').value, 20, y);
+                        }
+                        
+                        doc.save('resume.pdf');
+                        Toast.success('Resume generated!');
+                    });
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "AI Resume Builder - Create ATS-Optimized Resume Free", "description": "Free AI resume builder. Create professional ATS-optimized resumes in minutes. Multiple templates. Download as PDF. No sign-up required."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Ai', url: '/tools/ai/index.html' },
+            { name: 'Resume Builder' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'resume-builder');
+        Components.renderToolSchema('Resume Builder', 'ai', 'Resume Builder - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

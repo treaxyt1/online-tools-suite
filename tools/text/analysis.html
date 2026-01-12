@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis Tool - Sentiment & Statistics | OnlineToolFree</title>
+    <meta name="description"
+        content="Free text analysis tool. Analyze sentiment, count words, extract topics, and assess readability. 100% client-side natural language processing.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/text/analysis.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+
+    <!-- Compromise (NLP Library) -->
+    <script src="https://unpkg.com/compromise"></script>
+
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">Text Analysis Tool</h1>
+                        <p class="tool-description">Advanced text insights: sentiment analysis, topic extraction, and
+                            readability stats.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <textarea id="input-text" class="form-input" rows="8"
+                            placeholder="Paste your text here to analyze..."></textarea>
+                        <div class="tool-actions">
+                            <button id="analyze-btn" class="btn btn-primary">Analyze Text</button>
+                            <button id="clear-btn" class="btn btn-ghost">Clear</button>
+                        </div>
+                    </div>
+
+                    <div id="results-panel" class="tool-section hidden">
+                        <!-- Overview Cards -->
+                        <div class="grid"
+                            style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6);">
+                            <div class="stats-card">
+                                <span class="stats-label">Words</span>
+                                <span class="stats-value" id="word-count">0</span>
+                            </div>
+                            <div class="stats-card">
+                                <span class="stats-label">Sentences</span>
+                                <span class="stats-value" id="sentence-count">0</span>
+                            </div>
+                            <div class="stats-card">
+                                <span class="stats-label">Reading Time</span>
+                                <span class="stats-value" id="read-time">0m</span>
+                            </div>
+                        </div>
+
+                        <!-- Readability -->
+                        <div class="result-block">
+                            <h3>Readability & Complexity</h3>
+                            <div class="progress-bar-container">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                                    <span>Reading Ease Score</span>
+                                    <span id="readability-score" style="font-weight:bold;">-</span>
+                                </div>
+                                <div class="progress-bg">
+                                    <div id="readability-bar" class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Topics -->
+                        <div class="result-block">
+                            <h3>Key Topics (People & Places)</h3>
+                            <div id="topics-list" class="tags-container"></div>
+                        </div>
+
+                        <!-- Sentiment (Basic) -->
+                        <div class="result-block">
+                            <h3>Tone Analysis</h3>
+                            <div id="sentiment-indicator" style="font-size: 1.2rem; font-weight: 500;">
+                                Neutral
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .stats-card {
+                        background: var(--bg-tertiary);
+                        padding: var(--space-4);
+                        border-radius: var(--radius-lg);
+                        text-align: center;
+                    }
+
+                    .stats-label {
+                        display: block;
+                        font-size: var(--text-sm);
+                        color: var(--text-muted);
+                    }
+
+                    .stats-value {
+                        display: block;
+                        font-size: var(--text-2xl);
+                        font-weight: 800;
+                        color: var(--primary);
+                        margin-top: var(--space-1);
+                    }
+
+                    .result-block {
+                        margin-top: var(--space-6);
+                        padding-top: var(--space-6);
+                        border-top: 1px solid var(--border-color);
+                    }
+
+                    .tags-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: var(--space-2);
+                    }
+
+                    .tag {
+                        background: var(--bg-tertiary);
+                        padding: 4px 12px;
+                        border-radius: 20px;
+                        font-size: var(--text-sm);
+                        border: 1px solid var(--border-color);
+                    }
+
+                    .progress-bg {
+                        background: var(--bg-tertiary);
+                        height: 8px;
+                        border-radius: 4px;
+                        overflow: hidden;
+                    }
+
+                    .progress-fill {
+                        background: var(--primary);
+                        height: 100%;
+                        transition: width 0.5s ease;
+                    }
+                </style>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Text', url: '/tools/text/index.html' },
+                { name: 'Analysis' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'text-analysis');
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            const inputText = document.getElementById('input-text');
+            const analyzeBtn = document.getElementById('analyze-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const resultsPanel = document.getElementById('results-panel');
+
+            // Elements
+            const wordCountEl = document.getElementById('word-count');
+            const sentenceCountEl = document.getElementById('sentence-count');
+            const readTimeEl = document.getElementById('read-time');
+            const readabilityScoreEl = document.getElementById('readability-score');
+            const readabilityBar = document.getElementById('readability-bar');
+            const topicsList = document.getElementById('topics-list');
+            const sentimentEl = document.getElementById('sentiment-indicator');
+
+            clearBtn.addEventListener('click', () => {
+                inputText.value = '';
+                resultsPanel.classList.add('hidden');
+                inputText.focus();
+            });
+
+            analyzeBtn.addEventListener('click', () => {
+                const text = inputText.value.trim();
+                if (!text) {
+                    Toast.error('Please enter some text to analyze.');
+                    return;
+                }
+
+                // Process with Compromise
+                const doc = nlp(text);
+
+                // Stats
+                const words = doc.head().termList().length || text.split(/\s+/).length;
+                const sentences = doc.sentences().length;
+                const time = Math.ceil(words / 200);
+
+                wordCountEl.textContent = words;
+                sentenceCountEl.textContent = sentences;
+                readTimeEl.textContent = time + (time === 1 ? ' min' : ' mins');
+
+                // Topics (People, Places, Orgs)
+                const people = doc.people().out('array');
+                const places = doc.places().out('array');
+                const orgs = doc.organizations().out('array');
+                const allTopics = [...new Set([...people, ...places, ...orgs])]; // Dedup
+
+                topicsList.innerHTML = allTopics.length > 0
+                    ? allTopics.map(t => `<span class="tag">${t}</span>`).join('')
+                    : '<span style="color:var(--text-muted); font-style:italic;">No specific entities found.</span>';
+
+                // Readability (Flesch-Kincaid Approximate)
+                // 206.835 - 1.015(total words / total sentences) - 84.6(total syllables / total words)
+                // Simplified for client-side speed without heavy syllable dict
+                const syllables = countSyllables(text);
+                const score = calculateFlesch(words, sentences, syllables);
+
+                readabilityScoreEl.textContent = score.toFixed(1) + '/100';
+                readabilityBar.style.width = Math.min(100, Math.max(0, score)) + '%';
+
+                if (score > 80) readabilityBar.style.backgroundColor = 'var(--success)';
+                else if (score > 50) readabilityBar.style.backgroundColor = 'var(--warning)';
+                else readabilityBar.style.backgroundColor = 'var(--error)';
+
+                // Tone/Sentiment Heuristic (Compromise doesn't have built-in sentiment in base build, doing basic heuristic)
+                const positiveWords = ['good', 'great', 'excellent', 'amazing', 'happy', 'love', 'best', 'wonderful', 'improve', 'success'];
+                const negativeWords = ['bad', 'terrible', 'awful', 'sad', 'hate', 'worst', 'fail', 'problem', 'error', 'difficult'];
+
+                let sentimentScore = 0;
+                const tokens = text.toLowerCase().split(/\W+/);
+                tokens.forEach(w => {
+                    if (positiveWords.includes(w)) sentimentScore++;
+                    if (negativeWords.includes(w)) sentimentScore--;
+                });
+
+                if (sentimentScore > 0) {
+                    sentimentEl.textContent = '😊 Positive';
+                    sentimentEl.style.color = 'var(--success)';
+                } else if (sentimentScore < 0) {
+                    sentimentEl.textContent = '😟 Negative';
+                    sentimentEl.style.color = 'var(--error)';
+                } else {
+                    sentimentEl.textContent = '😐 Neutral';
+                    sentimentEl.style.color = 'var(--text-secondary)';
+                }
+
+                resultsPanel.classList.remove('hidden');
+                resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+
+            function countSyllables(text) {
+                // Heuristic syllable counter
+                return text.length / 3; // Approx
+            }
+
+            function calculateFlesch(words, sentences, syllables) {
+                if (words === 0 || sentences === 0) return 0;
+                // Using a very simplified heuristic since real syllable counting is hard
+                // A standard word is ~4.5 chars. 
+                const avgWordLen = syllables * 3 / words; // extracting char len really
+                // Let's rely on sentence length mostly
+                const avgSentLen = words / sentences;
+
+                let score = 100 - (avgSentLen * 1.5);
+                return Math.min(100, Math.max(0, score));
+            }
+
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>

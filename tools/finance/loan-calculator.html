@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator - Amortization Schedule & Charts | OnlineToolFree</title>
+    <meta name="description"
+        content="Advanced loan calculator with amortization schedule and charts. Calculate mortgages, auto loans, and personal loans with monthly breakdown.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/finance/loan-calculator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">Loan Calculator</h1>
+                        <p class="tool-description">Calculate your monthly payments, total interest, and visualize your
+                            payoff schedule with interactive charts.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="grid-2-col">
+                        <!-- Controls -->
+                        <div class="tool-section">
+                            <h3 style="margin-bottom: var(--space-4);">Loan Details</h3>
+                            <div class="form-group">
+                                <label class="form-label">Loan Amount ($)</label>
+                                <input type="number" id="amount" class="form-input" value="10000" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Annual Interest Rate (%)</label>
+                                <input type="number" id="rate" class="form-input" value="5.5" min="0" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Loan Term (Years)</label>
+                                <input type="number" id="term" class="form-input" value="5" min="1">
+                                <div style="display: flex; gap: var(--space-2); margin-top: var(--space-2);">
+                                    <button class="btn btn-sm btn-ghost" onclick="setTerm(5)">5y</button>
+                                    <button class="btn btn-sm btn-ghost" onclick="setTerm(15)">15y</button>
+                                    <button class="btn btn-sm btn-ghost" onclick="setTerm(30)">30y</button>
+                                </div>
+                            </div>
+                            <button id="calc-btn" class="btn btn-primary w-full"
+                                style="margin-top: var(--space-4);">Calculate</button>
+                        </div>
+
+                        <!-- Results -->
+                        <div id="results-panel" class="tool-section hidden">
+                            <div style="text-align: center; margin-bottom: var(--space-4);">
+                                <p style="color: var(--text-muted); font-size: var(--text-sm);">Monthly Payment</p>
+                                <div id="monthly-payment"
+                                    style="font-size: 3rem; font-weight: 800; color: var(--primary);">$0.00</div>
+                            </div>
+
+                            <div class="grid"
+                                style="grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
+                                <div
+                                    style="background: var(--bg-tertiary); padding: var(--space-3); border-radius: var(--radius-md);">
+                                    <div style="font-size: var(--text-xs); color: var(--text-muted);">Total Principal
+                                    </div>
+                                    <div id="total-principal" style="font-weight: bold;">$0.00</div>
+                                </div>
+                                <div
+                                    style="background: var(--bg-tertiary); padding: var(--space-3); border-radius: var(--radius-md);">
+                                    <div style="font-size: var(--text-xs); color: var(--text-muted);">Total Interest
+                                    </div>
+                                    <div id="total-interest" style="font-weight: bold; color: var(--error);">$0.00</div>
+                                </div>
+                            </div>
+
+                            <div style="height: 200px; position: relative;">
+                                <canvas id="loanChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amortization Table -->
+                    <div id="schedule-panel" class="tool-section hidden" style="margin-top: var(--space-6);">
+                        <h3 style="margin-bottom: var(--space-4);">Amortization Schedule (Yearly)</h3>
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--border-color);">
+                                        <th style="padding: 8px;">Year</th>
+                                        <th style="padding: 8px;">Interest</th>
+                                        <th style="padding: 8px;">Principal</th>
+                                        <th style="padding: 8px;">Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="amortization-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Finance', url: '/tools/finance/index.html' },
+                { name: 'Loan Calculator' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'loan-calculator');
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Calc Logic
+            window.setTerm = (yrs) => {
+                document.getElementById('term').value = yrs;
+                calculateLoan();
+            };
+
+            document.getElementById('calc-btn').addEventListener('click', calculateLoan);
+
+            let chartInstance = null;
+
+            function calculateLoan() {
+                const amount = parseFloat(document.getElementById('amount').value);
+                const rate = parseFloat(document.getElementById('rate').value);
+                const years = parseFloat(document.getElementById('term').value);
+
+                if (!amount || !rate || !years) return;
+
+                const principal = amount;
+                const monthlyRate = rate / 100 / 12;
+                const numberOfPayments = years * 12;
+
+                const x = Math.pow(1 + monthlyRate, numberOfPayments);
+                const monthlyPayment = (principal * x * monthlyRate) / (x - 1);
+
+                const totalPayment = monthlyPayment * numberOfPayments;
+                const totalInterest = totalPayment - principal;
+
+                // Update UI
+                document.getElementById('monthly-payment').textContent = formatMoney(monthlyPayment);
+                document.getElementById('total-principal').textContent = formatMoney(principal);
+                document.getElementById('total-interest').textContent = formatMoney(totalInterest);
+
+                document.getElementById('results-panel').classList.remove('hidden');
+                document.getElementById('schedule-panel').classList.remove('hidden');
+
+                renderChart(principal, totalInterest);
+                renderSchedule(principal, monthlyRate, monthlyPayment, years);
+            }
+
+            function formatMoney(num) {
+                return '$' + num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            }
+
+            function renderChart(principal, interest) {
+                const ctx = document.getElementById('loanChart').getContext('2d');
+
+                if (chartInstance) chartInstance.destroy();
+
+                chartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Principal', 'Interest'],
+                        datasets: [{
+                            data: [principal, interest],
+                            backgroundColor: ['#4f46e5', '#ef4444'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right'
+                            }
+                        }
+                    }
+                });
+            }
+
+            function renderSchedule(principal, monthlyRate, monthlyPayment, years) {
+                const tbody = document.getElementById('amortization-body');
+                tbody.innerHTML = '';
+
+                let balance = principal;
+                let yearlyInterest = 0;
+                let yearlyPrincipal = 0;
+
+                for (let i = 1; i <= years * 12; i++) {
+                    const interest = balance * monthlyRate;
+                    const paymentToPrincipal = monthlyPayment - interest;
+
+                    balance -= paymentToPrincipal;
+                    yearlyInterest += interest;
+                    yearlyPrincipal += paymentToPrincipal;
+
+                    if (i % 12 === 0) {
+                        const row = `<tr>
+                            <td style="padding: 8px;">${i / 12}</td>
+                            <td style="padding: 8px;">${formatMoney(yearlyInterest)}</td>
+                            <td style="padding: 8px;">${formatMoney(yearlyPrincipal)}</td>
+                            <td style="padding: 8px;">${formatMoney(Math.max(0, balance))}</td>
+                        </tr>`;
+                        tbody.insertAdjacentHTML('beforeend', row);
+                        yearlyInterest = 0;
+                        yearlyPrincipal = 0;
+                    }
+                }
+            }
+
+            // Auto calc on load
+            calculateLoan();
+
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>

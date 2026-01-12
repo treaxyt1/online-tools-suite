@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOS Checker - Verify Emulator BIOS Files | OnlineToolFree</title>
+    <meta name="description" content="Verify the integrity of your emulator BIOS files with MD5/SHA1 checksums. Client-side only - files never uploaded.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/emulators/bios-checker.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;">
+                <div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);">
+                    <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                        <div class="tool-icon-large" style="margin: 0;">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="tool-title" style="font-size: var(--text-2xl);">BIOS Checker</h1>
+                            <p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+                                Verify emulator BIOS file integrity with MD5/SHA1 checksums
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-notice" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 4px solid #f59e0b; padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+    <div style="display: flex; align-items: start; gap: var(--space-3);">
+        <svg class="icon" style="color: #f59e0b; flex-shrink: 0; margin-top: 2px;" viewBox="0 0 24 24">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <div>
+            <h4 style="margin: 0 0 var(--space-2) 0; font-weight: var(--font-semibold); color: #92400e;">Legal Notice</h4>
+            <p style="margin: 0; font-size: var(--text-sm); color: #78350f; line-height: 1.6;">
+                <strong>Emulators are legal software.</strong> However, you must own the original game cartridges or discs to legally create and use personal backups. 
+                This site does not host, distribute, or link to copyrighted games or BIOS files. All content is for educational purposes only.
+            </p>
+        </div>
+    </div>
+</div>
+
+                <div class="tool-interface">
+                    <div class="tool-section" style="margin-bottom: var(--space-6);">
+                        <label class="tool-section-title" for="file-input">
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                                <polyline points="13 2 13 9 20 9"/>
+                            </svg>
+                            Upload BIOS File
+                        </label>
+                        <div class="file-drop-area" id="drop-area">
+                            <input type="file" id="file-input" hidden>
+                            <div class="drop-icon">
+                                <svg class="icon icon-xl" viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                            </div>
+                            <p class="drop-text">Drag & drop BIOS file or <span>browse</span></p>
+                            <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-top: var(--space-2);">
+                                Files are processed locally - never uploaded to any server
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tool-section output-section" id="result-section" style="display: none;">
+                        <div class="output-header">
+                            <label class="tool-section-title">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                File Information
+                            </label>
+                        </div>
+                        <div style="background: var(--bg-tertiary); padding: var(--space-4); border-radius: var(--radius-lg); font-family: var(--font-mono); font-size: var(--text-sm);">
+                            <div style="margin-bottom: var(--space-3);">
+                                <strong>Filename:</strong> <span id="filename"></span>
+                            </div>
+                            <div style="margin-bottom: var(--space-3);">
+                                <strong>Size:</strong> <span id="filesize"></span>
+                            </div>
+                            <div style="margin-bottom: var(--space-3);">
+                                <strong>MD5:</strong> <span id="md5" style="word-break: break-all;"></span>
+                            </div>
+                            <div>
+                                <strong>SHA1:</strong> <span id="sha1" style="word-break: break-all;"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-actions">
+                        <button id="clear-btn" class="btn btn-ghost" style="display: none;">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                            </svg>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
+                <section class="info-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);">
+                    <h2 style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">
+                        How to Use
+                    </h2>
+                    <ol style="padding-left: var(--space-6); line-height: 1.8;">
+                        <li>Upload your BIOS file (must be legally obtained from your own console)</li>
+                        <li>The tool will calculate MD5 and SHA1 checksums</li>
+                        <li>Compare checksums with official databases to verify integrity</li>
+                        <li>All processing happens in your browser - files are never uploaded</li>
+                    </ol>
+                </section>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+    </button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderMobileMenu();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Emulators', url: '/tools/emulators/index.html' },
+            { name: 'Bios Checker' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'bios-checker');
+        Components.renderToolSchema('Bios Checker', 'emulators', 'Bios Checker - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('file-input');
+            const resultSection = document.getElementById('result-section');
+            const clearBtn = document.getElementById('clear-btn');
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
+            });
+
+            dropArea.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+            dropArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    const file = files[0];
+                    processFile(file);
+                }
+            }
+
+            function processFile(file) {
+                document.getElementById('filename').textContent = file.name;
+                document.getElementById('filesize').textContent = formatBytes(file.size);
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const wordArray = CryptoJS.lib.WordArray.create(e.target.result);
+                    const md5 = CryptoJS.MD5(wordArray).toString();
+                    const sha1 = CryptoJS.SHA1(wordArray).toString();
+
+                    document.getElementById('md5').textContent = md5;
+                    document.getElementById('sha1').textContent = sha1;
+
+                    resultSection.style.display = 'block';
+                    clearBtn.style.display = 'inline-flex';
+                    Toast.success('File processed successfully');
+                };
+                reader.readAsArrayBuffer(file);
+            }
+
+            function formatBytes(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+            }
+
+            clearBtn.addEventListener('click', () => {
+                fileInput.value = '';
+                resultSection.style.display = 'none';
+                clearBtn.style.display = 'none';
+                Toast.success('Cleared');
+            });
+
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.ResponsiveManager) ResponsiveManager.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Add Line Numbers - Free Online Tool | OnlineToolFree</title><meta name="description" content="Add line numbers to any text. Free online text line numbering tool."><link rel="canonical" href="https://onlinetoolfree.com/tools/text/line-numbers.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Add Line Numbers</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Add line numbers to each line of text.
+ </p></div></div></div><div class="tool-interface"><div class="options-panel -wrap" style="margin-bottom: var(--space-4); display: flex; gap: var(--space-4); display: flex"><div class="form-group"><label>Separator</label><input type="text" id="separator" class="form-input" value=". " style="width: 80px;"></div><div class="form-group"><label>Start at</label><input type="number" id="start" class="form-input" value="1" style="width: 80px;"></div><div class="option-group" style="align-self: flex-end;"><input type="checkbox" id="pad-zeros"><label for="pad-zeros">Pad with zeros</label></div></div><div class="tool-grid"><div class="tool-section"><div class="output-header"><span class="tool-section-title">Input</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="FormHelpers.clear('input')">Clear</button></div></div><textarea id="input" class="form-textarea" style="height: 250px;"
+ placeholder="Paste text here..."></textarea></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Numbered Output</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy</button></div></div><textarea id="output" class="form-textarea code" style="height: 250px;" readonly></textarea></div></div><div class="tool-actions" style="margin-top: var(--space-4);"><button id="add-btn" class="btn btn-primary btn-lg">Add Line Numbers</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Text', url: '/tools/text/index.html' },
+            { name: 'Line Numbers' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'line-numbers');
+        Components.renderToolSchema('Line Numbers', 'text', 'Line Numbers - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const input = document.getElementById('input');
+ const output = document.getElementById('output');
+ const separator = document.getElementById('separator');
+ const startAt = document.getElementById('start');
+ const padZeros = document.getElementById('pad-zeros');
+
+ function process() {
+ const lines = input.value.split('\n');
+ const start = parseInt(startAt.value) || 1;
+ const maxDigits = String(start + lines.length - 1).length;
+
+ output.value = lines.map((line, i) => {
+ let num = start + i;
+ if (padZeros.checked) {
+ num = String(num).padStart(maxDigits, '0');
+ }
+ return num + separator.value + line;
+ }).join('\n');
+ }
+
+ input.addEventListener('input', debounce(process, 200));
+ [separator, startAt, padZeros].forEach(el => el.addEventListener('input', process));
+ padZeros.addEventListener('change', process);
+ document.getElementById('add-btn').addEventListener('click', () => { process(); Toast.success('Line numbers added!'); });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Tester - Test Regular Expressions Free | OnlineToolFree</title>
+    <meta name="description" content="Free regex tester. Test and debug regular expressions. Real-time matching. Perfect for developers.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/developer/regex-tester.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Regex Tester</h1>
+                <p class="tool-description">Test and debug regular expressions.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label>Regular Expression</label>
+                        <input type="text" id="regex" class="form-input" placeholder="e.g., \d{3}-\d{3}-\d{4}" value="\d+">
+                        <div style="margin-top: var(--space-2);"><label><input type="checkbox" id="global" checked> Global (g)</label><label style="margin-left: var(--space-3);"><input type="checkbox" id="case"> Case Insensitive (i)</label></div>
+                    </div>
+                    <div class="tool-section">
+                        <label>Test String</label>
+                        <textarea id="test-string" class="form-input" rows="6" placeholder="Enter text to test...">The year is 2024 and the time is 12:30</textarea>
+                        <button id="test" class="btn btn-primary" style="margin-top: var(--space-2);">Test Regex</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none;">
+                        <h3>Matches: <span id="match-count">0</span></h3>
+                        <div id="matches"></div>
+                    </div>
+                </div>
+                <script>
+                    document.getElementById('test').addEventListener('click', () => {
+                        try {
+                            const pattern = document.getElementById('regex').value;
+                            const flags = (document.getElementById('global').checked ? 'g' : '') + (document.getElementById('case').checked ? 'i' : '');
+                            const regex = new RegExp(pattern, flags);
+                            const text = document.getElementById('test-string').value;
+                            const matches = [...text.matchAll(regex)];
+                            document.getElementById('match-count').textContent = matches.length;
+                            document.getElementById('matches').innerHTML = matches.length ? matches.map((m, i) => 
+                                \`<div style="padding: var(--space-2); background: var(--bg-tertiary); border-radius: var(--radius-md); margin-bottom: var(--space-2);">
+                                    <strong>Match \${i+1}:</strong> "\${m[0]}" at position \${m.index}
+                                </div>\`
+                            ).join('') : '<p>No matches found</p>';
+                            document.getElementById('result').style.display = 'block';
+                        } catch(e) {
+                            Toast.error('Invalid regex pattern');
+                        }
+                    });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Regex Tester - Test Regular Expressions Free", "description": "Free regex tester. Test and debug regular expressions. Real-time matching. Perfect for developers."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Developer', url: '/tools/developer/index.html' },
+            { name: 'Regex Tester' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'regex-tester');
+        Components.renderToolSchema('Regex Tester', 'developer', 'Regex Tester - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

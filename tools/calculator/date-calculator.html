@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Calculator - Calculate Days Between Dates Free | OnlineToolFree</title>
+    <meta name="description" content="Free date calculator. Calculate days, weeks, months between two dates. Add or subtract days from any date. Business days calculator.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/calculator/date-calculator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Date Calculator</h1>
+                <p class="tool-description">Calculate the difference between two dates.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <h3>Calculate Difference Between Dates</h3>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                            <div><label>From Date</label><input type="date" id="from-date" class="form-input"></div>
+                            <div><label>To Date</label><input type="date" id="to-date" class="form-input"></div>
+                        </div>
+                        <button id="calc-diff" class="btn btn-primary" style="margin-top: var(--space-3);">Calculate Difference</button>
+                        <div id="diff-result" style="display:none; margin-top: var(--space-4); padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--space-3); text-align: center;">
+                                <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-600);" id="diff-days">0</div><div style="font-size: var(--text-sm);">Days</div></div>
+                                <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-600);" id="diff-weeks">0</div><div style="font-size: var(--text-sm);">Weeks</div></div>
+                                <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-600);" id="diff-months">0</div><div style="font-size: var(--text-sm);">Months</div></div>
+                                <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-600);" id="diff-years">0</div><div style="font-size: var(--text-sm);">Years</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <h3>Add/Subtract Days</h3>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3);">
+                            <div><label>Start Date</label><input type="date" id="start-date" class="form-input"></div>
+                            <div><label>Days to Add/Subtract</label><input type="number" id="days-add" class="form-input" placeholder="30"></div>
+                            <div style="display: flex; align-items: end;"><button id="calc-add" class="btn btn-primary">Calculate</button></div>
+                        </div>
+                        <div id="add-result" style="display:none; margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-tertiary); border-radius: var(--radius-md);">
+                            <strong>Result:</strong> <span id="result-date">-</span>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    document.getElementById('calc-diff').addEventListener('click', () => {
+                        const from = new Date(document.getElementById('from-date').value);
+                        const to = new Date(document.getElementById('to-date').value);
+                        if(!from || !to || isNaN(from) || isNaN(to)) return Toast.error('Please select both dates');
+                        
+                        const diff = Math.abs(to - from);
+                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        const weeks = Math.floor(days / 7);
+                        const months = Math.floor(days / 30.44);
+                        const years = Math.floor(days / 365.25);
+                        
+                        document.getElementById('diff-days').textContent = days;
+                        document.getElementById('diff-weeks').textContent = weeks;
+                        document.getElementById('diff-months').textContent = months;
+                        document.getElementById('diff-years').textContent = years;
+                        document.getElementById('diff-result').style.display = 'block';
+                    });
+                    
+                    document.getElementById('calc-add').addEventListener('click', () => {
+                        const start = new Date(document.getElementById('start-date').value);
+                        const daysToAdd = parseInt(document.getElementById('days-add').value) || 0;
+                        if(!start || isNaN(start)) return Toast.error('Please select a start date');
+                        
+                        const result = new Date(start);
+                        result.setDate(result.getDate() + daysToAdd);
+                        
+                        document.getElementById('result-date').textContent = result.toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
+                        document.getElementById('add-result').style.display = 'block';
+                    });
+                    
+                    // Set today as default
+                    document.getElementById('from-date').valueAsDate = new Date();
+                    document.getElementById('to-date').valueAsDate = new Date();
+                    document.getElementById('start-date').valueAsDate = new Date();
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Date Calculator - Calculate Days Between Dates Free", "description": "Free date calculator. Calculate days, weeks, months between two dates. Add or subtract days from any date. Business days calculator."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Calculator', url: '/tools/calculator/index.html' },
+            { name: 'Date Calculator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'date-calculator');
+        Components.renderToolSchema('Date Calculator', 'calculator', 'Date Calculator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

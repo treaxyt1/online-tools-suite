@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Percentage Calculator - Free Online Math Tool | OnlineToolFree</title><meta name="description"
+ content="Free online percentage calculator. Calculate percentages, increase/decrease, and percentage of a value easily."><link rel="canonical" href="https://onlinetoolfree.com/tools/number/percentage-calculator.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .calc-group {
+ background: var(--bg-card);
+ border: 1px solid var(--border-color);
+ border-radius: var(--radius-lg);
+ padding: 2rem;
+ margin-bottom: 2rem;
+ }
+
+ .calc-row {
+ display: flex;
+ align-items: center;
+ gap: 1rem;
+ flex-wrap: wrap;
+ }
+
+ .calc-input {
+ width: 100px;
+ padding: 0.5rem;
+ border: 1px solid var(--border-color);
+ border-radius: var(--radius-md);
+ background: var(--bg-input);
+ color: var(--text-primary);
+ }
+
+ .calc-result {
+ font-weight: 700;
+ color: var(--primary-600);
+ min-width: 80px;
+ text-align: center;
+ padding: 0.5rem;
+ background: var(--bg-secondary);
+ border-radius: var(--radius-md);
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><div class="layout-grid"><div class="layout-main"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Percentage Calculator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Solve all your percentage math problems quickly and accurately.
+ </p></div></div></div><div class="tool-interface"><div class="calc-group"><h3>What is X% of Y?</h3><div class="calc-row"><span>What is</span><input type="number" id="p1-x" class="calc-input" value="10" oninput="calc1()"><span>% of</span><input type="number" id="p1-y" class="calc-input" value="100" oninput="calc1()"><span>?</span><span style="margin-left: var(--space-2); margin-right: var(--space-2)">=</span><div class="calc-result" id="p1-res">10</div></div></div><div class="calc-group"><h3>X is what percentage of Y?</h3><div class="calc-row"><input type="number" id="p2-x" class="calc-input" value="20" oninput="calc2()"><span>is what % of</span><input type="number" id="p2-y" class="calc-input" value="100" oninput="calc2()"><span>?</span><span style="margin-left: var(--space-2); margin-right: var(--space-2)">=</span><div class="calc-result" id="p2-res">20%</div></div></div><div class="calc-group"><h3>Percentage Increase/Decrease</h3><div class="calc-row"><span>From</span><input type="number" id="p3-x" class="calc-input" value="50" oninput="calc3()"><span>to</span><input type="number" id="p3-y" class="calc-input" value="75" oninput="calc3()"><span>is</span><span style="margin-left: var(--space-2); margin-right: var(--space-2)">=</span><div class="calc-result" id="p3-res">50% increase</div></div></div></div><section class="content-section"><h2>Percentage Formula</h2><p>To find the percentage of a number, divide the percentage by 100 and multiply by the total
+ number.
+ <code>(Percentage / 100) * Total = Value</code></p></section></div><aside class="layout-sidebar"><div id="sidebar-container"></div></aside></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><footer class="footer" style="margin-top: var(--space-24)"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Number', url: '/tools/number/index.html' },
+            { name: 'Percentage Calculator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'percentage-calculator');
+        Components.renderToolSchema('Percentage Calculator', 'number', 'Percentage Calculator - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ function calc1() {
+ const x = parseFloat(document.getElementById('p1-x').value);
+ const y = parseFloat(document.getElementById('p1-y').value);
+ const res = document.getElementById('p1-res');
+ if (isNaN(x) || isNaN(y)) { res.textContent = '...'; return; }
+ res.textContent = ((x / 100) * y).toLocaleString();
+ }
+
+ function calc2() {
+ const x = parseFloat(document.getElementById('p2-x').value);
+ const y = parseFloat(document.getElementById('p2-y').value);
+ const res = document.getElementById('p2-res');
+ if (isNaN(x) || isNaN(y) || y === 0) { res.textContent = '...'; return; }
+ res.textContent = ((x / y) * 100).toFixed(2) + '%';
+ }
+
+ function calc3() {
+ const x = parseFloat(document.getElementById('p3-x').value);
+ const y = parseFloat(document.getElementById('p3-y').value);
+ const res = document.getElementById('p3-res');
+ if (isNaN(x) || isNaN(y) || x === 0) { res.textContent = '...'; return; }
+ const diff = y - x;
+ const pct = ((diff / x) * 100).toFixed(2);
+ res.textContent = Math.abs(pct) + '% ' + (pct >= 0 ? 'increase' : 'decrease');
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderSidebar('sidebar-container', 'Number Tools');
+ Components.renderFooter();
+ calc1(); calc2(); calc3();
+ });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

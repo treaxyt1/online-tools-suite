@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Resize JPG - Free Client-Side JPG Resizer | OnlineToolFree</title><meta name="description"
+ content="Free online JPG resizer. Resize your JPEG images to any dimension instantly. High-quality scaling using Lanczos3 algorithm."><link rel="canonical" href="https://onlinetoolfree.com/tools/jpg/resize.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pica/9.0.1/pica.min.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Resize JPG</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ High-quality JPG resizing right in your browser using advanced algorithms.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="drop-zone" id="drop-zone"><div class="drop-zone-content"><svg class="icon icon-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+ stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg><p>Drag & drop JPG image or <span>browse</span></p><input type="file" id="file-input" accept="image/jpeg,image/jpg" hidden></div></div><div id="editor-container" style="margin-top: var(--space-8); display: none"><div class="tool-section"><div class="output-header"><span class="tool-section-title">Resized Preview</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="resetImage()">Change Image</button></div></div><div class="canvas-wrapper" style="background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; padding: var(--space-4); overflow: auto; justify-content: center; display: flex; border-radius: var(--radius-lg); max-height: 500px"><canvas id="result-canvas"
+ style="max-width: 100%; height: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></canvas></div><div id="res-info" class="font-mono" style="margin-top: var(--space-2); color: var(--text-secondary); font-size: var(--text-sm); text-align: center"></div></div><div class="tool-controls glass -xl" style="margin-top: var(--space-6); padding: var(--space-6); border-radius: var(--radius-lg)"><div class="md:grid-cols-4" style="display: grid; display: grid; gap: var(--space-4); align-items: flex-end"><div><label class="form-label">Width (px)</label><input type="number" id="width" class="form-input" min="1"></div><div><label class="form-label">Height (px)</label><input type="number" id="height" class="form-input" min="1"></div><div style="align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); display: flex"><input type="checkbox" id="maintain-ratio" checked><label for="maintain-ratio" style="margin-bottom: var(--space-0); font-size: var(--text-sm)">Keep Aspect Ratio</label></div><div><button id="download-btn" class="btn btn-primary" style="width: 100%;">Download JPG</button></div></div></div></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Jpg', url: '/tools/jpg/index.html' },
+            { name: 'Resize' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'resize');
+        Components.renderToolSchema('Resize', 'jpg', 'Resize - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ let originalImg = null;
+ let pica = window.pica();
+ const resultCanvas = document.getElementById('result-canvas');
+ const widthInput = document.getElementById('width');
+ const heightInput = document.getElementById('height');
+ const ratioCheck = document.getElementById('maintain-ratio');
+ const resInfo = document.getElementById('res-info');
+
+ const dropZone = document.getElementById('drop-zone');
+ const fileInput = document.getElementById('file-input');
+ const editorContainer = document.getElementById('editor-container');
+
+ // Drag & Drop
+ ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+ dropZone.addEventListener(eventName, preventDefaults, false);
+ });
+ function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+ dropZone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+
+ dropZone.onclick = () => fileInput.click();
+ fileInput.onchange = (e) => handleFile(e.target.files[0]);
+
+ function handleFile(file) {
+ if (!file) return;
+ if (!file.type.match('image/jpeg')) {
+ Toast.error('Please upload a JPG image.');
+ return;
+ }
+ const reader = new FileReader();
+ reader.onload = (e) => {
+ const img = new Image();
+ img.onload = () => {
+ originalImg = img;
+ widthInput.value = img.width;
+ heightInput.value = img.height;
+ editorContainer.classList.remove('hidden');
+ dropZone.classList.add('hidden');
+ resize();
+ };
+ img.src = e.target.result;
+ };
+ reader.readAsDataURL(file);
+ }
+
+ async function resize() {
+ if (!originalImg) return;
+ const w = parseInt(widthInput.value);
+ const h = parseInt(heightInput.value);
+ if (!w || !h) return;
+
+ resultCanvas.width = w;
+ resultCanvas.height = h;
+
+ await pica.resize(originalImg, resultCanvas, {
+ unsharpAmount: 80,
+ unsharpRadius: 0.6,
+ unsharpThreshold: 2
+ });
+
+ resInfo.innerText = `${w} x ${h} pixels`;
+ }
+
+ widthInput.oninput = () => {
+ if (ratioCheck.checked && originalImg) {
+ heightInput.value = Math.round(widthInput.value * (originalImg.height / originalImg.width));
+ }
+ debounce(resize, 400)();
+ };
+
+ heightInput.oninput = () => {
+ if (ratioCheck.checked && originalImg) {
+ widthInput.value = Math.round(heightInput.value * (originalImg.width / originalImg.height));
+ }
+ debounce(resize, 400)();
+ };
+
+ document.getElementById('download-btn').onclick = () => {
+ const link = document.createElement('a');
+ link.download = 'resized-image.jpg';
+ link.href = resultCanvas.toDataURL('image/jpeg', 0.9);
+ link.click();
+ Toast.success('Downloaded!');
+ };
+
+ function resetImage() {
+ editorContainer.classList.add('hidden');
+ dropZone.classList.remove('hidden');
+ fileInput.value = '';
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

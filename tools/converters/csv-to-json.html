@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- SEO Meta Tags --><title>CSV to JSON Converter - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Convert CSV data to JSON format instantly. Free online CSV to JSON converter tool. Fast, secure, and private."><link rel="canonical" href="https://onlinetoolfree.com/tools/converters/csv-to-json.html"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+ rel="stylesheet"><!-- Styles --><link rel="stylesheet" href="../../css/design-system.css"><style>
+ .code-output {
+ font-family: var(--font-mono);
+ font-size: 13px;
+ line-height: 1.6;
+ }
+ </style><!-- Scripts --><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><!-- Header --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div
+ style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">CSV to JSON</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert CSV data to JSON format with automatic header detection.
+ </p></div></div></div><!-- Tool Interface --><div class="tool-interface"><!-- Input Section --><div class="tool-section"><label class="tool-section-title" for="input"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /></svg>
+ CSV Input
+ </label><textarea id="input" class="form-textarea code-output" rows="8" placeholder="Paste your CSV data here...
+Example:
+name,email,age
+John,john@example.com,30
+Jane,jane@example.com,25" spellcheck="false"></textarea></div><!-- Output Section --><div class="tool-section output-section"><div class="output-header"><label class="tool-section-title" for="output"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M4 4h6v6H4z" /><path d="M14 4h6v6h-6z" /><path d="M4 14h6v6H4z" /></svg>
+ JSON Output
+ </label><div class="output-actions"><button class="btn btn-ghost btn-sm" id="copy-btn"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>
+ Copy
+ </button><button class="btn btn-ghost btn-sm" id="download-btn"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+ Download
+ </button></div></div><textarea id="output" class="form-textarea code-output" rows="10" readonly
+ placeholder="JSON output will appear here..." spellcheck="false"></textarea></div><!-- Actions --><div class="tool-actions"><button id="convert-btn" class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+ Convert
+ </button><button id="clear-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+ Clear
+ </button><button id="sample-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg>
+ Sample
+ </button></div></div><!-- Information Section --><section class="info-section"
+ style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);"><h2
+ style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">
+ About CSV to JSON</h2><p>
+ This tool converts CSV (Comma-Separated Values) data to JSON format.
+ The first row is used as headers for the JSON object keys.
+ </p></section></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Converters', url: '/tools/converters/index.html' },
+            { name: 'Csv To Json' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'csv-to-json');
+        Components.renderToolSchema('Csv To Json', 'converters', 'Csv To Json - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ const input = document.getElementById('input');
+ const output = document.getElementById('output');
+
+ function csvToJson(csv) {
+ const lines = csv.trim().split('\n');
+ if (lines.length < 2) return [];
+
+ const headers = lines[0].split(',').map(h => h.trim());
+ const result = [];
+
+ for (let i = 1; i < lines.length; i++) {
+ const values = lines[i].split(',').map(v => v.trim());
+ const obj = {};
+ headers.forEach((header, index) => {
+ let value = values[index] || '';
+ // Try to parse numbers
+ if (!isNaN(value) && value !== '') {
+ value = Number(value);
+ }
+ obj[header] = value;
+ });
+ result.push(obj);
+ }
+ return result;
+ }
+
+ function convert() {
+ const csv = input.value;
+ if (!csv) {
+ Toast.warning('Please enter CSV data');
+ return;
+ }
+ try {
+ const json = csvToJson(csv);
+ output.value = JSON.stringify(json, null, 2);
+ Toast.success('Converted to JSON');
+ } catch (e) {
+ Toast.error('Conversion failed: ' + e.message);
+ }
+ }
+
+ document.getElementById('convert-btn').addEventListener('click', convert);
+
+ document.getElementById('clear-btn').addEventListener('click', () => {
+ input.value = '';
+ output.value = '';
+ Toast.success('Cleared');
+ });
+
+ document.getElementById('sample-btn').addEventListener('click', () => {
+ input.value = `name,email,age,city
+John Doe,john@example.com,30,New York
+Jane Smith,jane@example.com,25,Los Angeles
+Bob Johnson,bob@example.com,35,Chicago`;
+ Toast.success('Sample loaded');
+ });
+
+ document.getElementById('copy-btn').addEventListener('click', () => {
+ if (output.value) {
+ Clipboard.copy(output.value);
+ } else {
+ Toast.warning('Nothing to copy');
+ }
+ });
+
+ document.getElementById('download-btn').addEventListener('click', () => {
+ if (output.value) {
+ FileHandler.download(output.value, 'data.json', 'application/json');
+ } else {
+ Toast.warning('Nothing to download');
+ }
+ });
+
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>

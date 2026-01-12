@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>JSON Validator - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Validate JSON data and check for syntax errors. Free online JSON validator with helpful error messages and formatting."><link rel="canonical" href="https://onlinetoolfree.com/tools/json/validator.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .result-box {
+ padding: 1.5rem;
+ border-radius: var(--radius-lg);
+ margin-top: 1.5rem;
+ font-weight: 600;
+ display: none;
+ }
+
+ .result-box.valid {
+ background: rgba(34, 197, 94, 0.1);
+ color: var(--success);
+ border: 1px solid var(--success);
+ }
+
+ .result-box.invalid {
+ background: rgba(239, 68, 68, 0.1);
+ color: var(--error);
+ border: 1px solid var(--error);
+ }
+
+ .error-details {
+ margin-top: 0.5rem;
+ font-family: monospace;
+ font-size: 0.9rem;
+ white-space: pre-wrap;
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><div class="layout-grid"><div class="layout-main"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">JSON Validator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Check if your JSON data is valid and find exactly where the errors are.
+ </p></div></div></div><div class="tool-interface"><div class="tool-section full-width"><div class="output-header"><span class="tool-section-title">JSON Input</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="FormHelpers.clear('input')">Clear</button><button class="btn btn-ghost btn-sm" onclick="pasteExample()">Sample</button></div></div><textarea id="input" class="form-textarea code" style="height: 350px;"
+ placeholder="Paste your JSON here to validate..."></textarea></div><div class="tool-actions" style="margin-top: var(--space-6)"><button id="validate-btn" class="btn btn-primary btn-lg">Validate JSON</button></div><div id="result" class="result-box"><div id="status-text"></div><div id="error-details" class="error-details"></div></div></div></div><aside class="layout-sidebar"><div id="sidebar-container"></div></aside></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><footer class="footer" style="margin-top: var(--space-24)"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Json', url: '/tools/json/index.html' },
+            { name: 'Validator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'validator');
+        Components.renderToolSchema('Validator', 'json', 'Validator - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const input = document.getElementById('input');
+ const validateBtn = document.getElementById('validate-btn');
+ const resultBox = document.getElementById('result');
+ const statusText = document.getElementById('status-text');
+ const errorDetails = document.getElementById('error-details');
+
+ function validate() {
+ const json = input.value.trim();
+ if (!json) {
+ resultBox.style.display = 'none';
+ return;
+ }
+
+ try {
+ JSON.parse(json);
+ resultBox.className = 'result-box valid';
+ statusText.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="margin-right: 8px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Valid JSON';
+ errorDetails.textContent = '';
+ Toast.success('Valid JSON');
+ } catch (e) {
+ resultBox.className = 'result-box invalid';
+ statusText.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="margin-right: 8px"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Invalid JSON';
+ errorDetails.textContent = e.message;
+ Toast.error('Invalid JSON');
+ }
+ resultBox.style.display = 'block';
+ }
+
+ function pasteExample() {
+ input.value = '{\n "name": "Jane Doe",\n "active": true,\n "count": 42\n}';
+ validate();
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderSidebar('sidebar-container', 'JSON Tools');
+ Components.renderFooter();
+ validateBtn.addEventListener('click', validate);
+ input.addEventListener('input', debounce(validate, 1000));
+ });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

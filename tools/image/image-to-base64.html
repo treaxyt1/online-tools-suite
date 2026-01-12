@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Image to Base64 Converter - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Convert images to Base64 strings online. Support for PNG, JPG, WebP, and GIF. Secure, client-side conversion."><link rel="canonical" href="https://onlinetoolfree.com/tools/image/image-to-base64.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .drop-zone {
+ border: 2px dashed var(--border-color);
+ border-radius: var(--radius-lg);
+ padding: 3rem;
+ text-align: center;
+ background: var(--bg-secondary);
+ cursor: pointer;
+ transition: all 0.2s;
+ margin-bottom: 2rem;
+ }
+
+ .drop-zone.dragover {
+ border-color: var(--primary-600);
+ background: var(--primary-50);
+ }
+
+ .preview-container {
+ max-width: 200px;
+ margin: 0 auto 1rem;
+ }
+
+ .preview-image {
+ max-width: 100%;
+ border-radius: var(--radius-md);
+ box-shadow: var(--shadow-md);
+ display: none;
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><div class="layout-grid"><div class="layout-main"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Image to Base64 Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert any image into a Base64 string for CSS, HTML, or JSON use.
+ </p></div></div></div><div class="tool-interface"><div id="drop-zone" class="drop-zone"><div class="preview-container"><img id="preview" class="preview-image" src="" alt="Preview"></div><p id="drop-text">Drag & drop an image here or click to browse</p><input type="file" id="file-input" hidden accept="image/*"></div><div class="tool-section full-width"><div class="output-header"><span class="tool-section-title">Base64 Output</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy</button></div></div><textarea id="output" class="form-textarea code" style="height: 200px;" readonly
+ placeholder="Base64 string will appear here..."></textarea></div><div class="options-panel" style="margin-top: var(--space-6)"><div class="option-group"><input type="checkbox" id="include-prefix" checked onchange="updateOutput()"><label for="include-prefix">Include Data URI prefix (e.g. data:image/png;base64,...)</label></div></div></div><section class="content-section"><h2>What is Base64 Image?</h2><p>Base64 is a binary-to-text encoding scheme. By encoding an image to Base64, you can embed it
+ directly into your HTML or CSS files, reducing the number of HTTP requests. However, it
+ increases the
+ file size by about 33% compared to the original binary file.</p></section></div><aside class="layout-sidebar"><div id="sidebar-container"></div></aside></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><footer class="footer" style="margin-top: var(--space-24)"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Image', url: '/tools/image/index.html' },
+            { name: 'Image To Base64' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'image-to-base64');
+        Components.renderToolSchema('Image To Base64', 'image', 'Image To Base64 - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const dropZone = document.getElementById('drop-zone');
+ const fileInput = document.getElementById('file-input');
+ const preview = document.getElementById('preview');
+ const output = document.getElementById('output');
+ const dropText = document.getElementById('drop-text');
+ const includePrefix = document.getElementById('include-prefix');
+
+ let currentBase64 = '';
+
+ dropZone.addEventListener('click', () => fileInput.click());
+ dropZone.addEventListener('dragover', (e) => {
+ e.preventDefault();
+ dropZone.classList.add('dragover');
+ });
+ dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+ dropZone.addEventListener('drop', (e) => {
+ e.preventDefault();
+ dropZone.classList.remove('dragover');
+ handleFile(e.dataTransfer.files[0]);
+ });
+
+ fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+ async function handleFile(file) {
+ if (!file || !file.type.startsWith('image/')) {
+ Toast.error('Please select an image file');
+ return;
+ }
+
+ try {
+ currentBase64 = await FileHandler.readAsDataURL(file);
+ preview.src = currentBase64;
+ preview.style.display = 'block';
+ dropText.style.display = 'none';
+ updateOutput();
+ Toast.success('Image converted!');
+ } catch (err) {
+ Toast.error('Failed to read image');
+ }
+ }
+
+ function updateOutput() {
+ if (!currentBase64) return;
+ if (includePrefix.checked) {
+ output.value = currentBase64;
+ } else {
+ output.value = currentBase64.split(',')[1];
+ }
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderSidebar('sidebar-container', 'Image Tools');
+ Components.renderFooter();
+ });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

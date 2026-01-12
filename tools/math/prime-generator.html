@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Prime Number Generator - Free Online Tool | OnlineToolFree</title><meta name="description" content="Generate prime numbers within a range."><link rel="canonical" href="https://onlinetoolfree.com/tools/math/prime-generator.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Prime Number Generator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Find all prime numbers between two numbers.
+ </p></div></div></div><div class="tool-interface"><div class="tool-options"><div class="form-group" style="display: inline"><label for="start">Start:</label><input type="number" id="start" class="form-input" value="1" min="1" max="1000000"></div><div class="form-group" style="display: inline"><label for="end">End:</label><input type="number" id="end" class="form-input" value="100" min="1" max="1000000"></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Prime Numbers</span><div class="output-actions"><span id="count-badge" class="badge">0 found</span><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy</button></div></div><textarea id="output" class="form-textarea code-textarea" readonly rows="10"></textarea></div><div class="tool-actions"><button id="generate-btn" class="btn btn-primary btn-lg">Generate Primes</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Math', url: '/tools/math/index.html' },
+            { name: 'Prime Generator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'prime-generator');
+        Components.renderToolSchema('Prime Generator', 'math', 'Prime Generator - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const output = document.getElementById('output');
+ const countBadge = document.getElementById('count-badge');
+
+ function isPrime(num) {
+ if (num <= 1) return false;
+ if (num <= 3) return true;
+ if (num % 2 === 0 || num % 3 === 0) return false;
+ for (let i = 5; i * i <= num; i += 6) {
+ if (num % i === 0 || num % (i + 2) === 0) return false;
+ }
+ return true;
+ }
+
+ function generate() {
+ const start = Math.max(1, parseInt(document.getElementById('start').value) || 1);
+ const end = Math.min(1000000, Math.max(start, parseInt(document.getElementById('end').value) || 100));
+
+ if (end - start > 10000) {
+ output.value = "Range too large (max 10,000 difference for performance)";
+ return;
+ }
+
+ const primes = [];
+ for (let i = start; i <= end; i++) {
+ if (isPrime(i)) primes.push(i);
+ }
+
+ output.value = primes.join(', ');
+ countBadge.textContent = `${primes.length} found`;
+ }
+
+ generate();
+ document.getElementById('generate-btn').addEventListener('click', () => { generate(); Toast.success('Generated!'); });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script><style>
+ .badge {
+ background: var(--surface-3);
+ padding: 2px 8px;
+ border-radius: 12px;
+ font-size: 0.8rem;
+ margin-right: 0.5rem;
+ }
+ </style></body></html>
+
+

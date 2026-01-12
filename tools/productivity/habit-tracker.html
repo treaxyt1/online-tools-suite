@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Habit Tracker - Visual Progress Calendar | OnlineToolFree</title>
+    <meta name="description" content="Free online habit tracker. Build better routines with visual progress tracking. Mark your daily habits and see your streaks without signing up.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/productivity/habit-tracker.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Daily Habit Tracker</h1>
+                <p class="tool-description">Track your daily progress and build long-term habits.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+                            <input type="text" id="habit-name" class="form-input" placeholder="New Habit (e.g. Exercise)">
+                            <button id="add-habit" class="btn btn-primary">Add</button>
+                        </div>
+                        <div id="habits-list" style="display: grid; gap: var(--space-3);"></div>
+                    </div>
+                </div>
+                <script>
+                    let habits = JSON.parse(localStorage.getItem('bt_habits') || '[]');
+                    function save() { localStorage.setItem('bt_habits', JSON.stringify(habits)); render(); }
+                    function render() {
+                        const list = document.getElementById('habits-list');
+                        list.innerHTML = habits.map((h, i) => `
+                            <div style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: center;">
+                                <div><strong style="font-size: var(--text-lg);">${h.name}</strong><br><small>Streak: ${h.streak || 0} days</small></div>
+                                <div style="display: flex; gap: var(--space-2);">
+                                    <button onclick="check(${i})" class="btn btn-success btn-sm">Done Today</button>
+                                    <button onclick="remove(${i})" class="btn btn-ghost btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                    document.getElementById('add-habit').addEventListener('click', () => {
+                        const name = document.getElementById('habit-name').value;
+                        if(name) { habits.push({name, streak: 0}); document.getElementById('habit-name').value = ''; save(); }
+                    });
+                    window.check = (i) => { habits[i].streak++; save(); Toast.success('Great job!'); };
+                    window.remove = (i) => { if(confirm('Delete?')) { habits.splice(i, 1); save(); } };
+                    render();
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Daily Habit Tracker - Visual Progress Calendar", "applicationCategory": "UtilityApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free online habit tracker. Build better routines with visual progress tracking. Mark your daily habits and see your streaks without signing up."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Productivity', url: '/tools/productivity/index.html' },
+            { name: 'Habit Tracker' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'habit-tracker');
+        Components.renderToolSchema('Habit Tracker', 'productivity', 'Habit Tracker - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

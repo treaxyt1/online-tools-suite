@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- SEO Meta Tags --><title>JSON Formatter & Validator - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Format, validate, and beautify JSON data instantly. Free online JSON formatter with syntax validation and minification."><link rel="canonical" href="https://onlinetoolfree.com/tools/json/formatter.html"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+ rel="stylesheet"><!-- Styles --><link rel="stylesheet" href="../../css/design-system.css"><style>
+ .json-editor {
+ font-family: var(--font-mono);
+ font-size: 13px;
+ line-height: 1.6;
+ min-height: 300px;
+ }
+
+ .status-bar {
+ display: flex;
+ align-items: center;
+ gap: var(--space-4);
+ padding: var(--space-3);
+ background: var(--bg-tertiary);
+ border-radius: var(--radius-lg);
+ font-size: var(--text-sm);
+ margin-top: var(--space-4);
+ }
+
+ .status-item {
+ display: flex;
+ align-items: center;
+ gap: var(--space-2);
+ color: var(--text-secondary);
+ }
+
+ .status-item.success {
+ color: var(--success-600);
+ }
+
+ .status-item.error {
+ color: var(--error-600);
+ }
+ </style><!-- Scripts --><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><!-- Header --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div
+ style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M4 4h6v6H4z" /><path d="M14 4h6v6h-6z" /><path d="M4 14h6v6H4z" /><circle cx="17" cy="17" r="3" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">JSON Formatter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Format, validate, and beautify JSON data with syntax highlighting.
+ </p></div></div></div><!-- Tool Interface --><div class="tool-interface"><!-- Input Section --><div class="tool-section"><label class="tool-section-title" for="input"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg>
+ Input JSON
+ </label><textarea id="input" class="form-textarea json-editor" rows="12"
+ placeholder='{"name": "example", "value": 123}' spellcheck="false"></textarea></div><!-- Actions --><div class="tool-actions"><button id="format-btn" class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+ Format
+ </button><button id="minify-btn" class="btn btn-secondary"><svg class="icon" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7" /></svg>
+ Minify
+ </button><button id="validate-btn" class="btn btn-secondary"><svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+ Validate
+ </button><button id="copy-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>
+ Copy
+ </button><button id="clear-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+ Clear
+ </button><button id="sample-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg>
+ Sample
+ </button></div><!-- Status Bar --><div class="status-bar"><div class="status-item" id="status"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg><span id="status-text">Enter JSON to validate</span></div></div></div><!-- Information Section --><section class="info-section"
+ style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);"><h2
+ style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">
+ About JSON Formatter</h2><p style="margin-bottom: var(--space-4);">
+ JSON (JavaScript Object Notation) is a lightweight data format used for APIs and data storage.
+ This tool helps you format, validate, and minify JSON data instantly.
+ </p></section></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Json', url: '/tools/json/index.html' },
+            { name: 'Formatter' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'formatter');
+        Components.renderToolSchema('Formatter', 'json', 'Formatter - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ const input = document.getElementById('input');
+ const status = document.getElementById('status');
+ const statusText = document.getElementById('status-text');
+
+ function setStatus(text, type = 'info') {
+ statusText.textContent = text;
+ status.className = `status-item ${type}`;
+ }
+
+ document.getElementById('format-btn').addEventListener('click', () => {
+ try {
+ const parsed = JSON.parse(input.value);
+ input.value = JSON.stringify(parsed, null, 2);
+ setStatus('Valid JSON - Formatted', 'success');
+ Toast.success('JSON formatted');
+ } catch (e) {
+ setStatus(`Error: ${e.message}`, 'error');
+ Toast.error('Invalid JSON');
+ }
+ });
+
+ document.getElementById('minify-btn').addEventListener('click', () => {
+ try {
+ const parsed = JSON.parse(input.value);
+ input.value = JSON.stringify(parsed);
+ setStatus('Minified', 'success');
+ Toast.success('JSON minified');
+ } catch (e) {
+ setStatus(`Error: ${e.message}`, 'error');
+ Toast.error('Invalid JSON');
+ }
+ });
+
+ document.getElementById('validate-btn').addEventListener('click', () => {
+ try {
+ JSON.parse(input.value);
+ setStatus('Valid JSON ✓', 'success');
+ Toast.success('Valid JSON!');
+ } catch (e) {
+ setStatus(`Invalid: ${e.message}`, 'error');
+ Toast.error('Invalid JSON');
+ }
+ });
+
+ document.getElementById('copy-btn').addEventListener('click', () => {
+ if (input.value) {
+ Clipboard.copy(input.value);
+ } else {
+ Toast.warning('Nothing to copy');
+ }
+ });
+
+ document.getElementById('clear-btn').addEventListener('click', () => {
+ input.value = '';
+ setStatus('Enter JSON to validate');
+ Toast.success('Cleared');
+ });
+
+ document.getElementById('sample-btn').addEventListener('click', () => {
+ input.value = `{
+ "name": "OnlineToolFree",
+ "version": "2.0",
+ "tools": ["JSON Formatter", "URL Encoder", "Base64"],
+ "metadata": {
+ "author": "OnlineToolFree Team",
+ "isPremium": false
+ }
+}`;
+ Toast.success('Sample loaded');
+ });
+
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>

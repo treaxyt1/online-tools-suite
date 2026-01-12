@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Maker - Create Study Flashcards Free | OnlineToolFree</title>
+    <meta name="description" content="Free flashcard maker. Create digital flashcards for studying. Perfect for students. Export and share. No sign-up required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/education/flashcard-maker.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Flashcard Maker</h1>
+                <p class="tool-description">Create digital flashcards for studying.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+                            <div><label>Front (Question)</label><textarea id="front" class="form-input" rows="3"></textarea></div>
+                            <div><label>Back (Answer)</label><textarea id="back" class="form-input" rows="3"></textarea></div>
+                        </div>
+                        <button onclick="addCard()" class="btn btn-primary" style="margin-top: var(--space-2);">Add Card</button>
+                    </div>
+                    <div id="cards-section" class="tool-section" style="display:none;">
+                        <h3>Your Flashcards (<span id="card-count">0</span>)</h3>
+                        <div id="cards-list"></div>
+                        <button onclick="startStudy()" class="btn btn-primary">Start Studying</button>
+                    </div>
+                    <div id="study-section" style="display:none; text-align: center;">
+                        <div id="flashcard" style="min-height: 200px; padding: var(--space-6); background: var(--bg-tertiary); border-radius: var(--radius-lg); cursor: pointer; margin: var(--space-4) 0;" onclick="flipCard()">
+                            <div id="card-content" style="font-size: 1.5rem;"></div>
+                        </div>
+                        <div><button onclick="prevCard()" class="btn btn-ghost">← Previous</button><button onclick="nextCard()" class="btn btn-primary">Next →</button></div>
+                    </div>
+                </div>
+                <script>
+                    let cards = [], currentCard = 0, showingFront = true;
+                    function addCard() {
+                        const front = document.getElementById('front').value;
+                        const back = document.getElementById('back').value;
+                        if(!front || !back) return Toast.error('Fill both sides');
+                        cards.push({front, back});
+                        document.getElementById('front').value = '';
+                        document.getElementById('back').value = '';
+                        updateCardsList();
+                    }
+                    function updateCardsList() {
+                        document.getElementById('card-count').textContent = cards.length;
+                        document.getElementById('cards-list').innerHTML = cards.map((c, i) => 
+                            \`<div style="padding: var(--space-2); background: var(--bg-tertiary); border-radius: var(--radius-md); margin-bottom: var(--space-2);">\${i+1}. \${c.front.substring(0, 50)}...</div>\`
+                        ).join('');
+                        document.getElementById('cards-section').style.display = cards.length ? 'block' : 'none';
+                    }
+                    function startStudy() {
+                        if(!cards.length) return;
+                        currentCard = 0; showingFront = true;
+                        document.getElementById('study-section').style.display = 'block';
+                        showCard();
+                    }
+                    function showCard() {
+                        document.getElementById('card-content').textContent = showingFront ? cards[currentCard].front : cards[currentCard].back;
+                    }
+                    function flipCard() { showingFront = !showingFront; showCard(); }
+                    function nextCard() { currentCard = (currentCard + 1) % cards.length; showingFront = true; showCard(); }
+                    function prevCard() { currentCard = (currentCard - 1 + cards.length) % cards.length; showingFront = true; showCard(); }
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Flashcard Maker - Create Study Flashcards Free", "description": "Free flashcard maker. Create digital flashcards for studying. Perfect for students. Export and share. No sign-up required."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Education', url: '/tools/education/index.html' },
+            { name: 'Flashcard Maker' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'flashcard-maker');
+        Components.renderToolSchema('Flashcard Maker', 'education', 'Flashcard Maker - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

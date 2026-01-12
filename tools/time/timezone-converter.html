@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timezone Converter - Convert Time Zones Free | OnlineToolFree</title>
+    <meta name="description" content="Free timezone converter. Convert time between different time zones. Perfect for international meetings and travel.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/time/timezone-converter.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Timezone Converter</h1>
+                <p class="tool-description">Convert time between different time zones.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+                            <div><label>Time</label><input type="time" id="time" class="form-input" value="12:00"></div>
+                            <div><label>Date</label><input type="date" id="date" class="form-input"></div>
+                        </div>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-3);">
+                            <div><label>From Timezone</label><select id="from-tz" class="form-input"><option value="America/New_York">New York (EST)</option><option value="Europe/London">London (GMT)</option><option value="Asia/Tokyo">Tokyo (JST)</option><option value="Australia/Sydney">Sydney (AEDT)</option></select></div>
+                            <div><label>To Timezone</label><select id="to-tz" class="form-input"><option value="America/New_York">New York (EST)</option><option value="Europe/London" selected>London (GMT)</option><option value="Asia/Tokyo">Tokyo (JST)</option><option value="Australia/Sydney">Sydney (AEDT)</option></select></div>
+                        </div>
+                        <button id="convert" class="btn btn-primary" style="margin-top: var(--space-2);">Convert</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-600);" id="converted-time"></div>
+                        <p id="converted-date" style="margin-top: var(--space-2);"></p>
+                    </div>
+                </div>
+                <script>
+                    document.getElementById('date').valueAsDate = new Date();
+                    document.getElementById('convert').addEventListener('click', () => {
+                        const time = document.getElementById('time').value;
+                        const date = document.getElementById('date').value;
+                        const fromTz = document.getElementById('from-tz').value;
+                        const toTz = document.getElementById('to-tz').value;
+                        const dt = new Date(date + 'T' + time);
+                        const converted = new Date(dt.toLocaleString('en-US', {timeZone: toTz}));
+                        document.getElementById('converted-time').textContent = converted.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false});
+                        document.getElementById('converted-date').textContent = converted.toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
+                        document.getElementById('result').style.display = 'block';
+                    });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Timezone Converter - Convert Time Zones Free", "description": "Free timezone converter. Convert time between different time zones. Perfect for international meetings and travel."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Time', url: '/tools/time/index.html' },
+            { name: 'Timezone Converter' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'timezone-converter');
+        Components.renderToolSchema('Timezone Converter', 'time', 'Timezone Converter - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

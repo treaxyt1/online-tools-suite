@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNG to JPG Converter - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Free online PNG to JPG converter. Convert PNG images to JPG format instantly in your browser. No upload required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/image/png-to-jpg.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                            <circle cx="9" cy="9" r="2" />
+                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">PNG to JPG Converter</h1>
+                        <p class="tool-description">Convert your PNG images to standard JPG format. Preserves quality
+                            while reducing file size.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="file-drop-area" id="drop-area">
+                        <input type="file" id="file-input" accept="image/png" hidden>
+                        <div class="drop-icon">
+                            <svg class="icon icon-xl" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
+                        <p class="drop-text">Drag & drop PNG here or <span>browse files</span></p>
+                    </div>
+
+                    <div id="processing-panel" class="tool-section hidden" style="text-align: center;">
+                        <div class="spinner"></div>
+                        <p>Converting...</p>
+                    </div>
+
+                    <div id="result-panel" class="tool-section hidden" style="text-align: center;">
+                        <div class="output-header">
+                            <span class="tool-section-title">Conversion Complete!</span>
+                        </div>
+                        <div
+                            style="background: var(--bg-tertiary); padding: var(--space-4); margin: var(--space-4) auto; display: inline-block; border-radius: var(--radius-lg);">
+                            <img id="result-image"
+                                style="max-width: 100%; max-height: 400px; box-shadow: var(--shadow-sm);">
+                        </div>
+                        <br>
+                        <button id="download-btn" class="btn btn-primary btn-lg">Download JPG</button>
+                        <br><br>
+                        <button onclick="location.reload()" class="btn btn-ghost btn-sm">Convert Another</button>
+                    </div>
+                </div>
+
+                <div class="info-section" style="margin-top: var(--space-8);">
+                    <h2>How to Convert PNG to JPG?</h2>
+                    <ol>
+                        <li>Upload your PNG image file.</li>
+                        <li>The tool automatically converts it to JPG format.</li>
+                        <li>Preview the result and click "Download JPG" to save.</li>
+                    </ol>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Image', url: '/tools/image/index.html' },
+                { name: 'Png To Jpg' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'png-to-jpg');
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Converter Logic
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('file-input');
+            const processingPanel = document.getElementById('processing-panel');
+            const resultPanel = document.getElementById('result-panel');
+            const resultImage = document.getElementById('result-image');
+            const downloadBtn = document.getElementById('download-btn');
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); });
+            });
+            dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+            dropArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    const file = files[0];
+                    if (!file.type.match('image.*')) {
+                        Toast.error('Please upload an image file.');
+                        return;
+                    }
+
+                    dropArea.classList.add('hidden');
+                    processingPanel.classList.remove('hidden');
+
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = img.naturalWidth;
+                            canvas.height = img.naturalHeight;
+                            const ctx = canvas.getContext('2d');
+
+                            // Fill background with white for transparency support in JPG
+                            ctx.fillStyle = '#FFFFFF';
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                            ctx.drawImage(img, 0, 0);
+
+                            const jpgData = canvas.toDataURL('image/jpeg', 0.9);
+                            resultImage.src = jpgData;
+
+                            processingPanel.classList.add('hidden');
+                            resultPanel.classList.remove('hidden');
+
+                            downloadBtn.onclick = () => {
+                                const filename = file.name.replace(/\.[^/.]+$/, "") + ".jpg";
+                                FileHandler.download(jpgData, filename);
+                            };
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>

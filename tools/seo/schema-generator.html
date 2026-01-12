@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema Markup Generator - JSON-LD Generator Free | OnlineToolFree</title>
+    <meta name="description" content="Free schema markup generator. Create JSON-LD structured data for SEO. Boost search rankings. Easy to use.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/seo/schema-generator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Schema Markup Generator</h1>
+                <p class="tool-description">Generate JSON-LD structured data for SEO.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label>Schema Type</label>
+                        <select id="type" class="form-input"><option>Article</option><option>Product</option><option>Organization</option><option>Person</option></select>
+                        <div id="fields" style="margin-top: var(--space-3);"></div>
+                        <button id="generate" class="btn btn-primary" style="margin-top: var(--space-2);">Generate Schema</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none;">
+                        <label>JSON-LD Schema:</label>
+                        <textarea id="schema" class="form-input" rows="12" readonly></textarea>
+                        <button onclick="navigator.clipboard.writeText(document.getElementById('schema').value).then(() => Toast.success('Copied!'))" class="btn btn-ghost btn-sm" style="margin-top: var(--space-2);">Copy Schema</button>
+                    </div>
+                </div>
+                <script>
+                    const fields = {
+                        Article: ['headline', 'author', 'datePublished', 'image'],
+                        Product: ['name', 'description', 'price', 'brand'],
+                        Organization: ['name', 'url', 'logo', 'description'],
+                        Person: ['name', 'jobTitle', 'email', 'url']
+                    };
+                    document.getElementById('type').addEventListener('change', updateFields);
+                    function updateFields() {
+                        const type = document.getElementById('type').value;
+                        document.getElementById('fields').innerHTML = fields[type].map(f => 
+                            \`<div style="margin-bottom: var(--space-2);"><label>\${f}</label><input type="text" class="form-input field-input" data-field="\${f}" placeholder="\${f}"></div>\`
+                        ).join('');
+                    }
+                    updateFields();
+                    document.getElementById('generate').addEventListener('click', () => {
+                        const type = document.getElementById('type').value;
+                        const schema = {'@context': 'https://schema.org', '@type': type};
+                        document.querySelectorAll('.field-input').forEach(input => {
+                            if(input.value) schema[input.dataset.field] = input.value;
+                        });
+                        document.getElementById('schema').value = JSON.stringify(schema, null, 2);
+                        document.getElementById('result').style.display = 'block';
+                    });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Schema Markup Generator - JSON-LD Generator Free", "description": "Free schema markup generator. Create JSON-LD structured data for SEO. Boost search rankings. Easy to use."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Seo', url: '/tools/seo/index.html' },
+            { name: 'Schema Generator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'schema-generator');
+        Components.renderToolSchema('Schema Generator', 'seo', 'Schema Generator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Mode Timer - Pomodoro Technique | OnlineToolFree</title>
+    <meta name="description" content="Boost productivity with this simple focus timer.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/productivity/focus-timer.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+            <h1 class="tool-title">Focus Timer</h1>
+            <div class="tool-interface" style="text-align:center;">
+                <div class="tool-section">
+                    <div id="timer" style="font-size: 4rem; font-weight: bold; font-family: monospace; margin: 20px 0;">25:00</div>
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button id="start-timer" class="btn btn-primary">Start</button>
+                        <button id="reset-timer" class="btn btn-ghost">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+                let time = 25 * 60;
+                let interval;
+                
+                function update() {
+                    const m = Math.floor(time / 60).toString().padStart(2, '0');
+                    const s = (time % 60).toString().padStart(2, '0');
+                    document.getElementById('timer').textContent = `${m}:${s}`;
+                }
+                
+                document.getElementById('start-timer').addEventListener('click', function() {
+                    if(interval) {
+                        clearInterval(interval);
+                        interval = null;
+                        this.textContent = 'Start';
+                    } else {
+                        interval = setInterval(() => {
+                            if(time > 0) {
+                                time--;
+                                update();
+                            } else {
+                                clearInterval(interval);
+                                new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg').play();
+                            }
+                        }, 1000);
+                        this.textContent = 'Pause';
+                    }
+                });
+                
+                document.getElementById('reset-timer').addEventListener('click', () => {
+                    clearInterval(interval);
+                    interval = null;
+                    document.getElementById('start-timer').textContent = 'Start';
+                    time = 25 * 60;
+                    update();
+                });
+            </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Focus Mode Timer - Pomodoro Technique", "description": "Boost productivity with this simple focus timer."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Productivity', url: '/tools/productivity/index.html' },
+            { name: 'Focus Timer' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'focus-timer');
+        Components.renderToolSchema('Focus Timer', 'productivity', 'Focus Timer - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

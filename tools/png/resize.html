@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resize PNG - Free Online PNG Tool | OnlineToolFree</title>
+    <meta name="description" content="Resize your PNG image to custom dimensions Free, fast, and secure. All processing in your browser.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/png/resize.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+                <div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);">
+                    <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                        <div class="tool-icon-large" style="margin: 0;">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="tool-title" style="font-size: var(--text-2xl);">Resize PNG</h1>
+                            <p class="tool-description" style="font-size: var(--text-base); margin: 0;">Resize your PNG image to custom dimensions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="tool-section" id="upload-section">
+                        <div class="file-drop-area" id="drop-area">
+                            <input type="file" id="file-input" accept="image/png" hidden>
+                            <div class="drop-icon">
+                                <svg class="icon icon-xl" viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                            </div>
+                            <p class="drop-text">Drag & drop PNG image or <span>browse</span></p>
+                        </div>
+                    </div>
+
+                    <div id="editor-section" style="display: none;">
+                        <div class="tool-grid" style="margin-bottom: var(--space-6);">
+                            <div class="tool-section">
+                                <div class="output-header">
+                                    <span class="tool-section-title">Original</span>
+                                </div>
+                                <div style="background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; padding: var(--space-4); border-radius: var(--radius-lg); min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                                    <canvas id="source-canvas" style="max-width: 100%; height: auto;"></canvas>
+                                </div>
+                            </div>
+                            <div class="tool-section">
+                                <div class="output-header">
+                                    <span class="tool-section-title">Result</span>
+                                    <button class="btn btn-ghost btn-sm" id="download-btn">
+                                        <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                            <polyline points="7 10 12 15 17 10"/>
+                                            <line x1="12" y1="15" x2="12" y2="3"/>
+                                        </svg>
+                                        Download
+                                    </button>
+                                </div>
+                                <div style="background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; padding: var(--space-4); border-radius: var(--radius-lg); min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                                    <canvas id="result-canvas" style="max-width: 100%; height: auto;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-tertiary); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                <div>
+                    <label class="form-label">Width (px)</label>
+                    <input type="number" id="width" class="form-input" value="800" min="1">
+                </div>
+                <div>
+                    <label class="form-label">Height (px)</label>
+                    <input type="number" id="height" class="form-input" value="600" min="1">
+                </div>
+            </div>
+            <label style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-3);">
+                <input type="checkbox" id="maintain-aspect" checked>
+                <span>Maintain aspect ratio</span>
+            </label>
+        </div>
+
+                        <div class="tool-actions">
+                            <button id="process-btn" class="btn btn-primary">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                </svg>
+                                Process Image
+                            </button>
+                            <button id="reset-btn" class="btn btn-ghost">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="info-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);">
+                    <h2 style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Privacy & Security</h2>
+                    <p><strong>100% Client-Side:</strong> All processing happens in your browser. Images never leave your device.</p>
+                </section>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+    </button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderMobileMenu();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Png', url: '/tools/png/index.html' },
+            { name: 'Resize' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'resize');
+        Components.renderToolSchema('Resize', 'png', 'Resize - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            const sourceCanvas = document.getElementById('source-canvas');
+            const resultCanvas = document.getElementById('result-canvas');
+            const sourceCtx = sourceCanvas.getContext('2d', {willReadFrequently: true});
+            const resultCtx = resultCanvas.getContext('2d', {willReadFrequently: true});
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('file-input');
+            const uploadSection = document.getElementById('upload-section');
+            const editorSection = document.getElementById('editor-section');
+            let originalImageData = null;
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => {
+                dropArea.addEventListener(e, evt => {evt.preventDefault(); evt.stopPropagation();}, false);
+            });
+            dropArea.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+            dropArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    const file = files[0];
+                    if (!file.type.match('image/png')) {
+                        Toast.error('Please upload a PNG image');
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            const maxDim = 800;
+                            let w = img.width, h = img.height;
+                            if (w > maxDim || h > maxDim) {
+                                const ratio = Math.min(maxDim / w, maxDim / h);
+                                w = Math.floor(w * ratio);
+                                h = Math.floor(h * ratio);
+                            }
+                            sourceCanvas.width = resultCanvas.width = w;
+                            sourceCanvas.height = resultCanvas.height = h;
+                            sourceCtx.drawImage(img, 0, 0, w, h);
+                            originalImageData = sourceCtx.getImageData(0, 0, w, h);
+                            uploadSection.style.display = 'none';
+                            editorSection.style.display = 'block';
+                            Toast.success('Image loaded');
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            
+            const widthInput = document.getElementById('width');
+            const heightInput = document.getElementById('height');
+            const maintainAspect = document.getElementById('maintain-aspect');
+            let aspectRatio = 1;
+            
+            widthInput.addEventListener('input', () => {
+                if (maintainAspect.checked && aspectRatio) {
+                    heightInput.value = Math.round(widthInput.value / aspectRatio);
+                }
+            });
+            
+            heightInput.addEventListener('input', () => {
+                if (maintainAspect.checked && aspectRatio) {
+                    widthInput.value = Math.round(heightInput.value * aspectRatio);
+                }
+            });
+            
+            fileInput.addEventListener('change', () => {
+                setTimeout(() => {
+                    if (originalImageData) {
+                        aspectRatio = originalImageData.width / originalImageData.height;
+                        widthInput.value = originalImageData.width;
+                        heightInput.value = originalImageData.height;
+                    }
+                }, 100);
+            });
+            
+            document.getElementById('process-btn').addEventListener('click', () => {
+                if (!originalImageData) return;
+                const newWidth = parseInt(widthInput.value);
+                const newHeight = parseInt(heightInput.value);
+                
+                resultCanvas.width = newWidth;
+                resultCanvas.height = newHeight;
+                resultCtx.drawImage(sourceCanvas, 0, 0, newWidth, newHeight);
+                Toast.success('Image resized!');
+            });
+        
+
+            document.getElementById('download-btn').addEventListener('click', () => {
+                const link = document.createElement('a');
+                link.download = 'resize-result.png';
+                link.href = resultCanvas.toDataURL('image/png');
+                link.click();
+                Toast.success('Downloaded!');
+            });
+
+            document.getElementById('reset-btn').addEventListener('click', () => {
+                uploadSection.style.display = 'block';
+                editorSection.style.display = 'none';
+                fileInput.value = '';
+                originalImageData = null;
+            });
+
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.ResponsiveManager) ResponsiveManager.init();
+        });
+    </script>
+</body>
+</html>

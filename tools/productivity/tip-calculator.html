@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator - Split Bill & Calculate Tips | OnlineToolFree</title>
+    <meta name="description" content="Free tip calculator to calculate tips and split bills. Support 15%, 18%, 20% or custom tip percentages. Perfect for restaurants and group dining.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/productivity/tip-calculator.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;">
+                <div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);">
+                    <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                        <div class="tool-icon-large" style="margin: 0;">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                <line x1="8" y1="6" x2="16" y2="6"/>
+                                <line x1="8" y1="10" x2="16" y2="10"/>
+                                <line x1="8" y1="14" x2="16" y2="14"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="tool-title" style="font-size: var(--text-2xl);">Tip Calculator</h1>
+                            <p class="tool-description" style="font-size: var(--text-base); margin: 0;">Calculate tips and split bills easily</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="tool-section" style="margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Bill Details</h3>
+                        <div style="background: var(--bg-tertiary); padding: var(--space-6); border-radius: var(--radius-lg);">
+                            <div style="margin-bottom: var(--space-4);">
+                                <label class="form-label">Bill Amount ($)</label>
+                                <input type="number" id="bill-amount" class="form-input" placeholder="0.00" min="0" step="0.01" value="100">
+                            </div>
+                            <div style="margin-bottom: var(--space-4);">
+                                <label class="form-label">Tip Percentage (%)</label>
+                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); margin-bottom: var(--space-3);">
+                                    <button class="btn btn-ghost tip-btn" data-tip="15">15%</button>
+                                    <button class="btn btn-ghost tip-btn" data-tip="18">18%</button>
+                                    <button class="btn btn-ghost tip-btn active" data-tip="20">20%</button>
+                                    <button class="btn btn-ghost tip-btn" data-tip="25">25%</button>
+                                </div>
+                                <input type="number" id="tip-percent" class="form-input" placeholder="Custom %" min="0" max="100" value="20">
+                            </div>
+                            <div>
+                                <label class="form-label">Number of People</label>
+                                <input type="number" id="num-people" class="form-input" placeholder="1" min="1" value="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-section output-section">
+                        <div class="output-header">
+                            <span class="tool-section-title">Results</span>
+                        </div>
+                        <div style="background: var(--bg-tertiary); padding: var(--space-6); border-radius: var(--radius-lg);">
+                            <div style="display: grid; gap: var(--space-4);">
+                                <div style="padding: var(--space-4); background: var(--bg-primary); border-radius: var(--radius-md); border-left: 4px solid var(--primary-500);">
+                                    <div style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-1);">Tip Amount</div>
+                                    <div style="font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--primary-600);">$<span id="tip-amount">20.00</span></div>
+                                </div>
+                                <div style="padding: var(--space-4); background: var(--bg-primary); border-radius: var(--radius-md); border-left: 4px solid var(--success-500);">
+                                    <div style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-1);">Total Bill</div>
+                                    <div style="font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--success-600);">$<span id="total-amount">120.00</span></div>
+                                </div>
+                                <div style="padding: var(--space-4); background: var(--bg-primary); border-radius: var(--radius-md); border-left: 4px solid var(--neutral-500);">
+                                    <div style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-1);">Per Person</div>
+                                    <div style="font-size: var(--text-3xl); font-weight: var(--font-bold);">$<span id="per-person">120.00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="info-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);">
+                    <h2 style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">How to Use the Tip Calculator</h2>
+                    <ol style="padding-left: var(--space-6); line-height: 1.8;">
+                        <li>Enter your bill amount</li>
+                        <li>Select a tip percentage (15%, 18%, 20%, 25%) or enter a custom amount</li>
+                        <li>Enter the number of people splitting the bill</li>
+                        <li>View the tip amount, total bill, and amount per person</li>
+                    </ol>
+                    <p style="margin-top: var(--space-4);">
+                        <strong>Tipping Guidelines:</strong> In the United States, standard tipping ranges from 15-20% for good service, 
+                        20-25% for excellent service. Adjust based on your location and service quality.
+                    </p>
+                </section>
+
+                <section class="info-section" style="margin-top: var(--space-6); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);">
+                    <h2 style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Frequently Asked Questions</h2>
+                    <div style="display: grid; gap: var(--space-4);">
+                        <div>
+                            <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-2);"><a href="/tools/network/whats-my-ip.html" class="context-link" style="color: var(--primary-600); text-decoration: underline;">What</a> is a good tip percentage?</h3>
+                            <p>A standard tip is 15-20% for good service. For excellent service, consider 20-25%. For poor service, 10-15% is acceptable.</p>
+                        </div>
+                        <div>
+                            <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">Should I tip on the pre-tax or post-tax amount?</h3>
+                            <p>Traditionally, tips are calculated on the pre-tax amount. However, many people tip on the total including tax for simplicity.</p>
+                        </div>
+                        <div>
+                            <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">How do I split a bill evenly?</h3>
+                            <p>Enter the total bill amount and the number of people. The calculator will automatically show the amount each person should pay, including their share of the tip.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tip Calculator",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "Free tip calculator to calculate tips and split bills"
+    }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderMobileMenu();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Productivity', url: '/tools/productivity/index.html' },
+            { name: 'Tip Calculator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'tip-calculator');
+        Components.renderToolSchema('Tip Calculator', 'productivity', 'Tip Calculator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            const billAmount = document.getElementById('bill-amount');
+            const tipPercent = document.getElementById('tip-percent');
+            const numPeople = document.getElementById('num-people');
+            const tipButtons = document.querySelectorAll('.tip-btn');
+
+            function calculate() {
+                const bill = parseFloat(billAmount.value) || 0;
+                const tip = parseFloat(tipPercent.value) || 0;
+                const people = parseInt(numPeople.value) || 1;
+
+                const tipAmount = bill * (tip / 100);
+                const total = bill + tipAmount;
+                const perPerson = total / people;
+
+                document.getElementById('tip-amount').textContent = tipAmount.toFixed(2);
+                document.getElementById('total-amount').textContent = total.toFixed(2);
+                document.getElementById('per-person').textContent = perPerson.toFixed(2);
+            }
+
+            tipButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tipButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    tipPercent.value = btn.dataset.tip;
+                    calculate();
+                });
+            });
+
+            billAmount.addEventListener('input', calculate);
+            tipPercent.addEventListener('input', calculate);
+            numPeople.addEventListener('input', calculate);
+
+            calculate();
+
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.ResponsiveManager) ResponsiveManager.init();
+        });
+    </script>
+    <style>
+        .tip-btn.active {
+            background: var(--primary-500);
+            color: white;
+        }
+    </style>
+</body>
+</html>

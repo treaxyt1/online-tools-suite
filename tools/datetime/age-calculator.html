@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Age Calculator - Free Online Tool | OnlineToolFree</title><meta name="description" content="Calculate exact age from date of birth. Free online age calculator."><link rel="canonical" href="https://onlinetoolfree.com/tools/datetime/age-calculator.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .age-display {
+ text-align: center;
+ padding: 2rem;
+ background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+ border-radius: var(--radius-lg);
+ color: white;
+ margin: 2rem 0;
+ }
+
+ .age-main {
+ font-size: 4rem;
+ font-weight: 700;
+ }
+
+ .age-detail {
+ font-size: 1.25rem;
+ opacity: 0.9;
+ }
+
+ .stats-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+ gap: 1rem;
+ }
+
+ .stat-card {
+ background: var(--bg-card);
+ padding: 1rem;
+ border-radius: var(--radius-md);
+ border: 1px solid var(--border-color);
+ text-align: center;
+ }
+
+ .stat-value {
+ font-size: 1.5rem;
+ font-weight: 700;
+ color: var(--primary-600);
+ }
+
+ .stat-label {
+ font-size: 0.75rem;
+ color: var(--text-secondary);
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Age Calculator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Calculate your exact age in years, months, days, and more.
+ </p></div></div></div><div class="tool-interface"><div class="form-group" style="max-width: 300px;"><label>Date of Birth</label><input type="date" id="dob" class="form-input"></div><div class="age-display"><div class="age-main" id="age-years">0</div><div class="age-detail" id="age-detail">years old</div></div><div class="stats-grid" id="stats"></div><div class="tool-section" style="margin-top: var(--space-6)" id="next-birthday-panel" style="display: none;"><div class="output-header"><span class="tool-section-title">Next Birthday</span></div><p id="next-birthday"></p></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Datetime', url: '/tools/datetime/index.html' },
+            { name: 'Age Calculator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'age-calculator');
+        Components.renderToolSchema('Age Calculator', 'datetime', 'Age Calculator - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const dobInput = document.getElementById('dob');
+ const ageYears = document.getElementById('age-years');
+ const ageDetail = document.getElementById('age-detail');
+ const stats = document.getElementById('stats');
+ const nextBirthdayPanel = document.getElementById('next-birthday-panel');
+ const nextBirthday = document.getElementById('next-birthday');
+
+ // Set default to 25 years ago
+ const defaultDate = new Date();
+ defaultDate.setFullYear(defaultDate.getFullYear() - 25);
+ dobInput.value = defaultDate.toISOString().split('T')[0];
+
+ function calculate() {
+ const dob = new Date(dobInput.value);
+ const now = new Date();
+
+ if (isNaN(dob.getTime())) return;
+
+ // Calculate age
+ let years = now.getFullYear() - dob.getFullYear();
+ let months = now.getMonth() - dob.getMonth();
+ let days = now.getDate() - dob.getDate();
+
+ if (days < 0) {
+ months--;
+ const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+ days += lastMonth.getDate();
+ }
+
+ if (months < 0) {
+ years--;
+ months += 12;
+ }
+
+ ageYears.textContent = years;
+ ageDetail.textContent = `${years} years, ${months} months, ${days} days old`;
+
+ // Calculate stats
+ const totalDays = Math.floor((now - dob) / (1000 * 60 * 60 * 24));
+ const totalWeeks = Math.floor(totalDays / 7);
+ const totalMonths = years * 12 + months;
+ const totalHours = totalDays * 24;
+
+ stats.innerHTML = `
+ <div class="stat-card"><div class="stat-value">${totalMonths.toLocaleString()}</div><div class="stat-label">Months</div></div><div class="stat-card"><div class="stat-value">${totalWeeks.toLocaleString()}</div><div class="stat-label">Weeks</div></div><div class="stat-card"><div class="stat-value">${totalDays.toLocaleString()}</div><div class="stat-label">Days</div></div><div class="stat-card"><div class="stat-value">${totalHours.toLocaleString()}</div><div class="stat-label">Hours</div></div>
+ `;
+
+ // Next birthday
+ let nextBday = new Date(now.getFullYear(), dob.getMonth(), dob.getDate());
+ if (nextBday <= now) {
+ nextBday.setFullYear(nextBday.getFullYear() + 1);
+ }
+
+ const daysUntil = Math.ceil((nextBday - now) / (1000 * 60 * 60 * 24));
+ nextBirthdayPanel.style.display = 'block';
+ nextBirthday.textContent = `Your next birthday is in ${daysUntil} days (${nextBday.toLocaleDateString()})`;
+ }
+
+ dobInput.addEventListener('change', calculate);
+ calculate();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

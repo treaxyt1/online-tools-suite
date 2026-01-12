@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Random CSV Generator - Free Online Tool | OnlineToolFree</title><meta name="description" content="Generate random CSV data for testing."><link rel="canonical" href="https://onlinetoolfree.com/tools/random/csv.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Random CSV Generator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Generate random CSV data with user information.
+ </p></div></div></div><div class="tool-interface"><div class="tool-options"><div class="form-group" style="display: inline"><label for="rows">Rows:</label><input type="number" id="rows" class="form-input" value="10" min="1" max="500" style="width:70px"></div><label class="checkbox-label"><input type="checkbox" id="headers" checked><span>Include
+ Headers</span></label></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Generated CSV</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy</button><button class="btn btn-ghost btn-sm" onclick="download()">Download</button></div></div><textarea id="output" class="form-textarea code-textarea" readonly rows="15"></textarea></div><div class="tool-actions"><button id="generate-btn" class="btn btn-primary btn-lg">Generate CSV</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Random', url: '/tools/random/index.html' },
+            { name: 'Csv' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'csv');
+        Components.renderToolSchema('Csv', 'random', 'Csv - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const output = document.getElementById('output');
+ const firstNames = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve', 'Frank', 'Grace', 'Henry', 'Iris', 'Jack'];
+ const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis'];
+ const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'example.com'];
+ const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia'];
+
+ function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+ function randChoice(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+ function generate() {
+ const rows = Math.min(500, Math.max(1, parseInt(document.getElementById('rows').value) || 10));
+ const headers = document.getElementById('headers').checked;
+ let csv = headers ? 'id,first_name,last_name,email,age,city\n' : '';
+ for (let i = 0; i < rows; i++) {
+ const first = randChoice(firstNames);
+ const last = randChoice(lastNames);
+ csv += `${i + 1},${first},${last},${first.toLowerCase()}.${last.toLowerCase()}@${randChoice(domains)},${randInt(18, 65)},${randChoice(cities)}\n`;
+ }
+ output.value = csv.trim();
+ }
+
+ function download() {
+ const blob = new Blob([output.value], { type: 'text/csv' });
+ const a = document.createElement('a');
+ a.href = URL.createObjectURL(blob);
+ a.download = 'random_data.csv';
+ a.click();
+ }
+
+ generate();
+ document.getElementById('generate-btn').addEventListener('click', () => { generate(); Toast.success('Generated!'); });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

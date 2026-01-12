@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cron Expression Parser - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Parse and explain cron expressions in human-readable format. Free online cron parser."><link rel="canonical" href="https://onlinetoolfree.com/tools/datetime/cron-parser.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .cron-parts {
+ display: grid;
+ grid-template-columns: repeat(5, 1fr);
+ gap: 0.5rem;
+ margin: 1rem 0;
+ }
+
+ .cron-part {
+ text-align: center;
+ padding: 0.75rem;
+ background: var(--bg-card);
+ border: 1px solid var(--border-color);
+ border-radius: var(--radius-md);
+ }
+
+ .cron-part-value {
+ font-size: 1.5rem;
+ font-weight: 700;
+ color: var(--primary-600);
+ font-family: monospace;
+ }
+
+ .cron-part-label {
+ font-size: 0.75rem;
+ color: var(--text-secondary);
+ margin-top: 0.25rem;
+ }
+
+ .explanation {
+ font-size: 1.25rem;
+ padding: 1.5rem;
+ background: var(--primary-50);
+ border-radius: var(--radius-lg);
+ text-align: center;
+ }
+
+ .next-runs {
+ list-style: none;
+ padding: 0;
+ }
+
+ .next-runs li {
+ padding: 0.5rem 0;
+ border-bottom: 1px solid var(--border-color);
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Cron Expression Parser</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Parse cron expressions and see them explained in plain English.
+ </p></div></div></div><div class="tool-interface"><div class="tool-section" style="margin-bottom: var(--space-4)"><div class="output-header"><span class="tool-section-title">Cron Expression</span></div><input type="text" id="cron" class="form-input code" value="0 9 * * 1-5" placeholder="e.g. 0 9 * * 1-5"><div class="cron-parts" id="parts"><div class="cron-part"><div class="cron-part-value" id="p-min">0</div><div class="cron-part-label">Minute</div></div><div class="cron-part"><div class="cron-part-value" id="p-hour">9</div><div class="cron-part-label">Hour</div></div><div class="cron-part"><div class="cron-part-value" id="p-dom">*</div><div class="cron-part-label">Day (Month)</div></div><div class="cron-part"><div class="cron-part-value" id="p-month">*</div><div class="cron-part-label">Month</div></div><div class="cron-part"><div class="cron-part-value" id="p-dow">1-5</div><div class="cron-part-label">Day (Week)</div></div></div></div><div class="explanation" id="explanation">
+ At 9:00 AM, Monday through Friday
+ </div><div class="tool-section" style="margin-top: var(--space-4);"><div class="output-header"><span class="tool-section-title">Common Presets</span></div><div class="-wrap" style="display: flex; gap: var(--space-2); display: flex"><button class="btn btn-ghost btn-sm" onclick="setCron('* * * * *')">Every minute</button><button class="btn btn-ghost btn-sm" onclick="setCron('0 * * * *')">Every hour</button><button class="btn btn-ghost btn-sm" onclick="setCron('0 0 * * *')">Every day</button><button class="btn btn-ghost btn-sm" onclick="setCron('0 0 * * 0')">Every Sunday</button><button class="btn btn-ghost btn-sm" onclick="setCron('0 0 1 * *')">Monthly</button><button class="btn btn-ghost btn-sm" onclick="setCron('0 9 * * 1-5')">Weekdays 9AM</button></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Datetime', url: '/tools/datetime/index.html' },
+            { name: 'Cron Parser' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'cron-parser');
+        Components.renderToolSchema('Cron Parser', 'datetime', 'Cron Parser - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const cronInput = document.getElementById('cron');
+ const explanation = document.getElementById('explanation');
+
+ const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+ function parse() {
+ const parts = cronInput.value.trim().split(/\s+/);
+ if (parts.length < 5) {
+ explanation.textContent = 'Invalid cron expression (need 5 parts)';
+ return;
+ }
+
+ const [min, hour, dom, month, dow] = parts;
+
+ document.getElementById('p-min').textContent = min;
+ document.getElementById('p-hour').textContent = hour;
+ document.getElementById('p-dom').textContent = dom;
+ document.getElementById('p-month').textContent = month;
+ document.getElementById('p-dow').textContent = dow;
+
+ let desc = '';
+
+ // Time
+ if (min === '*' && hour === '*') {
+ desc = 'Every minute';
+ } else if (min === '*') {
+ desc = `Every minute during hour ${hour}`;
+ } else if (hour === '*') {
+ desc = `At minute ${min} of every hour`;
+ } else {
+ desc = `At ${hour.padStart(2, '0')}:${min.padStart(2, '0')}`;
+ }
+
+ // Day of week
+ if (dow !== '*') {
+ if (dow.includes('-')) {
+ const [start, end] = dow.split('-').map(Number);
+ desc += `, ${dayNames[start]} through ${dayNames[end]}`;
+ } else if (dow.includes(',')) {
+ const days = dow.split(',').map(d => dayNames[Number(d)]).join(', ');
+ desc += `, on ${days}`;
+ } else {
+ desc += `, every ${dayNames[Number(dow)]}`;
+ }
+ }
+
+ // Day of month
+ if (dom !== '*') {
+ if (dom.includes('/')) {
+ const [, step] = dom.split('/');
+ desc += `, every ${step} days`;
+ } else {
+ desc += `, on day ${dom} of the month`;
+ }
+ }
+
+ // Month
+ if (month !== '*') {
+ if (month.includes('-')) {
+ const [start, end] = month.split('-').map(Number);
+ desc += `, ${monthNames[start - 1]} through ${monthNames[end - 1]}`;
+ } else {
+ desc += `, in ${monthNames[Number(month) - 1]}`;
+ }
+ }
+
+ explanation.textContent = desc;
+ }
+
+ function setCron(expr) {
+ cronInput.value = expr;
+ parse();
+ }
+
+ cronInput.addEventListener('input', debounce(parse, 200));
+ parse();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

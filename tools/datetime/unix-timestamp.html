@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Unix Timestamp Converter - Free Online Tool | OnlineToolFree</title><meta name="description" content="Convert Unix timestamps to human-readable dates and vice-versa."><link rel="canonical" href="https://onlinetoolfree.com/tools/datetime/unix-timestamp.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Unix Timestamp Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert epoch timestamps to readable dates and back.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div class="tool-section"><div class="output-header"><span class="tool-section-title">Unix Timestamp</span></div><div class="form-group"><label for="timestamp">Timestamp:</label><div class="input-with-button"><input type="text" id="timestamp" class="form-input" placeholder="e.g. 1704931200"><button id="now-btn" class="btn btn-sm btn-ghost">Current</button></div></div><div class="form-group"><label>Unit:</label><select id="unit" class="form-select"><option value="s">Seconds</option><option value="ms">Milliseconds</option></select></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Human Readable Date</span></div><div id="date-output" class="date-output-box"><div class="date-item"><strong>Local Time:</strong><span id="local-time">-</span></div><div class="date-item"><strong>UTC Time:</strong><span id="utc-time">-</span></div><div class="date-item"><strong>ISO 8601:</strong><span id="iso-time">-</span></div></div></div></div><div class="tool-actions"><button id="convert-btn" class="btn btn-primary btn-lg">Convert</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Datetime', url: '/tools/datetime/index.html' },
+            { name: 'Unix Timestamp' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'unix-timestamp');
+        Components.renderToolSchema('Unix Timestamp', 'datetime', 'Unix Timestamp - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const timestampInput = document.getElementById('timestamp');
+ const unitSelect = document.getElementById('unit');
+ const localTime = document.getElementById('local-time');
+ const utcTime = document.getElementById('utc-time');
+ const isoTime = document.getElementById('iso-time');
+
+ function updateOutputs() {
+ const val = timestampInput.value.trim();
+ if (!val) {
+ localTime.textContent = '-';
+ utcTime.textContent = '-';
+ isoTime.textContent = '-';
+ return;
+ }
+
+ try {
+ let ts = parseInt(val);
+ if (unitSelect.value === 's') ts *= 1000;
+ const d = new Date(ts);
+
+ if (isNaN(d.getTime())) throw new Error('Invalid Date');
+
+ localTime.textContent = d.toString();
+ utcTime.textContent = d.toUTCString();
+ isoTime.textContent = d.toISOString();
+ } catch (e) {
+ localTime.textContent = 'Error: ' + e.message;
+ utcTime.textContent = '-';
+ isoTime.textContent = '-';
+ }
+ }
+
+ document.getElementById('now-btn').addEventListener('click', () => {
+ const now = Date.now();
+ timestampInput.value = unitSelect.value === 's' ? Math.floor(now / 1000) : now;
+ updateOutputs();
+ });
+
+ timestampInput.addEventListener('input', debounce(updateOutputs, 200));
+ unitSelect.addEventListener('change', updateOutputs);
+ document.getElementById('convert-btn').addEventListener('click', () => { updateOutputs(); Toast.success('Converted!'); });
+
+ // Set current on load
+ document.getElementById('now-btn').click();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script><style>
+ .input-with-button {
+ display: flex;
+ gap: 0.5rem;
+ }
+
+ .date-output-box {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+ padding: 1rem;
+ background: var(--surface-2);
+ border-radius: var(--radius-md);
+ }
+
+ .date-item strong {
+ display: block;
+ font-size: 0.8rem;
+ color: var(--text-muted);
+ text-transform: uppercase;
+ margin-bottom: 0.25rem;
+ }
+
+ .date-item span {
+ font-family: monospace;
+ font-size: 1.1rem;
+ word-break: break-all;
+ }
+ </style></body></html>
+
+

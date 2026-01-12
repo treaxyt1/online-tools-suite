@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPG to PDF Converter - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Free online JPG to PDF converter. Convert one or multiple JPG images into a single PDF document. 100% client-side, secure and fast.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/pdf/jpg-to-pdf.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">JPG to PDF Converter</h1>
+                        <p class="tool-description">Convert your images to a high-quality PDF document. Combine multiple
+                            images into a single PDF instantly.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="file-drop-area" id="drop-area">
+                        <input type="file" id="file-input" accept="image/jpeg, image/jpg, image/png" multiple hidden>
+                        <div class="drop-icon">
+                            <svg class="icon icon-xl" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
+                        <p class="drop-text">Drag & drop images here (JPG, PNG) or <span>browse files</span></p>
+                    </div>
+
+                    <div id="preview-container" class="tool-section hidden">
+                        <h3 style="margin-bottom: var(--space-4);">Selected Images (<span id="file-count">0</span>)</h3>
+                        <div id="image-list"
+                            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6);">
+                            <!-- Images will appear here -->
+                        </div>
+
+                        <div class="grid"
+                            style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-4);">
+                            <div class="form-group">
+                                <label class="form-label">Page Size</label>
+                                <select id="page-size" class="form-select">
+                                    <option value="a4">A4</option>
+                                    <option value="letter">Letter</option>
+                                    <option value="fit">Fit to Image</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Orientation</label>
+                                <select id="orientation" class="form-select">
+                                    <option value="p">Portrait</option>
+                                    <option value="l">Landscape</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Margin (mm)</label>
+                                <input type="number" id="margin" class="form-input" value="10" min="0">
+                            </div>
+                        </div>
+
+                        <button id="convert-btn" class="btn btn-primary w-full">Convert to PDF</button>
+                    </div>
+
+                    <div id="processing-panel" class="tool-section hidden" style="text-align: center;">
+                        <div class="spinner"></div>
+                        <p>Generating PDF...</p>
+                    </div>
+
+                    <div id="result-panel" class="tool-section hidden" style="text-align: center;">
+                        <div class="output-header">
+                            <span class="tool-section-title">PDF Ready!</span>
+                        </div>
+                        <p>Your document has been created successfully.</p>
+                        <br>
+                        <button id="download-score-btn" class="btn btn-primary btn-lg">Download PDF</button>
+                        <br><br>
+                        <button onclick="location.reload()" class="btn btn-ghost btn-sm">Convert More</button>
+                    </div>
+                </div>
+
+                <div class="info-section" style="margin-top: var(--space-8);">
+                    <h2>How to convert JPG to PDF?</h2>
+                    <ol>
+                        <li>Upload your JPG or PNG images. You can select multiple files.</li>
+                        <li>Adjust page settings like size, orientation, and margins.</li>
+                        <li>Click "Convert to PDF" to generate your document.</li>
+                        <li>Download the final PDF file.</li>
+                    </ol>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'PDF', url: '/tools/pdf/index.html' },
+                { name: 'JPG to PDF' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'jpg-to-pdf');
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Core Logic
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('file-input');
+            const previewContainer = document.getElementById('preview-container');
+            const imageList = document.getElementById('image-list');
+            const fileCount = document.getElementById('file-count');
+            const convertBtn = document.getElementById('convert-btn');
+            const processingPanel = document.getElementById('processing-panel');
+            const resultPanel = document.getElementById('result-panel');
+            const downloadBtn = document.getElementById('download-score-btn');
+
+            let selectedFiles = [];
+            let generatedPdfBlob = null;
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); });
+            });
+            dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+            dropArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    for (let file of files) {
+                        if (file.type.match('image.*')) {
+                            selectedFiles.push(file);
+                            addImageToPreview(file);
+                        }
+                    }
+                    updateUI();
+                }
+            }
+
+            function addImageToPreview(file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const div = document.createElement('div');
+                    div.style.position = 'relative';
+                    div.style.borderRadius = 'var(--radius-md)';
+                    div.style.overflow = 'hidden';
+                    div.style.aspectRatio = '1/1';
+                    div.style.background = '#000';
+
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+
+                    div.appendChild(img);
+                    imageList.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function updateUI() {
+                fileCount.textContent = selectedFiles.length;
+                if (selectedFiles.length > 0) {
+                    dropArea.classList.add('hidden');
+                    previewContainer.classList.remove('hidden');
+                }
+            }
+
+            convertBtn.addEventListener('click', async () => {
+                if (selectedFiles.length === 0) return;
+
+                previewContainer.classList.add('hidden');
+                processingPanel.classList.remove('hidden');
+
+                setTimeout(async () => {
+                    try {
+                        const { jsPDF } = window.jspdf;
+
+                        const pageSize = document.getElementById('page-size').value;
+                        const orientation = document.getElementById('orientation').value;
+                        const margin = parseInt(document.getElementById('margin').value) || 10;
+
+                        const doc = new jsPDF({
+                            orientation: orientation,
+                            unit: 'mm',
+                            format: pageSize === 'fit' ? 'a4' : pageSize
+                        });
+
+                        for (let i = 0; i < selectedFiles.length; i++) {
+                            if (i > 0) doc.addPage();
+
+                            const file = selectedFiles[i];
+                            const imgData = await readFileAsDataURL(file);
+                            const imgProps = doc.getImageProperties(imgData);
+
+                            const pageWidth = doc.internal.pageSize.getWidth();
+                            const pageHeight = doc.internal.pageSize.getHeight();
+
+                            const availableWidth = pageWidth - (margin * 2);
+                            const availableHeight = pageHeight - (margin * 2);
+
+                            let imgWidth = availableWidth;
+                            let imgHeight = (imgProps.height * imgWidth) / imgProps.width;
+
+                            if (imgHeight > availableHeight) {
+                                imgHeight = availableHeight;
+                                imgWidth = (imgProps.width * imgHeight) / imgProps.height;
+                            }
+
+                            // Center image
+                            const x = margin + (availableWidth - imgWidth) / 2;
+                            const y = margin + (availableHeight - imgHeight) / 2;
+
+                            doc.addImage(imgData, 'JPEG', x, y, imgWidth, imgHeight);
+                        }
+
+                        generatedPdfBlob = doc.output('blob');
+
+                        processingPanel.classList.add('hidden');
+                        resultPanel.classList.remove('hidden');
+
+                        downloadBtn.onclick = () => {
+                            const url = URL.createObjectURL(generatedPdfBlob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = 'converted-images.pdf';
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                        };
+
+                    } catch (e) {
+                        console.error(e);
+                        Toast.error('Error generating PDF. Please try again.');
+                        processingPanel.classList.add('hidden');
+                        previewContainer.classList.remove('hidden');
+                    }
+                }, 500);
+            });
+
+            function readFileAsDataURL(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>

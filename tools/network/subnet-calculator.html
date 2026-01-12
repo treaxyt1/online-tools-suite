@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Subnet Calculator - Free Online Tool | OnlineToolFree</title><meta name="description" content="Calculate subnet masks, network addresses, and IP ranges."><link rel="canonical" href="https://onlinetoolfree.com/tools/network/subnet-calculator.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Subnet Calculator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Calculate network details from IP and CIDR/Subnet Mask.
+ </p></div></div></div><div class="tool-interface"><div class="tool-options"><div class="form-group" style="display: inline"><label for="ip">IP Address:</label><input type="text" id="ip" class="form-input" placeholder="192.168.1.1" value="192.168.1.1"></div><div class="form-group" style="display: inline"><label for="cidr">CIDR:</label><select id="cidr" class="form-select"><!-- Populated by JS --></select></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Network Details</span></div><div id="results" class="results-grid"></div></div><div class="tool-actions"><button id="calculate-btn" class="btn btn-primary btn-lg">Calculate</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Network', url: '/tools/network/index.html' },
+            { name: 'Subnet Calculator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'subnet-calculator');
+        Components.renderToolSchema('Subnet Calculator', 'network', 'Subnet Calculator - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const ipInput = document.getElementById('ip');
+ const cidrSelect = document.getElementById('cidr');
+ const resultsDiv = document.getElementById('results');
+
+ // Populate CIDR select
+ for (let i = 0; i <= 32; i++) {
+ const opt = document.createElement('option');
+ opt.value = i;
+ opt.text = `/${i}`;
+ if (i === 24) opt.selected = true;
+ cidrSelect.appendChild(opt);
+ }
+
+ function ip2long(ip) {
+ return ip.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct), 0) >>> 0;
+ }
+
+ function long2ip(long) {
+ return [long >>> 24, long >>> 16 & 255, long >>> 8 & 255, long & 255].join('.');
+ }
+
+ function calculate() {
+ try {
+ const ip = ipInput.value;
+ if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(ip)) throw new Error('Invalid IP');
+ const cidr = parseInt(cidrSelect.value);
+ const ipLong = ip2long(ip);
+ const maskLong = cidr === 0 ? 0 : (~0 << (32 - cidr)) >>> 0;
+ const netLong = (ipLong & maskLong) >>> 0;
+ const broadLong = (netLong | ~maskLong) >>> 0;
+ const hosts = cidr >= 31 ? 0 : broadLong - netLong - 1;
+
+ const data = [
+ ['IP Address', ip],
+ ['Network Address', long2ip(netLong)],
+ ['Broadcast Address', long2ip(broadLong)],
+ ['Subnet Mask', long2ip(maskLong)],
+ ['CIDR Notation', `/${cidr}`],
+ ['Usable Host Range', hosts > 0 ? `${long2ip(netLong + 1)} - ${long2ip(broadLong - 1)}` : 'N/A'],
+ ['Total Hosts', Math.pow(2, 32 - cidr)],
+ ['Usable Hosts', hosts]
+ ];
+
+ resultsDiv.innerHTML = data.map(([label, val]) => `
+ <div class="result-item"><span class="label">${label}</span><span class="value">${val}</span><button class="btn-icon" onclick="Clipboard.copy('${val}')" title="Copy"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div>
+ `).join('');
+ } catch (e) {
+ resultsDiv.innerHTML = `<div class="error">${e.message}</div>`;
+ }
+ }
+
+ document.getElementById('calculate-btn').addEventListener('click', calculate);
+ calculate();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script><style>
+ .results-grid {
+ display: grid;
+ gap: 1rem;
+ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+ }
+
+ .result-item {
+ background: var(--surface-2);
+ padding: 1rem;
+ border-radius: var(--radius-md);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ }
+
+ .result-item .label {
+ font-size: 0.875rem;
+ color: var(--text-muted);
+ display: block;
+ margin-bottom: 0.25rem;
+ }
+
+ .result-item .value {
+ font-weight: 600;
+ font-family: monospace;
+ font-size: 1.1rem;
+ }
+
+ .btn-icon {
+ background: none;
+ border: none;
+ cursor: pointer;
+ color: var(--primary);
+ opacity: 0.7;
+ }
+
+ .btn-icon:hover {
+ opacity: 1;
+ }
+ </style></body></html>
+
+

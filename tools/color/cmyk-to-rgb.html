@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CMYK to RGB Converter - Free Color Tool | OnlineToolFree</title><meta name="description"
+ content="Convert CMYK color values (Cyan, Magenta, Yellow, Key/Black) to RGB (Red, Green, Blue) for digital display. Free online color converter."><link rel="canonical" href="https://onlinetoolfree.com/tools/color/cmyk-to-rgb.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">CMYK to RGB Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert CMYK (Print) colors to RGB (Screen) color model.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section"><div class="output-header"><span class="tool-section-title">CMYK Input (0-100%)</span></div><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2)"><div class="form-group"><label>Cyan</label><input type="number" id="input-c" class="form-input" min="0" max="100" value="0"></div><div class="form-group"><label>Magenta</label><input type="number" id="input-m" class="form-input" min="0" max="100" value="100"></div><div class="form-group"><label>Yellow</label><input type="number" id="input-y" class="form-input" min="0" max="100" value="100"></div><div class="form-group"><label>Key (Black)</label><input type="number" id="input-k" class="form-input" min="0" max="100" value="0"></div></div></div><div class="color-preview" id="color-preview" style="margin-top: var(--space-4); height: 100px; border-radius: 8px; border: 1px solid var(--border-color)"></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">RGB Output</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output-rgb'))">Copy</button></div></div><div class="form-group"><label>RGB String</label><input type="text" id="output-rgb" class="form-input code" readonly></div><div class="form-group"><label>Hex Code</label><input type="text" id="output-hex" class="form-input code" readonly></div><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2)"><div class="form-group"><label>Red (R)</label><input type="number" id="out-r" class="form-input" readonly></div><div class="form-group"><label>Green (G)</label><input type="number" id="out-g" class="form-input" readonly></div><div class="form-group"><label>Blue (B)</label><input type="number" id="out-b" class="form-input" readonly></div></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Color', url: '/tools/color/index.html' },
+            { name: 'Cmyk To Rgb' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'cmyk-to-rgb');
+        Components.renderToolSchema('Cmyk To Rgb', 'color', 'Cmyk To Rgb - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const inputC = document.getElementById('input-c');
+ const inputM = document.getElementById('input-m');
+ const inputY = document.getElementById('input-y');
+ const inputK = document.getElementById('input-k');
+
+ function convert() {
+ let c = parseInt(inputC.value) || 0;
+ let m = parseInt(inputM.value) || 0;
+ let y = parseInt(inputY.value) || 0;
+ let k = parseInt(inputK.value) || 0;
+
+ // Clamp
+ c = Math.max(0, Math.min(100, c)) / 100;
+ m = Math.max(0, Math.min(100, m)) / 100;
+ y = Math.max(0, Math.min(100, y)) / 100;
+ k = Math.max(0, Math.min(100, k)) / 100;
+
+ // CMYK to RGB
+ const r = Math.round(255 * (1 - c) * (1 - k));
+ const g = Math.round(255 * (1 - m) * (1 - k));
+ const b = Math.round(255 * (1 - y) * (1 - k));
+
+ const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+
+ // Update Preview
+ document.getElementById('color-preview').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+ document.getElementById('out-r').value = r;
+ document.getElementById('out-g').value = g;
+ document.getElementById('out-b').value = b;
+
+ document.getElementById('output-rgb').value = `rgb(${r}, ${g}, ${b})`;
+ document.getElementById('output-hex').value = hex;
+ }
+
+ [inputC, inputM, inputY, inputK].forEach(el => el.addEventListener('input', convert));
+
+ convert();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

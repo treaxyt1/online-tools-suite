@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>URL Parser - Split URL into Components | OnlineToolFree</title><meta name="description"
+ content="Free online URL parser. Split any URL into its components: protocol, hostname, port, pathname, search parameters, and hash."><link rel="canonical" href="https://onlinetoolfree.com/tools/url/url-parser.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .params-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin-top: 1rem;
+ }
+
+ .params-table th,
+ .params-table td {
+ text-align: left;
+ padding: 0.75rem;
+ border-bottom: 1px solid var(--border-color);
+ }
+
+ .params-table th {
+ font-weight: 600;
+ color: var(--text-secondary);
+ font-size: 0.875rem;
+ }
+
+ .component-label {
+ font-weight: 600;
+ color: var(--primary-600);
+ width: 120px;
+ }
+
+ .component-value {
+ font-family: var(--font-mono);
+ word-break: break-all;
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><div class="layout-grid"><div class="layout-main"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">URL Parser</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Parse any URL to see its individual components and query parameters.
+ </p></div></div></div><div class="tool-interface"><div class="tool-section full-width"><div class="output-header"><span class="tool-section-title">Enter URL</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="FormHelpers.clear('input')">Clear</button><button class="btn btn-ghost btn-sm" onclick="pasteExample()">Sample URL</button></div></div><input type="text" id="input" class="form-input"
+ placeholder="https://example.com/path?name=value#hash"></div><div id="results" style="margin-top: var(--space-8); display: none"><div class="tool-section full-width"><div class="output-header"><span class="tool-section-title">URL Components</span></div><table class="params-table"><tbody id="components-body"><!-- Components will be added here --></tbody></table></div><div id="params-section" class="tool-section full-width" style="margin-top: var(--space-6); display: none"><div class="output-header"><span class="tool-section-title">Query Parameters</span></div><table class="params-table"><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody id="params-body"><!-- Params will be added here --></tbody></table></div></div><div id="error-msg" class="alert alert-error" style="margin-top: var(--space-4); display: none">
+ Invalid URL. Please make sure to include the protocol (e.g., http:// or https://).
+ </div></div><section class="content-section"><h2>About URL Parser</h2><p>This tool uses the browser's native URL API to accurately decompose a web address into its parts.
+ It is useful for debugging deep links, query strings, and authentication redirects.</p></section></div><aside class="layout-sidebar"><div id="sidebar-container"></div></aside></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><footer class="footer" style="margin-top: var(--space-24)"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Url', url: '/tools/url/index.html' },
+            { name: 'Url Parser' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'url-parser');
+        Components.renderToolSchema('Url Parser', 'url', 'Url Parser - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const input = document.getElementById('input');
+ const results = document.getElementById('results');
+ const componentsBody = document.getElementById('components-body');
+ const paramsSection = document.getElementById('params-section');
+ const paramsBody = document.getElementById('params-body');
+ const errorMsg = document.getElementById('error-msg');
+
+ function parseURL() {
+ const val = input.value.trim();
+ if (!val) {
+ results.classList.add('hidden');
+ errorMsg.classList.add('hidden');
+ return;
+ }
+
+ try {
+ const url = new URL(val);
+ errorMsg.classList.add('hidden');
+ results.classList.remove('hidden');
+
+ // Basic components
+ const components = [
+ { label: 'Protocol', value: url.protocol },
+ { label: 'Hostname', value: url.hostname },
+ { label: 'Port', value: url.port || '(default)' },
+ { label: 'Pathname', value: url.pathname },
+ { label: 'Hash', value: url.hash || '(none)' },
+ { label: 'Origin', value: url.origin }
+ ];
+
+ componentsBody.innerHTML = components.map(c => `
+ <tr><td class="component-label">${c.label}</td><td class="component-value">${c.value}</td></tr>
+ `).join('');
+
+ // Query Params
+ const params = Array.from(url.searchParams.entries());
+ if (params.length > 0) {
+ paramsSection.classList.remove('hidden');
+ paramsBody.innerHTML = params.map(([key, value]) => `
+ <tr><td class="component-value">${key}</td><td class="component-value">${value}</td></tr>
+ `).join('');
+ } else {
+ paramsSection.classList.add('hidden');
+ }
+
+ Toast.success('URL Parsed');
+ } catch (e) {
+ results.classList.add('hidden');
+ errorMsg.classList.remove('hidden');
+ }
+ }
+
+ function pasteExample() {
+ input.value = "https://www.onlinetoolfree.com:8080/tools/url/url-parser.html?id=123&category=dev#usage";
+ parseURL();
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderSidebar('sidebar-container', 'URL & Encoding');
+ Components.renderFooter();
+ input.addEventListener('input', debounce(parseURL, 300));
+ });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

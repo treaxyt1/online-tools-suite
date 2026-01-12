@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Blur JPG - Free Online Image Blur Tool | OnlineToolFree</title><meta name="description"
+ content="Blur your JPG images online. Adjust blur intensity. Free and secure client-side tool."><link rel="canonical" href="https://onlinetoolfree.com/tools/jpg/blur.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Blur JPG Image</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Apply a blur effect to your JPG photos. Adjust the intensity to your liking.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section" style="margin-bottom: var(--space-4); display: none" id="settings-panel"><div class="output-header"><span class="tool-section-title">Settings</span></div><div class="form-group"><label>Blur Intensity (px): <span id="blur-val"
+ style="color: var(--text-primary); font-weight: var(--font-semibold)">5</span></label><input type="range" id="blur" class="form-range" min="1" max="50" value="5"></div><button class="btn btn-primary" style="width: 100%;" onclick="applyBlur()">Apply Blur</button></div><div class="file-drop-area" id="drop-area"><input type="file" id="file-input" accept="image/jpeg,image/jpg" hidden><div class="drop-icon"><svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M2 12h20"></path><path d="M12 2v20"></path><path d="m4.93 4.93 14.14 14.14"></path><path d="m19.07 4.93-14.14 14.14"></path></svg></div><p class="drop-text">Drag & drop JPG here or <span>browse</span></p></div></div><div class="tool-section" style="display: none;" id="result-panel"><div class="output-header"><span class="tool-section-title">Result</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="downloadImage()">Download</button></div></div><div class="overflow-" style="padding: var(--space-4); background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; justify-content: center; display: flex; display: none"><canvas id="canvas" style="max-width: 100%; max-height: 400px; display: block;"></canvas></div><div style="margin-top: var(--space-2); text-align: center"><button class="btn btn-secondary btn-sm" onclick="reset()">Start Over</button></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Jpg', url: '/tools/jpg/index.html' },
+            { name: 'Blur' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'blur');
+        Components.renderToolSchema('Blur', 'jpg', 'Blur - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const dropArea = document.getElementById('drop-area');
+ const fileInput = document.getElementById('file-input');
+ const settingsPanel = document.getElementById('settings-panel');
+ const resultPanel = document.getElementById('result-panel');
+ const canvas = document.getElementById('canvas');
+ const ctx = canvas.getContext('2d');
+ const blurInput = document.getElementById('blur');
+ const blurVal = document.getElementById('blur-val');
+
+ let originalImg = new Image();
+ let originalName = 'image';
+
+ ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+ dropArea.addEventListener(eventName, preventDefaults, false);
+ });
+ function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+ dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+ dropArea.addEventListener('click', () => fileInput.click());
+ fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+ blurInput.addEventListener('input', (e) => {
+ blurVal.innerText = e.target.value;
+ // Debounce for better performance
+ debounce(applyBlur, 100)();
+ });
+
+ function handleFiles(files) {
+ if (files.length > 0) {
+ const file = files[0];
+ if (!file.type.match('image/jpeg')) {
+ Toast.error('Please upload a JPG image.');
+ return;
+ }
+ originalName = file.name.replace(/\.[^/.]+$/, "");
+ const reader = new FileReader();
+ reader.onload = function (e) {
+ originalImg.onload = function () {
+ settingsPanel.classList.remove('hidden');
+ dropArea.classList.add('hidden');
+ applyBlur();
+ };
+ originalImg.src = e.target.result;
+ };
+ reader.readAsDataURL(file);
+ }
+ }
+
+ function applyBlur() {
+ if (!originalImg.src) return;
+ const radius = blurInput.value;
+
+ canvas.width = originalImg.width;
+ canvas.height = originalImg.height;
+
+ ctx.filter = `blur(${radius}px)`;
+ ctx.drawImage(originalImg, 0, 0);
+ ctx.filter = 'none';
+
+ resultPanel.classList.remove('hidden');
+ }
+
+ function downloadImage() {
+ const a = document.createElement('a');
+ a.href = canvas.toDataURL('image/jpeg', 0.9);
+ a.download = originalName + '-blurred.jpg';
+ a.click();
+ }
+
+ function reset() {
+ resultPanel.classList.add('hidden');
+ settingsPanel.classList.add('hidden');
+ dropArea.classList.remove('hidden');
+ fileInput.value = '';
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

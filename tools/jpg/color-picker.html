@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>JPG Color Picker - Free Online Image Color Picker | OnlineToolFree</title><meta name="description"
+ content="Pick colors from your JPG image. Get HEX, RGB, and HSL values instantly. Free and private client-side tool."><link rel="canonical" href="https://onlinetoolfree.com/tools/jpg/color-picker.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">JPG Color Picker</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Click anywhere on your JPG image to sample colors and get their Hex and RGB codes.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section" style="margin-bottom: var(--space-4); display: none" id="color-info-panel"><div class="output-header"><span class="tool-section-title">Selected Color</span></div><div style="align-items: center; gap: var(--space-4); display: flex"><div id="color-preview" class="w-16 h-16 border border-slate-200" style="border-radius: var(--radius-lg);"></div><div class="-1" style="display: grid; gap: var(--space-2); display: flex"><div class="input-group"><input type="text" id="hex-value" class="form-input" style="font-size: var(--text-sm);" readonly><button class="btn btn-secondary btn-sm" onclick="copy('hex-value')">Copy</button></div><div class="input-group"><input type="text" id="rgb-value" class="form-input" style="font-size: var(--text-sm);" readonly><button class="btn btn-secondary btn-sm" onclick="copy('rgb-value')">Copy</button></div></div></div></div><div class="file-drop-area" id="drop-area"><input type="file" id="file-input" accept="image/jpeg,image/jpg" hidden><div class="drop-icon"><svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></div><p class="drop-text">Drag & drop JPG here or <span>browse</span></p></div><div class="tool-section" style="display: none;" id="canvas-panel"><div class="output-header"><span class="tool-section-title">Image</span><button class="btn btn-ghost btn-sm" onclick="location.reload()">New Image</button></div><div class="cursor-crosshair overflow-" style="background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; border-radius: var(--radius-lg); position: relative; display: none"><canvas id="canvas" style="max-width: 100%; display: block;"></canvas></div></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Jpg', url: '/tools/jpg/index.html' },
+            { name: 'Color Picker' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'color-picker');
+        Components.renderToolSchema('Color Picker', 'jpg', 'Color Picker - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const dropArea = document.getElementById('drop-area');
+ const fileInput = document.getElementById('file-input');
+ const colorInfoPanel = document.getElementById('color-info-panel');
+ const canvasPanel = document.getElementById('canvas-panel');
+ const canvas = document.getElementById('canvas');
+ const ctx = canvas.getContext('2d');
+ const colorPreview = document.getElementById('color-preview');
+ const hexInput = document.getElementById('hex-value');
+ const rgbInput = document.getElementById('rgb-value');
+
+ ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+ dropArea.addEventListener(eventName, preventDefaults, false);
+ });
+ function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+ dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+ dropArea.addEventListener('click', () => fileInput.click());
+ fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+ function handleFiles(files) {
+ if (files.length > 0) {
+ const file = files[0];
+ if (!file.type.match('image/jpeg')) {
+ Toast.error('Please upload a JPG image.');
+ return;
+ }
+ const reader = new FileReader();
+ reader.onload = function (e) {
+ const img = new Image();
+ img.onload = function () {
+ canvas.width = img.width;
+ canvas.height = img.height;
+ ctx.drawImage(img, 0, 0);
+
+ canvasPanel.classList.remove('hidden');
+ colorInfoPanel.classList.remove('hidden');
+ dropArea.classList.add('hidden');
+ }
+ img.src = e.target.result;
+ }
+ reader.readAsDataURL(file);
+ }
+ }
+
+ canvas.addEventListener('click', pickColor);
+ canvas.addEventListener('mousemove', (e) => {
+ if (e.buttons === 1) pickColor(e);
+ });
+
+ function pickColor(e) {
+ const rect = canvas.getBoundingClientRect();
+ const scaleX = canvas.width / rect.width;
+ const scaleY = canvas.height / rect.height;
+
+ const x = (e.clientX - rect.left) * scaleX;
+ const y = (e.clientY - rect.top) * scaleY;
+
+ const pixel = ctx.getImageData(x, y, 1, 1).data;
+ const rgb = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+ const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
+
+ colorPreview.style.backgroundColor = rgb;
+ hexInput.value = hex;
+ rgbInput.value = rgb;
+ }
+
+ function rgbToHex(r, g, b) {
+ return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+ }
+
+ function copy(id) {
+ const el = document.getElementById(id);
+ el.select();
+ document.execCommand('copy');
+ Toast.success('Copied!');
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

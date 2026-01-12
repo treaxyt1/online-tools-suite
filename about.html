@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <title>About Us - OnlineToolFree | Free Online Tools for Everyone</title>
+    <meta name="description"
+        content="Learn about OnlineToolFree - Our mission is to provide 400+ free online tools for developers, designers, and everyone. 100% free, no signup, privacy-focused.">
+    <meta name="keywords"
+        content="about onlinetoolfree, free online tools, privacy-focused tools, developer tools, no signup tools">
+    <meta name="author" content="OnlineToolFree">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://onlinetoolfree.com/about.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinetoolfree.com/about.html">
+    <meta property="og:title" content="About Us - OnlineToolFree">
+    <meta property="og:description" content="Learn about OnlineToolFree - 400+ free online tools for everyone.">
+    <meta property="og:site_name" content="OnlineToolFree">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="About Us - OnlineToolFree">
+    <meta name="twitter:description" content="Learn about OnlineToolFree - 400+ free online tools for everyone.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About OnlineToolFree",
+        "description": "Learn about OnlineToolFree - Our mission to provide free online tools for everyone.",
+        "url": "https://onlinetoolfree.com/about.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "OnlineToolFree",
+            "url": "https://onlinetoolfree.com",
+            "description": "Free online tools for developers, designers, and everyone."
+        }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/design-system.css">
+
+    <style>
+        .about-hero {
+            padding: var(--space-16) 0;
+            background: var(--gradient-subtle);
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+        }
+
+        .about-hero p {
+            font-size: var(--text-xl);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            padding: var(--space-16) 0;
+        }
+
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto var(--space-12);
+        }
+
+        .about-section h2 {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+            color: var(--text-primary);
+        }
+
+        .about-section p {
+            font-size: var(--text-base);
+            line-height: var(--leading-relaxed);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .value-card {
+            padding: var(--space-6);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-50);
+            border-radius: var(--radius-lg);
+            color: var(--primary-600);
+            margin: 0 auto var(--space-4);
+        }
+
+        .value-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .value-card h3 {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .value-card p {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        .stats-section {
+            background: var(--bg-tertiary);
+            padding: var(--space-12) 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-12);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: var(--text-4xl);
+            font-weight: var(--font-bold);
+            color: var(--primary-600);
+            margin-bottom: var(--space-1);
+        }
+
+        .stat-label {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="js/tools.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Header -->
+    <header class="header"></header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About OnlineToolFree</h1>
+            <p>Our mission is to make powerful online tools accessible to everyone, completely free and without
+                barriers.</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">400+</div>
+                    <div class="stat-label">Free Tools</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Free Forever</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Data Collected</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">44</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="about-content">
+        <div class="container">
+            <!-- Our Story -->
+            <section class="about-section">
+                <h2>Our Story</h2>
+                <p>OnlineToolFree was born from a simple frustration: why should basic online tools require signups,
+                    subscriptions, or compromise your privacy? We believed there had to be a better way.</p>
+                <p>Founded in 2024, we set out to build a comprehensive collection of free online tools that respect
+                    your privacy and just work. No accounts, no paywalls, no tracking - just powerful tools that run
+                    entirely in your browser.</p>
+                <p>Today, OnlineToolFree offers over 400 tools across 44 categories, helping millions of developers,
+                    designers, students, and professionals accomplish their tasks faster and more efficiently.</p>
+            </section>
+
+            <!-- Our Mission -->
+            <section class="about-section">
+                <h2>Our Mission</h2>
+                <p>We believe that essential digital tools should be accessible to everyone, regardless of their budget
+                    or location. Our mission is to democratize access to powerful online utilities by providing them
+                    completely free of charge.</p>
+                <p>Every tool we build is designed with three principles in mind: simplicity, privacy, and performance.
+                    We want you to accomplish your task quickly, without worrying about your data being collected or
+                    sold.</p>
+            </section>
+
+            <!-- Core Values -->
+            <section class="about-section">
+                <h2>Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                            </svg>
+                        </div>
+                        <h3>Privacy First</h3>
+                        <p>All tools run locally in your browser. Your data never leaves your device.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>No server processing means instant results. Get your work done in seconds.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                            </svg>
+                        </div>
+                        <h3>Always Free</h3>
+                        <p>No subscriptions, no hidden fees. All tools are free forever.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                            </svg>
+                        </div>
+                        <h3>No Signup</h3>
+                        <p>Just open and use. No accounts, no email verification, no friction.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology -->
+            <section class="about-section">
+                <h2>Our Technology</h2>
+                <p>OnlineToolFree is built with modern web technologies that prioritize speed and security. All our
+                    tools run client-side using JavaScript, meaning your data is processed directly in your browser
+                    without ever being sent to our servers.</p>
+                <p>We use the latest web APIs and standards to ensure broad compatibility across all modern browsers and
+                    devices. Our tools are responsive and work seamlessly on desktop, tablet, and mobile.</p>
+                <p>This client-side approach not only protects your privacy but also makes our tools incredibly fast -
+                    there's no waiting for server responses.</p>
+            </section>
+
+            <!-- Open Source -->
+            <section class="about-section">
+                <h2>Open Source Commitment</h2>
+                <p>We believe in transparency and the power of open source. Many of the libraries and frameworks we use
+                    are open source, and we actively contribute back to the community.</p>
+                <p>Our commitment to open source means you can trust that our tools are built on proven,
+                    community-vetted code. We're grateful to the open source community for making projects like ours
+                    possible.</p>
+            </section>
+
+            <!-- Contact -->
+            <section class="about-section">
+                <h2>Get in Touch</h2>
+                <p>Have questions, suggestions, or feedback? We'd love to hear from you! You can reach us through our <a
+                        href="contact.html">contact page</a> or connect with us on social media.</p>
+                <p>We're constantly working to improve existing tools and add new ones. If there's a tool you'd like to
+                    see on OnlineToolFree, let us know!</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>

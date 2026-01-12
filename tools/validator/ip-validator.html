@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Address Validator - Free Online Validator</title>
+    <meta name="description" content="Free IP address validator. Validate IPv4 and IPv6 addresses. Check IP format and validity. Network administration tool.">
+    <meta name="keywords" content="ip validator, validate ip address, ipv4 validator, ipv6 validator">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/validator/ip-validator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <h1 class="tool-title">IP Address Validator</h1>
+                <p class="tool-description">Free IP address validator. Validate IPv4 and IPv6 addresses. Check IP format and validity. Network administration tool.</p>
+                
+                <div class="tool-stats" style="padding: var(--space-3); background: var(--primary-50); border-radius: var(--radius-md); margin: var(--space-4) 0; display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                    <span>✅ 100% Free</span>
+                    <span>🔒 Client-Side Only</span>
+                    <span>⚡ Instant Validation</span>
+                    <span>📱 Mobile-Friendly</span>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label for="input">Enter IP Address(es)</label>
+                        <textarea id="input" class="form-input" rows="6" placeholder="192.168.1.1
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+10.0.0.1" style="font-family: monospace;"></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button id="validateBtn" class="btn btn-primary">Validate</button>
+                        <button id="clearBtn" class="btn btn-ghost">Clear</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none;">
+                        <div id="validationResult"></div>
+                    </div>
+                </div>
+
+                <div class="tool-content" style="margin-top: var(--space-8); padding: var(--space-6);">
+                    
+                    <h2>About IP Address Validator</h2>
+                    <p>Validate both IPv4 and IPv6 addresses with our free IP validator. Essential for network administrators, developers, and IT professionals. Supports all IP address formats and provides detailed validation feedback.</p>
+                    
+                    <h3>IPv4 vs IPv6</h3>
+                    <p><strong>IPv4:</strong> Traditional format with four octets (e.g., 192.168.1.1)</p>
+                    <p><strong>IPv6:</strong> Modern format with eight groups of hexadecimal digits (e.g., 2001:0db8:85a3::8a2e:0370:7334)</p>
+                </div>
+
+                <div class="faq-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-item">
+                        <h3>What's the difference between IPv4 and IPv6?</h3>
+                        <p>IPv4 uses 32-bit addresses (4 octets), while IPv6 uses 128-bit addresses (8 groups). IPv6 was created to address IPv4 address exhaustion.</p>
+                    </div>
+                </div>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+    <footer class="footer"></footer>
+    
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.Components) {
+                Components.renderHeader();
+                Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Validator', url: '/tools/validator/index.html' },
+            { name: 'Ip Validator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'ip-validator');
+        Components.renderToolSchema('Ip Validator', 'validator', 'Ip Validator - Free online tool for your daily digital tasks.');
+
+                Components.renderFooter();
+            }
+            if(window.ThemeManager) ThemeManager.init();
+        });
+
+        
+        function validateInput(input) {
+            const ips = input.split('\n').filter(ip => ip.trim());
+            
+            function isValidIPv4(ip) {
+                const parts = ip.split('.');
+                if(parts.length !== 4) return false;
+                return parts.every(part => {
+                    const num = parseInt(part);
+                    return num >= 0 && num <= 255 && part === num.toString();
+                });
+            }
+            
+            function isValidIPv6(ip) {
+                const parts = ip.split(':');
+                if(parts.length < 3 || parts.length > 8) return false;
+                return parts.every(part => /^[0-9a-fA-F]{0,4}$/.test(part));
+            }
+            
+            return ips.map(ip => {
+                const trimmed = ip.trim();
+                
+                if(isValidIPv4(trimmed)) {
+                    const isPrivate = trimmed.startsWith('192.168.') || trimmed.startsWith('10.') || trimmed.startsWith('172.');
+                    return {
+                        value: trimmed,
+                        valid: true,
+                        message: `Valid IPv4 address. ${isPrivate ? 'Private' : 'Public'} IP`
+                    };
+                } else if(isValidIPv6(trimmed)) {
+                    return {
+                        value: trimmed,
+                        valid: true,
+                        message: 'Valid IPv6 address'
+                    };
+                } else {
+                    return {
+                        value: trimmed,
+                        valid: false,
+                        message: 'Invalid IP address format (not IPv4 or IPv6)'
+                    };
+                }
+            });
+        }
+
+        document.getElementById('validateBtn').addEventListener('click', () => {
+            const input = document.getElementById('input').value.trim();
+            if(!input) {
+                if(window.Toast) Toast.error('Please enter IP address(es) to validate');
+                return;
+            }
+            
+            const results = validateInput(input);
+            displayResults(results);
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('input').value = '';
+            document.getElementById('result').style.display = 'none';
+        });
+
+        function displayResults(results) {
+            const resultDiv = document.getElementById('validationResult');
+            const resultSection = document.getElementById('result');
+            
+            let html = '<div style="display: flex; flex-direction: column; gap: var(--space-3);">';
+            
+            results.forEach(item => {
+                const icon = item.valid ? '✅' : '❌';
+                const color = item.valid ? 'var(--success-600)' : 'var(--error-600)';
+                const bgColor = item.valid ? 'var(--success-50)' : 'var(--error-50)';
+                
+                html += `<div style="padding: var(--space-3); background: ${bgColor}; border-left: 4px solid ${color}; border-radius: var(--radius-md);">
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                        <span style="font-size: 1.5rem;">${icon}</span>
+                        <div style="flex: 1;">
+                            <strong>${item.value}</strong>
+                            <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: var(--text-sm);">${item.message}</p>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            
+            html += '</div>';
+            resultDiv.innerHTML = html;
+            resultSection.style.display = 'block';
+            
+            if(window.Toast) {
+                const validCount = results.filter(r => r.valid).length;
+                const totalCount = results.length;
+                Toast.success(`Validated ${totalCount} item(s): ${validCount} valid, ${totalCount - validCount} invalid`);
+            }
+        }
+    </script>
+</body>
+</html>

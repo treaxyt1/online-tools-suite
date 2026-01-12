@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi QR Code Generator - Share WiFi Instantly | OnlineToolFree</title>
+    <meta name="description"
+        content="Create WiFi QR codes for easy sharing. Guests can scan to connect instantly. Supports WPA/WPA2, WEP, and Open networks.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/generator/wifi-qr.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+
+    <!-- QRCode.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/utils.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                            <line x1="12" y1="20" x2="12.01" y2="20" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">WiFi QR Code Generator</h1>
+                        <p class="tool-description">Create a QR code to share your WiFi network without typing
+                            passwords.</p>
+                    </div>
+                </div>
+
+                <div class="grid-2-col">
+                    <div class="tool-section">
+                        <h3 style="margin-bottom: var(--space-4);">Network Details</h3>
+                        <div class="form-group">
+                            <label class="form-label">Network Name (SSID)</label>
+                            <input type="text" id="ssid" class="form-input" placeholder="MyWiFiNetwork">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <div style="position: relative;">
+                                <input type="password" id="password" class="form-input" placeholder="Password">
+                                <button id="toggle-pw" type="button"
+                                    style="position: absolute; right: 10px; top: 10px; background: none; border: none; cursor: pointer; color: var(--text-muted);">
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12" cy="12" r="3" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Encryption Type</label>
+                            <select id="encryption" class="form-select">
+                                <option value="WPA">WPA/WPA2 (Standard)</option>
+                                <option value="WEP">WEP</option>
+                                <option value="nopass">None (Open)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="hidden">
+                                <span class="checkmark"></span>
+                                Hidden Network
+                            </label>
+                        </div>
+
+                        <button id="generate-btn" class="btn btn-primary w-full">Generate QR Code</button>
+                    </div>
+
+                    <div id="result-panel" class="tool-section"
+                        style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px;">
+                        <h3 style="margin-bottom: var(--space-4);">Your QR Code</h3>
+                        <div id="qrcode" style="background: white; padding: 20px; border-radius: 8px;"></div>
+                        <p style="color: var(--text-muted); margin-top: var(--space-4); font-size: var(--text-sm);">Scan
+                            with your camera to connect</p>
+
+                        <button id="print-btn" class="btn btn-ghost btn-sm" style="margin-top: var(--space-2);">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="6 9 6 2 18 2 18 9" />
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                                <rect x="6" y="14" width="12" height="8" />
+                            </svg>
+                            Print Card
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Generator', url: '/tools/generator/index.html' },
+                { name: 'WiFi QR' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'wifi-qr');
+            Components.renderFooter();
+
+            if (window.ThemeManager) ThemeManager.init();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Logic
+            const ssidInput = document.getElementById('ssid');
+            const passwordInput = document.getElementById('password');
+            const encryptionInput = document.getElementById('encryption');
+            const hiddenInput = document.getElementById('hidden');
+            const generateBtn = document.getElementById('generate-btn');
+            const qrContainer = document.getElementById('qrcode');
+            const togglePw = document.getElementById('toggle-pw');
+            const printBtn = document.getElementById('print-btn');
+
+            let qr = null;
+
+            // Initial QR
+            generateQR();
+
+            togglePw.addEventListener('click', () => {
+                passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+            });
+
+            generateBtn.addEventListener('click', generateQR);
+
+            // Auto update on input? Maybe just button to avoid flicker
+            // ssidInput.addEventListener('input', generateQR);
+
+            function generateQR() {
+                const ssid = ssidInput.value || 'MyWiFi';
+                const password = passwordInput.value;
+                const encryption = encryptionInput.value;
+                const hidden = hiddenInput.checked;
+
+                // Escape special chars
+                // WIFI:S:MyNetwork;T:WPA;P:password;H:false;;
+                const escape = (str) => str.replace(/([\\\\;,:])/g, '\\\\$1');
+
+                let qrString = \`WIFI:S:\${escape(ssid)};\`;
+                qrString += \`T:\${encryption};\`;
+                if (encryption !== 'nopass') {
+                    qrString += \`P:\${escape(password)};\`;
+                }
+                if (hidden) {
+                    qrString += \`H:true;\`;
+                }
+                qrString += ';';
+
+                qrContainer.innerHTML = '';
+                qr = new QRCode(qrContainer, {
+                    text: qrString,
+                    width: 256,
+                    height: 256,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }
+
+            printBtn.addEventListener('click', () => {
+                const win = window.open('', '', 'width=600,height=600');
+                win.document.write(\`
+                    <html>
+                    <head><title>WiFi QR Code</title>
+                    <style>body { font-family: sans-serif; text-align: center; padding: 40px; }</style>
+                    </head>
+                    <body>
+                        <h1>WiFi Network</h1>
+                        <h2>\${ssidInput.value || 'MyWiFi'}</h2>
+                        <div style="margin: 30px 0;">\${qrContainer.innerHTML}</div>
+                        <p>Scan to Connect</p>
+                    </body>
+                    </html>
+                \`);
+                win.document.close();
+                win.focus();
+                win.print();
+                win.close();
+            });
+        });
+    </script>
+</body>
+
+</html>

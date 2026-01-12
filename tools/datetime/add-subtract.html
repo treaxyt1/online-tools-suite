@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Add/Subtract Days from Date - Free Time Tool | OnlineToolFree</title><meta name="description"
+ content="Add or subtract days, weeks, months, or years from a date. Free online date calculator."><link rel="canonical" href="https://onlinetoolfree.com/tools/datetime/add-subtract.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Add/Subtract Date Calculator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Calculate a new date by adding or subtracting years, months, weeks, or days from a
+ start date.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Inputs</span></div><div class="form-group"><label>Start Date</label><input type="date" id="start-date" class="form-input"></div><div class="form-group"><label>Operation</label><div style="gap: var(--space-4); display: flex"><label class="radio" style="align-items: center; gap: var(--space-2); display: flex"><input type="radio" name="operation" value="add" checked onchange="calculate()">
+ Add
+ </label><label class="radio" style="align-items: center; gap: var(--space-2); display: flex"><input type="radio" name="operation" value="subtract" onchange="calculate()">
+ Subtract
+ </label></div></div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4)"><div class="form-group"><label>Years</label><input type="number" id="val-years" class="form-input" min="0" value="0"></div><div class="form-group"><label>Months</label><input type="number" id="val-months" class="form-input" min="0" value="0"></div><div class="form-group"><label>Weeks</label><input type="number" id="val-weeks" class="form-input" min="0" value="0"></div><div class="form-group"><label>Days</label><input type="number" id="val-days" class="form-input" min="0" value="0"></div></div><button class="btn btn-primary" onclick="calculate()" style="width: 100%; margin-top: var(--space-4)">Calculate New Date</button></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Result</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(document.getElementById('result-date').innerText)">Copy</button></div></div><div style="padding-top: var(--space-8); padding-bottom: var(--space-8); text-align: center"><div class="text-3xl" style="color: var(--text-primary)" id="result-date" style="margin-bottom: var(--space-2); font-weight: var(--font-semibold)">-</div><div style="color: var(--text-secondary);" id="result-day">-</div></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Datetime', url: '/tools/datetime/index.html' },
+            { name: 'Add Subtract' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'add-subtract');
+        Components.renderToolSchema('Add Subtract', 'datetime', 'Add Subtract - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const start = document.getElementById('start-date');
+ start.valueAsDate = new Date();
+
+ function calculate() {
+ const d = new Date(start.value);
+ if (isNaN(d)) return;
+
+ const op = document.querySelector('input[name="operation"]:checked').value;
+ const factor = op === 'add' ? 1 : -1;
+
+ const vYears = (parseInt(document.getElementById('val-years').value) || 0) * factor;
+ const vMonths = (parseInt(document.getElementById('val-months').value) || 0) * factor;
+ const vWeeks = (parseInt(document.getElementById('val-weeks').value) || 0) * factor;
+ const vDays = (parseInt(document.getElementById('val-days').value) || 0) * factor;
+
+ // Logic: Add years, then months, then days (weeks -> 7 days)
+ // Date object handles overflow (e.g. adding 1 month to Jan 31 -> Feb 28/29 or Mar 2/3 depending on impl, usually tries to keep similar day or roll over)
+
+ d.setFullYear(d.getFullYear() + vYears);
+ d.setMonth(d.getMonth() + vMonths);
+ d.setDate(d.getDate() + (vWeeks * 7) + vDays);
+
+ const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+ document.getElementById('result-date').textContent = d.toLocaleDateString(undefined, options);
+ document.getElementById('result-day').textContent = `Day of year: ${getDayOfYear(d)}`;
+ }
+
+ function getDayOfYear(date) {
+ const start = new Date(date.getFullYear(), 0, 0);
+ const diff = date - start;
+ const oneDay = 1000 * 60 * 60 * 24;
+ return Math.floor(diff / oneDay);
+ }
+
+ const inputs = ['start-date', 'val-years', 'val-months', 'val-weeks', 'val-days'];
+ inputs.forEach(id => document.getElementById(id).addEventListener('input', calculate));
+
+ calculate();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

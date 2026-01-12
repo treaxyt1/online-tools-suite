@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shader Preset Preview - Emulator Utility | OnlineToolFree</title>
+    <meta name="description" content="Preview and compare CRT shader effects for retro gaming Free online tool for retro gaming.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/emulators/shader-preset-preview.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;">
+                <div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);">
+                    <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                        <div class="tool-icon-large" style="margin: 0;">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="tool-title" style="font-size: var(--text-2xl);">Shader Preset Preview</h1>
+                            <p class="tool-description" style="font-size: var(--text-base); margin: 0;">Preview and compare CRT shader effects for retro gaming</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-notice" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 4px solid #f59e0b; padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+    <div style="display: flex; align-items: start; gap: var(--space-3);">
+        <svg class="icon" style="color: #f59e0b; flex-shrink: 0; margin-top: 2px;" viewBox="0 0 24 24">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <div>
+            <h4 style="margin: 0 0 var(--space-2) 0; font-weight: var(--font-semibold); color: #92400e;">Legal Notice</h4>
+            <p style="margin: 0; font-size: var(--text-sm); color: #78350f; line-height: 1.6;">
+                <strong>Emulators are legal software.</strong> You must own original games to create personal backups. 
+                This site does not host or distribute copyrighted content.
+            </p>
+        </div>
+    </div>
+</div>
+
+                
+                <div class="tool-interface">
+                    <div class="tool-section" style="margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Select Shader Preset</h3>
+                        <select id="shader-select" class="form-input">
+                            <option value="none">No Shader</option>
+                            <option value="crt-royale">CRT-Royale</option>
+                            <option value="crt-easymode">CRT-Easymode</option>
+                            <option value="crt-geom">CRT-Geom</option>
+                            <option value="scanlines">Scanlines</option>
+                            <option value="lcd">LCD Grid</option>
+                            <option value="pixellate">Pixellate</option>
+                        </select>
+                    </div>
+
+                    <div class="tool-section" style="margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Preview</h3>
+                        <div style="background: #000; padding: var(--space-4); border-radius: var(--radius-lg); text-align: center;">
+                            <canvas id="preview-canvas" width="640" height="480" style="max-width: 100%; height: auto; image-rendering: pixelated;"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="tool-section">
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Shader Parameters</h3>
+                        <div style="background: var(--bg-tertiary); padding: var(--space-6); border-radius: var(--radius-lg);">
+                            <div style="margin-bottom: var(--space-4);">
+                                <label class="form-label">Scanline Intensity</label>
+                                <input type="range" id="scanline-intensity" class="form-range" min="0" max="100" value="50">
+                                <div style="text-align: center; font-size: var(--text-sm); margin-top: var(--space-1);"><span id="scanline-val">50</span>%</div>
+                            </div>
+                            <div style="margin-bottom: var(--space-4);">
+                                <label class="form-label">Curvature</label>
+                                <input type="range" id="curvature" class="form-range" min="0" max="100" value="20">
+                                <div style="text-align: center; font-size: var(--text-sm); margin-top: var(--space-1);"><span id="curve-val">20</span>%</div>
+                            </div>
+                            <div>
+                                <label class="form-label">Brightness</label>
+                                <input type="range" id="brightness" class="form-range" min="50" max="150" value="100">
+                                <div style="text-align: center; font-size: var(--text-sm); margin-top: var(--space-1);"><span id="bright-val">100</span>%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    const canvas = document.getElementById('preview-canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    function drawPreview() {
+                        const shader = document.getElementById('shader-select').value;
+                        const scanlineIntensity = document.getElementById('scanline-intensity').value / 100;
+                        const brightness = document.getElementById('brightness').value / 100;
+
+                        // Clear canvas
+                        ctx.fillStyle = '#000';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                        // Draw sample retro game scene
+                        ctx.fillStyle = `rgb(${100*brightness}, ${150*brightness}, ${255*brightness})`;
+                        ctx.fillRect(50, 50, 540, 380);
+                        
+                        ctx.fillStyle = `rgb(${255*brightness}, ${200*brightness}, ${0})`;
+                        ctx.fillRect(100, 100, 100, 100);
+                        ctx.fillRect(440, 100, 100, 100);
+                        
+                        ctx.fillStyle = `rgb(${0}, ${255*brightness}, ${100*brightness})`;
+                        ctx.fillRect(270, 280, 100, 100);
+
+                        // Apply shader effects
+                        if (shader === 'scanlines' || shader.startsWith('crt')) {
+                            for (let y = 0; y < canvas.height; y += 2) {
+                                ctx.fillStyle = `rgba(0, 0, 0, ${scanlineIntensity * 0.5})`;
+                                ctx.fillRect(0, y, canvas.width, 1);
+                            }
+                        }
+
+                        if (shader === 'lcd') {
+                            for (let x = 0; x < canvas.width; x += 3) {
+                                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                                ctx.fillRect(x, 0, 1, canvas.height);
+                            }
+                        }
+
+                        if (shader === 'pixellate') {
+                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            ctx.imageSmoothingEnabled = false;
+                            ctx.drawImage(canvas, 0, 0, canvas.width/2, canvas.height/2);
+                            ctx.drawImage(canvas, 0, 0, canvas.width/2, canvas.height/2, 0, 0, canvas.width, canvas.height);
+                        }
+                    }
+
+                    document.getElementById('shader-select').addEventListener('change', drawPreview);
+                    document.getElementById('scanline-intensity').addEventListener('input', (e) => {
+                        document.getElementById('scanline-val').textContent = e.target.value;
+                        drawPreview();
+                    });
+                    document.getElementById('curvature').addEventListener('input', (e) => {
+                        document.getElementById('curve-val').textContent = e.target.value;
+                    });
+                    document.getElementById('brightness').addEventListener('input', (e) => {
+                        document.getElementById('bright-val').textContent = e.target.value;
+                        drawPreview();
+                    });
+
+                    drawPreview();
+                </script>
+        
+
+                <section class="info-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);">
+                    <h2 style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">About This Tool</h2>
+                    <p>This utility helps optimize your retro gaming emulation experience. All processing happens client-side in your browser.</p>
+                </section>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+    </button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderMobileMenu();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Emulators', url: '/tools/emulators/index.html' },
+            { name: 'Shader Preview' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'shader-preview');
+        Components.renderToolSchema('Shader Preview', 'emulators', 'Shader Preview - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.ResponsiveManager) ResponsiveManager.init();
+        });
+    </script>
+</body>
+</html>

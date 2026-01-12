@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI Object Detection - Free Image Detection Tool | OnlineToolFree</title><meta name="description"
+ content="Detect objects in images using AI. Recognizes 80+ classes of objects instantly in your browser. No upload to server."><link rel="canonical" href="https://onlinetoolfree.com/tools/ai/object-detection.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><!-- TensorFlow.js --><script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script><script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">AI Object Detection</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Automatically identify and label objects in your photos using the COCO-SSD Deep
+ Learning model.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="file-drop-area" id="drop-area"><input type="file" id="file-input" accept="image/*" hidden><div class="drop-icon"><svg class="icon icon-xl" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div><p class="drop-text">Drag & drop image here or <span>browse</span></p></div></div><div class="tool-section" style="display: none;" id="result-panel"><div class="output-header"><span class="tool-section-title">Detection Result</span><div class="output-actions"><span id="status-badge" class="badge">Processing...</span></div></div><div class="overflow-" style="background: var(--bg-tertiary); justify-content: center; display: flex; border-radius: var(--radius-lg); position: relative; display: none"><!-- Container for image and bounding boxes --><div id="image-container" style="display: inline-block; position: relative"><img id="image" style="max-width: 100%; display: block;"><canvas id="canvas" style="pointer-events: none; left: 0; top: 0; height: 100%; width: 100%; position: absolute"></canvas></div></div><div style="margin-top: var(--space-4);"><h4 style="margin-bottom: var(--space-2); font-weight: var(--font-semibold)">Detected Objects:</h4><ul id="detection-list" style="padding-left: var(--space-5); list-style-type: disc; color: var(--text-secondary); font-size: var(--text-sm)"></ul></div><div style="margin-top: var(--space-4); text-align: center"><button class="btn btn-secondary btn-sm" onclick="location.reload()">Detect New Image</button></div></div></div><div class="info-section" style="margin-top: var(--space-8);"><h3>Privacy Note</h3><p>All object detection happens locally in your browser using TensorFlow.js. Your photos are NEVER
+ uploaded to any server.</p></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Ai', url: '/tools/ai/index.html' },
+            { name: 'Object Detection' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'object-detection');
+        Components.renderToolSchema('Object Detection', 'ai', 'Object Detection - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const dropArea = document.getElementById('drop-area');
+ const fileInput = document.getElementById('file-input');
+ const resultPanel = document.getElementById('result-panel');
+ const image = document.getElementById('image');
+ const canvas = document.getElementById('canvas');
+ const statusBadge = document.getElementById('status-badge');
+ const detectionList = document.getElementById('detection-list');
+
+ let modelPromise = cocoSsd.load(); // Start loading model immediately
+
+ ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+ dropArea.addEventListener(eventName, preventDefaults, false);
+ });
+ function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+ dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+ dropArea.addEventListener('click', () => fileInput.click());
+ fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+ function handleFiles(files) {
+ if (files.length > 0) {
+ const file = files[0];
+ if (!file.type.match('image.*')) {
+ Toast.error('Please upload an image.');
+ return;
+ }
+ const reader = new FileReader();
+ reader.onload = function (e) {
+ image.src = e.target.result;
+ image.onload = () => {
+ resultPanel.classList.remove('hidden');
+ dropArea.classList.add('hidden');
+ detect();
+ };
+ };
+ reader.readAsDataURL(file);
+ }
+ }
+
+ async function detect() {
+ statusBadge.innerText = 'Loading Model...';
+ statusBadge.className = 'badge bg-yellow-100 text-yellow-800';
+
+ try {
+ const model = await modelPromise;
+
+ statusBadge.innerText = 'Detecting...';
+ const predictions = await model.detect(image);
+
+ statusBadge.innerText = 'Complete';
+ statusBadge.className = 'badge bg-green-100 text-green-800';
+
+ renderPredictions(predictions);
+ } catch (error) {
+ console.error(error);
+ statusBadge.innerText = 'Error';
+ statusBadge.className = 'badge bg-red-100 text-red-800';
+ Toast.error('Failed to run detection. Please try again.');
+ }
+ }
+
+ function renderPredictions(predictions) {
+ const ctx = canvas.getContext('2d');
+ canvas.width = image.width;
+ canvas.height = image.height;
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+ // Re-draw based on actual displayed size logic handled by CSS 'w-full h-full' on canvas?
+ // Actually, for accurate overlay, canvas dimensions must match image intrinsic dimensions.
+ // But CSS scales both image and canvas. This works if they are in a relative container.
+
+ ctx.font = '16px sans-serif';
+ ctx.textBaseline = 'top';
+
+ detectionList.innerHTML = '';
+
+ if (predictions.length === 0) {
+ detectionList.innerHTML = '<li>No objects detected.</li>';
+ return;
+ }
+
+ predictions.forEach(prediction => {
+ const x = prediction.bbox[0];
+ const y = prediction.bbox[1];
+ const width = prediction.bbox[2];
+ const height = prediction.bbox[3];
+
+ // Draw Box
+ ctx.strokeStyle = '#00FFFF';
+ ctx.lineWidth = 4;
+ ctx.strokeRect(x, y, width, height);
+
+ // Draw Label Background
+ ctx.fillStyle = '#00FFFF';
+ const textWidth = ctx.measureText(prediction.class).width;
+ ctx.fillRect(x, y, textWidth + 10, 25);
+
+ // Draw Label Text
+ ctx.fillStyle = '#000000';
+ ctx.fillText(prediction.class, x + 5, y + 5);
+
+ // Update List
+ const confidence = Math.round(prediction.score * 100);
+ detectionList.innerHTML += `<li><b>${prediction.class}</b> (${confidence}%)</li>`;
+ });
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

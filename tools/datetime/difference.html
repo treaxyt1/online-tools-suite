@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Date Difference Calculator - Free Time Tool | OnlineToolFree</title><meta name="description"
+ content="Calculate the difference between two dates in days, weeks, months, and years. Free online date calculator."><link rel="canonical" href="https://onlinetoolfree.com/tools/datetime/difference.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Date Difference Calculator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Calculate the duration between two dates in various units (days, weeks, months,
+ years).
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Select Dates</span></div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4)"><div class="form-group"><label>Start Date</label><input type="date" id="start-date" class="form-input"></div><div class="form-group"><label>End Date</label><input type="date" id="end-date" class="form-input"></div></div><button class="btn btn-primary" style="margin-top: var(--space-2); width: 100%" onclick="calculate()">Calculate Difference</button></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Results</span></div><div class="results-grid"><div class="result-item"><div style="color: var(--text-secondary); font-size: var(--text-sm)">Years</div><div style="font-size: var(--text-xl); font-weight: var(--font-semibold)" id="diff-years">-</div></div><div class="result-item"><div style="color: var(--text-secondary); font-size: var(--text-sm)">Months</div><div style="font-size: var(--text-xl); font-weight: var(--font-semibold)" id="diff-months">-</div></div><div class="result-item"><div style="color: var(--text-secondary); font-size: var(--text-sm)">Weeks</div><div style="font-size: var(--text-xl); font-weight: var(--font-semibold)" id="diff-weeks">-</div></div><div class="result-item"><div style="color: var(--text-secondary); font-size: var(--text-sm)">Days</div><div style="font-size: var(--text-xl); font-weight: var(--font-semibold)" id="diff-days">-</div></div><!-- Detailed total breakdowns --><div class="result-item col-span-full border-t" style="padding-top: var(--space-4); margin-top: var(--space-4)"><div style="margin-bottom: var(--space-1); color: var(--text-secondary); font-size: var(--text-sm)">Detailed Breakdown</div><div style="font-size: var(--text-lg)" id="diff-full">-</div></div><div class="result-item col-span-full"><label class="text-xs" style="color: var(--text-secondary);">Total Days</label><input type="text" id="total-days" class="form-input" style="text-align: right" readonly></div><div class="result-item col-span-full"><label class="text-xs" style="color: var(--text-secondary);">Total Hours</label><input type="text" id="total-hours" class="form-input" style="text-align: right" readonly></div></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Datetime', url: '/tools/datetime/index.html' },
+            { name: 'Difference' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'difference');
+        Components.renderToolSchema('Difference', 'datetime', 'Difference - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ // Set defaults
+ const start = document.getElementById('start-date');
+ const end = document.getElementById('end-date');
+
+ start.valueAsDate = new Date();
+ const tomorrow = new Date();
+ tomorrow.setDate(tomorrow.getDate() + 1);
+ end.valueAsDate = tomorrow;
+
+ function calculate() {
+ const d1 = new Date(start.value);
+ const d2 = new Date(end.value);
+
+ if (isNaN(d1) || isNaN(d2)) return;
+
+ // Absolute difference in milliseconds
+ const diffTime = Math.abs(d2 - d1);
+ const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+ const totalHours = totalDays * 24;
+
+ document.getElementById('total-days').value = totalDays.toLocaleString();
+ document.getElementById('total-hours').value = totalHours.toLocaleString();
+
+ // Weeks
+ const totalWeeks = (totalDays / 7).toFixed(1);
+
+ // Years, Months, Days calculation logic
+ // We want d1 to be the earlier date for calculation
+ let early = d1 < d2 ? d1 : d2;
+ let late = d1 < d2 ? d2 : d1;
+
+ let years = late.getFullYear() - early.getFullYear();
+ let months = late.getMonth() - early.getMonth();
+ let days = late.getDate() - early.getDate();
+
+ if (days < 0) {
+ months--;
+ // Days in previous month of late date
+ const prevMonth = new Date(late.getFullYear(), late.getMonth(), 0);
+ days += prevMonth.getDate();
+ }
+ if (months < 0) {
+ years--;
+ months += 12;
+ }
+
+ document.getElementById('diff-years').textContent = years;
+ document.getElementById('diff-months').textContent = (years * 12) + months; // This is total months, maybe stick to strict components?
+ // Actually, let's show strictly "X Years, Y Months" in the breakdown
+
+ document.getElementById('diff-weeks').textContent = totalWeeks;
+ document.getElementById('diff-days').textContent = totalDays; // Total days
+
+ let fullText = [];
+ if (years > 0) fullText.push(`${years} year${years !== 1 ? 's' : ''}`);
+ if (months > 0) fullText.push(`${months} month${months !== 1 ? 's' : ''}`);
+ if (days > 0) fullText.push(`${days} day${days !== 1 ? 's' : ''}`);
+
+ if (fullText.length === 0) fullText.push('0 days');
+
+ document.getElementById('diff-full').textContent = fullText.join(', ');
+ }
+
+ start.addEventListener('change', calculate);
+ end.addEventListener('change', calculate);
+
+ calculate();
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

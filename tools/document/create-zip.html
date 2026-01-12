@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zip File Creator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Create ZIP archives online. Compress files and folders instantly in your browser. No upload required, 100% private.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/document/create-zip.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+
+    <!-- JSZip Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">Zip File Creator</h1>
+                        <p class="tool-description">Compress multiple files into a single ZIP archive. Fast, secure, and
+                            runs entirely in your browser.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="file-drop-area" id="drop-area">
+                        <input type="file" id="file-input" multiple hidden>
+                        <div class="drop-icon">
+                            <svg class="icon icon-xl" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
+                        <p class="drop-text">Drag & drop files here or <span>browse files</span></p>
+                    </div>
+
+                    <div id="file-list-container" class="tool-section hidden">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+                            <h3>Files to Compress (<span id="file-count">0</span>)</h3>
+                            <button id="add-more-btn" class="btn btn-sm btn-ghost">Add More</button>
+                        </div>
+                        <ul id="file-list" style="list-style: none; padding: 0; margin-bottom: var(--space-4);"></ul>
+
+                        <div class="form-group">
+                            <label class="form-label">Archive Name</label>
+                            <input type="text" id="zip-name" class="form-input" value="archive.zip">
+                        </div>
+
+                        <button id="create-zip-btn" class="btn btn-primary w-full">Generate ZIP</button>
+                    </div>
+
+                    <div id="processing-panel" class="tool-section hidden" style="text-align: center;">
+                        <div class="spinner"></div>
+                        <p>Compressing files...</p>
+                    </div>
+
+                    <div id="result-panel" class="tool-section hidden" style="text-align: center;">
+                        <div class="output-header">
+                            <span class="tool-section-title">ZIP Archive Ready!</span>
+                        </div>
+                        <div class="tool-icon-large" style="margin: var(--space-4) auto;">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="12" y1="18" x2="12" y2="12"></line>
+                                <line x1="9" y1="15" x2="15" y2="15"></line>
+                            </svg>
+                        </div>
+                        <p id="zip-size"></p>
+                        <br>
+                        <button id="download-zip-btn" class="btn btn-primary btn-lg">Download ZIP</button>
+                        <br><br>
+                        <button onclick="location.reload()" class="btn btn-ghost btn-sm">Start Over</button>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h2>Features</h2>
+                    <ul>
+                        <li><strong>100% Private</strong>: Files never leave your device.</li>
+                        <li><strong>Fast Compression</strong>: Uses efficient client-side algorithms.</li>
+                        <li><strong>No Limits</strong>: Compress as many files as your browser memory allows.</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Document', url: '/tools/document/index.html' },
+                { name: 'Zip Creator' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'create-zip');
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Zip Logic
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('file-input');
+            const fileListContainer = document.getElementById('file-list-container');
+            const fileList = document.getElementById('file-list');
+            const fileCount = document.getElementById('file-count');
+            const addMoreBtn = document.getElementById('add-more-btn');
+            const createZipBtn = document.getElementById('create-zip-btn');
+            const processingPanel = document.getElementById('processing-panel');
+            const resultPanel = document.getElementById('result-panel');
+            const downloadBtn = document.getElementById('download-zip-btn');
+            const zipNameInput = document.getElementById('zip-name');
+            const zipSize = document.getElementById('zip-size');
+
+            let files = [];
+            let generatedZipBlob = null;
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); });
+            });
+            dropArea.addEventListener('drop', (e) => addFiles(e.dataTransfer.files));
+            dropArea.addEventListener('click', () => fileInput.click());
+            addMoreBtn.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => addFiles(e.target.files));
+
+            function addFiles(newFiles) {
+                if (newFiles.length > 0) {
+                    for (let file of newFiles) {
+                        files.push(file);
+                        const li = document.createElement('li');
+                        li.style.padding = '8px';
+                        li.style.borderBottom = '1px solid var(--border-color)';
+                        li.style.display = 'flex';
+                        li.style.justifyContent = 'space-between';
+                        li.innerHTML = `
+                            <span>${file.name}</span>
+                            <span style="color: var(--text-muted); font-size: 0.9em;">${formatBytes(file.size)}</span>
+                        `;
+                        fileList.appendChild(li);
+                    }
+                    fileCount.textContent = files.length;
+                    dropArea.classList.add('hidden');
+                    fileListContainer.classList.remove('hidden');
+                }
+            }
+
+            createZipBtn.addEventListener('click', () => {
+                if (files.length === 0) return;
+
+                fileListContainer.classList.add('hidden');
+                processingPanel.classList.remove('hidden');
+
+                const zip = new JSZip();
+                files.forEach(file => {
+                    zip.file(file.name, file);
+                });
+
+                zip.generateAsync({ type: "blob" }).then(function (content) {
+                    generatedZipBlob = content;
+                    zipSize.textContent = `Size: ${formatBytes(content.size)}`;
+
+                    processingPanel.classList.add('hidden');
+                    resultPanel.classList.remove('hidden');
+
+                    downloadBtn.onclick = () => {
+                        let filename = zipNameInput.value || 'archive.zip';
+                        if (!filename.endsWith('.zip')) filename += '.zip';
+
+                        const url = URL.createObjectURL(generatedZipBlob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = filename;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    };
+                });
+            });
+
+            function formatBytes(bytes, decimals = 2) {
+                if (!+bytes) return '0 Bytes';
+                const k = 1024;
+                const dm = decimals < 0 ? 0 : decimals;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+            }
+
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>

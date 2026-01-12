@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Base64 to Image Decoder - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Convert Base64 strings back to images online. Decode data URIs to PNG, JPG, or WebP. Fast, secure, and client-side decoding."><link rel="canonical" href="https://onlinetoolfree.com/tools/image/base64-to-image.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .image-container {
+ border: 1px solid var(--border-color);
+ border-radius: var(--radius-lg);
+ padding: 2rem;
+ text-align: center;
+ background: var(--bg-secondary);
+ margin-top: 2rem;
+ display: none;
+ }
+
+ #result-image {
+ max-width: 100%;
+ border-radius: var(--radius-md);
+ box-shadow: var(--shadow-md);
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><div class="layout-grid"><div class="layout-main"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Base64 to Image Decoder</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert a Base64 string or Data URI back into an image file and download it.
+ 
+ </p></div></div></div><div class="tool-interface"><div class="tool-section full-width"><div class="output-header"><span class="tool-section-title">Base64 Input</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="FormHelpers.clear('input')">Clear</button><button class="btn btn-ghost btn-sm" onclick="pasteExample()">Sample</button></div></div><textarea id="input" class="form-textarea code" style="height: 200px;"
+ placeholder="Paste your Base64 string here (e.g. data:image/png;base64,... or raw string)..."></textarea></div><div class="tool-actions" style="margin-top: var(--space-6)"><button id="convert-btn" class="btn btn-primary btn-lg">Convert to Image</button></div><div id="result-container" class="image-container"><img id="result-image" src="" alt="Decoded Image"><div style="margin-top: var(--space-4);"><button id="download-btn" class="btn btn-secondary">Download Image</button></div></div></div><section class="content-section"><h2>Usage Notes</h2><p>This tool automatically detects if your input has a Data URI prefix. If it doesn't, it assumes
+ it's a PNG image string by default. You can download the resulting image to your computer
+ instantly.</p></section></div><aside class="layout-sidebar"><div id="sidebar-container"></div></aside></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><footer class="footer" style="margin-top: var(--space-24)"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Image', url: '/tools/image/index.html' },
+            { name: 'Base64 To Image' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'base64-to-image');
+        Components.renderToolSchema('Base64 To Image', 'image', 'Base64 To Image - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const input = document.getElementById('input');
+ const convertBtn = document.getElementById('convert-btn');
+ const resultContainer = document.getElementById('result-container');
+ const resultImage = document.getElementById('result-image');
+ const downloadBtn = document.getElementById('download-btn');
+
+ function decodeBase64() {
+ let val = input.value.trim();
+ if (!val) {
+ resultContainer.style.display = 'none';
+ return;
+ }
+
+ // Check if it has a prefix, if not add a default PNG one
+ if (!val.startsWith('data:image/')) {
+ val = 'data:image/png;base64,' + val;
+ }
+
+ resultImage.src = val;
+ resultImage.onerror = () => {
+ Toast.error('Invalid Base64 string');
+ resultContainer.style.display = 'none';
+ };
+ resultImage.onload = () => {
+ resultContainer.style.display = 'block';
+ Toast.success('Image decoded!');
+ };
+ }
+
+ function downloadImage() {
+ const link = document.createElement('a');
+ link.href = resultImage.src;
+ link.download = 'decoded-image.png';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ }
+
+ function pasteExample() {
+ // A simple 1x1 transparent pixel in Base64
+ input.value = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
+ decodeBase64();
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderSidebar('sidebar-container', 'Image Tools');
+ Components.renderFooter();
+ convertBtn.addEventListener('click', decodeBase64);
+ input.addEventListener('input', debounce(decodeBase64, 1000));
+ downloadBtn.addEventListener('click', downloadImage);
+ });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

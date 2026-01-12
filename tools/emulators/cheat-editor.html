@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Code Editor - Emulator Utility | OnlineToolFree</title>
+    <meta name="description" content="Create and edit cheat codes for retro games Free online tool for retro gaming.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/emulators/cheat-code-editor.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;">
+                <div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);">
+                    <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                        <div class="tool-icon-large" style="margin: 0;">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="tool-title" style="font-size: var(--text-2xl);">Cheat Code Editor</h1>
+                            <p class="tool-description" style="font-size: var(--text-base); margin: 0;">Create and edit cheat codes for retro games</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-notice" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 4px solid #f59e0b; padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+    <div style="display: flex; align-items: start; gap: var(--space-3);">
+        <svg class="icon" style="color: #f59e0b; flex-shrink: 0; margin-top: 2px;" viewBox="0 0 24 24">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <div>
+            <h4 style="margin: 0 0 var(--space-2) 0; font-weight: var(--font-semibold); color: #92400e;">Legal Notice</h4>
+            <p style="margin: 0; font-size: var(--text-sm); color: #78350f; line-height: 1.6;">
+                <strong>Emulators are legal software.</strong> You must own original games to create personal backups. 
+                This site does not host or distribute copyrighted content.
+            </p>
+        </div>
+    </div>
+</div>
+
+                
+                <div class="tool-interface">
+                    <div class="tool-section" style="margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Cheat Code Format</h3>
+                        <select id="format-select" class="form-input">
+                            <option value="gameshark">GameShark</option>
+                            <option value="action-replay">Action Replay</option>
+                            <option value="raw">Raw (Hex)</option>
+                            <option value="codebreaker">CodeBreaker</option>
+                        </select>
+                    </div>
+
+                    <div class="tool-section" style="margin-bottom: var(--space-6);">
+                        <label class="tool-section-title">Cheat Code</label>
+                        <textarea id="cheat-input" class="form-input" rows="6" placeholder="Enter cheat code...&#10;Example:&#10;8009A123 FFFF&#10;8009A125 0001"></textarea>
+                    </div>
+
+                    <div class="tool-section" style="margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Cheat Details</h3>
+                        <div style="background: var(--bg-tertiary); padding: var(--space-6); border-radius: var(--radius-lg);">
+                            <div style="margin-bottom: var(--space-4);">
+                                <label class="form-label">Cheat Name</label>
+                                <input type="text" id="cheat-name" class="form-input" placeholder="e.g., Infinite Health">
+                            </div>
+                            <div>
+                                <label class="form-label">Description</label>
+                                <input type="text" id="cheat-desc" class="form-input" placeholder="e.g., Never lose health in battle">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-actions">
+                        <button id="validate-btn" class="btn btn-primary">Validate Code</button>
+                        <button id="save-btn" class="btn btn-secondary">Save Cheat</button>
+                    </div>
+
+                    <div class="tool-section output-section" id="validation-result" style="display: none; margin-top: var(--space-6);">
+                        <div class="output-header">
+                            <span class="tool-section-title">Validation Result</span>
+                        </div>
+                        <div id="validation-output" style="background: var(--bg-tertiary); padding: var(--space-4); border-radius: var(--radius-lg);"></div>
+                    </div>
+
+                    <div class="tool-section" id="saved-cheats" style="margin-top: var(--space-6); display: none;">
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Saved Cheats</h3>
+                        <div id="cheats-list" style="display: grid; gap: var(--space-3);"></div>
+                    </div>
+                </div>
+
+                <script>
+                    let savedCheats = [];
+
+                    document.getElementById('validate-btn').addEventListener('click', () => {
+                        const code = document.getElementById('cheat-input').value.trim();
+                        const format = document.getElementById('format-select').value;
+                        
+                        if (!code) {
+                            Toast.error('Please enter a cheat code');
+                            return;
+                        }
+
+                        const result = validateCheat(code, format);
+                        const output = document.getElementById('validation-output');
+                        
+                        if (result.valid) {
+                            output.innerHTML = `
+                                <div style="color: #22c55e;">
+                                    <strong>✓ Valid ${format} code</strong>
+                                    <div style="margin-top: var(--space-2); font-size: var(--text-sm);">
+                                        Lines: ${result.lines}<br>
+                                        Format: ${result.format}
+                                    </div>
+                                </div>
+                            `;
+                            Toast.success('Code is valid!');
+                        } else {
+                            output.innerHTML = `
+                                <div style="color: #ef4444;">
+                                    <strong>✗ Invalid code</strong>
+                                    <div style="margin-top: var(--space-2); font-size: var(--text-sm);">
+                                        ${result.error}
+                                    </div>
+                                </div>
+                            `;
+                            Toast.error('Code validation failed');
+                        }
+                        
+                        document.getElementById('validation-result').style.display = 'block';
+                    });
+
+                    function validateCheat(code, format) {
+                        const lines = code.split('\n').filter(l => l.trim());
+                        
+                        if (lines.length === 0) {
+                            return {valid: false, error: 'No code entered'};
+                        }
+
+                        // Simple hex validation
+                        const hexPattern = /^[0-9A-Fa-f\s]+$/;
+                        for (let line of lines) {
+                            if (!hexPattern.test(line.trim())) {
+                                return {valid: false, error: 'Invalid hex characters found'};
+                            }
+                        }
+
+                        return {
+                            valid: true,
+                            lines: lines.length,
+                            format: format.toUpperCase()
+                        };
+                    }
+
+                    document.getElementById('save-btn').addEventListener('click', () => {
+                        const code = document.getElementById('cheat-input').value.trim();
+                        const name = document.getElementById('cheat-name').value.trim();
+                        const desc = document.getElementById('cheat-desc').value.trim();
+                        const format = document.getElementById('format-select').value;
+
+                        if (!code || !name) {
+                            Toast.error('Please enter code and name');
+                            return;
+                        }
+
+                        savedCheats.push({code, name, desc, format, id: Date.now()});
+                        renderCheats();
+                        document.getElementById('saved-cheats').style.display = 'block';
+                        Toast.success('Cheat saved!');
+                    });
+
+                    function renderCheats() {
+                        const list = document.getElementById('cheats-list');
+                        list.innerHTML = savedCheats.map(cheat => `
+                            <div style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-2);">
+                                    <div>
+                                        <strong>${cheat.name}</strong>
+                                        <div style="font-size: var(--text-sm); color: var(--text-secondary);">${cheat.desc || 'No description'}</div>
+                                    </div>
+                                    <button class="btn btn-ghost btn-sm" onclick="deleteCheat(${cheat.id})">Delete</button>
+                                </div>
+                                <pre style="font-size: var(--text-xs); margin: 0; overflow-x: auto;">${cheat.code}</pre>
+                            </div>
+                        `).join('');
+                    }
+
+                    window.deleteCheat = (id) => {
+                        savedCheats = savedCheats.filter(c => c.id !== id);
+                        renderCheats();
+                        if (savedCheats.length === 0) {
+                            document.getElementById('saved-cheats').style.display = 'none';
+                        }
+                        Toast.success('Cheat deleted');
+                    };
+                </script>
+        
+
+                <section class="info-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);">
+                    <h2 style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">About This Tool</h2>
+                    <p>This utility helps optimize your retro gaming emulation experience. All processing happens client-side in your browser.</p>
+                </section>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+    </button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderMobileMenu();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Emulators', url: '/tools/emulators/index.html' },
+            { name: 'Cheat Editor' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'cheat-editor');
+        Components.renderToolSchema('Cheat Editor', 'emulators', 'Cheat Editor - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.ResponsiveManager) ResponsiveManager.init();
+        });
+    </script>
+</body>
+</html>

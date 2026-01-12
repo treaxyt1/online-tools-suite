@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer - Focus Timer Free | OnlineToolFree</title>
+    <meta name="description" content="Free Pomodoro timer. 25-minute focus sessions with breaks. Boost productivity. Track completed sessions.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/productivity/pomodoro-timer.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Pomodoro Timer</h1>
+                <p class="tool-description">25-minute focus sessions with automatic breaks.</p>
+                <div class="tool-interface">
+                    <div class="tool-section" style="text-align: center;">
+                        <div style="font-size: 5rem; font-weight: bold; color: var(--primary-600); margin: var(--space-6) 0;" id="timer">25:00</div>
+                        <div style="font-size: var(--text-lg); color: var(--text-secondary); margin-bottom: var(--space-4);" id="status">Focus Time</div>
+                        <div><button id="start" class="btn btn-primary">Start</button><button id="pause" class="btn btn-ghost" disabled>Pause</button><button id="reset" class="btn btn-ghost">Reset</button></div>
+                        <div style="margin-top: var(--space-6);"><strong>Sessions Completed:</strong> <span id="sessions">0</span></div>
+                    </div>
+                </div>
+                <script>
+                    let minutes = 25, seconds = 0, interval, sessions = 0, isBreak = false, isPaused = false;
+                    function updateDisplay() { document.getElementById('timer').textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`; }
+                    document.getElementById('start').addEventListener('click', () => {
+                        if(isPaused) { isPaused = false; } else { minutes = isBreak ? 5 : 25; seconds = 0; }
+                        interval = setInterval(() => {
+                            if(seconds === 0) { if(minutes === 0) { clearInterval(interval); if(!isBreak) { sessions++; document.getElementById('sessions').textContent = sessions; } isBreak = !isBreak; document.getElementById('status').textContent = isBreak ? 'Break Time' : 'Focus Time'; Toast.success(isBreak ? 'Break time!' : 'Focus time!'); document.getElementById('start').disabled = false; document.getElementById('pause').disabled = true; return; } minutes--; seconds = 59; } else { seconds--; } updateDisplay(); }, 1000);
+                        document.getElementById('start').disabled = true; document.getElementById('pause').disabled = false;
+                    });
+                    document.getElementById('pause').addEventListener('click', () => { clearInterval(interval); isPaused = true; document.getElementById('start').disabled = false; document.getElementById('pause').disabled = true; });
+                    document.getElementById('reset').addEventListener('click', () => { clearInterval(interval); minutes = 25; seconds = 0; isBreak = false; isPaused = false; updateDisplay(); document.getElementById('status').textContent = 'Focus Time'; document.getElementById('start').disabled = false; document.getElementById('pause').disabled = true; });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pomodoro Timer - Focus Timer Free", "description": "Free Pomodoro timer. 25-minute focus sessions with breaks. Boost productivity. Track completed sessions."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Productivity', url: '/tools/productivity/index.html' },
+            { name: 'Pomodoro Timer' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'pomodoro-timer');
+        Components.renderToolSchema('Pomodoro Timer', 'productivity', 'Pomodoro Timer - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

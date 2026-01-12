@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch & Timer - Free Online Stopwatch and Countdown | OnlineToolFree</title>
+    <meta name="description" content="Free stopwatch and countdown timer. Accurate to milliseconds. Perfect for workouts, cooking, and productivity. Works offline.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/time/stopwatch-timer.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Stopwatch & Timer</h1>
+                <p class="tool-description">Accurate stopwatch and countdown timer.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div style="text-align: center; margin-bottom: var(--space-4);">
+                            <button id="mode-stopwatch" class="btn btn-primary">Stopwatch</button>
+                            <button id="mode-timer" class="btn btn-ghost">Timer</button>
+                        </div>
+                        <div id="stopwatch-section">
+                            <div style="text-align: center; font-size: 4rem; font-weight: bold; color: var(--primary-600); margin: var(--space-6) 0;" id="stopwatch-display">00:00:00</div>
+                            <div style="text-align: center;">
+                                <button id="sw-start" class="btn btn-primary">Start</button>
+                                <button id="sw-stop" class="btn btn-ghost" disabled>Stop</button>
+                                <button id="sw-reset" class="btn btn-ghost">Reset</button>
+                            </div>
+                        </div>
+                        <div id="timer-section" style="display:none;">
+                            <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3); max-width: 400px; margin: 0 auto var(--space-4);">
+                                <div><label>Hours</label><input type="number" id="timer-h" class="form-input" value="0" min="0" max="23"></div>
+                                <div><label>Minutes</label><input type="number" id="timer-m" class="form-input" value="5" min="0" max="59"></div>
+                                <div><label>Seconds</label><input type="number" id="timer-s" class="form-input" value="0" min="0" max="59"></div>
+                            </div>
+                            <div style="text-align: center; font-size: 4rem; font-weight: bold; color: var(--primary-600); margin: var(--space-6) 0;" id="timer-display">05:00</div>
+                            <div style="text-align: center;">
+                                <button id="timer-start" class="btn btn-primary">Start</button>
+                                <button id="timer-stop" class="btn btn-ghost" disabled>Stop</button>
+                                <button id="timer-reset" class="btn btn-ghost">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    let swInterval, swTime = 0, timerInterval, timerTime = 0;
+                    
+                    document.getElementById('mode-stopwatch').addEventListener('click', () => {
+                        document.getElementById('stopwatch-section').style.display = 'block';
+                        document.getElementById('timer-section').style.display = 'none';
+                        document.getElementById('mode-stopwatch').className = 'btn btn-primary';
+                        document.getElementById('mode-timer').className = 'btn btn-ghost';
+                    });
+                    
+                    document.getElementById('mode-timer').addEventListener('click', () => {
+                        document.getElementById('stopwatch-section').style.display = 'none';
+                        document.getElementById('timer-section').style.display = 'block';
+                        document.getElementById('mode-stopwatch').className = 'btn btn-ghost';
+                        document.getElementById('mode-timer').className = 'btn btn-primary';
+                    });
+                    
+                    // Stopwatch
+                    document.getElementById('sw-start').addEventListener('click', () => {
+                        swInterval = setInterval(() => {
+                            swTime += 10;
+                            const h = Math.floor(swTime / 3600000).toString().padStart(2, '0');
+                            const m = Math.floor((swTime % 3600000) / 60000).toString().padStart(2, '0');
+                            const s = Math.floor((swTime % 60000) / 1000).toString().padStart(2, '0');
+                            document.getElementById('stopwatch-display').textContent = `${h}:${m}:${s}`;
+                        }, 10);
+                        document.getElementById('sw-start').disabled = true;
+                        document.getElementById('sw-stop').disabled = false;
+                    });
+                    
+                    document.getElementById('sw-stop').addEventListener('click', () => {
+                        clearInterval(swInterval);
+                        document.getElementById('sw-start').disabled = false;
+                        document.getElementById('sw-stop').disabled = true;
+                    });
+                    
+                    document.getElementById('sw-reset').addEventListener('click', () => {
+                        clearInterval(swInterval);
+                        swTime = 0;
+                        document.getElementById('stopwatch-display').textContent = '00:00:00';
+                        document.getElementById('sw-start').disabled = false;
+                        document.getElementById('sw-stop').disabled = true;
+                    });
+                    
+                    // Timer
+                    function updateTimerDisplay() {
+                        const h = parseInt(document.getElementById('timer-h').value) || 0;
+                        const m = parseInt(document.getElementById('timer-m').value) || 0;
+                        const s = parseInt(document.getElementById('timer-s').value) || 0;
+                        timerTime = (h * 3600 + m * 60 + s) * 1000;
+                        const mins = Math.floor(timerTime / 60000).toString().padStart(2, '0');
+                        const secs = Math.floor((timerTime % 60000) / 1000).toString().padStart(2, '0');
+                        document.getElementById('timer-display').textContent = `${mins}:${secs}`;
+                    }
+                    
+                    ['timer-h', 'timer-m', 'timer-s'].forEach(id => {
+                        document.getElementById(id).addEventListener('input', updateTimerDisplay);
+                    });
+                    
+                    document.getElementById('timer-start').addEventListener('click', () => {
+                        updateTimerDisplay();
+                        timerInterval = setInterval(() => {
+                            timerTime -= 1000;
+                            if(timerTime <= 0) {
+                                clearInterval(timerInterval);
+                                timerTime = 0;
+                                Toast.success('Timer finished!');
+                                document.getElementById('timer-start').disabled = false;
+                                document.getElementById('timer-stop').disabled = true;
+                            }
+                            const mins = Math.floor(timerTime / 60000).toString().padStart(2, '0');
+                            const secs = Math.floor((timerTime % 60000) / 1000).toString().padStart(2, '0');
+                            document.getElementById('timer-display').textContent = `${mins}:${secs}`;
+                        }, 1000);
+                        document.getElementById('timer-start').disabled = true;
+                        document.getElementById('timer-stop').disabled = false;
+                    });
+                    
+                    document.getElementById('timer-stop').addEventListener('click', () => {
+                        clearInterval(timerInterval);
+                        document.getElementById('timer-start').disabled = false;
+                        document.getElementById('timer-stop').disabled = true;
+                    });
+                    
+                    document.getElementById('timer-reset').addEventListener('click', () => {
+                        clearInterval(timerInterval);
+                        document.getElementById('timer-h').value = 0;
+                        document.getElementById('timer-m').value = 5;
+                        document.getElementById('timer-s').value = 0;
+                        updateTimerDisplay();
+                        document.getElementById('timer-start').disabled = false;
+                        document.getElementById('timer-stop').disabled = true;
+                    });
+                    
+                    updateTimerDisplay();
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Stopwatch & Timer - Free Online Stopwatch and Countdown", "description": "Free stopwatch and countdown timer. Accurate to milliseconds. Perfect for workouts, cooking, and productivity. Works offline."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Time', url: '/tools/time/index.html' },
+            { name: 'Stopwatch Timer' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'stopwatch-timer');
+        Components.renderToolSchema('Stopwatch Timer', 'time', 'Stopwatch Timer - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

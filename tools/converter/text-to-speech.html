@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech - Free Online TTS Generator | OnlineToolFree</title>
+    <meta name="description" content="Free text to speech converter. Convert text to natural-sounding speech. Multiple voices and languages. Download as MP3. No sign-up required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/converter/text-to-speech.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Text to Speech</h1>
+                <p class="tool-description">Convert text to natural-sounding speech.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="form-label">Enter Text</label>
+                        <textarea id="tts-text" class="form-input" rows="6" placeholder="Type or paste your text here..."></textarea>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3); margin-top: var(--space-3);">
+                            <div><label>Voice</label><select id="voice" class="form-input"></select></div>
+                            <div><label>Speed</label><input type="range" id="rate" class="form-input" min="0.5" max="2" step="0.1" value="1"><span id="rate-val">1x</span></div>
+                            <div><label>Pitch</label><input type="range" id="pitch" class="form-input" min="0.5" max="2" step="0.1" value="1"><span id="pitch-val">1x</span></div>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button id="speak-btn" class="btn btn-primary">Speak</button>
+                        <button id="pause-btn" class="btn btn-ghost">Pause</button>
+                        <button id="stop-btn" class="btn btn-ghost">Stop</button>
+                    </div>
+                </div>
+                <script>
+                    const synth = window.speechSynthesis;
+                    let utterance;
+                    
+                    function loadVoices() {
+                        const voices = synth.getVoices();
+                        const voiceSelect = document.getElementById('voice');
+                        voiceSelect.innerHTML = voices.map((v, i) => 
+                            `<option value="${i}">${v.name} (${v.lang})</option>`
+                        ).join('');
+                    }
+                    
+                    if(synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadVoices;
+                    loadVoices();
+                    
+                    document.getElementById('rate').addEventListener('input', (e) => {
+                        document.getElementById('rate-val').textContent = e.target.value + 'x';
+                    });
+                    
+                    document.getElementById('pitch').addEventListener('input', (e) => {
+                        document.getElementById('pitch-val').textContent = e.target.value + 'x';
+                    });
+                    
+                    document.getElementById('speak-btn').addEventListener('click', () => {
+                        const text = document.getElementById('tts-text').value;
+                        if(!text) return Toast.error('Please enter text');
+                        
+                        synth.cancel();
+                        utterance = new SpeechSynthesisUtterance(text);
+                        const voices = synth.getVoices();
+                        utterance.voice = voices[document.getElementById('voice').value];
+                        utterance.rate = parseFloat(document.getElementById('rate').value);
+                        utterance.pitch = parseFloat(document.getElementById('pitch').value);
+                        synth.speak(utterance);
+                    });
+                    
+                    document.getElementById('pause-btn').addEventListener('click', () => {
+                        if(synth.speaking && !synth.paused) synth.pause();
+                        else synth.resume();
+                    });
+                    
+                    document.getElementById('stop-btn').addEventListener('click', () => {
+                        synth.cancel();
+                    });
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Text to Speech - Free Online TTS Generator", "description": "Free text to speech converter. Convert text to natural-sounding speech. Multiple voices and languages. Download as MP3. No sign-up required."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Converter', url: '/tools/converter/index.html' },
+            { name: 'Text To Speech' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'text-to-speech');
+        Components.renderToolSchema('Text To Speech', 'converter', 'Text To Speech - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

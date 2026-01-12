@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PNG to JPG Converter - Free Image Tool | OnlineToolFree</title><meta name="description"
+ content="Convert PNG images to JPG/JPEG format online. Fast, free, and secure client-side conversion."><link rel="canonical" href="https://onlinetoolfree.com/tools/png/png-to-jpg.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">PNG to JPG Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert PNG images to JPG format instantly in your browser. No upload required.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="file-drop-area" id="drop-area"><input type="file" id="file-input" accept="image/png" hidden><div class="drop-icon"><svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg></div><p class="drop-text">Drag & drop PNG file here or <span>browse</span></p><p class="drop-hint">Max file size: 10MB</p></div><div class="tool-section" id="settings-panel" style="margin-top: var(--space-4); display: none"><div class="output-header"><span class="tool-section-title">Conversion Settings</span></div><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4)"><div class="form-group"><label>Quality (0.1 - 1.0)</label><input type="number" id="quality" class="form-input" min="0.1" max="1.0" step="0.1"
+ value="0.9"></div><div class="form-group"><label>Background Color</label><div style="gap: var(--space-2); display: flex"><input type="color" id="bg-color" class="form-input h-10 w-12" style="padding: var(--space-1)" value="#ffffff"><span class="self-center" style="color: var(--text-secondary); font-size: var(--text-sm)">For transparent parts</span></div></div></div><button class="btn btn-primary" style="width: 100%;" onclick="convert()">Convert to JPG</button></div></div><div class="tool-section" style="display: none;" id="result-panel"><div class="output-header"><span class="tool-section-title">Result</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="downloadImage()">Download</button></div></div><div style="padding: var(--space-4); background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; justify-content: center; display: flex"><img id="preview-image"
+ style="max-width: 100%; max-height: 400px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></div><div style="margin-top: var(--space-2)" id="file-info" style="color: var(--text-secondary); font-size: var(--text-sm); text-align: center">-</div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Png', url: '/tools/png/index.html' },
+            { name: 'Png To Jpg' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'png-to-jpg');
+        Components.renderToolSchema('Png To Jpg', 'png', 'Png To Jpg - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const dropArea = document.getElementById('drop-area');
+ const fileInput = document.getElementById('file-input');
+ const settingsPanel = document.getElementById('settings-panel');
+ const resultPanel = document.getElementById('result-panel');
+ const previewImage = document.getElementById('preview-image');
+
+ let currentFile = null;
+
+ // Drag & Drop
+ ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+ dropArea.addEventListener(eventName, preventDefaults, false);
+ });
+ function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+ ['dragenter', 'dragover'].forEach(eventName => {
+ dropArea.addEventListener(eventName, () => dropArea.classList.add('highlight'), false);
+ });
+ ['dragleave', 'drop'].forEach(eventName => {
+ dropArea.addEventListener(eventName, () => dropArea.classList.remove('highlight'), false);
+ });
+ dropArea.addEventListener('drop', handleDrop, false);
+ dropArea.addEventListener('click', () => fileInput.click());
+ fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+ function handleDrop(e) {
+ const dt = e.dataTransfer;
+ const files = dt.files;
+ handleFiles(files);
+ }
+
+ function handleFiles(files) {
+ if (files.length > 0) {
+ if (files[0].type === 'image/png') {
+ currentFile = files[0];
+ settingsPanel.classList.remove('hidden');
+ // Auto convert preview?
+ convert();
+ } else {
+ alert('Please upload a PNG file.');
+ }
+ }
+ }
+
+ function convert() {
+ if (!currentFile) return;
+
+ const quality = parseFloat(document.getElementById('quality').value);
+ const bgColor = document.getElementById('bg-color').value;
+ const reader = new FileReader();
+
+ reader.onload = function (e) {
+ const img = new Image();
+ img.onload = function () {
+ const canvas = document.createElement('canvas');
+ canvas.width = img.width;
+ canvas.height = img.height;
+ const ctx = canvas.getContext('2d');
+
+ // Fill background for transparency
+ ctx.fillStyle = bgColor;
+ ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+ // Draw image
+ ctx.drawImage(img, 0, 0);
+
+ // To JPG
+ const dataUrl = canvas.toDataURL('image/jpeg', quality);
+
+ previewImage.src = dataUrl;
+ resultPanel.classList.remove('hidden');
+
+ // Calc size approximate
+ const head = 'data:image/jpeg;base64,';
+ const size = Math.round((dataUrl.length - head.length) * 3 / 4);
+ document.getElementById('file-info').innerText = `Size: ${(size / 1024).toFixed(1)} KB`;
+ }
+ img.src = e.target.result;
+ }
+ reader.readAsDataURL(currentFile);
+ }
+
+ function downloadImage() {
+ if (!previewImage.src) return;
+ const a = document.createElement('a');
+ a.href = previewImage.src;
+ a.download = currentFile.name.replace('.png', '.jpg');
+ a.click();
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

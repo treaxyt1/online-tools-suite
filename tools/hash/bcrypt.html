@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Bcrypt Generator - Free Hash Tool | OnlineToolFree</title><meta name="description"
+ content="Generate secure Bcrypt hashes for passwords. Check if a password matches a hash. Free online bcrypt tool."><link rel="canonical" href="https://onlinetoolfree.com/tools/hash/bcrypt.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Bcrypt Generator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Generate secure Bcrypt hashes for passwords or verify them. All processing is done
+ client-side.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Generate Hash</span></div><div class="form-group"><label>Password</label><input type="text" id="input-pass" class="form-input" placeholder="Enter password to hash"></div><div class="form-group"><label>Salt Rounds (4-31) <span
+ id="rounds-val" style="color: var(--text-secondary); font-size: var(--text-sm)">(10)</span></label><input type="range" id="rounds" class="form-range" min="4" max="15" value="10"
+ oninput="document.getElementById('rounds-val').innerText = '(' + this.value + ')'"><div class="text-xs" style="margin-top: var(--space-1); color: var(--text-secondary)">Higher means slower/more secure. >12 may be slow in
+ browser.</div></div><button class="btn btn-primary" style="width: 100%;" onclick="generate()" id="gen-btn">Generate Hash</button><div class="form-group" style="margin-top: var(--space-4);"><label>Bcrypt Hash</label><div class="input-group"><input type="text" id="output-hash" class="form-input code" readonly><button class="btn btn-icon"
+ onclick="Clipboard.copy(document.getElementById('output-hash').value)"><svg
+ class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></div></div><div class="tool-section" style="margin-top: var(--space-6)"><div class="output-header"><span class="tool-section-title">Verify Hash</span></div><div class="form-group"><label>Password</label><input type="text" id="check-pass" class="form-input" placeholder="Password to check"></div><div class="form-group"><label>Hash</label><input type="text" id="check-hash" class="form-input" placeholder="$2a$10$..."></div><button class="btn btn-secondary" style="width: 100%;" onclick="verify()" id="ver-btn">Check Password</button><div id="check-result" style="margin-top: var(--space-4); font-weight: var(--font-semibold); text-align: center; display: none"></div></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Hash', url: '/tools/hash/index.html' },
+            { name: 'Bcrypt' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'bcrypt');
+        Components.renderToolSchema('Bcrypt', 'hash', 'Bcrypt - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const inputPass = document.getElementById('input-pass');
+ const outputHash = document.getElementById('output-hash');
+ const rounds = document.getElementById('rounds');
+ const genBtn = document.getElementById('gen-btn');
+
+ function generate() {
+ const pass = inputPass.value;
+ if (!pass) return;
+
+ genBtn.classList.add('loading');
+ genBtn.disabled = true;
+
+ // Use setTimeout to allow UI update
+ setTimeout(() => {
+ try {
+ const salt = dcodeIO.bcrypt.genSaltSync(parseInt(rounds.value));
+ const hash = dcodeIO.bcrypt.hashSync(pass, salt);
+ outputHash.value = hash;
+ } catch (e) {
+ console.error(e);
+ Toast.error("Error generating hash");
+ }
+ genBtn.classList.remove('loading');
+ genBtn.disabled = false;
+ }, 50);
+ }
+
+ const checkPass = document.getElementById('check-pass');
+ const checkHash = document.getElementById('check-hash');
+ const verBtn = document.getElementById('ver-btn');
+ const checkResult = document.getElementById('check-result');
+
+ function verify() {
+ const pass = checkPass.value;
+ const hash = checkHash.value;
+
+ if (!pass || !hash) return;
+
+ verBtn.classList.add('loading');
+ verBtn.disabled = true;
+ checkResult.classList.add('hidden');
+
+ setTimeout(() => {
+ try {
+ const match = dcodeIO.bcrypt.compareSync(pass, hash);
+ checkResult.classList.remove('hidden');
+ if (match) {
+ checkResult.innerText = "Match! The password is correct.";
+ checkResult.className = "mt-4 text-center font-bold text-success";
+ } else {
+ checkResult.innerText = "No Match. Password incorrect.";
+ checkResult.className = "mt-4 text-center font-bold text-error";
+ }
+ } catch (e) {
+ checkResult.classList.remove('hidden');
+ checkResult.innerText = "Invalid hash format.";
+ checkResult.className = "mt-4 text-center font-bold text-error";
+ }
+ verBtn.classList.remove('loading');
+ verBtn.disabled = false;
+ }, 50);
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

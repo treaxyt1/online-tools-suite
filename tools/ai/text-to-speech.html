@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI Text to Speech - Free Online TTS Tool | OnlineToolFree</title><meta name="description"
+ content="Convert text to natural-sounding speech online. Free AI voices in multiple languages. No sign-up required."><link rel="canonical" href="https://onlinetoolfree.com/tools/ai/text-to-speech.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">AI Text to Speech</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Turn written text into spoken words using your browser's built-in AI speech synthesis.
+ 
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div><div class="tool-section" style="margin-bottom: var(--space-4); padding: var(--space-4)"><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4)"><div class="form-group"><label>Voice / Language</label><select id="voice-select" class="form-select"></select></div><div class="form-group"><label>Rate (Speed): <span id="rate-val">1</span></label><input type="range" id="rate" class="form-range" min="0.5" max="2" value="1" step="0.1"
+ oninput="document.getElementById('rate-val').innerText = this.value"></div><div class="form-group"><label>Pitch: <span id="pitch-val">1</span></label><input type="range" id="pitch" class="form-range" min="0" max="2" value="1" step="0.1"
+ oninput="document.getElementById('pitch-val').innerText = this.value"></div></div></div><label class="form-label">Enter Text</label><textarea id="text-input" class="form-textarea" placeholder="Type here..."
+ rows="8">Hello! I can read this text for you.</textarea><div style="gap: var(--space-4); margin-top: var(--space-4); display: flex"><button id="speak-btn" class="btn btn-primary" onclick="speak()"><svg class="icon" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+ Speak
+ </button><button id="pause-btn" class="btn btn-secondary" style="display: none;" onclick="pause()">Pause</button><button id="resume-btn" class="btn btn-secondary" style="display: none;" onclick="resume()">Resume</button><button id="stop-btn" class="btn btn-secondary" onclick="stop()">Stop</button></div></div><div class="tool-section"><div class="info-section"><h3>About this Tool</h3><p>This tool transforms text into lifelike speech using the Web Speech API. The available voices
+ depend on your browser and operating system (e.g. Chrome usually offers Google US English,
+ etc.). It works entirely offline and protects your privacy.</p></div></div></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Ai', url: '/tools/ai/index.html' },
+            { name: 'Text To Speech' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'text-to-speech');
+        Components.renderToolSchema('Text To Speech', 'ai', 'Text To Speech - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const synth = window.speechSynthesis;
+ const voiceSelect = document.getElementById('voice-select');
+ const textInput = document.getElementById('text-input');
+ const speakBtn = document.getElementById('speak-btn');
+ const pauseBtn = document.getElementById('pause-btn');
+ const resumeBtn = document.getElementById('resume-btn');
+
+ let voices = [];
+
+ function populateVoices() {
+ voices = synth.getVoices().sort((a, b) => {
+ const aname = a.name.toUpperCase();
+ const bname = b.name.toUpperCase();
+ if (aname < bname) return -1;
+ else if (aname == bname) return 0;
+ else return +1;
+ });
+
+ voiceSelect.innerHTML = '';
+ voices.forEach((voice) => {
+ const option = document.createElement('option');
+ option.textContent = `${voice.name} (${voice.lang})`;
+ option.setAttribute('data-lang', voice.lang);
+ option.setAttribute('data-name', voice.name);
+ voiceSelect.appendChild(option);
+ });
+
+ // Try to select English by default
+ if (voices.length > 0) {
+ const defaultVoice = voices.find(v => v.lang.includes('en-US')) || voices[0];
+ voiceSelect.value = `${defaultVoice.name} (${defaultVoice.lang})`;
+ }
+ }
+
+ populateVoices();
+ if (speechSynthesis.onvoiceschanged !== undefined) {
+ speechSynthesis.onvoiceschanged = populateVoices;
+ }
+
+ function speak() {
+ if (synth.speaking) {
+ console.error('speechSynthesis.speaking');
+ return;
+ }
+
+ if (textInput.value !== '') {
+ const utterThis = new SpeechSynthesisUtterance(textInput.value);
+ const selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
+
+ for (let i = 0; i < voices.length; i++) {
+ if (voices[i].name === selectedOption) {
+ utterThis.voice = voices[i];
+ break;
+ }
+ }
+
+ utterThis.rate = document.getElementById('rate').value;
+ utterThis.pitch = document.getElementById('pitch').value;
+
+ utterThis.onstart = () => {
+ speakBtn.classList.add('hidden');
+ pauseBtn.classList.remove('hidden');
+ };
+
+ utterThis.onend = () => {
+ speakBtn.classList.remove('hidden');
+ pauseBtn.classList.add('hidden');
+ resumeBtn.classList.add('hidden');
+ };
+
+ synth.speak(utterThis);
+ }
+ }
+
+ function pause() {
+ if (synth.speaking && !synth.paused) {
+ synth.pause();
+ pauseBtn.classList.add('hidden');
+ resumeBtn.classList.remove('hidden');
+ }
+ }
+
+ function resume() {
+ if (synth.paused) {
+ synth.resume();
+ resumeBtn.classList.add('hidden');
+ pauseBtn.classList.remove('hidden');
+ }
+ }
+
+ function stop() {
+ synth.cancel();
+ speakBtn.classList.remove('hidden');
+ pauseBtn.classList.add('hidden');
+ resumeBtn.classList.add('hidden');
+ }
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

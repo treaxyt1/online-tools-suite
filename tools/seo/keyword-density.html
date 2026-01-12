@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Density Checker - SEO Analysis Tool | OnlineToolFree</title>
+    <meta name="description" content="Analyze your text for keyword frequency and density. Optimize your content for SEO by identifying overused or missing keywords.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/seo/keyword-density.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+            <h1 class="tool-title">Keyword Density Checker</h1>
+            <p class="tool-description">Check the frequency of keywords in your content.</p>
+            <div class="tool-interface">
+                <div class="tool-section">
+                    <textarea id="text-input" class="form-input" rows="8" placeholder="Paste your article or content here..."></textarea>
+                </div>
+                <div class="tool-actions">
+                    <button id="analyze-btn" class="btn btn-primary">Analyze Keywords</button>
+                </div>
+                <div id="results" class="tool-section output-section" style="display:none;">
+                    <h3>Top Keywords</h3>
+                    <div id="keyword-list" style="display: grid; gap: 10px; margin-top: 15px;"></div>
+                </div>
+            </div>
+            <script>
+                document.getElementById('analyze-btn').addEventListener('click', () => {
+                    const text = document.getElementById('text-input').value.toLowerCase();
+                    if(!text) return;
+                    
+                    const words = text.match(/\b\w+\b/g) || [];
+                    const total = words.length;
+                    const freq = {};
+                    
+                    const stopWords = new Set(['the','be','to','of','and','a','in','that','have','it','for','not','on','with','he','as','you','do','at']);
+                    
+                    words.forEach(w => {
+                        if(!stopWords.has(w) && w.length > 2) freq[w] = (freq[w] || 0) + 1;
+                    });
+                    
+                    const sorted = Object.entries(freq).sort((a,b) => b[1] - a[1]).slice(0, 10);
+                    
+                    const html = sorted.map(([word, count]) => `
+                        <div style="display: flex; justify-content: space-between; padding: 10px; background: var(--bg-tertiary); border-radius: 8px;">
+                            <span>${word}</span>
+                            <span>${count} (${((count/total)*100).toFixed(1)}%)</span>
+                        </div>
+                    `).join('');
+                    
+                    document.getElementById('keyword-list').innerHTML = html;
+                    document.getElementById('results').style.display = 'block';
+                });
+            </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Keyword Density Checker - SEO Analysis Tool", "description": "Analyze your text for keyword frequency and density. Optimize your content for SEO by identifying overused or missing keywords."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Seo', url: '/tools/seo/index.html' },
+            { name: 'Keyword Density' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'keyword-density');
+        Components.renderToolSchema('Keyword Density', 'seo', 'Keyword Density - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

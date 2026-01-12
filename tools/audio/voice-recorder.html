@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Recorder - Record Audio Online Free | OnlineToolFree</title>
+    <meta name="description"
+        content="Free online voice recorder. Record audio from your microphone directly in the browser. Save as MP3/WebM. Secure and private.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/audio/voice-recorder.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+    <style>
+        .visualizer {
+            width: 100%;
+            height: 100px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mic-btn-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .mic-btn {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            position: relative;
+        }
+
+        .mic-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .mic-btn.recording {
+            background: var(--error);
+        }
+
+        .pulse-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--error);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .mic-btn.recording~.pulse-ring {
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">Voice Recorder</h1>
+                        <p class="tool-description">Simple, standard online voice recorder.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface" style="text-align: center;">
+
+                    <div class="visualizer" id="visualizer">
+                        <canvas id="viz-canvas" width="600" height="100"></canvas>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-6);">
+                        <div class="mic-btn-container">
+                            <button id="mic-btn" class="mic-btn">
+                                <svg class="icon icon-xl" viewBox="0 0 24 24">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                                    <line x1="12" y1="19" x2="12" y2="23" />
+                                    <line x1="8" y1="23" x2="16" y2="23" />
+                                </svg>
+                            </button>
+                            <div class="pulse-ring"></div>
+                        </div>
+                        <div id="status-text" style="margin-top: var(--space-4); font-size: var(--text-lg);">Click mic
+                            to record</div>
+                        <div id="timer"
+                            style="font-family: monospace; font-size: 1.5rem; margin-top: var(--space-2); opacity: 0;">
+                            00:00</div>
+                    </div>
+
+                    <div id="recordings-list" class="tool-section hidden" style="text-align: left;">
+                        <h3>Recordings</h3>
+                        <div id="list-container" style="display: flex; flex-direction: column; gap: var(--space-3);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Audio', url: '/tools/audio/index.html' },
+                { name: 'Voice Recorder' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'voice-recorder');
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Audio Logic
+            const micBtn = document.getElementById('mic-btn');
+            const statusText = document.getElementById('status-text');
+            const timerEl = document.getElementById('timer');
+            const listContainer = document.getElementById('list-container');
+            const recordingsSection = document.getElementById('recordings-list');
+            const canvas = document.getElementById('viz-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let mediaRecorder;
+            let chunks = [];
+            let isRecording = false;
+            let timerInterval;
+            let startTime;
+            let audioContext;
+            let analyser;
+            let dataArray;
+            let animationId;
+
+            micBtn.addEventListener('click', async () => {
+                if (!isRecording) {
+                    startRecording();
+                } else {
+                    stopRecording();
+                }
+            });
+
+            async function startRecording() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+                    mediaRecorder = new MediaRecorder(stream);
+                    chunks = [];
+
+                    mediaRecorder.ondataavailable = e => chunks.push(e.data);
+
+                    mediaRecorder.onstop = () => {
+                        const blob = new Blob(chunks, { type: 'audio/webm' }); // WebM is standard for browser recording
+                        const url = URL.createObjectURL(blob);
+                        addRecording(url, blob);
+
+                        stream.getTracks().forEach(track => track.stop());
+                        cancelAnimationFrame(animationId);
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    micBtn.classList.add('recording');
+                    statusText.textContent = 'Recording...';
+                    timerEl.style.opacity = '1';
+
+                    startTime = Date.now();
+                    timerInterval = setInterval(updateTimer, 1000);
+
+                    // Visualizer
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const source = audioContext.createMediaStreamSource(stream);
+                    analyser = audioContext.createAnalyser();
+                    source.connect(analyser);
+                    analyser.fftSize = 256;
+                    const bufferLength = analyser.frequencyBinCount;
+                    dataArray = new Uint8Array(bufferLength);
+                    drawVisualizer();
+
+                } catch (err) {
+                    console.error(err);
+                    Toast.error('Could not access microphone.');
+                }
+            }
+
+            function stopRecording() {
+                mediaRecorder.stop();
+                isRecording = false;
+                micBtn.classList.remove('recording');
+                statusText.textContent = 'Click mic to record';
+                timerEl.style.opacity = '0';
+                clearInterval(timerInterval);
+                timerEl.textContent = '00:00';
+            }
+
+            function updateTimer() {
+                const diff = Math.floor((Date.now() - startTime) / 1000);
+                const m = Math.floor(diff / 60).toString().padStart(2, '0');
+                const s = (diff % 60).toString().padStart(2, '0');
+                timerEl.textContent = \`\${m}:\${s}\`;
+            }
+
+            function drawVisualizer() {
+                animationId = requestAnimationFrame(drawVisualizer);
+                analyser.getByteFrequencyData(dataArray);
+                
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--bg-tertiary');
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                const barWidth = (canvas.width / dataArray.length) * 2.5;
+                let barHeight;
+                let x = 0;
+                
+                for(let i = 0; i < dataArray.length; i++) {
+                    barHeight = dataArray[i] / 2;
+                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                    x += barWidth + 1;
+                }
+            }
+
+            function addRecording(url, blob) {
+                recordingsSection.classList.remove('hidden');
+                
+                const item = document.createElement('div');
+                item.className = 'tool-section';
+                item.style.padding = 'var(--space-3)';
+                
+                const date = new Date().toLocaleTimeString();
+                
+                item.innerHTML = \`
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                        <span style="font-weight: bold;">Recording \${date}</span>
+                        <div style="display: flex; gap: 10px;">
+                            <audio controls src="\${url}" style="height: 40px;"></audio>
+                            <a href="\${url}" download="recording_\${Date.now()}.webm" class="btn btn-sm btn-primary">Download</a>
+                        </div>
+                    </div>
+                \`;
+                
+                listContainer.prepend(item);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Frequency Counter | OnlineToolFree</title>
+    <meta name="description" content="Count frequency of every word in your text.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/writing/word-frequency.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+            <h1 class="tool-title">Word Frequency Counter</h1>
+            <div class="tool-interface">
+                <textarea id="wf-input" class="form-input" rows="8" placeholder="Paste text..."></textarea>
+                <div id="wf-res" class="tool-section output-section"></div>
+            </div>
+            <script>
+                document.getElementById('wf-input').addEventListener('input', function() {
+                    const text = this.value.toLowerCase().match(/\b\w+\b/g) || [];
+                    const freq = {};
+                    text.forEach(w => freq[w] = (freq[w] || 0) + 1);
+                    const sorted = Object.entries(freq).sort((a,b) => b[1] - a[1]).slice(0, 20);
+                    document.getElementById('wf-res').innerHTML = sorted.map(([w,c]) => `
+                        <div style="display:inline-block; margin:5px; padding:5px 10px; background:var(--bg-tertiary); border-radius:5px;">${w}: ${c}</div>
+                    `).join('');
+                });
+            </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Word Frequency Counter", "description": "Count frequency of every word in your text."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Writing', url: '/tools/writing/index.html' },
+            { name: 'Word Frequency' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'word-frequency');
+        Components.renderToolSchema('Word Frequency', 'writing', 'Word Frequency - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

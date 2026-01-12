@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Color Palette Generator - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Generate beautiful color palettes for your designs. Free online color palette generator."><link rel="canonical" href="https://onlinetoolfree.com/tools/color/palette.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script><style>
+ .palette {
+ display: grid;
+ grid-template-columns: repeat(5, 1fr);
+ gap: 0;
+ border-radius: var(--radius-lg);
+ overflow: hidden;
+ box-shadow: var(--shadow-lg);
+ }
+
+ .palette-color {
+ height: 200px;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ padding: 1rem;
+ cursor: pointer;
+ transition: transform 0.2s;
+ }
+
+ .palette-color:hover {
+ transform: scale(1.02);
+ z-index: 1;
+ }
+
+ .palette-hex {
+ font-family: monospace;
+ font-weight: 600;
+ font-size: 0.875rem;
+ padding: 0.5rem;
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: var(--radius-sm);
+ text-align: center;
+ }
+
+ .palette-types {
+ display: flex;
+ gap: 0.5rem;
+ flex-wrap: wrap;
+ margin-bottom: 1rem;
+ }
+ </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Color Palette Generator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Generate beautiful color palettes. Click a color to copy its HEX code.
+ </p></div></div></div><div class="tool-interface"><div class="palette-types"><button class="btn btn-primary btn-sm" onclick="generate('random')">Random</button><button class="btn btn-ghost btn-sm" onclick="generate('analogous')">Analogous</button><button class="btn btn-ghost btn-sm" onclick="generate('complementary')">Complementary</button><button class="btn btn-ghost btn-sm" onclick="generate('triadic')">Triadic</button><button class="btn btn-ghost btn-sm" onclick="generate('monochromatic')">Monochromatic</button></div><div class="palette" id="palette"></div><div class="tool-actions" style="margin-top: var(--space-6)"><button id="generate-btn" class="btn btn-primary btn-lg" onclick="generate('random')">Generate New
+ Palette</button><button class="btn btn-secondary btn-lg" onclick="exportPalette()">Export CSS</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Color', url: '/tools/color/index.html' },
+            { name: 'Palette' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'palette');
+        Components.renderToolSchema('Palette', 'color', 'Palette - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const palette = document.getElementById('palette');
+ let currentColors = [];
+
+ function hslToHex(h, s, l) {
+ s /= 100;
+ l /= 100;
+ const a = s * Math.min(l, 1 - l);
+ const f = n => {
+ const k = (n + h / 30) % 12;
+ const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+ return Math.round(255 * color).toString(16).padStart(2, '0');
+ };
+ return `#${f(0)}${f(8)}${f(4)}`;
+ }
+
+ function generate(type) {
+ currentColors = [];
+ const baseHue = Math.random() * 360;
+
+ switch (type) {
+ case 'analogous':
+ for (let i = 0; i < 5; i++) {
+ currentColors.push(hslToHex((baseHue + i * 30) % 360, 70, 50 + i * 5));
+ }
+ break;
+ case 'complementary':
+ currentColors.push(hslToHex(baseHue, 70, 40));
+ currentColors.push(hslToHex(baseHue, 60, 55));
+ currentColors.push(hslToHex(baseHue, 50, 70));
+ currentColors.push(hslToHex((baseHue + 180) % 360, 60, 55));
+ currentColors.push(hslToHex((baseHue + 180) % 360, 70, 40));
+ break;
+ case 'triadic':
+ currentColors.push(hslToHex(baseHue, 70, 50));
+ currentColors.push(hslToHex(baseHue, 50, 65));
+ currentColors.push(hslToHex((baseHue + 120) % 360, 70, 50));
+ currentColors.push(hslToHex((baseHue + 240) % 360, 70, 50));
+ currentColors.push(hslToHex((baseHue + 240) % 360, 50, 65));
+ break;
+ case 'monochromatic':
+ for (let i = 0; i < 5; i++) {
+ currentColors.push(hslToHex(baseHue, 60 + i * 5, 25 + i * 15));
+ }
+ break;
+ default: // random
+ for (let i = 0; i < 5; i++) {
+ currentColors.push(hslToHex(Math.random() * 360, 60 + Math.random() * 30, 40 + Math.random() * 30));
+ }
+ }
+
+ renderPalette();
+ }
+
+ function renderPalette() {
+ palette.innerHTML = currentColors.map(color => `
+ <div class="palette-color" style="background: ${color}" onclick="copyColor('${color}')"><div class="palette-hex">${color.toUpperCase()}</div></div>
+ `).join('');
+ }
+
+ function copyColor(color) {
+ Clipboard.copy(color);
+ }
+
+ function exportPalette() {
+ const css = `:root {
+ --color-1: ${currentColors[0]};
+ --color-2: ${currentColors[1]};
+ --color-3: ${currentColors[2]};
+ --color-4: ${currentColors[3]};
+ --color-5: ${currentColors[4]};
+}`;
+ Clipboard.copy(css);
+ Toast.success('CSS variables copied!');
+ }
+
+ generate('random');
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

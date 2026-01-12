@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel Spinner - Random Decision Maker Free | OnlineToolFree</title>
+    <meta name="description" content="Free wheel spinner. Make random decisions with a spinning wheel. Add custom options. Perfect for games and choices.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/random/wheel-spinner.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Wheel Spinner</h1>
+                <p class="tool-description">Spin the wheel to make random decisions.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label>Add Options (one per line)</label>
+                        <textarea id="options" class="form-input" rows="5" placeholder="Option 1\nOption 2\nOption 3">Pizza\nBurger\nSushi\nPasta\nSalad</textarea>
+                        <button id="spin" class="btn btn-primary" style="margin-top: var(--space-2);">Spin the Wheel!</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none; text-align: center;">
+                        <div style="font-size: 3rem; font-weight: bold; color: var(--primary-600); padding: var(--space-6); background: var(--bg-tertiary); border-radius: var(--radius-lg);" id="winner"></div>
+                    </div>
+                </div>
+                <script>
+                    document.getElementById('spin').addEventListener('click', () => {
+                        const options = document.getElementById('options').value.split('\n').filter(o => o.trim());
+                        if(options.length < 2) return Toast.error('Add at least 2 options');
+                        let count = 0;
+                        const interval = setInterval(() => {
+                            document.getElementById('winner').textContent = options[Math.floor(Math.random() * options.length)];
+                            document.getElementById('result').style.display = 'block';
+                            count++;
+                            if(count > 20) {
+                                clearInterval(interval);
+                                Toast.success('Result selected!');
+                            }
+                        }, 100);
+                    });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Wheel Spinner - Random Decision Maker Free", "description": "Free wheel spinner. Make random decisions with a spinning wheel. Add custom options. Perfect for games and choices."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Random', url: '/tools/random/index.html' },
+            { name: 'Wheel Spinner' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'wheel-spinner');
+        Components.renderToolSchema('Wheel Spinner', 'random', 'Wheel Spinner - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

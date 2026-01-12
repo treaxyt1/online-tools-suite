@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Number Validator - Free Online Validator</title>
+    <meta name="description" content="Free phone number validator. Validate phone numbers from any country. Check format and validity. International phone validation.">
+    <meta name="keywords" content="phone validator, validate phone number, phone number validation, international phone">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/validator/phone-validator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <h1 class="tool-title">Phone Number Validator</h1>
+                <p class="tool-description">Free phone number validator. Validate phone numbers from any country. Check format and validity. International phone validation.</p>
+                
+                <div class="tool-stats" style="padding: var(--space-3); background: var(--primary-50); border-radius: var(--radius-md); margin: var(--space-4) 0; display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                    <span>✅ 100% Free</span>
+                    <span>🔒 Client-Side Only</span>
+                    <span>⚡ Instant Validation</span>
+                    <span>📱 Mobile-Friendly</span>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label for="input">Enter Phone Number(s)</label>
+                        <textarea id="input" class="form-input" rows="6" placeholder="+1-555-123-4567
+(555) 123-4567
+555-123-4567" style="font-family: monospace;"></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button id="validateBtn" class="btn btn-primary">Validate</button>
+                        <button id="clearBtn" class="btn btn-ghost">Clear</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none;">
+                        <div id="validationResult"></div>
+                    </div>
+                </div>
+
+                <div class="tool-content" style="margin-top: var(--space-8); padding: var(--space-6);">
+                    
+                    <h2>About Phone Number Validator</h2>
+                    <p>Our Phone Number Validator helps you verify phone numbers from any country. With support for international formats and 30,000+ monthly searches, it's the go-to tool for validating phone numbers quickly and accurately.</p>
+                    
+                    <h3>Supported Formats</h3>
+                    <ul>
+                        <li>International: +1-555-123-4567</li>
+                        <li>US Format: (555) 123-4567</li>
+                        <li>Simple: 555-123-4567</li>
+                        <li>Dots: 555.123.4567</li>
+                        <li>Spaces: 555 123 4567</li>
+                    </ul>
+
+                    <h3>Validation Rules</h3>
+                    <p>Phone numbers must be between 10-15 digits. Country codes (starting with +) are optional but recommended for international numbers.</p>
+                </div>
+
+                <div class="faq-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-item">
+                        <h3>What phone formats are supported?</h3>
+                        <p>We support all common phone number formats including international (+country code), US format with parentheses, and simple dash-separated formats.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can this validate international numbers?</h3>
+                        <p>Yes! Our validator works with phone numbers from any country. Use the international format with + and country code for best results.</p>
+                    </div>
+                </div>
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+    <footer class="footer"></footer>
+    
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.Components) {
+                Components.renderHeader();
+                Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Validator', url: '/tools/validator/index.html' },
+            { name: 'Phone Validator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'phone-validator');
+        Components.renderToolSchema('Phone Validator', 'validator', 'Phone Validator - Free online tool for your daily digital tasks.');
+
+                Components.renderFooter();
+            }
+            if(window.ThemeManager) ThemeManager.init();
+        });
+
+        
+        function validateInput(input) {
+            const phones = input.split('\n').filter(p => p.trim());
+            
+            return phones.map(phone => {
+                const trimmed = phone.trim();
+                const cleaned = trimmed.replace(/[^0-9+]/g, '');
+                
+                let valid = false;
+                let message = '';
+                
+                if(cleaned.length >= 10 && cleaned.length <= 15) {
+                    valid = true;
+                    const hasCountryCode = cleaned.startsWith('+');
+                    message = `Valid phone format. ${hasCountryCode ? 'International' : 'Domestic'} number. Digits: ${cleaned.length}`;
+                } else if(cleaned.length < 10) {
+                    message = 'Too short. Phone numbers need at least 10 digits';
+                } else {
+                    message = 'Too long. Phone numbers should not exceed 15 digits';
+                }
+                
+                return { value: trimmed, valid, message };
+            });
+        }
+
+        document.getElementById('validateBtn').addEventListener('click', () => {
+            const input = document.getElementById('input').value.trim();
+            if(!input) {
+                if(window.Toast) Toast.error('Please enter phone number(s) to validate');
+                return;
+            }
+            
+            const results = validateInput(input);
+            displayResults(results);
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('input').value = '';
+            document.getElementById('result').style.display = 'none';
+        });
+
+        function displayResults(results) {
+            const resultDiv = document.getElementById('validationResult');
+            const resultSection = document.getElementById('result');
+            
+            let html = '<div style="display: flex; flex-direction: column; gap: var(--space-3);">';
+            
+            results.forEach(item => {
+                const icon = item.valid ? '✅' : '❌';
+                const color = item.valid ? 'var(--success-600)' : 'var(--error-600)';
+                const bgColor = item.valid ? 'var(--success-50)' : 'var(--error-50)';
+                
+                html += `<div style="padding: var(--space-3); background: ${bgColor}; border-left: 4px solid ${color}; border-radius: var(--radius-md);">
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                        <span style="font-size: 1.5rem;">${icon}</span>
+                        <div style="flex: 1;">
+                            <strong>${item.value}</strong>
+                            <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: var(--text-sm);">${item.message}</p>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            
+            html += '</div>';
+            resultDiv.innerHTML = html;
+            resultSection.style.display = 'block';
+            
+            if(window.Toast) {
+                const validCount = results.filter(r => r.valid).length;
+                const totalCount = results.length;
+                Toast.success(`Validated ${totalCount} item(s): ${validCount} valid, ${totalCount - validCount} invalid`);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Random IP Generator - Free Online Tool | OnlineToolFree</title><meta name="description" content="Generate random IPv4 and IPv6 addresses."><link rel="canonical" href="https://onlinetoolfree.com/tools/network/random-ip.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Random IP Generator</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Generate random IPv4 and IPv6 addresses for testing.
+ </p></div></div></div><div class="tool-interface"><div class="tool-options"><div class="form-group" style="display: inline"><label for="count">Count:</label><input type="number" id="count" class="form-input" value="10" min="1" max="100" style="width:60px"></div><div class="form-group" style="display: inline"><label for="type">Type:</label><select id="type" class="form-select"><option value="ipv4">IPv4</option><option value="ipv6">IPv6</option></select></div></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">Generated IPs</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy
+ All</button></div></div><textarea id="output" class="form-textarea code-textarea" readonly rows="12"></textarea></div><div class="tool-actions"><button id="generate-btn" class="btn btn-primary btn-lg">Generate IPs</button></div></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Network', url: '/tools/network/index.html' },
+            { name: 'Random Ip' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'random-ip');
+        Components.renderToolSchema('Random Ip', 'network', 'Random Ip - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const output = document.getElementById('output');
+
+ function generateIPv4() {
+ return Array.from({ length: 4 }, () => Math.floor(Math.random() * 256)).join('.');
+ }
+
+ function generateIPv6() {
+ return Array.from({ length: 8 }, () => Math.floor(Math.random() * 65536).toString(16)).join(':');
+ }
+
+ function generate() {
+ const count = Math.min(100, Math.max(1, parseInt(document.getElementById('count').value) || 10));
+ const type = document.getElementById('type').value;
+ const results = [];
+ for (let i = 0; i < count; i++) {
+ results.push(type === 'ipv4' ? generateIPv4() : generateIPv6());
+ }
+ output.value = results.join('\n');
+ }
+
+ generate();
+ document.getElementById('generate-btn').addEventListener('click', () => { generate(); Toast.success('Generated!'); });
+ document.getElementById('type').addEventListener('change', generate);
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

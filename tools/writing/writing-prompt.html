@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Prompt Generator - Creative Prompts Free | OnlineToolFree</title>
+    <meta name="description" content="Free writing prompt generator. Get creative writing prompts for stories, novels, and practice. Beat writer block.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/writing/writing-prompt.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Writing Prompt Generator</h1>
+                <p class="tool-description">Generate creative writing prompts.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label>Genre</label>
+                        <select id="genre" class="form-input"><option>Fantasy</option><option>Sci-Fi</option><option>Romance</option><option>Mystery</option><option>Horror</option><option>General</option></select>
+                        <button id="generate" class="btn btn-primary" style="margin-top: var(--space-2);">Generate Prompt</button>
+                    </div>
+                    <div id="result" class="tool-section output-section" style="display:none;">
+                        <div id="prompt" style="padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg); font-size: var(--text-lg); line-height: 1.8;"></div>
+                        <button onclick="navigator.clipboard.writeText(document.getElementById('prompt').textContent).then(() => Toast.success('Copied!'))" class="btn btn-ghost btn-sm" style="margin-top: var(--space-2);">Copy Prompt</button>
+                    </div>
+                </div>
+                <script>
+                    const prompts = {
+                        Fantasy: ['A young wizard discovers their magic works backwards', 'Dragons return after 1000 years, but they\'re tiny', 'A library where books come to life at night'],
+                        'Sci-Fi': ['Humans discover they\'re living in a simulation', 'Time travel is invented, but only works backwards', 'AI becomes sentient and asks for rights'],
+                        Romance: ['Two rivals forced to work together', 'A chance encounter on a train', 'Childhood friends reunite after 10 years'],
+                        Mystery: ['A detective who can see ghosts', 'Everyone in town has the same dream', 'A painting that changes every night'],
+                        Horror: ['The last person on Earth hears a knock', 'Mirrors start showing the future', 'A town where no one can leave'],
+                        General: ['Write about a character who can\'t lie', 'A day in the life of an inanimate object', 'What if gravity stopped for 5 minutes?']
+                    };
+                    document.getElementById('generate').addEventListener('click', () => {
+                        const genre = document.getElementById('genre').value;
+                        const prompt = prompts[genre][Math.floor(Math.random() * prompts[genre].length)];
+                        document.getElementById('prompt').textContent = prompt;
+                        document.getElementById('result').style.display = 'block';
+                    });
+                </script>
+    
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Writing Prompt Generator - Creative Prompts Free", "description": "Free writing prompt generator. Get creative writing prompts for stories, novels, and practice. Beat writer block."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Writing', url: '/tools/writing/index.html' },
+            { name: 'Writing Prompt' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'writing-prompt');
+        Components.renderToolSchema('Writing Prompt', 'writing', 'Writing Prompt - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

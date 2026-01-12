@@ -1,0 +1,44 @@
+{
+  "website": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "OnlineToolFree",
+    "url": "https://onlinetoolfree.com",
+    "description": "Free online tools for developers, designers, and content creators. 200+ calculators, converters, image tools, and utilities.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://onlinetoolfree.com/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  },
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "OnlineToolFree",
+    "url": "https://onlinetoolfree.com",
+    "logo": "https://onlinetoolfree.com/logo.png",
+    "description": "Providing free, privacy-focused online tools for everyone",
+    "sameAs": []
+  },
+  "software_template": {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "{tool_name}",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "operatingSystem": "Web Browser",
+    "description": "{tool_description}"
+  },
+  "faq_template": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": []
+  }
+}

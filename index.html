@@ -1,0 +1,761 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <title>Free Online Tools - 400+ Calculators, Converters & Developer Tools | OnlineToolFree</title>
+    <meta name="description"
+        content="OnlineToolFree offers 400+ free online tools including calculators, converters, PDF tools, image editors, developer tools, and SEO utilities. 100% free, no signup required, fast and secure.">
+    <meta name="keywords"
+        content="free online tools, calculator, converter, PDF tools, image tools, developer tools, SEO tools, JSON formatter, base64 encoder, QR code generator, word counter">
+    <meta name="author" content="OnlineToolFree">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://onlinetoolfree.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinetoolfree.com/">
+    <meta property="og:title" content="Free Online Tools - 400+ Calculators, Converters & Developer Tools">
+    <meta property="og:description"
+        content="OnlineToolFree offers 400+ free online tools. Calculators, converters, PDF tools, image editors, developer tools, and more. 100% free, no signup required.">
+    <meta property="og:site_name" content="OnlineToolFree">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@onlinetoolfree">
+    <meta name="twitter:title" content="Free Online Tools - 400+ Calculators, Converters & Developer Tools">
+    <meta name="twitter:description"
+        content="OnlineToolFree offers 400+ free online tools. Calculators, converters, PDF tools, and more. 100% free!">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://onlinetoolfree.com/#website",
+                "url": "https://onlinetoolfree.com",
+                "name": "OnlineToolFree",
+                "description": "Free online tools for everyone. 400+ calculators, converters, PDF tools, developer tools, and more.",
+                "publisher": {"@id": "https://onlinetoolfree.com/#organization"},
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {"@type": "EntryPoint", "urlTemplate": "https://onlinetoolfree.com/?q={search_term_string}"},
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://onlinetoolfree.com/#organization",
+                "name": "OnlineToolFree",
+                "url": "https://onlinetoolfree.com",
+                "sameAs": ["https://twitter.com/onlinetoolfree", "https://github.com/onlinetoolfree"]
+            },
+            {
+                "@type": "CollectionPage",
+                "name": "Free Online Tools",
+                "description": "Browse our collection of 400+ free online tools",
+                "url": "https://onlinetoolfree.com/",
+                "isPartOf": {"@id": "https://onlinetoolfree.com/#website"}
+            }
+        ]
+    }
+    </script>
+
+    <!-- Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/design-system.css">
+
+    <!-- Custom Page Styles -->
+    <style>
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: var(--space-20) 0 var(--space-16);
+            background: var(--gradient-subtle);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-badge svg {
+            color: var(--primary-500);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: var(--font-bold);
+            line-height: 1.1;
+            margin-bottom: var(--space-6);
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title .gradient-text {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: var(--text-xl);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--space-8);
+            line-height: var(--leading-relaxed);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-10);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-12);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .stat-label {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        /* Search Section */
+        .search-section {
+            position: relative;
+            max-width: 600px;
+            margin: calc(-1 * var(--space-8)) auto var(--space-12);
+            padding: 0 var(--space-4);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 56px;
+            padding: 0 var(--space-12) 0 var(--space-12);
+            font-size: var(--text-base);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-default);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: var(--space-2);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: var(--z-dropdown);
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-4);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: background var(--transition-fast);
+        }
+
+        .search-result-item:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .search-result-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-50);
+            border-radius: var(--radius-md);
+            color: var(--primary-600);
+        }
+
+        .search-result-name {
+            font-weight: var(--font-medium);
+        }
+
+        .search-result-category {
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: var(--space-16) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-10);
+        }
+
+        .section-title {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+        }
+
+        .section-description {
+            font-size: var(--text-lg);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .tool-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            text-decoration: none;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-card);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--primary-200);
+        }
+
+        .tool-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+            color: white;
+        }
+
+        .tool-card-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .tool-card-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .tool-card-description {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            line-height: var(--leading-relaxed);
+            flex: 1;
+            margin-bottom: var(--space-4);
+        }
+
+        .tool-card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            color: var(--primary-600);
+        }
+
+        .tool-card-action svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition-fast);
+        }
+
+        .tool-card:hover .tool-card-action svg {
+            transform: translateX(4px);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-8);
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: var(--space-6);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-xl);
+            color: var(--primary-600);
+            margin: 0 auto var(--space-4);
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .feature-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .feature-description {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--space-20) 0;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+            color: white;
+        }
+
+        .cta-description {
+            font-size: var(--text-lg);
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto var(--space-8);
+            color: white;
+        }
+
+        .cta-btn {
+            background: white;
+            color: var(--primary-600);
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+            color: var(--primary-700);
+        }
+
+        /* Empty State */
+        .no-tools {
+            text-align: center;
+            padding: var(--space-12);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 640px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--space-6);
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="js/tools.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Header -->
+    <header class="header"></header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fadeInUp">
+                <div class="hero-badge">
+                    <svg class="icon icon-sm" viewBox="0 0 24 24">
+                        <path
+                            d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                    </svg>
+                    <span>900+ Free Online Tools</span>
+                </div>
+
+                <h1 class="hero-title">
+                    OnlineToolFree: <span class="gradient-text">Free Online Tools</span> for Everyone
+                </h1>
+
+                <!-- Search Box Moved Here -->
+                <div class="search-box" style="max-width: 600px; margin: 0 auto var(--space-8); position: relative;">
+                    <svg class="search-icon icon" viewBox="0 0 24 24"
+                        style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                    <input type="text" id="search-input" class="search-input"
+                        placeholder="Search for tools (e.g. JSON, Base64, MD5...)"
+                        style="width: 100%; padding: 16px 16px 16px 48px; font-size: 1rem; border: 1px solid var(--border-light); border-radius: 99px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <p class="hero-description">
+                    Access our comprehensive suite of 400+ free online tools. From powerful calculators and converters
+                    to PDF utilities and developer tools,
+                    OnlineToolFree provides fast, secure, and 100% privacy-focused solutions for your daily digital
+                    tasks.
+                    No signups, no fees, and no data tracking—just tools that work directly in your browser.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#all-tools" class="btn btn-primary btn-xl">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect width="7" height="7" x="3" y="3" rx="1" />
+                            <rect width="7" height="7" x="14" y="3" rx="1" />
+                            <rect width="7" height="7" x="14" y="14" rx="1" />
+                            <rect width="7" height="7" x="3" y="14" rx="1" />
+                        </svg>
+                        Browse All Tools
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-xl">
+                        Learn More
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">900+</div>
+                        <div class="stat-label">Free Tools</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2M+</div>
+                        <div class="stat-label">Monthly Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Private</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Intro Section -->
+    <section class="section">
+        <div class="container">
+            <div class="card" style="padding: var(--space-8); background: var(--bg-tertiary); border: none;">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="margin-bottom: var(--space-4); font-size: var(--text-2xl);">Your Trusted Authority for
+                        Free Online Tools</h2>
+                    <p style="margin-bottom: var(--space-4); line-height: 1.8; color: var(--text-secondary);">
+                        Welcome to <strong>OnlineToolFree</strong>, the most comprehensive and privacy-focused
+                        collection of free online tools on the web.
+                        Whether you are a developer looking for a <em>JSON Formatter</em>, a student needing a <em>Unit
+                            Converter</em>,
+                        or a professional seeking efficient <em>PDF Tools</em>, our platform is built to simplify your
+                        workflow.
+                        We offer over 400 specialized utilities across 44 categories, ranging from basic text
+                        manipulation and calculations to advanced server-side developer tools.
+                    </p>
+                    <p style="margin-bottom: var(--space-4); line-height: 1.8; color: var(--text-secondary);">
+                        At OnlineToolFree, we believe that powerful digital utilities should be accessible to everyone
+                        without the friction of account creation,
+                        subscriptions, or hidden fees. Our commitment to <strong>privacy-first computing</strong> means
+                        that all our tools run 100% locally in your browser.
+                        Your sensitive data, files, and inputs never leave your device, ensuring maximum security and
+                        lightning-fast performance.
+                        As a leader in technical SEO and utility applications, we continuously update our library to
+                        include the latest industry-standard algorithms
+                        for encoding, hashing, and data transformation.
+                    </p>
+                    <p style="line-height: 1.8; color: var(--text-secondary);">
+                        Explore our categorized sections for <a href="#all-tools">Calculators</a>, <a
+                            href="#all-tools">Converters</a>,
+                        <a href="#all-tools">Dev Tools</a>, and <a href="#all-tools">SEO Utilities</a>. OnlineToolFree
+                        is more than just a toolkit;
+                        it is a scalable resource designed to grow with your needs. Start using our tools today and
+                        experience the future of
+                        web-based utilities—fast, free, and completely private.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section Removed (Moved to Hero) -->
+    <!-- <div class="search-section">...</div> -->
+
+    <!-- All Tools Section -->
+    <section id="all-tools" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">All Tools</h2>
+                <p class="section-description">
+                    Explore our complete collection of free online tools
+                </p>
+            </div>
+
+            <div id="tools-container">
+                <!-- Tools grid will be rendered here by JavaScript -->
+                <div class="no-tools">Loading tools...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose OnlineToolFree?</h2>
+                <p class="section-description">
+                    Built for speed, privacy, and simplicity
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">All tools run directly in your browser. No server processing
+                        means instant results.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">100% Private</h3>
+                    <p class="feature-description">Your data never leaves your browser. We don't store, log, or
+                        track anything.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path
+                                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Always Free</h3>
+                    <p class="feature-description">No subscriptions, no hidden fees. All 900+ tools are completely
+                        free forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Get Started?</h2>
+            <p class="cta-description">
+                Join millions of users who use OnlineToolFree every day.
+            </p>
+            <a href="#all-tools" class="btn cta-btn">
+                Start Using Tools →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render global components
+            Components.renderHeader();
+            Components.renderFooter();
+
+            // Render all tools grid
+            Components.renderAllToolsGrid('tools-container');
+
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const tools = window.TOOLS_REGISTRY || [];
+
+            const categoryIcons = {
+                'Text Tools': Icons.type,
+                'Image Tools': Icons.image,
+                'Converters': Icons.zap,
+                'Encoding': Icons.hash,
+                'Developer': Icons.code,
+                'AI Tools': Icons.sparkles
+            };
+
+            searchInput.addEventListener('input', debounce((e) => {
+                const query = e.target.value.toLowerCase().trim();
+
+                if (query.length < 2) {
+                    searchResults.classList.remove('active');
+                    return;
+                }
+
+                const matches = tools.filter(t =>
+                    t.name.toLowerCase().includes(query) ||
+                    (t.description && t.description.toLowerCase().includes(query))
+                ).slice(0, 8);
+
+                if (matches.length === 0) {
+                    searchResults.innerHTML = '<div style="padding: var(--space-4); text-align: center; color: var(--text-muted);">No tools found</div>';
+                } else {
+                    searchResults.innerHTML = matches.map(m => {
+                        const icon = categoryIcons[m.category] || Icons.zap;
+                        return `
+                            <a href="${m.url}" class="search-result-item">
+                                <div class="search-result-icon">${icon}</div>
+                                <div>
+                                    <div class="search-result-name">${m.name}</div>
+                                    <div class="search-result-category">${m.category}</div>
+                                </div>
+                            </a>
+                        `;
+                    }).join('');
+                }
+
+                searchResults.classList.add('active');
+            }, 200));
+
+            // Close search results when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-box')) {
+                    searchResults.classList.remove('active');
+                }
+            });
+
+            // Initialize app modules
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.ResponsiveManager) ResponsiveManager.init();
+        });
+    </script>
+</body>
+
+</html>

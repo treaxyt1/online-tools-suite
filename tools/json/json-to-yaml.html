@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>JSON to YAML Converter - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Convert JSON data to YAML format online. Free, fast, and secure JSON to YAML converter with syntax highlighting and download."><link rel="canonical" href="https://onlinetoolfree.com/tools/json/json-to-yaml.html"><link rel="stylesheet" href="../../css/design-system.css"><script src="../../js/utils.js"></script><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><div class="layout-grid"><div class="layout-main"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">JSON to YAML Converter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Convert your JSON objects into YAML format instantly.
+ </p></div></div></div><div class="tool-interface"><div class="tool-grid"><div class="tool-section"><div class="output-header"><span class="tool-section-title">JSON Input</span><div class="output-actions"><button class="btn btn-ghost btn-sm" onclick="FormHelpers.clear('input')">Clear</button><button class="btn btn-ghost btn-sm" onclick="pasteExample()">Sample</button></div></div><textarea id="input" class="form-textarea code" style="height: 350px;"
+ placeholder="Paste your JSON here..."></textarea></div><div class="tool-section"><div class="output-header"><span class="tool-section-title">YAML Output</span><div class="output-actions"><button class="btn btn-ghost btn-sm"
+ onclick="Clipboard.copy(FormHelpers.getValue('output'))">Copy</button></div></div><textarea id="output" class="form-textarea code" style="height: 350px;" readonly
+ placeholder="YAML result will appear here..."></textarea></div></div><div class="tool-actions" style="margin-top: var(--space-6)"><button id="convert-btn" class="btn btn-primary btn-lg">Convert to YAML</button></div></div><section class="content-section"><h2>Difference between JSON and YAML</h2><p>JSON (JavaScript Object Notation) is a lightweight data-interchange format. YAML (YAML Ain't
+ Markup Language) is a human-readable data serialization language. YAML is often used for
+ configuration files because it is more concise and easier to read for humans compared to JSON.
+ </p></section></div><aside class="layout-sidebar"><div id="sidebar-container"></div></aside></div></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><footer class="footer" style="margin-top: var(--space-24)"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Json', url: '/tools/json/index.html' },
+            { name: 'Json To Yaml' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'json-to-yaml');
+        Components.renderToolSchema('Json To Yaml', 'json', 'Json To Yaml - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ // Original script content continues below...
+
+ const input = document.getElementById('input');
+ const output = document.getElementById('output');
+ const convertBtn = document.getElementById('convert-btn');
+
+ function jsonToYaml(obj, indent = 0) {
+ const spaces = ' '.repeat(indent);
+ if (obj === null) return 'null';
+ if (typeof obj === 'string') return `"${obj.replace(/"/g, '\\"')}"`;
+ if (typeof obj !== 'object') return String(obj);
+
+ if (Array.isArray(obj)) {
+ if (obj.length === 0) return '[]';
+ return obj.map(item => `\n${spaces}- ${jsonToYaml(item, indent + 1)}`).join('');
+ }
+
+ const entries = Object.entries(obj);
+ if (entries.length === 0) return '{}';
+
+ return entries.map(([key, value]) => {
+ const formattedValue = jsonToYaml(value, indent + 1);
+ if (typeof value === 'object' && value !== null && Object.keys(value).length > 0) {
+ return `\n${spaces}${key}:${formattedValue}`;
+ }
+ return `\n${spaces}${key}: ${formattedValue}`;
+ }).join('');
+ }
+
+ function convert() {
+ const json = input.value.trim();
+ if (!json) {
+ output.value = '';
+ return;
+ }
+
+ try {
+ const obj = JSON.parse(json);
+ const yaml = jsonToYaml(obj).trim();
+ output.value = yaml;
+ Toast.success('Converted to YAML');
+ } catch (e) {
+ output.value = 'Error: Invalid JSON\n' + e.message;
+ Toast.error('Invalid JSON');
+ }
+ }
+
+ function pasteExample() {
+ input.value = JSON.stringify({
+ name: "OnlineToolFree",
+ version: 1.0,
+ active: true,
+ tags: ["free", "online", "tools"],
+ config: {
+ theme: "dark",
+ timeout: 3000
+ }
+ }, null, 4);
+ convert();
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderSidebar('sidebar-container', 'Converters');
+ Components.renderFooter();
+ convertBtn.addEventListener('click', convert);
+ input.addEventListener('input', debounce(convert, 1000));
+ });
+ 
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>
+
+

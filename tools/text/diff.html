@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- SEO Meta Tags --><title>Text Diff Checker - Free Online Tool | OnlineToolFree</title><meta name="description"
+ content="Compare two texts and find differences. Free online text diff checker tool. Fast, secure, and private."><link rel="canonical" href="https://onlinetoolfree.com/tools/text/diff.html"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link
+ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+ rel="stylesheet"><!-- Styles --><link rel="stylesheet" href="../../css/design-system.css"><style>
+ .diff-output {
+ font-family: var(--font-mono);
+ font-size: var(--text-sm);
+ padding: var(--space-4);
+ background: var(--bg-tertiary);
+ border: 1px solid var(--border-light);
+ border-radius: var(--radius-lg);
+ white-space: pre-wrap;
+ max-height: 400px;
+ overflow-y: auto;
+ min-height: 200px;
+ }
+
+ .diff-add {
+ background-color: #dcfce7;
+ color: #166534;
+ display: block;
+ padding: var(--space-1) var(--space-2);
+ }
+
+ .diff-remove {
+ background-color: #fee2e2;
+ color: #991b1b;
+ text-decoration: line-through;
+ display: block;
+ padding: var(--space-1) var(--space-2);
+ }
+
+ .diff-line {
+ display: block;
+ padding: var(--space-1) var(--space-2);
+ }
+
+ [data-theme="dark"] .diff-add {
+ background-color: #064e3b;
+ color: #86efac;
+ }
+
+ [data-theme="dark"] .diff-remove {
+ background-color: #7f1d1d;
+ color: #fca5a5;
+ }
+ </style><!-- Scripts --><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><!-- Header --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div
+ style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M16 3h5v5" /><path d="M8 3H3v5" /><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3" /><path d="m15 9 6-6" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Text Diff Checker</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+ Compare two texts and highlight the differences line by line.
+ </p></div></div></div><!-- Tool Interface --><div class="tool-interface"><!-- Input Sections --><div
+ style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-section"><label class="tool-section-title" for="text1"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /></svg>
+ Original Text
+ </label><textarea id="text1" class="form-textarea" rows="8"
+ placeholder="Paste original text here..." spellcheck="false"></textarea></div><div class="tool-section"><label class="tool-section-title" for="text2"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /></svg>
+ Modified Text
+ </label><textarea id="text2" class="form-textarea" rows="8"
+ placeholder="Paste modified text here..." spellcheck="false"></textarea></div></div><!-- Actions --><div class="tool-actions"><button id="compare-btn" class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+ Compare Texts
+ </button><button id="clear-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+ Clear
+ </button><button id="sample-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /></svg>
+ Sample
+ </button></div><!-- Output Section --><div class="tool-section output-section" style="margin-top: var(--space-6);"><div class="output-header"><label class="tool-section-title" for="diff-output"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+ Differences
+ </label></div><div class="diff-output" id="diff-output">Click "Compare Texts" to see differences</div></div></div><!-- Information Section --><section class="info-section"
+ style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);"><h2
+ style="font-size: var(--text-xl); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">
+ About Text Diff Checker</h2><p style="margin-bottom: var(--space-4);">
+ This tool compares two texts line by line and highlights the differences. Lines that have been
+ removed are shown in red with strikethrough, while new lines are shown in green.
+ </p><p>
+ Perfect for comparing code changes, document revisions, or any text-based content where you need
+ to identify <a href="/tools/network/whats-my-ip.html" class="context-link" style="color: var(--primary-600); text-decoration: underline;">What</a> has changed between two versions.
+ </p></section></div><div id="related-tools-container"></div>
+        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
+ document.addEventListener('DOMContentLoaded', () => {
+ Components.renderHeader();
+ Components.renderMobileMenu();
+ Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Text', url: '/tools/text/index.html' },
+            { name: 'Diff' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'diff');
+        Components.renderToolSchema('Diff', 'text', 'Diff - Free online tool for your daily digital tasks.');
+
+ Components.renderFooter();
+
+ const sidebarToggle = document.getElementById('sidebar-toggle');
+ const sidebar = document.getElementById('tool-sidebar');
+ sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+ const text1 = document.getElementById('text1');
+ const text2 = document.getElementById('text2');
+ const diffOutput = document.getElementById('diff-output');
+
+ function escapeHtml(str) {
+ return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+ }
+
+ function compare() {
+ if (!text1.value && !text2.value) {
+ Toast.warning('Please enter texts to compare');
+ return;
+ }
+
+ const lines1 = text1.value.split('\n');
+ const lines2 = text2.value.split('\n');
+ const maxLen = Math.max(lines1.length, lines2.length);
+
+ let html = '';
+ let diffCount = 0;
+
+ for (let i = 0; i < maxLen; i++) {
+ const line1 = lines1[i] || '';
+ const line2 = lines2[i] || '';
+
+ if (line1 === line2) {
+ html += `<span class="diff-line">${escapeHtml(line1) || '&nbsp;'}</span>`;
+ } else {
+ diffCount++;
+ if (line1) {
+ html += `<span class="diff-line diff-remove">- ${escapeHtml(line1)}</span>`;
+ }
+ if (line2) {
+ html += `<span class="diff-line diff-add">+ ${escapeHtml(line2)}</span>`;
+ }
+ }
+ }
+
+ diffOutput.innerHTML = html || 'No differences found!';
+
+ if (diffCount === 0) {
+ Toast.success('Texts are identical!');
+ } else {
+ Toast.success(`Found ${diffCount} difference${diffCount > 1 ? 's' : ''}`);
+ }
+ }
+
+ document.getElementById('compare-btn').addEventListener('click', compare);
+
+ document.getElementById('clear-btn').addEventListener('click', () => {
+ text1.value = '';
+ text2.value = '';
+ diffOutput.innerHTML = 'Click "Compare Texts" to see differences';
+ Toast.success('Cleared');
+ });
+
+ document.getElementById('sample-btn').addEventListener('click', () => {
+ text1.value = 'The quick brown fox\njumps over the lazy dog.\nThis is line three.\nAnd this is line four.';
+ text2.value = 'The quick brown fox\njumps over the sleepy dog.\nThis is line three.\nAnd this is line five.';
+ Toast.success('Sample loaded');
+ });
+
+ if (window.ThemeManager) ThemeManager.init();
+ if (window.ResponsiveManager) ResponsiveManager.init();
+ });
+ </script></body></html>

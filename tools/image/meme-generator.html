@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator - Create Funny Memes Online | OnlineToolFree</title>
+    <meta name="description"
+        content="Free online meme generator. Upload images, add custom text, and create funny memes instantly. No watermarks, no sign-up.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/image/meme-generator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                            <line x1="9" y1="9" x2="9.01" y2="9" />
+                            <line x1="15" y1="9" x2="15.01" y2="9" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">Meme Generator</h1>
+                        <p class="tool-description">Make your own memes with custom text and images.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="grid-2-col">
+                        <!-- Controls -->
+                        <div class="tool-section">
+                            <h3 style="margin-bottom: var(--space-4);">Meme Settings</h3>
+
+                            <div class="form-group">
+                                <label class="form-label">Upload Image</label>
+                                <input type="file" id="image-input" class="form-input" accept="image/*">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Top Text</label>
+                                <input type="text" id="top-text" class="form-input" placeholder="TOP TEXT">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Bottom Text</label>
+                                <input type="text" id="bottom-text" class="form-input" placeholder="BOTTOM TEXT">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Font Size (px)</label>
+                                <input type="range" id="font-size" class="form-range" min="20" max="100" value="50">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Text Color</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="color" id="text-color" value="#ffffff" style="height: 40px; flex: 1;">
+                                    <input type="color" id="stroke-color" value="#000000"
+                                        style="height: 40px; flex: 1;">
+                                </div>
+                                <div style="font-size: var(--text-xs); color: var(--text-muted); margin-top: 4px;">Fill
+                                    / Stroke</div>
+                            </div>
+
+                            <div class="tool-actions">
+                                <button id="download-btn" class="btn btn-primary w-full">Download Meme</button>
+                            </div>
+                        </div>
+
+                        <!-- Preview -->
+                        <div class="tool-section"
+                            style="display: flex; justify-content: center; align-items: center; background: var(--bg-tertiary);">
+                            <canvas id="meme-canvas"
+                                style="max-width: 100%; height: auto; box-shadow: var(--shadow-lg);"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Image', url: '/tools/image/index.html' },
+                { name: 'Meme Generator' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'meme-generator');
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Canvas Logic
+            const canvas = document.getElementById('meme-canvas');
+            const ctx = canvas.getContext('2d');
+            const imageInput = document.getElementById('image-input');
+            const topInput = document.getElementById('top-text');
+            const bottomInput = document.getElementById('bottom-text');
+            const fontSizeInput = document.getElementById('font-size');
+            const textColorInput = document.getElementById('text-color');
+            const strokeColorInput = document.getElementById('stroke-color');
+            const downloadBtn = document.getElementById('download-btn');
+
+            let currentImage = new Image();
+
+            // Set default image (placeholder)
+            currentImage.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPgogIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmaWxsPSIjYWFhIj5VcGxvYWQgYW4gaW1hZ2U8L3RleHQ+Cjwvc3ZnPg==';
+
+            currentImage.onload = () => {
+                canvas.width = currentImage.width;
+                canvas.height = currentImage.height;
+                drawMeme();
+            };
+
+            function drawMeme() {
+                // Clear and draw image
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(currentImage, 0, 0);
+
+                // Settings
+                const fontSize = parseInt(fontSizeInput.value);
+                ctx.font = \`bold \${fontSize}px Impact, sans-serif\`;
+                ctx.textAlign = 'center';
+                ctx.fillStyle = textColorInput.value;
+                ctx.strokeStyle = strokeColorInput.value;
+                ctx.lineWidth = fontSize / 15;
+                ctx.lineJoin = 'round';
+
+                // Draw Text Function
+                const drawText = (text, y, baseline) => {
+                    if (!text) return;
+                    ctx.textBaseline = baseline;
+                    const x = canvas.width / 2;
+                    
+                    // Simple wrap
+                    const maxWidth = canvas.width * 0.9;
+                    const words = text.toUpperCase().split(' ');
+                    let line = '';
+                    let lines = [];
+                    
+                    words.forEach(word => {
+                        const testLine = line + word + ' ';
+                        const metrics = ctx.measureText(testLine);
+                        if (metrics.width > maxWidth && line.length > 0) {
+                            lines.push(line);
+                            line = word + ' ';
+                        } else {
+                            line = testLine;
+                        }
+                    });
+                    lines.push(line);
+
+                    // Render lines
+                    let currentY = y;
+                    lines.forEach((l, i) => {
+                        const offset = baseline === 'top' ? (i * fontSize * 1.1) : (lines.length - 1 - i) * fontSize * -1.1;
+                        ctx.strokeText(l, x, y + offset);
+                        ctx.fillText(l, x, y + offset);
+                    });
+                };
+
+                drawText(topInput.value, fontSize, 'top');
+                drawText(bottomInput.value, canvas.height - 20, 'bottom');
+            }
+
+            // Listeners
+            imageInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            currentImage = img;
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            drawMeme();
+                        };
+                        img.src = evt.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            [topInput, bottomInput, fontSizeInput, textColorInput, strokeColorInput].forEach(el => {
+                el.addEventListener('input', drawMeme);
+            });
+
+            downloadBtn.addEventListener('click', () => {
+                const link = document.createElement('a');
+                link.download = 'meme.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>

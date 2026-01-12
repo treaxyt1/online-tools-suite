@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator - Create Professional Invoices Free | OnlineToolFree</title>
+    <meta name="description" content="Free invoice generator. Create professional invoices in minutes. Download as PDF. Perfect for freelancers and small businesses.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/generator/invoice-generator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">Invoice Generator</h1>
+                <p class="tool-description">Create professional invoices instantly.</p>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+                <div class="tool-interface">
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                        <div class="tool-section"><h3>From</h3><input type="text" id="from-name" class="form-input" placeholder="Your Name" style="margin-bottom: 5px;"><input type="text" id="from-email" class="form-input" placeholder="your@email.com"></div>
+                        <div class="tool-section"><h3>To</h3><input type="text" id="to-name" class="form-input" placeholder="Client Name" style="margin-bottom: 5px;"><input type="text" id="to-email" class="form-input" placeholder="client@email.com"></div>
+                    </div>
+                    <div class="tool-section">
+                        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3);">
+                            <div><label>Invoice #</label><input type="text" id="invoice-num" class="form-input" value="001"></div>
+                            <div><label>Date</label><input type="date" id="date" class="form-input"></div>
+                            <div><label>Due Date</label><input type="date" id="due-date" class="form-input"></div>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <h3>Items</h3>
+                        <div id="items-list"></div>
+                        <button onclick="addItem()" class="btn btn-ghost btn-sm">+ Add Item</button>
+                    </div>
+                    <div class="tool-actions"><button id="generate" class="btn btn-primary">Generate Invoice PDF</button></div>
+                </div>
+                <script>
+                    let itemCount = 0;
+                    function addItem() {
+                        const div = document.createElement('div');
+                        div.className = 'grid';
+                        div.style.cssText = 'grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-2);';
+                        div.innerHTML = \`<input type="text" class="form-input item-desc" placeholder="Description"><input type="number" class="form-input item-qty" placeholder="Qty" value="1"><input type="number" class="form-input item-price" placeholder="Price" value="0"><input type="text" class="form-input item-total" placeholder="Total" readonly>\`;
+                        document.getElementById('items-list').appendChild(div);
+                        div.querySelectorAll('.item-qty, .item-price').forEach(inp => {
+                            inp.addEventListener('input', () => {
+                                const qty = parseFloat(div.querySelector('.item-qty').value) || 0;
+                                const price = parseFloat(div.querySelector('.item-price').value) || 0;
+                                div.querySelector('.item-total').value = (qty * price).toFixed(2);
+                            });
+                        });
+                        itemCount++;
+                    }
+                    addItem();
+                    document.getElementById('date').valueAsDate = new Date();
+                    const due = new Date(); due.setDate(due.getDate() + 30);
+                    document.getElementById('due-date').valueAsDate = due;
+                    
+                    document.getElementById('generate').addEventListener('click', () => {
+                        const { jsPDF } = window.jspdf;
+                        const doc = new jsPDF();
+                        let y = 20;
+                        doc.setFontSize(24); doc.text('INVOICE', 105, y, {align: 'center'}); y += 15;
+                        doc.setFontSize(10);
+                        doc.text('From: ' + document.getElementById('from-name').value, 20, y); y += 5;
+                        doc.text(document.getElementById('from-email').value, 20, y); y += 10;
+                        doc.text('To: ' + document.getElementById('to-name').value, 20, y); y += 5;
+                        doc.text(document.getElementById('to-email').value, 20, y); y += 10;
+                        doc.text('Invoice #: ' + document.getElementById('invoice-num').value, 20, y);
+                        doc.text('Date: ' + document.getElementById('date').value, 105, y);
+                        doc.text('Due: ' + document.getElementById('due-date').value, 160, y); y += 15;
+                        
+                        doc.setFont(undefined, 'bold');
+                        doc.text('Description', 20, y); doc.text('Qty', 120, y); doc.text('Price', 145, y); doc.text('Total', 170, y); y += 7;
+                        doc.setFont(undefined, 'normal');
+                        
+                        let total = 0;
+                        document.querySelectorAll('#items-list > div').forEach(item => {
+                            const desc = item.querySelector('.item-desc').value;
+                            const qty = item.querySelector('.item-qty').value;
+                            const price = item.querySelector('.item-price').value;
+                            const itemTotal = parseFloat(item.querySelector('.item-total').value) || 0;
+                            total += itemTotal;
+                            doc.text(desc, 20, y); doc.text(qty, 120, y); doc.text('$' + price, 145, y); doc.text('$' + itemTotal.toFixed(2), 170, y); y += 7;
+                        });
+                        
+                        y += 5;
+                        doc.setFont(undefined, 'bold');
+                        doc.text('TOTAL: $' + total.toFixed(2), 170, y, {align: 'right'});
+                        doc.save('invoice.pdf');
+                        Toast.success('Invoice generated!');
+                    });
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Invoice Generator - Create Professional Invoices Free", "description": "Free invoice generator. Create professional invoices in minutes. Download as PDF. Perfect for freelancers and small businesses."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Generator', url: '/tools/generator/index.html' },
+            { name: 'Invoice Generator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'invoice-generator');
+        Components.renderToolSchema('Invoice Generator', 'generator', 'Invoice Generator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

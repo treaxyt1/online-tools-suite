@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Price Comparison Calculator | OnlineToolFree</title>
+    <meta name="description" content="Compare prices of two items to find the best value.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/finance/price-comparison.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+            <h1 class="tool-title">Price Comparison Calculator</h1>
+            <p class="tool-description">Find out which product offers better value.</p>
+            <div class="tool-interface">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="tool-section">
+                        <h3>Item A</h3>
+                        <label>Price ($)</label><input type="number" id="price-a" class="form-input">
+                        <label>Quantity</label><input type="number" id="qty-a" class="form-input">
+                    </div>
+                    <div class="tool-section">
+                        <h3>Item B</h3>
+                        <label>Price ($)</label><input type="number" id="price-b" class="form-input">
+                        <label>Quantity</label><input type="number" id="qty-b" class="form-input">
+                    </div>
+                </div>
+                <div class="tool-actions">
+                    <button id="compare-btn" class="btn btn-primary">Compare</button>
+                </div>
+                <div id="comp-res" class="tool-section output-section" style="display:none; text-align:center; font-weight:bold;"></div>
+            </div>
+            <script>
+                document.getElementById('compare-btn').addEventListener('click', () => {
+                    const pa = parseFloat(document.getElementById('price-a').value);
+                    const qa = parseFloat(document.getElementById('qty-a').value);
+                    const pb = parseFloat(document.getElementById('price-b').value);
+                    const qb = parseFloat(document.getElementById('qty-b').value);
+                    
+                    if(!pa || !qa || !pb || !qb) return;
+                    
+                    const unitA = pa / qa;
+                    const unitB = pb / qb;
+                    
+                    const better = unitA < unitB ? "Item A" : "Item B";
+                    const diff = Math.abs(100 * (1 - (Math.min(unitA, unitB) / Math.max(unitA, unitB)))).toFixed(1);
+                    
+                    document.getElementById('comp-res').innerHTML = `
+                        <div style="font-size: 1.2rem; color: var(--success-600);">Best Value: ${better}</div>
+                        <div style="font-size: 0.9rem; margin-top: 5px;">It is ${diff}% cheaper per unit.</div>
+                    `;
+                    document.getElementById('comp-res').style.display = 'block';
+                });
+            </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Unit Price Comparison Calculator", "description": "Compare prices of two items to find the best value."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Finance', url: '/tools/finance/index.html' },
+            { name: 'Price Comparison' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'price-comparison');
+        Components.renderToolSchema('Price Comparison', 'finance', 'Price Comparison - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

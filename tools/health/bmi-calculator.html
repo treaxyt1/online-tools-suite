@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Calculate Body Mass Index Free | OnlineToolFree</title>
+    <meta name="description" content="Free BMI calculator. Calculate your Body Mass Index and get health category. Supports metric and imperial units. Instant BMI calculation.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/health/bmi-calculator.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 1000px; margin: 0; padding: 0;">
+
+                <h1 class="tool-title">BMI Calculator</h1>
+                <p class="tool-description">Calculate your Body Mass Index and health category.</p>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <div style="margin-bottom: var(--space-3);">
+                            <label><input type="radio" name="unit" value="metric" checked> Metric (kg, cm)</label>
+                            <label style="margin-left: var(--space-4);"><input type="radio" name="unit" value="imperial"> Imperial (lb, in)</label>
+                        </div>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                            <div>
+                                <label class="form-label">Weight <span id="weight-unit">(kg)</span></label>
+                                <input type="number" id="weight" class="form-input" placeholder="70" step="0.1">
+                            </div>
+                            <div>
+                                <label class="form-label">Height <span id="height-unit">(cm)</span></label>
+                                <input type="number" id="height" class="form-input" placeholder="170" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button id="calc-bmi" class="btn btn-primary">Calculate BMI</button>
+                    </div>
+                    <div id="bmi-result" class="tool-section output-section" style="display:none;">
+                        <div style="text-align: center; padding: var(--space-6); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <div style="font-size: 3rem; font-weight: bold; color: var(--primary-600);" id="bmi-value">0</div>
+                            <div style="font-size: var(--text-lg); margin-top: var(--space-2);" id="bmi-category">-</div>
+                        </div>
+                        <div style="margin-top: var(--space-4); padding: var(--space-4); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <h4>BMI Categories:</h4>
+                            <p><strong>Underweight:</strong> BMI < 18.5</p>
+                            <p><strong>Normal weight:</strong> BMI 18.5 - 24.9</p>
+                            <p><strong>Overweight:</strong> BMI 25 - 29.9</p>
+                            <p><strong>Obese:</strong> BMI ≥ 30</p>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    document.querySelectorAll('input[name="unit"]').forEach(r => {
+                        r.addEventListener('change', (e) => {
+                            const isMetric = e.target.value === 'metric';
+                            document.getElementById('weight-unit').textContent = isMetric ? '(kg)' : '(lb)';
+                            document.getElementById('height-unit').textContent = isMetric ? '(cm)' : '(in)';
+                            document.getElementById('weight').placeholder = isMetric ? '70' : '154';
+                            document.getElementById('height').placeholder = isMetric ? '170' : '67';
+                        });
+                    });
+                    
+                    document.getElementById('calc-bmi').addEventListener('click', () => {
+                        let weight = parseFloat(document.getElementById('weight').value);
+                        let height = parseFloat(document.getElementById('height').value);
+                        const isMetric = document.querySelector('input[name="unit"]:checked').value === 'metric';
+                        
+                        if(!weight || !height) return Toast.error('Please enter weight and height');
+                        
+                        // Convert to metric if imperial
+                        if(!isMetric) {
+                            weight = weight * 0.453592; // lb to kg
+                            height = height * 2.54; // in to cm
+                        }
+                        
+                        const heightM = height / 100;
+                        const bmi = weight / (heightM * heightM);
+                        
+                        let category, color;
+                        if(bmi < 18.5) { category = 'Underweight'; color = 'var(--warning-600)'; }
+                        else if(bmi < 25) { category = 'Normal weight'; color = 'var(--success-600)'; }
+                        else if(bmi < 30) { category = 'Overweight'; color = 'var(--warning-600)'; }
+                        else { category = 'Obese'; color = 'var(--error-600)'; }
+                        
+                        document.getElementById('bmi-value').textContent = bmi.toFixed(1);
+                        document.getElementById('bmi-value').style.color = color;
+                        document.getElementById('bmi-category').textContent = category;
+                        document.getElementById('bmi-category').style.color = color;
+                        document.getElementById('bmi-result').style.display = 'block';
+                    });
+                </script>
+        
+            </div>
+        <div id="related-tools-container"></div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <footer class="footer"></footer>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "BMI Calculator - Calculate Body Mass Index Free", "description": "Free BMI calculator. Calculate your Body Mass Index and get health category. Supports metric and imperial units. Instant BMI calculation."}</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+        // SEO Components
+        Components.renderBreadcrumb('breadcrumb-container', [
+            { name: 'Home', url: '/index.html' },
+            { name: 'Health', url: '/tools/health/index.html' },
+            { name: 'Bmi Calculator' }
+        ]);
+        Components.renderRelatedTools('related-tools-container', 'bmi-calculator');
+        Components.renderToolSchema('Bmi Calculator', 'health', 'Bmi Calculator - Free online tool for your daily digital tasks.');
+
+            Components.renderFooter();
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

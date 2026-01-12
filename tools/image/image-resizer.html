@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EX25SFMRXZ');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Free online image resizer. Resize JPG, PNG, WEBP images pixel-perfectly directly in your browser. No upload required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/image/image-resizer.html">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-large">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="tool-title">Image Resizer</h1>
+                        <p class="tool-description">Resize your images to exact pixel dimensions or percentage scaling.
+                            Fast, private, and runs entirely in your browser.</p>
+                    </div>
+                </div>
+
+                <div class="tool-interface">
+                    <div class="file-drop-area" id="drop-area">
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                        <div class="drop-icon">
+                            <svg class="icon icon-xl" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
+                        <p class="drop-text">Drag & drop image here or <span>browse files</span></p>
+                    </div>
+
+                    <div id="editor-panel" class="tool-section hidden">
+                        <div style="display: grid; grid-template-columns: 1fr 300px; gap: var(--space-6);">
+                            <!-- Preview Area -->
+                            <div
+                                style="background: var(--bg-tertiary); padding: var(--space-4); border-radius: var(--radius-lg); text-align: center; overflow: auto; display: flex; align-items: center; justify-content: center; min-height: 400px;">
+                                <img id="image-preview"
+                                    style="max-width: 100%; max-height: 500px; box-shadow: var(--shadow-md);">
+                            </div>
+
+                            <!-- Controls -->
+                            <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                <div class="form-group">
+                                    <h3 style="margin-bottom: var(--space-2);">Resize Settings</h3>
+
+                                    <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+                                        <button class="btn btn-sm btn-primary" id="mode-pixels"
+                                            onclick="setMode('pixels')">Pixels</button>
+                                        <button class="btn btn-sm btn-ghost" id="mode-percentage"
+                                            onclick="setMode('percentage')">Percentage</button>
+                                    </div>
+
+                                    <div id="pixels-controls">
+                                        <label>Width (px)</label>
+                                        <input type="number" id="width-input" class="form-input" min="1">
+
+                                        <label style="margin-top: var(--space-2);">Height (px)</label>
+                                        <input type="number" id="height-input" class="form-input" min="1">
+                                    </div>
+
+                                    <div id="percentage-controls" class="hidden">
+                                        <label>Scale Percentage: <span id="scale-val">100%</span></label>
+                                        <input type="range" id="scale-input" class="form-range" min="1" max="200"
+                                            value="100">
+                                    </div>
+
+                                    <div class="checkbox-wrapper" style="margin-top: var(--space-3);">
+                                        <input type="checkbox" id="lock-ratio" checked>
+                                        <label for="lock-ratio">Lock Aspect Ratio</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Original Size: <span id="original-dims">-</span></label><br>
+                                    <label>New Size: <span id="new-dims"
+                                            style="font-weight: bold; color: var(--primary);">calc...</span></label>
+                                </div>
+
+                                <button id="process-btn" class="btn btn-primary w-full">Resize Image</button>
+                                <button onclick="location.reload()" class="btn btn-secondary w-full"
+                                    style="margin-top: var(--space-2);">Start Over</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="result-panel" class="tool-section hidden" style="text-align: center;">
+                        <div class="output-header">
+                            <span class="tool-section-title">Resized Image Ready!</span>
+                        </div>
+                        <img id="result-image"
+                            style="max-width: 100%; max-height: 400px; margin: var(--space-4) auto; display: block; box-shadow: var(--shadow-md);">
+                        <button id="download-btn" class="btn btn-primary btn-lg">Download Image</button>
+                    </div>
+                </div>
+
+                <div class="info-section" style="margin-top: var(--space-8);">
+                    <h2>How to Resize Images?</h2>
+                    <ol>
+                        <li>Upload your JPG, PNG, or GIF image.</li>
+                        <li>Enter new dimensions in pixels or choose a percentage.</li>
+                        <li>Keep "Lock Aspect Ratio" checked to avoid distortion.</li>
+                        <li>Click "Resize Image" and download your enhanced file.</li>
+                    </ol>
+                </div>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+    </button>
+
+    <footer class="footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader();
+            Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Image', url: '/tools/image/index.html' },
+                { name: 'Image Resizer' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'image-resizer');
+            Components.renderFooter();
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('tool-sidebar');
+            sidebarToggle?.addEventListener('click', () => sidebar?.classList.toggle('open'));
+
+            // Resizer Logic
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('file-input');
+            const editorPanel = document.getElementById('editor-panel');
+            const resultPanel = document.getElementById('result-panel');
+
+            const imagePreview = document.getElementById('image-preview');
+            const widthInput = document.getElementById('width-input');
+            const heightInput = document.getElementById('height-input');
+            const scaleInput = document.getElementById('scale-input');
+            const lockRatio = document.getElementById('lock-ratio');
+            const originalDims = document.getElementById('original-dims');
+            const newDims = document.getElementById('new-dims');
+            const processBtn = document.getElementById('process-btn');
+            const resultImage = document.getElementById('result-image');
+            const downloadBtn = document.getElementById('download-btn');
+            const modePixels = document.getElementById('mode-pixels');
+            const modePercentage = document.getElementById('mode-percentage');
+            const pixelsControls = document.getElementById('pixels-controls');
+            const percentageControls = document.getElementById('percentage-controls');
+
+            let currentFile = null;
+            let originalWidth = 0;
+            let originalHeight = 0;
+            let aspectRatio = 0;
+            let currentMode = 'pixels';
+
+            // Drag & Drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); });
+            });
+            dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+            dropArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    const file = files[0];
+                    if (!file.type.match('image.*')) {
+                        Toast.error('Please upload an image file (JPG, PNG, GIF, WEBP).');
+                        return;
+                    }
+                    currentFile = file;
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        imagePreview.src = e.target.result;
+                        imagePreview.onload = () => {
+                            originalWidth = imagePreview.naturalWidth;
+                            originalHeight = imagePreview.naturalHeight;
+                            aspectRatio = originalWidth / originalHeight;
+
+                            originalDims.textContent = `${originalWidth} x ${originalHeight} px`;
+
+                            // Init inputs
+                            widthInput.value = originalWidth;
+                            heightInput.value = originalHeight;
+                            updateNewDims();
+
+                            dropArea.classList.add('hidden');
+                            editorPanel.classList.remove('hidden');
+                        };
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            window.setMode = (mode) => {
+                currentMode = mode;
+                if (mode === 'pixels') {
+                    modePixels.className = 'btn btn-sm btn-primary';
+                    modePercentage.className = 'btn btn-sm btn-ghost';
+                    pixelsControls.classList.remove('hidden');
+                    percentageControls.classList.add('hidden');
+                } else {
+                    modePixels.className = 'btn btn-sm btn-ghost';
+                    modePercentage.className = 'btn btn-sm btn-primary';
+                    pixelsControls.classList.add('hidden');
+                    percentageControls.classList.remove('hidden');
+                }
+                updateNewDims();
+            };
+
+            // Input handlers
+            widthInput.addEventListener('input', () => {
+                if (lockRatio.checked && widthInput.value) {
+                    heightInput.value = Math.round(widthInput.value / aspectRatio);
+                }
+                updateNewDims();
+            });
+
+            heightInput.addEventListener('input', () => {
+                if (lockRatio.checked && heightInput.value) {
+                    widthInput.value = Math.round(heightInput.value * aspectRatio);
+                }
+                updateNewDims();
+            });
+
+            scaleInput.addEventListener('input', () => {
+                document.getElementById('scale-val').textContent = scaleInput.value + '%';
+                updateNewDims();
+            });
+
+            function updateNewDims() {
+                let w, h;
+                if (currentMode === 'pixels') {
+                    w = parseInt(widthInput.value) || 0;
+                    h = parseInt(heightInput.value) || 0;
+                } else {
+                    const scale = parseInt(scaleInput.value) / 100;
+                    w = Math.round(originalWidth * scale);
+                    h = Math.round(originalHeight * scale);
+                }
+                newDims.textContent = `${w} x ${h} px`;
+            }
+
+            processBtn.addEventListener('click', () => {
+                if (!currentFile) return;
+
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let targetW, targetH;
+                if (currentMode === 'pixels') {
+                    targetW = parseInt(widthInput.value);
+                    targetH = parseInt(heightInput.value);
+                } else {
+                    const scale = parseInt(scaleInput.value) / 100;
+                    targetW = Math.round(originalWidth * scale);
+                    targetH = Math.round(originalHeight * scale);
+                }
+
+                if (!targetW || !targetH) {
+                    Toast.error('Invalid dimensions');
+                    return;
+                }
+
+                canvas.width = targetW;
+                canvas.height = targetH;
+
+                // High quality scaling
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+
+                ctx.drawImage(imagePreview, 0, 0, targetW, targetH);
+
+                const format = currentFile.type === 'image/png' ? 'image/png' : 'image/jpeg';
+                const quality = 0.92;
+
+                const dataUrl = canvas.toDataURL(format, quality);
+                resultImage.src = dataUrl;
+
+                editorPanel.classList.add('hidden');
+                resultPanel.classList.remove('hidden');
+
+                downloadBtn.onclick = () => {
+                    const ext = format === 'image/png' ? 'png' : 'jpg';
+                    const filename = currentFile.name.replace(/\.[^/.]+$/, "") + `-resized.${ext}`;
+                    FileHandler.download(dataUrl, filename);
+                };
+            });
+
+            if (window.ThemeManager) ThemeManager.init();
+        });
+    </script>
+</body>
+
+</html>
