@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
 <script>
@@ -76,7 +76,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
  function calc1() {
  const result = (parseFloat(p1Percent.value) / 100) * parseFloat(p1Value.value);
- p1Result.textContent = isNaN(result) ? 'â€”' : result.toLocaleString(undefined, { maximumFractionDigits: 4 });
+ p1Result.textContent = isNaN(result) ? '—' : result.toLocaleString(undefined, { maximumFractionDigits: 4 });
  }
  p1Percent.addEventListener('input', calc1);
  p1Value.addEventListener('input', calc1);
@@ -88,7 +88,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
  function calc2() {
  const result = (parseFloat(p2Value.value) / parseFloat(p2Total.value)) * 100;
- p2Result.textContent = isNaN(result) ? 'â€”' : result.toLocaleString(undefined, { maximumFractionDigits: 4 }) + '%';
+ p2Result.textContent = isNaN(result) ? '—' : result.toLocaleString(undefined, { maximumFractionDigits: 4 }) + '%';
  }
  p2Value.addEventListener('input', calc2);
  p2Total.addEventListener('input', calc2);
@@ -103,7 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  const to = parseFloat(p3To.value);
  const change = ((to - from) / from) * 100;
  const prefix = change >= 0 ? '+' : '';
- p3Result.textContent = isNaN(change) ? 'â€”' : prefix + change.toLocaleString(undefined, { maximumFractionDigits: 2 }) + '%';
+ p3Result.textContent = isNaN(change) ? '—' : prefix + change.toLocaleString(undefined, { maximumFractionDigits: 2 }) + '%';
  }
  p3From.addEventListener('input', calc3);
  p3To.addEventListener('input', calc3);

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
 <script>
@@ -82,7 +82,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  results.innerHTML = Object.entries(toMeters).map(([unit, factor]) => {
  const converted = meters / factor;
  const formatted = converted.toLocaleString(undefined, { maximumFractionDigits: 6 });
- return `<div style="justify-content: space-between; align-items: center; padding: var(--space-3); display: flex; background: var(--gray-100); border-radius: var(--radius-sm)"><span><strong>${unitNames[unit]}</strong> (${unit})</span><span class="code">${formatted}</span><button class="btn btn-ghost btn-sm" onclick="Clipboard.copy('${formatted}')" title="Copy">ðŸ“‹</button></div>`;
+ return `<div style="justify-content: space-between; align-items: center; padding: var(--space-3); display: flex; background: var(--gray-100); border-radius: var(--radius-sm)"><span><strong>${unitNames[unit]}</strong> (${unit})</span><span class="code">${formatted}</span><button class="btn btn-ghost btn-sm" onclick="Clipboard.copy('${formatted}')" title="Copy">📋</button></div>`;
  }).join('');
  }
 

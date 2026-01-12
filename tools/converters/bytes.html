@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
 <script>
@@ -65,7 +65,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  results.innerHTML = Object.entries(units).map(([unit, divisor]) => {
  const converted = bytes / divisor;
  const formatted = converted.toLocaleString(undefined, { maximumFractionDigits: 6 });
- return `<div class="bg-gray-50" style="justify-content: space-between; align-items: center; padding: var(--space-3); display: flex; border-radius: var(--radius-lg); background: var(--gray-100)"><span style="font-weight: var(--font-medium)">${unit}</span><span class="code">${formatted}</span><button class="btn btn-ghost btn-sm" onclick="Clipboard.copy('${formatted}')" title="Copy">ðŸ“‹</button></div>`;
+ return `<div class="bg-gray-50" style="justify-content: space-between; align-items: center; padding: var(--space-3); display: flex; border-radius: var(--radius-lg); background: var(--gray-100)"><span style="font-weight: var(--font-medium)">${unit}</span><span class="code">${formatted}</span><button class="btn btn-ghost btn-sm" onclick="Clipboard.copy('${formatted}')" title="Copy">📋</button></div>`;
  }).join('');
  }
 

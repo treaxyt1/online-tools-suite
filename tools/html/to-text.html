@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
 <script>
@@ -77,9 +77,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  const entities = {
  '&nbsp;': ' ', '&amp;': '&', '&lt;': '<', '&gt;': '>',
  '&quot;': '"', '&#39;': "'", '&apos;': "'",
- '&ndash;': 'â€“', '&mdash;': 'â€”', '&copy;': 'Â©',
- '&reg;': 'Â®', '&trade;': 'â„¢', '&hellip;': 'â€¦',
- '&euro;': 'â‚¬', '&pound;': 'Â£', '&yen;': 'Â¥'
+ '&ndash;': '–', '&mdash;': '—', '&copy;': '©',
+ '&reg;': '®', '&trade;': '™', '&hellip;': '…',
+ '&euro;': '€', '&pound;': '£', '&yen;': '¥'
  };
  for (const [entity, char] of Object.entries(entities)) {
  text = text.split(entity).join(char);

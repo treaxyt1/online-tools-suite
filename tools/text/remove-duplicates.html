@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en" data-theme="light"><head>
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
 <script>
@@ -56,7 +56,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  output.value = unique.join('\n');
 
  const removed = lines.length - unique.length;
- stats.textContent = `Removed ${removed} duplicate${removed !== 1 ? 's' : ''} (${lines.length} â†’ ${unique.length} lines)`;
+ stats.textContent = `Removed ${removed} duplicate${removed !== 1 ? 's' : ''} (${lines.length} → ${unique.length} lines)`;
  }
 
  input.addEventListener('input', debounce(process, 200));
