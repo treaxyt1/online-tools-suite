@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Dataclass Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description" content="Generate Python dataclass code online. Free dataclass generator with type hints.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/dataclass-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                <line x1="3" y1="9" x2="21" y2="9" />
+                                <line x1="9" y1="21" x2="9" y2="9" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Dataclass Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate Python
+                                dataclass code with type hints</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="class-name">Class Name</label>
+                        <input type="text" id="class-name" class="form-input" placeholder="User" value="User">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Options</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="checkbox" id="frozen"> frozen (immutable)</label>
+                            <label><input type="checkbox" id="slots" checked> slots (memory efficient)</label>
+                            <label><input type="checkbox" id="order"> order (comparison methods)</label>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Fields (name: type = default)</label>
+                        <div id="fields-container"></div>
+                        <button class="btn btn-ghost" onclick="addField()" style="margin-top:var(--space-2)">+ Add
+                            Field</button>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateDataclass()">Generate Dataclass</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Generated Code</label>
+                        <textarea id="output-text" class="form-textarea" rows="20" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Dataclass Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+            addField('id', 'int', ''); addField('name', 'str', ''); addField('email', 'str', ''); addField('active', 'bool', 'True');
+        });
+        function addField(name = '', type = 'str', def = '') {
+            const container = document.getElementById('fields-container');
+            const div = document.createElement('div');
+            div.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:var(--space-2);margin-bottom:var(--space-2)';
+            div.innerHTML = `
+<input type="text" class="form-input field-name" placeholder="name" value="${name}">
+<select class="form-input field-type">
+<option value="str" ${type === 'str' ? 'selected' : ''}>str</option>
+<option value="int" ${type === 'int' ? 'selected' : ''}>int</option>
+<option value="float" ${type === 'float' ? 'selected' : ''}>float</option>
+<option value="bool" ${type === 'bool' ? 'selected' : ''}>bool</option>
+<option value="list" ${type === 'list' ? 'selected' : ''}>list</option>
+<option value="dict" ${type === 'dict' ? 'selected' : ''}>dict</option>
+<option value="Optional[str]" ${type === 'Optional[str]' ? 'selected' : ''}>Optional[str]</option>
+<option value="datetime" ${type === 'datetime' ? 'selected' : ''}>datetime</option>
+</select>
+<input type="text" class="form-input field-default" placeholder="default (optional)" value="${def}">
+<button class="btn btn-ghost" onclick="this.parentElement.remove()" style="padding:var(--space-2)">×</button>`;
+            container.appendChild(div);
+        }
+        function generateDataclass() {
+            const className = document.getElementById('class-name').value || 'MyClass';
+            const frozen = document.getElementById('frozen').checked;
+            const slots = document.getElementById('slots').checked;
+            const order = document.getElementById('order').checked;
+            const fields = [];
+            document.querySelectorAll('#fields-container > div').forEach(row => {
+                const name = row.querySelector('.field-name').value;
+                const type = row.querySelector('.field-type').value;
+                const def = row.querySelector('.field-default').value;
+                if (name) fields.push({ name, type, def });
+            });
+            let options = [];
+            if (frozen) options.push('frozen=True');
+            if (slots) options.push('slots=True');
+            if (order) options.push('order=True');
+            const optStr = options.length ? '(' + options.join(', ') + ')' : '';
+            let code = `from dataclasses import dataclass, field
+from typing import Optional, List, Dict
+from datetime import datetime
+
+@dataclass${optStr}
+class ${className}:
+    """${className} dataclass generated by OnlineToolFree."""
+    
+`;
+            fields.forEach(f => {
+                if (f.def) {
+                    if (f.type === 'list') code += `    ${f.name}: ${f.type} = field(default_factory=list)\n`;
+                    else if (f.type === 'dict') code += `    ${f.name}: ${f.type} = field(default_factory=dict)\n`;
+                    else code += `    ${f.name}: ${f.type} = ${f.def}\n`;
+                } else code += `    ${f.name}: ${f.type}\n`;
+            });
+            code += `
+    def to_dict(self) -> dict:
+        """Convert to dictionary."""
+        return {
+${fields.map(f => `            '${f.name}': self.${f.name}`).join(',\n')}
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict) -> '${className}':
+        """Create from dictionary."""
+        return cls(**data)
+
+
+# Example usage:
+if __name__ == "__main__":
+    ${className.toLowerCase()} = ${className}(${fields.filter(f => !f.def).map(f => f.name + '=' + getExample(f.type)).join(', ')})
+    print(${className.toLowerCase()})
+`;
+            document.getElementById('output-text').value = code;
+            Toast.success('Dataclass generated!');
+        }
+        function getExample(type) {
+            if (type === 'str') return '"example"';
+            if (type === 'int') return '1';
+            if (type === 'float') return '1.0';
+            if (type === 'bool') return 'True';
+            if (type === 'list') return '[]';
+            if (type === 'dict') return '{}';
+            if (type.includes('Optional')) return 'None';
+            if (type === 'datetime') return 'datetime.now()';
+            return 'None';
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

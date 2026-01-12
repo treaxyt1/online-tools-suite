@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Django Model Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Django models with fields online. Free Django model generator for Python web apps.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/django-model-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Django Model Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate Django
+                                models with ORM fields</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="model-name">Model Name</label>
+                        <input type="text" id="model-name" class="form-input" placeholder="User" value="Article">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Options</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="checkbox" id="timestamps" checked> Timestamps (created/updated)</label>
+                            <label><input type="checkbox" id="str-method" checked> __str__ method</label>
+                            <label><input type="checkbox" id="meta-class" checked> Meta class</label>
+                            <label><input type="checkbox" id="admin-class"> Admin class</label>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Fields</label>
+                        <div id="fields-container"></div>
+                        <button class="btn btn-ghost" onclick="addField()" style="margin-top:var(--space-2)">+ Add
+                            Field</button>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateModel()">Generate Model</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Generated Code</label>
+                        <textarea id="output-text" class="form-textarea" rows="30" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Django Model Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+            addField('title', 'CharField', 'max_length=200');
+            addField('slug', 'SlugField', 'unique=True');
+            addField('content', 'TextField', '');
+            addField('published', 'BooleanField', 'default=False');
+        });
+        function addField(name = '', type = 'CharField', opts = '') {
+            const container = document.getElementById('fields-container');
+            const div = document.createElement('div');
+            div.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:var(--space-2);margin-bottom:var(--space-2)';
+            div.innerHTML = `
+<input type="text" class="form-input field-name" placeholder="field_name" value="${name}">
+<select class="form-input field-type">
+<option value="CharField" ${type === 'CharField' ? 'selected' : ''}>CharField</option>
+<option value="TextField" ${type === 'TextField' ? 'selected' : ''}>TextField</option>
+<option value="IntegerField" ${type === 'IntegerField' ? 'selected' : ''}>IntegerField</option>
+<option value="FloatField" ${type === 'FloatField' ? 'selected' : ''}>FloatField</option>
+<option value="BooleanField" ${type === 'BooleanField' ? 'selected' : ''}>BooleanField</option>
+<option value="DateField" ${type === 'DateField' ? 'selected' : ''}>DateField</option>
+<option value="DateTimeField" ${type === 'DateTimeField' ? 'selected' : ''}>DateTimeField</option>
+<option value="EmailField" ${type === 'EmailField' ? 'selected' : ''}>EmailField</option>
+<option value="URLField" ${type === 'URLField' ? 'selected' : ''}>URLField</option>
+<option value="SlugField" ${type === 'SlugField' ? 'selected' : ''}>SlugField</option>
+<option value="ImageField" ${type === 'ImageField' ? 'selected' : ''}>ImageField</option>
+<option value="FileField" ${type === 'FileField' ? 'selected' : ''}>FileField</option>
+<option value="ForeignKey" ${type === 'ForeignKey' ? 'selected' : ''}>ForeignKey</option>
+<option value="ManyToManyField" ${type === 'ManyToManyField' ? 'selected' : ''}>ManyToManyField</option>
+</select>
+<input type="text" class="form-input field-opts" placeholder="max_length=100" value="${opts}">
+<button class="btn btn-ghost" onclick="this.parentElement.remove()" style="padding:var(--space-2)">×</button>`;
+            container.appendChild(div);
+        }
+        function generateModel() {
+            const modelName = document.getElementById('model-name').value || 'MyModel';
+            const timestamps = document.getElementById('timestamps').checked;
+            const strMethod = document.getElementById('str-method').checked;
+            const metaClass = document.getElementById('meta-class').checked;
+            const adminClass = document.getElementById('admin-class').checked;
+            const fields = [];
+            document.querySelectorAll('#fields-container > div').forEach(row => {
+                const name = row.querySelector('.field-name').value;
+                const type = row.querySelector('.field-type').value;
+                const opts = row.querySelector('.field-opts').value;
+                if (name) fields.push({ name, type, opts });
+            });
+            let code = `from django.db import models
+from django.utils import timezone
+
+class ${modelName}(models.Model):
+    """${modelName} model."""
+    
+`;
+            fields.forEach(f => {
+                const optsStr = f.opts ? f.opts : '';
+                code += `    ${f.name} = models.${f.type}(${optsStr})\n`;
+            });
+            if (timestamps) {
+                code += `\n    # Timestamps\n`;
+                code += `    created_at = models.DateTimeField(auto_now_add=True)\n`;
+                code += `    updated_at = models.DateTimeField(auto_now=True)\n`;
+            }
+            if (metaClass) {
+                const plural = modelName.endsWith('s') ? modelName : modelName + 's';
+                code += `\n    class Meta:\n`;
+                code += `        verbose_name = '${modelName}'\n`;
+                code += `        verbose_name_plural = '${plural}'\n`;
+                code += `        ordering = ['-created_at']\n`;
+            }
+            if (strMethod && fields.length > 0) {
+                const strField = fields[0].name;
+                code += `\n    def __str__(self):\n`;
+                code += `        return str(self.${strField})\n`;
+            }
+            if (adminClass) {
+                code += `\n\n# admin.py\nfrom django.contrib import admin\nfrom .models import ${modelName}\n\n`;
+                code += `@admin.register(${modelName})\n`;
+                code += `class ${modelName}Admin(admin.ModelAdmin):\n`;
+                code += `    list_display = [${fields.slice(0, 4).map(f => "'" + f.name + "'").join(', ')}]\n`;
+                code += `    search_fields = [${fields.filter(f => f.type === 'CharField' || f.type === 'TextField').slice(0, 2).map(f => "'" + f.name + "'").join(', ')}]\n`;
+                if (fields.some(f => f.type === 'BooleanField')) code += `    list_filter = [${fields.filter(f => f.type === 'BooleanField').map(f => "'" + f.name + "'").join(', ')}]\n`;
+            }
+            code += `\n\n# Don't forget to run:\n# python manage.py makemigrations\n# python manage.py migrate\n`;
+            document.getElementById('output-text').value = code;
+            Toast.success('Django model generated!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

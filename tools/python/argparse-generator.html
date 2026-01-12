@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Argparse Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Python argparse CLI argument parser code online. Free command-line argument generator.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/argparse-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <polyline points="4 17 10 11 4 5" />
+                                <line x1="12" y1="19" x2="20" y2="19" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Argparse Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate
+                                command-line argument parser code</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="prog-name">Program Name</label>
+                        <input type="text" id="prog-name" class="form-input" placeholder="my_script" value="my_script">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="prog-desc">Description</label>
+                        <input type="text" id="prog-desc" class="form-input" placeholder="A helpful script"
+                            value="A helpful command-line tool">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Arguments</label>
+                        <div id="args-container"></div>
+                        <button class="btn btn-ghost" onclick="addArg()" style="margin-top:var(--space-2)">+ Add
+                            Argument</button>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateArgparse()">Generate Code</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Generated Code</label>
+                        <textarea id="output-text" class="form-textarea" rows="30" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Argparse Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+            addArg('input', 'str', 'Input file path', true, '');
+            addArg('output', 'str', 'Output file path', false, 'output.txt');
+            addArg('verbose', 'flag', 'Enable verbose output', false, '');
+        });
+        function addArg(name = '', type = 'str', help = '', required = false, def = '') {
+            const container = document.getElementById('args-container');
+            const div = document.createElement('div');
+            div.style.cssText = 'display:grid;grid-template-columns:1fr 100px 1fr 80px 100px auto;gap:var(--space-2);margin-bottom:var(--space-2);align-items:center';
+            div.innerHTML = `
+<input type="text" class="form-input arg-name" placeholder="argument" value="${name}">
+<select class="form-input arg-type">
+<option value="str" ${type === 'str' ? 'selected' : ''}>str</option>
+<option value="int" ${type === 'int' ? 'selected' : ''}>int</option>
+<option value="float" ${type === 'float' ? 'selected' : ''}>float</option>
+<option value="flag" ${type === 'flag' ? 'selected' : ''}>flag (bool)</option>
+<option value="list" ${type === 'list' ? 'selected' : ''}>list</option>
+</select>
+<input type="text" class="form-input arg-help" placeholder="help text" value="${help}">
+<label style="font-size:var(--text-sm)"><input type="checkbox" class="arg-required" ${required ? 'checked' : ''}> Required</label>
+<input type="text" class="form-input arg-default" placeholder="default" value="${def}">
+<button class="btn btn-ghost" onclick="this.parentElement.remove()" style="padding:var(--space-2)">×</button>`;
+            container.appendChild(div);
+        }
+        function generateArgparse() {
+            const progName = document.getElementById('prog-name').value || 'my_script';
+            const progDesc = document.getElementById('prog-desc').value || 'A helpful script';
+            const args = [];
+            document.querySelectorAll('#args-container > div').forEach(row => {
+                const name = row.querySelector('.arg-name').value;
+                const type = row.querySelector('.arg-type').value;
+                const help = row.querySelector('.arg-help').value;
+                const required = row.querySelector('.arg-required').checked;
+                const def = row.querySelector('.arg-default').value;
+                if (name) args.push({ name, type, help, required, def });
+            });
+            let code = `#!/usr/bin/env python3
+"""${progDesc}"""
+
+import argparse
+import sys
+
+def parse_args():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(
+        prog='${progName}',
+        description='${progDesc}',
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    
+`;
+            args.forEach(a => {
+                const flag = a.required ? a.name : '--' + a.name;
+                const short = a.required ? '' : `'-${a.name[0]}', `;
+                if (a.type === 'flag') {
+                    code += `    parser.add_argument(\n`;
+                    code += `        ${short}'--${a.name}',\n`;
+                    code += `        action='store_true',\n`;
+                    code += `        help='${a.help}'\n`;
+                    code += `    )\n\n`;
+                } else if (a.type === 'list') {
+                    code += `    parser.add_argument(\n`;
+                    code += `        ${short}'${flag}',\n`;
+                    code += `        nargs='+',\n`;
+                    code += `        type=str,\n`;
+                    if (a.def) code += `        default=${a.def},\n`;
+                    code += `        help='${a.help}'\n`;
+                    code += `    )\n\n`;
+                } else {
+                    code += `    parser.add_argument(\n`;
+                    if (!a.required) code += `        ${short}`;
+                    code += `        '${flag}',\n`;
+                    code += `        type=${a.type},\n`;
+                    if (a.required) code += `        required=True,\n`;
+                    if (a.def) code += `        default='${a.def}',\n`;
+                    code += `        help='${a.help}'\n`;
+                    code += `    )\n\n`;
+                }
+            });
+            code += `    return parser.parse_args()
+
+
+def main():
+    """Main function."""
+    args = parse_args()
+    
+    # Access arguments:
+${args.map(a => `    # args.${a.name.replace(/-/g, '_')}`).join('\n')}
+    
+    print(f"Running ${progName}...")
+${args.filter(a => !a.type.includes('flag')).map(a => `    print(f"  ${a.name}: {args.${a.name.replace(/-/g, '_')}}")`).join('\n')}
+    
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\\nInterrupted by user")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+`;
+            document.getElementById('output-text').value = code;
+            Toast.success('Argparse code generated!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

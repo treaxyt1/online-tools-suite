@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Random Name Picker - Free Spin the Wheel Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Pick random names with a spinning wheel. Free random name picker for giveaways, raffles, and team selection. No signup required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/fun/random-name-picker.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:900px;margin:0 auto;padding:0">
+                <div class="tool-header" style="text-align:center;margin-bottom:var(--space-6)">
+                    <div
+                        style="display:flex;align-items:center;justify-content:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Random Name Picker</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Spin the wheel to
+                                pick a random winner!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)">
+                        <div>
+                            <div class="tool-section">
+                                <label class="tool-section-title" for="names-input">Enter Names (one per line)</label>
+                                <textarea id="names-input" class="form-textarea" rows="12" placeholder="Alice
+Bob
+Charlie
+Diana
+Emma
+Frank
+Grace
+Henry"></textarea>
+                            </div>
+                            <div class="tool-actions" style="margin-top:var(--space-4)">
+                                <button class="btn btn-primary" onclick="spinWheel()" id="spin-btn">🎯 Spin the
+                                    Wheel!</button>
+                                <button class="btn btn-secondary" onclick="resetWheel()">Reset</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="position:relative;width:100%;max-width:400px;margin:0 auto">
+                                <canvas id="wheel" width="400" height="400"
+                                    style="width:100%;height:auto;cursor:pointer" onclick="spinWheel()"></canvas>
+                                <div id="pointer"
+                                    style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid #dc3545;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));pointer-events:none">
+                                </div>
+                            </div>
+                            <div id="winner" style="text-align:center;margin-top:var(--space-6);min-height:100px"></div>
+                        </div>
+                    </div>
+                </div>
+                <section class="info-section"
+                    style="margin-top:var(--space-8);padding:var(--space-6);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-xl)">
+                    <h2>How to Use the Random Name Picker</h2>
+                    <ol style="margin:var(--space-2) 0;padding-left:var(--space-6)">
+                        <li>Enter names in the text box (one name per line)</li>
+                        <li>Click "Spin the Wheel" to start the selection</li>
+                        <li>Watch the wheel spin and land on a random winner!</li>
+                        <li>Perfect for giveaways, raffles, team selection, and more</li>
+                    </ol>
+                    <p><strong>Pro tip:</strong> You can click directly on the wheel to spin it!</p>
+                </section>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Fun Tools', url: '/tools/fun/' }, { name: 'Random Name Picker' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+            drawWheel();
+        });
+        const canvas = document.getElementById('wheel');
+        const ctx = canvas.getContext('2d');
+        let names = [];
+        let isSpinning = false;
+        let currentRotation = 0;
+        const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2', '#F8B739', '#52B788'];
+        function drawWheel() {
+            const input = document.getElementById('names-input').value;
+            names = input.split('\n').filter(n => n.trim()).map(n => n.trim());
+            if (names.length === 0) {
+                names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Emma', 'Frank', 'Grace', 'Henry'];
+                document.getElementById('names-input').value = names.join('\n');
+            }
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 180;
+            const sliceAngle = 2 * Math.PI / names.length;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(currentRotation);
+            names.forEach((name, i) => {
+                const startAngle = i * sliceAngle;
+                const endAngle = (i + 1) * sliceAngle;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.arc(0, 0, radius, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fillStyle = colors[i % colors.length];
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                ctx.save();
+                ctx.rotate(startAngle + sliceAngle / 2);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 16px Inter, sans-serif';
+                ctx.fillText(name.substring(0, 12), radius * 0.65, 0);
+                ctx.restore();
+            });
+            ctx.restore();
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, 2 * Math.PI);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        }
+        function spinWheel() {
+            if (isSpinning) return;
+            const input = document.getElementById('names-input').value;
+            names = input.split('\n').filter(n => n.trim()).map(n => n.trim());
+            if (names.length < 2) { Toast.warning('Please enter at least 2 names'); return; }
+            isSpinning = true;
+            document.getElementById('spin-btn').disabled = true;
+            document.getElementById('winner').innerHTML = '';
+            const spins = 5 + Math.random() * 3;
+            const extraRotation = Math.random() * 2 * Math.PI;
+            const totalRotation = spins * 2 * Math.PI + extraRotation;
+            const duration = 4000;
+            const startTime = Date.now();
+            const startRotation = currentRotation;
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                currentRotation = startRotation + totalRotation * easeOut;
+                drawWheel();
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    isSpinning = false;
+                    document.getElementById('spin-btn').disabled = false;
+                    const normalizedRotation = (currentRotation % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+                    const sliceAngle = 2 * Math.PI / names.length;
+                    const winnerIndex = Math.floor((2 * Math.PI - normalizedRotation) / sliceAngle) % names.length;
+                    const winner = names[winnerIndex];
+                    document.getElementById('winner').innerHTML = `
+<div style="padding:var(--space-6);background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:var(--radius-xl);color:white;box-shadow:0 10px 30px rgba(0,0,0,0.2)">
+<div style="font-size:var(--text-sm);text-transform:uppercase;letter-spacing:2px;margin-bottom:var(--space-2)">🎉 Winner 🎉</div>
+<div style="font-size:var(--text-3xl);font-weight:bold;margin-bottom:var(--space-2)">${winner}</div>
+<div style="font-size:var(--text-sm);opacity:0.9">Congratulations!</div>
+</div>`;
+                    confetti();
+                    Toast.success('Winner selected: ' + winner);
+                }
+            }
+            animate();
+        }
+        function resetWheel() {
+            currentRotation = 0;
+            drawWheel();
+            document.getElementById('winner').innerHTML = '';
+            Toast.success('Wheel reset!');
+        }
+        function confetti() {
+            const duration = 3000;
+            const animationEnd = Date.now() + duration;
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            (function frame() {
+                const timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) return;
+                const particleCount = 2;
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `position:fixed;width:10px;height:10px;background:${colors[Math.floor(Math.random() * colors.length)]};top:-10px;left:${Math.random() * 100}%;border-radius:50%;pointer-events:none;z-index:9999`;
+                    document.body.appendChild(particle);
+                    const fall = particle.animate([{ transform: 'translateY(0) rotate(0deg)', opacity: 1 }, { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }], { duration: 2000, easing: 'cubic-bezier(0,0,0.2,1)' });
+                    fall.onfinish = () => particle.remove();
+                }
+                requestAnimationFrame(frame);
+            })();
+        }
+        document.getElementById('names-input').addEventListener('input', drawWheel);
+    </script>
+</body>
+
+</html>

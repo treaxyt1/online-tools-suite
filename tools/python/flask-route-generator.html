@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Flask Route Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Flask routes and endpoints online. Free Flask route generator for Python web apps.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/flask-route-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Flask Route Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate Flask
+                                routes and API endpoints</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+                        <div class="tool-section">
+                            <label class="tool-section-title" for="route-path">Route Path</label>
+                            <input type="text" id="route-path" class="form-input" placeholder="/api/users"
+                                value="/api/users">
+                        </div>
+                        <div class="tool-section">
+                            <label class="tool-section-title" for="func-name">Function Name</label>
+                            <input type="text" id="func-name" class="form-input" placeholder="get_users"
+                                value="get_users">
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">HTTP Methods</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="checkbox" id="get" checked> GET</label>
+                            <label><input type="checkbox" id="post"> POST</label>
+                            <label><input type="checkbox" id="put"> PUT</label>
+                            <label><input type="checkbox" id="delete"> DELETE</label>
+                            <label><input type="checkbox" id="patch"> PATCH</label>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Options</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="checkbox" id="json-response" checked> JSON Response</label>
+                            <label><input type="checkbox" id="auth-required"> Auth Required</label>
+                            <label><input type="checkbox" id="error-handling" checked> Error Handling</label>
+                            <label><input type="checkbox" id="blueprint"> Use Blueprint</label>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateRoute()">Generate Route</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Generated Code</label>
+                        <textarea id="output-text" class="form-textarea" rows="25" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Flask Route Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function generateRoute() {
+            const path = document.getElementById('route-path').value || '/api/resource';
+            const funcName = document.getElementById('func-name').value || 'handler';
+            const methods = [];
+            if (document.getElementById('get').checked) methods.push('GET');
+            if (document.getElementById('post').checked) methods.push('POST');
+            if (document.getElementById('put').checked) methods.push('PUT');
+            if (document.getElementById('delete').checked) methods.push('DELETE');
+            if (document.getElementById('patch').checked) methods.push('PATCH');
+            const jsonResp = document.getElementById('json-response').checked;
+            const authReq = document.getElementById('auth-required').checked;
+            const errorHandling = document.getElementById('error-handling').checked;
+            const useBlueprint = document.getElementById('blueprint').checked;
+            let code = 'from flask import ';
+            let imports = ['request'];
+            if (jsonResp) imports.push('jsonify');
+            if (useBlueprint) imports.push('Blueprint');
+            code += imports.join(', ') + '\n';
+            if (authReq) code += 'from functools import wraps\n';
+            code += '\n';
+            if (useBlueprint) {
+                code += `# Create blueprint\napi = Blueprint('api', __name__, url_prefix='/api')\n\n`;
+            }
+            if (authReq) {
+                code += `def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # Add your authentication logic here
+        token = request.headers.get('Authorization')
+        if not token:
+            return jsonify({'error': 'Unauthorized'}), 401
+        return f(*args, **kwargs)
+    return decorated_function
+
+`;
+            }
+            const decorator = useBlueprint ? 'api' : 'app';
+            code += `@${decorator}.route('${path}', methods=[${methods.map(m => "'" + m + "'").join(', ')}])\n`;
+            if (authReq) code += '@login_required\n';
+            code += `def ${funcName}():\n`;
+            code += `    """${funcName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} endpoint."""\n`;
+            if (errorHandling) code += `    try:\n`;
+            const indent = errorHandling ? '        ' : '    ';
+            methods.forEach(method => {
+                code += `${indent}if request.method == '${method}':\n`;
+                if (method === 'GET') {
+                    code += `${indent}    # Handle GET request\n`;
+                    code += `${indent}    data = {'message': 'Success', 'items': []}\n`;
+                } else if (method === 'POST') {
+                    code += `${indent}    # Handle POST request\n`;
+                    code += `${indent}    data = request.get_json()\n`;
+                    code += `${indent}    # Process data here\n`;
+                    code += `${indent}    return jsonify({'message': 'Created', 'data': data}), 201\n`;
+                } else if (method === 'PUT' || method === 'PATCH') {
+                    code += `${indent}    # Handle ${method} request\n`;
+                    code += `${indent}    data = request.get_json()\n`;
+                    code += `${indent}    # Update resource here\n`;
+                    code += `${indent}    return jsonify({'message': 'Updated', 'data': data}), 200\n`;
+                } else if (method === 'DELETE') {
+                    code += `${indent}    # Handle DELETE request\n`;
+                    code += `${indent}    # Delete resource here\n`;
+                    code += `${indent}    return jsonify({'message': 'Deleted'}), 200\n`;
+                }
+            });
+            if (jsonResp && methods.includes('GET')) {
+                code += `${indent}return jsonify(data), 200\n`;
+            }
+            if (errorHandling) {
+                code += `    except Exception as e:\n`;
+                code += `        return jsonify({'error': str(e)}), 500\n`;
+            }
+            code += `\n\n# Usage:\nif __name__ == '__main__':\n    app.run(debug=True)\n`;
+            document.getElementById('output-text').value = code;
+            Toast.success('Flask route generated!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Docstring Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Python docstrings in Google, NumPy, or Sphinx style. Free docstring generator.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/docstring-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <path d="M14 2v6h6" />
+                                <path d="M16 13H8" />
+                                <path d="M16 17H8" />
+                                <path d="M10 9H8" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Docstring Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate docstrings
+                                in Google, NumPy, or Sphinx style</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Function Signature</label>
+                        <textarea id="input-text" class="form-textarea" rows="4"
+                            placeholder="def calculate_total(items: list, tax_rate: float = 0.1) -> float:"></textarea>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Docstring Style</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="radio" name="style" value="google" checked> Google</label>
+                            <label><input type="radio" name="style" value="numpy"> NumPy</label>
+                            <label><input type="radio" name="style" value="sphinx"> Sphinx</label>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="description">Description</label>
+                        <input type="text" id="description" class="form-input"
+                            placeholder="Calculate the total price with tax">
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateDocstring()">Generate Docstring</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Generated Docstring</label>
+                        <textarea id="output-text" class="form-textarea" rows="20" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Docstring Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function parseFunction(sig) {
+            const match = sig.match(/def\s+(\w+)\s*\(([^)]*)\)\s*(?:->\s*(\w+))?/);
+            if (!match) return null;
+            const name = match[1];
+            const returnType = match[3] || 'None';
+            const params = [];
+            if (match[2].trim()) {
+                match[2].split(',').forEach(p => {
+                    p = p.trim();
+                    const pMatch = p.match(/(\w+)\s*:\s*(\w+)(?:\s*=\s*(.+))?/);
+                    if (pMatch) params.push({ name: pMatch[1], type: pMatch[2], default: pMatch[3] || null });
+                    else {
+                        const simpleMatch = p.match(/(\w+)(?:\s*=\s*(.+))?/);
+                        if (simpleMatch) params.push({ name: simpleMatch[1], type: 'Any', default: simpleMatch[2] || null });
+                    }
+                });
+            }
+            return { name, params, returnType };
+        }
+        function generateDocstring() {
+            const sig = document.getElementById('input-text').value;
+            const desc = document.getElementById('description').value || 'Description here.';
+            const style = document.querySelector('input[name="style"]:checked').value;
+            if (!sig.trim()) { Toast.warning('Enter a function signature'); return; }
+            const func = parseFunction(sig);
+            if (!func) { Toast.error('Invalid function signature'); return; }
+            let doc = '';
+            if (style === 'google') {
+                doc = `${sig}
+    """${desc}
+
+    Args:
+${func.params.map(p => `        ${p.name} (${p.type}): Description of ${p.name}${p.default ? ' Defaults to ' + p.default + '.' : ''}`).join('\n')}
+
+    Returns:
+        ${func.returnType}: Description of return value.
+
+    Raises:
+        ValueError: If invalid input is provided.
+
+    Example:
+        >>> result = ${func.name}(${func.params.map(p => p.default || '...').join(', ')})
+    """
+    pass`;
+            } else if (style === 'numpy') {
+                doc = `${sig}
+    """
+    ${desc}
+
+    Parameters
+    ----------
+${func.params.map(p => `    ${p.name} : ${p.type}
+        Description of ${p.name}${p.default ? '. Default is ' + p.default + '.' : ''}`).join('\n')}
+
+    Returns
+    -------
+    ${func.returnType}
+        Description of return value.
+
+    Raises
+    ------
+    ValueError
+        If invalid input is provided.
+
+    Examples
+    --------
+    >>> result = ${func.name}(${func.params.map(p => p.default || '...').join(', ')})
+    """
+    pass`;
+            } else {
+                doc = `${sig}
+    """${desc}
+
+${func.params.map(p => `    :param ${p.name}: Description of ${p.name}${p.default ? ' (default: ' + p.default + ')' : ''}`).join('\n')}
+${func.params.map(p => `    :type ${p.name}: ${p.type}`).join('\n')}
+    :returns: Description of return value.
+    :rtype: ${func.returnType}
+    :raises ValueError: If invalid input is provided.
+
+    .. code-block:: python
+
+        result = ${func.name}(${func.params.map(p => p.default || '...').join(', ')})
+    """
+    pass`;
+            }
+            document.getElementById('output-text').value = doc;
+            Toast.success('Docstring generated!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

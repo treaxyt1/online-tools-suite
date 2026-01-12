@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PHP Minifier - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Minify PHP code by removing whitespace and comments. Free online PHP minifier tool.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/php/php-minifier.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">PHP Minifier</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Minify PHP code by
+                                removing whitespace and comments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Input PHP Code</label>
+                        <textarea id="input-text" class="form-textarea" rows="10"
+                            placeholder="Paste your PHP code here..."></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="processInput()">Minify</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Minified Output</label>
+                        <textarea id="output-text" class="form-textarea" rows="6" readonly></textarea>
+                    </div>
+                    <div class="stat-card"
+                        style="text-align:center;padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg);margin-top:var(--space-4)">
+                        <div id="savings" style="font-size:var(--text-xl);font-weight:bold;color:var(--primary-600)">0%
+                        </div>
+                        <div style="font-size:var(--text-sm);color:var(--text-muted)">Size Reduction</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'PHP Developer', url: '/tools/php/' }, { name: 'PHP Minifier' }]);
+            Components.renderRelatedTools('related-tools-container', 'php-minifier');
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function processInput() {
+            const input = document.getElementById('input-text').value;
+            if (!input.trim()) { Toast.warning('Please enter PHP code'); return; }
+            let minified = input.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '').replace(/\s+/g, ' ').replace(/\s*([{};:,()=<>!&|+\-*\/])\s*/g, '$1').trim();
+            document.getElementById('output-text').value = minified;
+            const saved = Math.round((1 - minified.length / input.length) * 100);
+            document.getElementById('savings').textContent = saved + '%';
+            Toast.success('Minified! Saved ' + saved + '%');
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('output-text').value = ''; document.getElementById('savings').textContent = '0%'; Toast.success('Cleared!'); }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Nothing to copy') } }
+    </script>
+</body>
+
+</html>

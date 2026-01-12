@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python List Comprehension Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Python list comprehensions from for loops online. Free comprehension generator.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/comprehension-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path
+                                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">List Comprehension Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Convert loops to
+                                list comprehensions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title">Comprehension Type</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="radio" name="type" value="list" checked> List [ ]</label>
+                            <label><input type="radio" name="type" value="dict"> Dict { }</label>
+                            <label><input type="radio" name="type" value="set"> Set { }</label>
+                            <label><input type="radio" name="type" value="generator"> Generator ( )</label>
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+                        <div class="tool-section">
+                            <label class="tool-section-title" for="variable">Variable</label>
+                            <input type="text" id="variable" class="form-input" placeholder="x" value="x">
+                        </div>
+                        <div class="tool-section">
+                            <label class="tool-section-title" for="iterable">Iterable</label>
+                            <input type="text" id="iterable" class="form-input" placeholder="range(10)"
+                                value="range(10)">
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="expression">Expression</label>
+                        <input type="text" id="expression" class="form-input" placeholder="x * 2" value="x * 2">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="condition">Condition (optional)</label>
+                        <input type="text" id="condition" class="form-input" placeholder="x % 2 == 0"
+                            value="x % 2 == 0">
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateComprehension()">Generate</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Generated Comprehension</label>
+                        <div id="comprehension"
+                            style="padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg);font-family:monospace;font-size:var(--text-lg)">
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Equivalent For Loop</label>
+                        <textarea id="for-loop" class="form-textarea" rows="8" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                    <section class="info-section"
+                        style="margin-top:var(--space-6);padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                        <h3 style="margin-bottom:var(--space-2)">Examples</h3>
+                        <ul style="margin:0;padding-left:var(--space-4);font-family:monospace;font-size:var(--text-sm)">
+                            <li>[x**2 for x in range(10)]</li>
+                            <li>{x: x**2 for x in range(5)}</li>
+                            <li>{x for x in items if x > 0}</li>
+                            <li>(x*2 for x in data)</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Comprehension Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+            generateComprehension();
+        });
+        function generateComprehension() {
+            const type = document.querySelector('input[name="type"]:checked').value;
+            const variable = document.getElementById('variable').value || 'x';
+            const iterable = document.getElementById('iterable').value || 'items';
+            const expression = document.getElementById('expression').value || variable;
+            const condition = document.getElementById('condition').value;
+            let open, close, expr;
+            if (type === 'list') { open = '['; close = ']'; expr = expression; }
+            else if (type === 'set') { open = '{'; close = '}'; expr = expression; }
+            else if (type === 'generator') { open = '('; close = ')'; expr = expression; }
+            else { open = '{'; close = '}'; expr = `${variable}: ${expression}`; }
+            let comp = `${open}${expr} for ${variable} in ${iterable}`;
+            if (condition) comp += ` if ${condition}`;
+            comp += close;
+            document.getElementById('comprehension').innerHTML = `<span style="color:var(--primary-600)">${comp}</span>`;
+            let forLoop;
+            if (type === 'list') {
+                forLoop = `result = []\nfor ${variable} in ${iterable}:\n`;
+                if (condition) forLoop += `    if ${condition}:\n        result.append(${expression})\n`;
+                else forLoop += `    result.append(${expression})\n`;
+            } else if (type === 'set') {
+                forLoop = `result = set()\nfor ${variable} in ${iterable}:\n`;
+                if (condition) forLoop += `    if ${condition}:\n        result.add(${expression})\n`;
+                else forLoop += `    result.add(${expression})\n`;
+            } else if (type === 'dict') {
+                forLoop = `result = {}\nfor ${variable} in ${iterable}:\n`;
+                if (condition) forLoop += `    if ${condition}:\n        result[${variable}] = ${expression}\n`;
+                else forLoop += `    result[${variable}] = ${expression}\n`;
+            } else {
+                forLoop = `def generator():\n    for ${variable} in ${iterable}:\n`;
+                if (condition) forLoop += `        if ${condition}:\n            yield ${expression}\n`;
+                else forLoop += `        yield ${expression}\n`;
+                forLoop += `\nresult = generator()`;
+            }
+            document.getElementById('for-loop').value = forLoop;
+            Toast.success('Generated!');
+        }
+        function copyOutput() { const c = document.getElementById('comprehension').textContent; if (c) { Clipboard.copy(c) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

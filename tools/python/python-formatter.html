@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Formatter - Free Online PEP8 Code Beautifier | OnlineToolFree</title>
+    <meta name="description"
+        content="Format Python code online with PEP8 style. Free Python code beautifier, no signup required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/python-formatter.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Formatter</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Format Python code
+                                with PEP8 style guidelines</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Python Code</label>
+                        <textarea id="input-text" class="form-textarea" rows="12" placeholder="def hello_world():
+    print('Hello, World!')
+
+if __name__=='__main__':
+    hello_world()"></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="formatPython()">Format Code</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Formatted Output</label>
+                        <textarea id="output-text" class="form-textarea" rows="12" readonly></textarea>
+                    </div>
+                </div>
+                <section class="info-section"
+                    style="margin-top:var(--space-8);padding:var(--space-6);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-xl)">
+                    <h2>About Python Formatter</h2>
+                    <p>Format your Python code according to PEP8 style guidelines. This tool beautifies messy Python
+                        code with proper indentation and spacing. 100% free, runs in your browser.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Python Formatter' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function formatPython() {
+            const input = document.getElementById('input-text').value;
+            if (!input.trim()) { Toast.warning('Please enter Python code'); return; }
+            let lines = input.split('\n');
+            let formatted = [];
+            let indentLevel = 0;
+            const indentKeywords = ['def ', 'class ', 'if ', 'elif ', 'else:', 'for ', 'while ', 'try:', 'except', 'finally:', 'with '];
+            const dedentKeywords = ['return', 'break', 'continue', 'pass', 'raise'];
+            lines.forEach(line => {
+                let trimmed = line.trim();
+                if (!trimmed) { formatted.push(''); return; }
+                if (trimmed.startsWith('elif ') || trimmed.startsWith('else:') || trimmed.startsWith('except') || trimmed.startsWith('finally:')) indentLevel = Math.max(0, indentLevel - 1);
+                formatted.push('    '.repeat(indentLevel) + trimmed);
+                if (trimmed.endsWith(':')) indentLevel++;
+                if (dedentKeywords.some(k => trimmed.startsWith(k)) && !trimmed.endsWith(':')) indentLevel = Math.max(0, indentLevel - 1);
+            });
+            let result = formatted.join('\n');
+            result = result.replace(/,(?!\s)/g, ', ');
+            result = result.replace(/([=<>!+\-*\/])(?!\s)(?!=)/g, '$1 ');
+            result = result.replace(/(?<!\s)([=<>!+\-*\/])(?!=)/g, ' $1');
+            document.getElementById('output-text').value = result;
+            Toast.success('Python code formatted!');
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('output-text').value = ''; Toast.success('Cleared!'); }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Nothing to copy') } }
+    </script>
+</body>
+
+</html>

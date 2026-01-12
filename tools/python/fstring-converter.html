@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python F-String Converter - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Convert old Python string formatting to f-strings online. Free Python format converter.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/fstring-converter.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python F-String Converter</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Convert old format
+                                strings to modern f-strings</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Old Format String</label>
+                        <textarea id="input-text" class="form-textarea" rows="6" placeholder='print("Hello, %s! You are %d years old." % (name, age))
+print("Value: {}".format(value))
+print("Name: {name}, Age: {age}".format(name=name, age=age))'></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="convertToFstring()">Convert to F-String</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">F-String Output</label>
+                        <textarea id="output-text" class="form-textarea" rows="6" readonly></textarea>
+                    </div>
+                    <section class="info-section"
+                        style="margin-top:var(--space-6);padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                        <h3 style="margin-bottom:var(--space-2)">Supported Formats</h3>
+                        <ul style="margin:0;padding-left:var(--space-4)">
+                            <li><code>%s</code>, <code>%d</code>, <code>%f</code> → <code>{variable}</code></li>
+                            <li><code>"{}".format(x)</code> → <code>f"{x}"</code></li>
+                            <li><code>"{name}".format(name=x)</code> → <code>f"{name}"</code></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'F-String Converter' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function convertToFstring() {
+            const input = document.getElementById('input-text').value;
+            if (!input.trim()) { Toast.warning('Please enter Python code'); return; }
+            let output = input;
+            // Convert .format() style with named args
+            output = output.replace(/"([^"]*\{[^}]+\}[^"]*)"\s*\.format\s*\(([^)]+)\)/g, (match, str, args) => {
+                return 'f"' + str + '"';
+            });
+            // Convert .format() style with positional args
+            output = output.replace(/"([^"]*\{\}[^"]*)"\s*\.format\s*\(([^)]+)\)/g, (match, str, args) => {
+                const argList = args.split(',').map(a => a.trim());
+                let i = 0;
+                const newStr = str.replace(/\{\}/g, () => '{' + argList[i++] + '}');
+                return 'f"' + newStr + '"';
+            });
+            // Convert % style formatting
+            output = output.replace(/"([^"]+)"\s*%\s*\(([^)]+)\)/g, (match, str, args) => {
+                const argList = args.split(',').map(a => a.trim());
+                let i = 0;
+                let newStr = str.replace(/%[sd]|%\.?\d*f/g, () => '{' + argList[i++] + '}');
+                return 'f"' + newStr + '"';
+            });
+            // Convert simple % style
+            output = output.replace(/"([^"]+)"\s*%\s*(\w+)/g, (match, str, variable) => {
+                const newStr = str.replace(/%[sd]|%\.?\d*f/g, '{' + variable + '}');
+                return 'f"' + newStr + '"';
+            });
+            document.getElementById('output-text').value = output;
+            Toast.success('Converted to f-strings!');
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('output-text').value = ''; Toast.success('Cleared!'); }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Nothing to copy') } }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Syntax Checker - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Check Python syntax errors online instantly. Free Python code validator and linter. No signup required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/python-syntax-checker.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Syntax Checker</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Check Python code
+                                for syntax errors instantly</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Python Code</label>
+                        <textarea id="input-text" class="form-textarea" rows="15" placeholder="def hello():
+    print('Hello World')
+
+if __name__ == '__main__':
+    hello()"></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="checkSyntax()">Check Syntax</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                        <button class="btn btn-ghost" onclick="loadSample()">Load Sample</button>
+                    </div>
+                    <div id="result" style="display:none;margin-top:var(--space-4)">
+                        <div id="result-box"
+                            style="padding:var(--space-4);border-radius:var(--radius-lg);font-family:monospace"></div>
+                    </div>
+                    <div id="issues" style="margin-top:var(--space-4)"></div>
+                </div>
+                <section class="info-section"
+                    style="margin-top:var(--space-8);padding:var(--space-6);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-xl)">
+                    <h2>About Python Syntax Checker</h2>
+                    <p>This tool checks your Python code for common syntax errors including:</p>
+                    <ul style="margin:var(--space-2) 0;padding-left:var(--space-6)">
+                        <li>Unmatched brackets, parentheses, and braces</li>
+                        <li>Missing colons after if/for/while/def/class</li>
+                        <li>Invalid indentation patterns</li>
+                        <li>Unclosed strings and quotes</li>
+                        <li>Invalid variable names</li>
+                    </ul>
+                    <p>100% free and runs entirely in your browser. Your code never leaves your device.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Python Syntax Checker' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function checkSyntax() {
+            const code = document.getElementById('input-text').value;
+            if (!code.trim()) { Toast.warning('Please enter Python code'); return; }
+            const errors = [];
+            const warnings = [];
+            const lines = code.split('\n');
+            let parens = 0, brackets = 0, braces = 0;
+            let inString = false, stringChar = '';
+            let prevIndent = -1;
+            lines.forEach((line, i) => {
+                const lineNum = i + 1;
+                const trimmed = line.trim();
+                // Check brackets
+                for (let j = 0; j < line.length; j++) {
+                    const c = line[j];
+                    if ((c === '"' || c === "'") && (j === 0 || line[j - 1] !== '\\')) {
+                        if (!inString) { inString = true; stringChar = c; }
+                        else if (c === stringChar) { inString = false; }
+                    }
+                    if (!inString) {
+                        if (c === '(') parens++; else if (c === ')') parens--;
+                        if (c === '[') brackets++; else if (c === ']') brackets--;
+                        if (c === '{') braces++; else if (c === '}') braces--;
+                    }
+                }
+                // Check for missing colon
+                if (/^(if|elif|else|for|while|def|class|try|except|finally|with)\b/.test(trimmed) && !trimmed.endsWith(':') && !trimmed.includes('#')) {
+                    errors.push({ line: lineNum, msg: `Missing colon ':' at end of statement`, code: trimmed });
+                }
+                // Check indentation
+                if (trimmed && !trimmed.startsWith('#')) {
+                    const indent = line.match(/^(\s*)/)[1].length;
+                    if (indent % 4 !== 0 && indent > 0) {
+                        warnings.push({ line: lineNum, msg: `Inconsistent indentation (${indent} spaces, expected multiple of 4)`, code: line.substring(0, 30) });
+                    }
+                }
+                // Check invalid syntax patterns
+                if (/print\s+[^(]/.test(trimmed) && !trimmed.includes('print(')) {
+                    errors.push({ line: lineNum, msg: `Python 3 requires print() as a function`, code: trimmed });
+                }
+                // Check variable naming
+                const varMatch = trimmed.match(/^(\d+\w*)\s*=/);
+                if (varMatch) {
+                    errors.push({ line: lineNum, msg: `Variable name cannot start with a number: '${varMatch[1]}'`, code: trimmed });
+                }
+            });
+            if (parens !== 0) errors.push({ line: 0, msg: `Unmatched parentheses: ${parens > 0 ? parens + ' unclosed' : 'Math.abs(' + parens + ') extra'}` });
+            if (brackets !== 0) errors.push({ line: 0, msg: `Unmatched brackets: ${brackets > 0 ? brackets + ' unclosed' : 'Math.abs(' + brackets + ') extra'}` });
+            if (braces !== 0) errors.push({ line: 0, msg: `Unmatched braces: ${braces > 0 ? braces + ' unclosed' : 'Math.abs(' + braces + ') extra'}` });
+            if (inString) errors.push({ line: 0, msg: `Unclosed string literal` });
+            const resultDiv = document.getElementById('result');
+            const resultBox = document.getElementById('result-box');
+            const issuesDiv = document.getElementById('issues');
+            resultDiv.style.display = 'block';
+            if (errors.length === 0 && warnings.length === 0) {
+                resultBox.style.background = '#d4edda'; resultBox.style.border = '1px solid #28a745'; resultBox.style.color = '#155724';
+                resultBox.innerHTML = '✅ <strong>Valid Python Syntax!</strong> No errors detected.';
+                issuesDiv.innerHTML = '';
+                Toast.success('No syntax errors found!');
+            } else {
+                if (errors.length > 0) {
+                    resultBox.style.background = '#f8d7da'; resultBox.style.border = '1px solid #dc3545'; resultBox.style.color = '#721c24';
+                    resultBox.innerHTML = `❌ <strong>${errors.length} Error(s) Found</strong>`;
+                } else {
+                    resultBox.style.background = '#fff3cd'; resultBox.style.border = '1px solid #ffc107'; resultBox.style.color = '#856404';
+                    resultBox.innerHTML = `⚠️ <strong>${warnings.length} Warning(s)</strong>`;
+                }
+                let html = '<div style="margin-top:var(--space-4)">';
+                errors.forEach(e => {
+                    html += `<div style="padding:var(--space-3);margin-bottom:var(--space-2);background:#fee;border-left:4px solid #dc3545;border-radius:var(--radius-sm)">
+<strong style="color:#dc3545">Line ${e.line || '?'}:</strong> ${e.msg}
+${e.code ? `<br><code style="font-size:var(--text-sm);color:#666">${e.code}</code>` : ''}
+</div>`;
+                });
+                warnings.forEach(w => {
+                    html += `<div style="padding:var(--space-3);margin-bottom:var(--space-2);background:#fff8e1;border-left:4px solid #ffc107;border-radius:var(--radius-sm)">
+<strong style="color:#856404">Line ${w.line}:</strong> ${w.msg}
+</div>`;
+                });
+                html += '</div>';
+                issuesDiv.innerHTML = html;
+                Toast.error(`Found ${errors.length} error(s) and ${warnings.length} warning(s)`);
+            }
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('result').style.display = 'none'; document.getElementById('issues').innerHTML = ''; Toast.success('Cleared!'); }
+        function loadSample() {
+            document.getElementById('input-text').value = `# Sample Python code with errors
+def greet(name)
+    print "Hello, " + name
+
+class MyClass:
+    def __init__(self):
+        self.value = 1
+
+    def get_value(self
+        return self.value
+
+if __name__ == "__main__"
+    obj = MyClass()
+    greet("World")
+`;
+            Toast.success('Sample code loaded - try checking it!');
+        }
+    </script>
+</body>
+
+</html>

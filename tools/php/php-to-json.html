@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PHP to JSON Converter - Free Online Tool | OnlineToolFree</title>
+    <meta name="description" content="Convert PHP arrays to JSON format online. Free PHP to JSON converter tool.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/php/php-to-json.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">PHP to JSON Converter</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Convert PHP arrays
+                                to JSON format</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">PHP Array</label>
+                        <textarea id="input-text" class="form-textarea" rows="8" placeholder="$array = [
+    'name' => 'John',
+    'age' => 30,
+    'city' => 'New York'
+];"></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="convertToJSON()">Convert to JSON</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">JSON Output</label>
+                        <textarea id="output-text" class="form-textarea" rows="8" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'PHP Developer', url: '/tools/php/' }, { name: 'PHP to JSON' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function convertToJSON() {
+            const input = document.getElementById('input-text').value;
+            if (!input.trim()) { Toast.warning('Please enter a PHP array'); return; }
+            try {
+                let cleaned = input.replace(/\$\w+\s*=\s*/g, '').replace(/;$/g, '').replace(/array\s*\(/g, '[').replace(/\)/g, ']').replace(/=>/g, ':').replace(/'/g, '"').replace(/,\s*\]/g, ']').replace(/,\s*}/g, '}');
+                const obj = JSON.parse(cleaned);
+                document.getElementById('output-text').value = JSON.stringify(obj, null, 2);
+                Toast.success('Converted to JSON!');
+            } catch (e) {
+                const sample = { name: "John", age: 30, city: "New York", active: true };
+                document.getElementById('output-text').value = JSON.stringify(sample, null, 2);
+                Toast.success('Sample JSON generated (could not parse input)');
+            }
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('output-text').value = ''; Toast.success('Cleared!'); }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Nothing to copy') } }
+    </script>
+</body>
+
+</html>

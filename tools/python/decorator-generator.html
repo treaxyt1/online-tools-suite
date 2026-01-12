@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Decorator Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Python decorator functions online. Free decorator generator with common patterns.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/decorator-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Decorator Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate decorator
+                                functions with common patterns</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="dec-name">Decorator Name</label>
+                        <input type="text" id="dec-name" class="form-input" placeholder="my_decorator" value="timer">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Decorator Type</label>
+                        <div
+                            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-2)">
+                            <label><input type="radio" name="type" value="timer" checked> Timer (measure
+                                execution)</label>
+                            <label><input type="radio" name="type" value="logger"> Logger (log calls)</label>
+                            <label><input type="radio" name="type" value="retry"> Retry (with exponential
+                                backoff)</label>
+                            <label><input type="radio" name="type" value="cache"> Cache (memoization)</label>
+                            <label><input type="radio" name="type" value="auth"> Auth (check permissions)</label>
+                            <label><input type="radio" name="type" value="validate"> Validate (type checking)</label>
+                            <label><input type="radio" name="type" value="singleton"> Singleton (single
+                                instance)</label>
+                            <label><input type="radio" name="type" value="custom"> Custom (basic template)</label>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateDecorator()">Generate Decorator</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Generated Code</label>
+                        <textarea id="output-text" class="form-textarea" rows="35" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Decorator Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        const templates = {
+            timer: `import time
+from functools import wraps
+
+def timer(func):
+    """Decorator that measures execution time of a function."""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        elapsed = end_time - start_time
+        print(f"{func.__name__} took {elapsed:.4f} seconds")
+        return result
+    return wrapper
+
+
+# Usage:
+@timer
+def slow_function():
+    time.sleep(1)
+    return "Done"
+
+result = slow_function()  # Prints: slow_function took 1.0012 seconds`,
+
+            logger: `import logging
+from functools import wraps
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def log_calls(func):
+    """Decorator that logs function calls with arguments."""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        args_repr = [repr(a) for a in args]
+        kwargs_repr = [f"{k}={v!r}" for k, v in kwargs.items()]
+        signature = ", ".join(args_repr + kwargs_repr)
+        logger.info(f"Calling {func.__name__}({signature})")
+        try:
+            result = func(*args, **kwargs)
+            logger.info(f"{func.__name__} returned {result!r}")
+            return result
+        except Exception as e:
+            logger.exception(f"{func.__name__} raised {e.__class__.__name__}")
+            raise
+    return wrapper
+
+
+# Usage:
+@log_calls
+def add(a, b):
+    return a + b
+
+result = add(2, 3)`,
+
+            retry: `import time
+from functools import wraps
+
+def retry(max_attempts=3, delay=1, backoff=2, exceptions=(Exception,)):
+    """Decorator that retries a function with exponential backoff."""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            attempts = 0
+            current_delay = delay
+            while attempts < max_attempts:
+                try:
+                    return func(*args, **kwargs)
+                except exceptions as e:
+                    attempts += 1
+                    if attempts == max_attempts:
+                        raise
+                    print(f"Attempt {attempts} failed: {e}. Retrying in {current_delay}s...")
+                    time.sleep(current_delay)
+                    current_delay *= backoff
+        return wrapper
+    return decorator
+
+
+# Usage:
+@retry(max_attempts=3, delay=1, backoff=2)
+def unreliable_api_call():
+    import random
+    if random.random() < 0.7:
+        raise ConnectionError("API unavailable")
+    return "Success!"`,
+
+            cache: `from functools import wraps
+
+def cache(func):
+    """Decorator that caches function results (memoization)."""
+    memo = {}
+    
+    @wraps(func)
+    def wrapper(*args):
+        if args in memo:
+            return memo[args]
+        result = func(*args)
+        memo[args] = result
+        return result
+    
+    wrapper.cache = memo
+    wrapper.clear_cache = lambda: memo.clear()
+    return wrapper
+
+
+# Usage:
+@cache
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(100))  # Fast with caching!`,
+
+            auth: `from functools import wraps
+
+def require_role(role):
+    """Decorator that checks if user has required role."""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            # Replace with your actual user/role checking logic
+            current_user = kwargs.get('user') or (args[0] if args else None)
+            if not current_user:
+                raise PermissionError("No user provided")
+            if not hasattr(current_user, 'role') or current_user.role != role:
+                raise PermissionError(f"User must have '{role}' role")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
+# Usage:
+class User:
+    def __init__(self, name, role):
+        self.name = name
+        self.role = role
+
+@require_role('admin')
+def delete_database(user):
+    return f"{user.name} deleted the database"
+
+admin = User("Alice", "admin")
+delete_database(admin)  # Works!`,
+
+            validate: `from functools import wraps
+from typing import get_type_hints
+
+def validate_types(func):
+    """Decorator that validates function argument types."""
+    hints = get_type_hints(func)
+    
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        # Get function parameters
+        import inspect
+        sig = inspect.signature(func)
+        params = list(sig.parameters.keys())
+        
+        # Check positional args
+        for i, arg in enumerate(args):
+            if i < len(params):
+                param_name = params[i]
+                if param_name in hints:
+                    expected = hints[param_name]
+                    if not isinstance(arg, expected):
+                        raise TypeError(f"{param_name} must be {expected.__name__}, got {type(arg).__name__}")
+        
+        # Check keyword args
+        for name, value in kwargs.items():
+            if name in hints:
+                expected = hints[name]
+                if not isinstance(value, expected):
+                    raise TypeError(f"{name} must be {expected.__name__}, got {type(value).__name__}")
+        
+        return func(*args, **kwargs)
+    return wrapper
+
+
+# Usage:
+@validate_types
+def greet(name: str, times: int) -> str:
+    return (name + "! ") * times
+
+greet("Hello", 3)  # Works
+# greet("Hello", "3")  # Raises TypeError`,
+
+            singleton: `from functools import wraps
+
+def singleton(cls):
+    """Decorator that makes a class a singleton."""
+    instances = {}
+    
+    @wraps(cls)
+    def wrapper(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+    
+    return wrapper
+
+
+# Usage:
+@singleton
+class DatabaseConnection:
+    def __init__(self, host="localhost"):
+        self.host = host
+        print(f"Connected to {host}")
+    
+    def query(self, sql):
+        return f"Executing: {sql}"
+
+db1 = DatabaseConnection()  # Prints: Connected to localhost
+db2 = DatabaseConnection()  # No print - same instance
+print(db1 is db2)  # True`,
+
+            custom: `from functools import wraps
+
+def NAME(func):
+    """Custom decorator template."""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        # Before function call
+        print(f"Before calling {func.__name__}")
+        
+        # Call the original function
+        result = func(*args, **kwargs)
+        
+        # After function call
+        print(f"After calling {func.__name__}")
+        
+        return result
+    return wrapper
+
+
+# Usage:
+@NAME
+def my_function(x, y):
+    return x + y
+
+result = my_function(1, 2)`
+        };
+        function generateDecorator() {
+            const name = document.getElementById('dec-name').value || 'my_decorator';
+            const type = document.querySelector('input[name="type"]:checked').value;
+            let code = templates[type];
+            if (type === 'custom') code = code.replace(/NAME/g, name);
+            document.getElementById('output-text').value = code;
+            Toast.success('Decorator generated!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

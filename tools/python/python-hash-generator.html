@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Hash Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate MD5, SHA1, SHA256 hashes with Python hashlib. Free online hash generator.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/python-hash-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Hash Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate hashes
+                                using Python hashlib algorithms</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Text to Hash</label>
+                        <textarea id="input-text" class="form-textarea" rows="4"
+                            placeholder="Enter text to generate hash..."></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateHashes()">Generate Hashes</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                    </div>
+                    <div id="hash-results" style="display:grid;gap:var(--space-4);margin-top:var(--space-4)"></div>
+                    <div class="tool-section" style="margin-top:var(--space-6)">
+                        <label class="tool-section-title">Python Code</label>
+                        <textarea id="python-code" class="form-textarea" rows="10" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Python Hash Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        async function generateHashes() {
+            const input = document.getElementById('input-text').value;
+            if (!input) { Toast.warning('Please enter text to hash'); return; }
+            const encoder = new TextEncoder();
+            const data = encoder.encode(input);
+            const hashResults = document.getElementById('hash-results');
+            const algorithms = ['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'];
+            let html = '';
+            for (const algo of algorithms) {
+                const hashBuffer = await crypto.subtle.digest(algo, data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                html += `<div style="padding:var(--space-3);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+<div style="font-weight:600;color:var(--primary-600);margin-bottom:var(--space-1)">${algo}</div>
+<div style="font-family:monospace;font-size:var(--text-sm);word-break:break-all;cursor:pointer" onclick="Clipboard.copy('${hashHex}')">${hashHex}</div>
+</div>`;
+            }
+            hashResults.innerHTML = html;
+            document.getElementById('python-code').value = `import hashlib
+
+text = '${input.substring(0, 50).replace(/'/g, "\\'")}'
+data = text.encode('utf-8')
+
+# Generate different hashes
+md5_hash = hashlib.md5(data).hexdigest()
+sha1_hash = hashlib.sha1(data).hexdigest()
+sha256_hash = hashlib.sha256(data).hexdigest()
+sha512_hash = hashlib.sha512(data).hexdigest()
+
+print(f"MD5:    {md5_hash}")
+print(f"SHA1:   {sha1_hash}")
+print(f"SHA256: {sha256_hash}")
+print(f"SHA512: {sha512_hash}")`;
+            Toast.success('Hashes generated! Click to copy.');
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('hash-results').innerHTML = ''; document.getElementById('python-code').value = ''; Toast.success('Cleared!'); }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Laravel Migration Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Laravel database migrations online. Free Laravel migration generator for PHP.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/php/laravel-migration-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Laravel Migration Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate Laravel
+                                database migrations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="table-name">Table Name</label>
+                        <input type="text" id="table-name" class="form-input" placeholder="users" value="posts">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Columns</label>
+                        <div id="columns-container"></div>
+                        <button class="btn btn-ghost" onclick="addColumn()" style="margin-top:var(--space-2)">+ Add
+                            Column</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Options</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="checkbox" id="timestamps" checked> timestamps()</label>
+                            <label><input type="checkbox" id="softdeletes"> softDeletes()</label>
+                            <label><input type="checkbox" id="uuid"> UUID primary key</label>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateMigration()">Generate Migration</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Generated Migration</label>
+                        <textarea id="output-text" class="form-textarea" rows="35" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'PHP Developer', url: '/tools/php/' }, { name: 'Laravel Migration Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+            addColumn('title', 'string', '');
+            addColumn('slug', 'string', 'unique');
+            addColumn('content', 'text', 'nullable');
+            addColumn('user_id', 'foreignId', '');
+            addColumn('published', 'boolean', 'default:false');
+        });
+        function addColumn(name = '', type = 'string', mod = '') {
+            const container = document.getElementById('columns-container');
+            const div = document.createElement('div');
+            div.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:var(--space-2);margin-bottom:var(--space-2)';
+            div.innerHTML = `
+<input type="text" class="form-input col-name" placeholder="column_name" value="${name}">
+<select class="form-input col-type">
+<option value="id" ${type === 'id' ? 'selected' : ''}>id</option>
+<option value="string" ${type === 'string' ? 'selected' : ''}>string</option>
+<option value="text" ${type === 'text' ? 'selected' : ''}>text</option>
+<option value="integer" ${type === 'integer' ? 'selected' : ''}>integer</option>
+<option value="bigInteger" ${type === 'bigInteger' ? 'selected' : ''}>bigInteger</option>
+<option value="boolean" ${type === 'boolean' ? 'selected' : ''}>boolean</option>
+<option value="date" ${type === 'date' ? 'selected' : ''}>date</option>
+<option value="datetime" ${type === 'datetime' ? 'selected' : ''}>datetime</option>
+<option value="decimal" ${type === 'decimal' ? 'selected' : ''}>decimal</option>
+<option value="float" ${type === 'float' ? 'selected' : ''}>float</option>
+<option value="json" ${type === 'json' ? 'selected' : ''}>json</option>
+<option value="foreignId" ${type === 'foreignId' ? 'selected' : ''}>foreignId</option>
+<option value="enum" ${type === 'enum' ? 'selected' : ''}>enum</option>
+</select>
+<input type="text" class="form-input col-mod" placeholder="nullable, unique, default:value" value="${mod}">
+<button class="btn btn-ghost" onclick="this.parentElement.remove()" style="padding:var(--space-2)">×</button>`;
+            container.appendChild(div);
+        }
+        function generateMigration() {
+            const tableName = document.getElementById('table-name').value || 'my_table';
+            const timestamps = document.getElementById('timestamps').checked;
+            const softDeletes = document.getElementById('softdeletes').checked;
+            const uuid = document.getElementById('uuid').checked;
+            const className = 'Create' + tableName.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('') + 'Table';
+            const columns = [];
+            document.querySelectorAll('#columns-container > div').forEach(row => {
+                const name = row.querySelector('.col-name').value;
+                const type = row.querySelector('.col-type').value;
+                const mod = row.querySelector('.col-mod').value;
+                if (name) columns.push({ name, type, mod });
+            });
+            const date = new Date().toISOString().split('T')[0].replace(/-/g, '_');
+            let code = `<?php
+
+use Illuminate\\Database\\Migrations\\Migration;
+use Illuminate\\Database\\Schema\\Blueprint;
+use Illuminate\\Support\\Facades\\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('${tableName}', function (Blueprint $table) {
+`;
+            if (uuid) {
+                code += `            $table->uuid('id')->primary();\n`;
+            } else {
+                code += `            $table->id();\n`;
+            }
+            columns.forEach(c => {
+                let line = `            $table->${c.type}('${c.name}')`;
+                if (c.mod) {
+                    c.mod.split(',').forEach(m => {
+                        m = m.trim();
+                        if (m === 'nullable') line += `->nullable()`;
+                        else if (m === 'unique') line += `->unique()`;
+                        else if (m.startsWith('default:')) {
+                            const val = m.split(':')[1];
+                            if (val === 'true' || val === 'false') line += `->default(${val})`;
+                            else if (!isNaN(val)) line += `->default(${val})`;
+                            else line += `->default('${val}')`;
+                        }
+                    });
+                }
+                if (c.type === 'foreignId') line += `->constrained()->cascadeOnDelete()`;
+                line += `;`;
+                code += line + `\n`;
+            });
+            if (timestamps) code += `            $table->timestamps();\n`;
+            if (softDeletes) code += `            $table->softDeletes();\n`;
+            code += `        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('${tableName}');
+    }
+};
+
+// Run with: php artisan migrate
+`;
+            document.getElementById('output-text').value = code;
+            Toast.success('Laravel migration generated!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+    </script>
+</body>
+
+</html>

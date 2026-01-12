@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Code Minifier - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Minify Python code online by removing comments and whitespace. Free Python code compressor.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/python-minifier.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Code Minifier</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Minify Python code
+                                by removing comments and extra whitespace</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Python Code</label>
+                        <textarea id="input-text" class="form-textarea" rows="12" placeholder="# Your Python code here
+def calculate_sum(numbers):
+    '''Calculate sum of numbers'''
+    total = 0
+    for num in numbers:
+        total += num
+    return total"></textarea>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Options</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="checkbox" id="remove-comments" checked> Remove comments</label>
+                            <label><input type="checkbox" id="remove-docstrings" checked> Remove docstrings</label>
+                            <label><input type="checkbox" id="remove-blank" checked> Remove blank lines</label>
+                            <label><input type="checkbox" id="minimize-whitespace"> Minimize whitespace</label>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="minifyCode()">Minify Code</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">Minified Code</label>
+                        <textarea id="output-text" class="form-textarea" rows="12" readonly></textarea>
+                    </div>
+                    <div class="stat-card"
+                        style="text-align:center;padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg);margin-top:var(--space-4)">
+                        <div id="savings" style="font-size:var(--text-xl);font-weight:bold;color:var(--primary-600)">0%
+                        </div>
+                        <div style="font-size:var(--text-sm);color:var(--text-muted)">Size Reduction</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Python Minifier' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function minifyCode() {
+            const input = document.getElementById('input-text').value;
+            if (!input.trim()) { Toast.warning('Please enter Python code'); return; }
+            const removeComments = document.getElementById('remove-comments').checked;
+            const removeDocstrings = document.getElementById('remove-docstrings').checked;
+            const removeBlank = document.getElementById('remove-blank').checked;
+            const minimizeWhitespace = document.getElementById('minimize-whitespace').checked;
+            let lines = input.split('\n');
+            let result = [];
+            let inDocstring = false;
+            let docstringChar = '';
+            for (let line of lines) {
+                let processedLine = line;
+                // Handle docstrings
+                if (removeDocstrings) {
+                    if (line.trim().startsWith('"""') || line.trim().startsWith("'''")) {
+                        const char = line.trim().startsWith('"""') ? '"""' : "'''";
+                        if (!inDocstring) {
+                            inDocstring = true;
+                            docstringChar = char;
+                            if (line.trim() === char || line.trim().endsWith(char) && line.trim().length > 3) {
+                                inDocstring = false;
+                            }
+                            continue;
+                        } else if (line.includes(docstringChar)) {
+                            inDocstring = false;
+                            continue;
+                        }
+                    }
+                    if (inDocstring) continue;
+                }
+                // Remove comments
+                if (removeComments) {
+                    const hashIndex = processedLine.indexOf('#');
+                    if (hashIndex !== -1) {
+                        let inString = false;
+                        let stringChar = '';
+                        for (let i = 0; i < processedLine.length; i++) {
+                            const c = processedLine[i];
+                            if ((c === '"' || c === "'") && (i === 0 || processedLine[i - 1] !== '\\')) {
+                                if (!inString) { inString = true; stringChar = c; }
+                                else if (c === stringChar) inString = false;
+                            }
+                            if (c === '#' && !inString) {
+                                processedLine = processedLine.substring(0, i).trimEnd();
+                                break;
+                            }
+                        }
+                    }
+                }
+                // Remove blank lines
+                if (removeBlank && !processedLine.trim()) continue;
+                // Minimize whitespace
+                if (minimizeWhitespace) {
+                    const indent = processedLine.match(/^(\s*)/)[1];
+                    const content = processedLine.trim();
+                    if (content) {
+                        const minIndent = Math.floor(indent.length / 4) * 4;
+                        processedLine = ' '.repeat(minIndent) + content;
+                    }
+                }
+                if (processedLine || !removeBlank) result.push(processedLine);
+            }
+            const minified = result.join('\n');
+            document.getElementById('output-text').value = minified;
+            const saved = Math.round((1 - minified.length / input.length) * 100);
+            document.getElementById('savings').textContent = saved + '%';
+            Toast.success(`Minified! Saved ${saved}% (${input.length - minified.length} bytes)`);
+        }
+        function clearAll() {
+            document.getElementById('input-text').value = '';
+            document.getElementById('output-text').value = '';
+            document.getElementById('savings').textContent = '0%';
+            Toast.success('Cleared!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Nothing to copy') } }
+    </script>
+</body>
+
+</html>

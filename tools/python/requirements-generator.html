@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Requirements.txt Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Python requirements.txt file online. Create pip requirements file for your project.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/requirements-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <path d="M14 2v6h6" />
+                                <path d="M12 18v-6" />
+                                <path d="m9 15 3 3 3-3" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Requirements.txt Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate Python
+                                requirements.txt for your project</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title">Popular Packages</label>
+                        <div
+                            style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-2)">
+                            <label><input type="checkbox" class="pkg" data-pkg="requests" data-ver="2.31.0">
+                                requests</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="flask" data-ver="3.0.0"> Flask</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="django" data-ver="5.0"> Django</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="fastapi" data-ver="0.109.0">
+                                FastAPI</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="numpy" data-ver="1.26.3"> NumPy</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="pandas" data-ver="2.1.4"> Pandas</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="matplotlib" data-ver="3.8.2">
+                                Matplotlib</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="scikit-learn" data-ver="1.3.2">
+                                Scikit-learn</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="tensorflow" data-ver="2.15.0">
+                                TensorFlow</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="pytorch" data-ver="2.1.2">
+                                PyTorch</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="sqlalchemy" data-ver="2.0.25">
+                                SQLAlchemy</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="pytest" data-ver="7.4.4"> Pytest</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="beautifulsoup4" data-ver="4.12.2">
+                                BeautifulSoup4</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="selenium" data-ver="4.17.0">
+                                Selenium</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="pillow" data-ver="10.2.0">
+                                Pillow</label>
+                            <label><input type="checkbox" class="pkg" data-pkg="celery" data-ver="5.3.6"> Celery</label>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="custom-pkgs">Custom Packages (one per line)</label>
+                        <textarea id="custom-pkgs" class="form-textarea" rows="4" placeholder="package-name==1.0.0
+another-package>=2.0"></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateRequirements()">Generate
+                            requirements.txt</button>
+                        <button class="btn btn-ghost" onclick="copyOutput()">Copy</button>
+                        <button class="btn btn-ghost" onclick="downloadFile()">Download</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="output-text">requirements.txt</label>
+                        <textarea id="output-text" class="form-textarea" rows="12" readonly
+                            style="font-family:monospace"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Requirements Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function generateRequirements() {
+            const checked = document.querySelectorAll('.pkg:checked');
+            const custom = document.getElementById('custom-pkgs').value.trim();
+            let lines = ['# Generated by OnlineToolFree.com', '# ' + new Date().toISOString().split('T')[0], ''];
+            checked.forEach(cb => { lines.push(cb.dataset.pkg + '==' + cb.dataset.ver); });
+            if (custom) { lines.push(''); lines.push('# Custom packages'); custom.split('\n').forEach(l => { if (l.trim()) lines.push(l.trim()); }); }
+            document.getElementById('output-text').value = lines.join('\n');
+            Toast.success('requirements.txt generated!');
+        }
+        function copyOutput() { const o = document.getElementById('output-text').value; if (o) { Clipboard.copy(o) } else { Toast.warning('Generate first') } }
+        function downloadFile() {
+            const content = document.getElementById('output-text').value;
+            if (!content) { Toast.warning('Generate first'); return; }
+            const blob = new Blob([content], { type: 'text/plain' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'requirements.txt'; a.click();
+            Toast.success('Downloaded!');
+        }
+    </script>
+</body>
+
+</html>

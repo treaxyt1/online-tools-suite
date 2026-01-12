@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Roll Dice Online - Free Virtual Dice Roller | OnlineToolFree</title>
+    <meta name="description"
+        content="Roll dice online with realistic 3D animation. Free virtual dice roller for games. Roll 1-10 dice at once. No signup required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/fun/roll-dice.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:900px;margin:0 auto;padding:0">
+                <div class="tool-header" style="text-align:center;margin-bottom:var(--space-6)">
+                    <h1 class="tool-title" style="font-size:var(--text-3xl)">Roll Dice Online</h1>
+                    <p class="tool-description" style="font-size:var(--text-lg);margin:0">Virtual dice roller for games
+                        and decisions</p>
+                </div>
+                <div class="tool-interface">
+                    <div
+                        style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6)">
+                        <div class="tool-section">
+                            <label class="tool-section-title" for="num-dice">Number of Dice</label>
+                            <input type="number" id="num-dice" class="form-input" min="1" max="10" value="2">
+                        </div>
+                        <div class="tool-section">
+                            <label class="tool-section-title" for="dice-sides">Sides per Die</label>
+                            <select id="dice-sides" class="form-input">
+                                <option value="4">4 sides (D4)</option>
+                                <option value="6" selected>6 sides (D6)</option>
+                                <option value="8">8 sides (D8)</option>
+                                <option value="10">10 sides (D10)</option>
+                                <option value="12">12 sides (D12)</option>
+                                <option value="20">20 sides (D20)</option>
+                                <option value="100">100 sides (D100)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="text-align:center;margin-bottom:var(--space-6)">
+                        <button class="btn btn-primary" onclick="rollDice()" id="roll-btn"
+                            style="font-size:var(--text-xl);padding:var(--space-4) var(--space-8)">🎲 Roll
+                            Dice!</button>
+                    </div>
+                    <div id="dice-container"
+                        style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;min-height:150px;margin-bottom:var(--space-6)">
+                    </div>
+                    <div id="result" style="text-align:center;margin-bottom:var(--space-6)"></div>
+                    <div
+                        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--space-3)">
+                        <div
+                            style="text-align:center;padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                            <div style="font-size:var(--text-2xl);font-weight:bold;color:var(--primary-600)" id="total">
+                                0</div>
+                            <div style="font-size:var(--text-sm);color:var(--text-muted)">Total</div>
+                        </div>
+                        <div
+                            style="text-align:center;padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                            <div style="font-size:var(--text-2xl);font-weight:bold;color:var(--primary-600)"
+                                id="average">0</div>
+                            <div style="font-size:var(--text-sm);color:var(--text-muted)">Average</div>
+                        </div>
+                        <div
+                            style="text-align:center;padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                            <div style="font-size:var(--text-2xl);font-weight:bold;color:var(--primary-600)" id="rolls">
+                                0</div>
+                            <div style="font-size:var(--text-sm);color:var(--text-muted)">Total Rolls</div>
+                        </div>
+                    </div>
+                </div>
+                <section class="info-section"
+                    style="margin-top:var(--space-8);padding:var(--space-6);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-xl)">
+                    <h2>About Dice Roller</h2>
+                    <p>Roll virtual dice online for board games, tabletop RPGs, or any situation where you need random
+                        numbers. Choose from standard 6-sided dice or polyhedral dice used in games like Dungeons &
+                        Dragons.</p>
+                    <p><strong>Dice Types:</strong></p>
+                    <ul style="margin:var(--space-2) 0;padding-left:var(--space-6)">
+                        <li><strong>D4:</strong> 4-sided die (tetrahedron)</li>
+                        <li><strong>D6:</strong> Standard 6-sided cube die</li>
+                        <li><strong>D8:</strong> 8-sided die (octahedron)</li>
+                        <li><strong>D10:</strong> 10-sided die (pentagonal trapezohedron)</li>
+                        <li><strong>D12:</strong> 12-sided die (dodecahedron)</li>
+                        <li><strong>D20:</strong> 20-sided die (icosahedron) - popular in D&D</li>
+                        <li><strong>D100:</strong> 100-sided die (percentile)</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Fun Tools', url: '/tools/fun/' }, { name: 'Roll Dice' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        let totalRolls = 0;
+        let isRolling = false;
+        const diceDots = {
+            1: [[50, 50]],
+            2: [[25, 25], [75, 75]],
+            3: [[25, 25], [50, 50], [75, 75]],
+            4: [[25, 25], [75, 25], [25, 75], [75, 75]],
+            5: [[25, 25], [75, 25], [50, 50], [25, 75], [75, 75]],
+            6: [[25, 25], [75, 25], [25, 50], [75, 50], [25, 75], [75, 75]]
+        };
+        function drawDie(value, sides) {
+            const size = 100;
+            const die = document.createElement('div');
+            die.style.cssText = `width:${size}px;height:${size}px;background:linear-gradient(135deg,#fff 0%,#f0f0f0 100%);border-radius:var(--radius-lg);box-shadow:0 4px 12px rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;font-size:var(--text-3xl);font-weight:bold;color:#333;position:relative;animation:roll 0.5s ease-out`;
+            if (sides === 6 && value <= 6) {
+                die.innerHTML = '';
+                const dots = diceDots[value];
+                dots.forEach(([x, y]) => {
+                    const dot = document.createElement('div');
+                    dot.style.cssText = `position:absolute;width:15px;height:15px;background:#333;border-radius:50%;left:${x}%;top:${y}%;transform:translate(-50%,-50%)`;
+                    die.appendChild(dot);
+                });
+            } else {
+                die.textContent = value;
+            }
+            return die;
+        }
+        function rollDice() {
+            if (isRolling) return;
+            const numDice = parseInt(document.getElementById('num-dice').value) || 1;
+            const sides = parseInt(document.getElementById('dice-sides').value) || 6;
+            if (numDice < 1 || numDice > 10) {
+                Toast.warning('Please choose 1-10 dice');
+                return;
+            }
+            isRolling = true;
+            document.getElementById('roll-btn').disabled = true;
+            const container = document.getElementById('dice-container');
+            container.innerHTML = '<div style="font-size:var(--text-4xl)">🎲</div>';
+            setTimeout(() => {
+                container.innerHTML = '';
+                const results = [];
+                let total = 0;
+                for (let i = 0; i < numDice; i++) {
+                    const value = Math.floor(Math.random() * sides) + 1;
+                    results.push(value);
+                    total += value;
+                    container.appendChild(drawDie(value, sides));
+                }
+                const average = (total / numDice).toFixed(1);
+                totalRolls++;
+                document.getElementById('total').textContent = total;
+                document.getElementById('average').textContent = average;
+                document.getElementById('rolls').textContent = totalRolls;
+                document.getElementById('result').innerHTML = `
+<div style="padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+<div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-2)">Individual Results:</div>
+<div style="font-size:var(--text-xl);font-weight:bold;color:var(--primary-600)">${results.join(' + ')} = ${total}</div>
+</div>`;
+                isRolling = false;
+                document.getElementById('roll-btn').disabled = false;
+                Toast.success(`Rolled ${total}!`);
+            }, 500);
+        }
+    </script>
+    <style>
+        @keyframes roll {
+            0% {
+                transform: rotate(0deg) scale(0.5);
+                opacity: 0
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1)
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+                opacity: 1
+            }
+        }
+    </style>
+</body>
+
+</html>

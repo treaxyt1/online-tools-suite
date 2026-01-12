@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PHP Syntax Validator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Validate PHP syntax online. Check for errors in your PHP code instantly. Free PHP syntax checker.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/php/php-validator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">PHP Syntax Validator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Check your PHP code
+                                for syntax errors</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">PHP Code to Validate</label>
+                        <textarea id="input-text" class="form-textarea" rows="12"
+                            placeholder="<?php\n// Paste your PHP code here\n\nfunction example() {\n    return 'Hello World';\n}\n?>"></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="validatePHP()">Validate Syntax</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                    </div>
+                    <div id="result" class="tool-section" style="display:none">
+                        <div id="result-box"
+                            style="padding:var(--space-4);border-radius:var(--radius-lg);font-family:monospace"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'PHP Developer', url: '/tools/php/' }, { name: 'PHP Validator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function validatePHP() {
+            const code = document.getElementById('input-text').value;
+            if (!code.trim()) { Toast.warning('Please enter PHP code'); return; }
+            const errors = [];
+            let braces = 0, parens = 0, brackets = 0;
+            const lines = code.split('\n');
+            lines.forEach((line, i) => {
+                braces += (line.match(/{/g) || []).length - (line.match(/}/g) || []).length;
+                parens += (line.match(/\(/g) || []).length - (line.match(/\)/g) || []).length;
+                brackets += (line.match(/\[/g) || []).length - (line.match(/\]/g) || []).length;
+                if (line.includes('<?') && !line.includes('<?php') && !line.includes('<?=')) errors.push(`Line ${i + 1}: Use <?php instead of <?`);
+                if (/\$[0-9]/.test(line)) errors.push(`Line ${i + 1}: Variable names cannot start with a number`);
+                if (/function\s+\d/.test(line)) errors.push(`Line ${i + 1}: Function names cannot start with a number`);
+            });
+            if (braces !== 0) errors.push('Unmatched curly braces { }');
+            if (parens !== 0) errors.push('Unmatched parentheses ( )');
+            if (brackets !== 0) errors.push('Unmatched brackets [ ]');
+            const resultDiv = document.getElementById('result');
+            const resultBox = document.getElementById('result-box');
+            resultDiv.style.display = 'block';
+            if (errors.length === 0) {
+                resultBox.style.background = '#d4edda'; resultBox.style.border = '1px solid #28a745'; resultBox.style.color = '#155724';
+                resultBox.innerHTML = '✅ <strong>Valid!</strong> No syntax errors detected.';
+                Toast.success('PHP syntax is valid!');
+            } else {
+                resultBox.style.background = '#f8d7da'; resultBox.style.border = '1px solid #dc3545'; resultBox.style.color = '#721c24';
+                resultBox.innerHTML = '❌ <strong>Errors Found:</strong><br>' + errors.map(e => '• ' + e).join('<br>');
+                Toast.error('Syntax errors found');
+            }
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('result').style.display = 'none'; Toast.success('Cleared!'); }
+    </script>
+</body>
+
+</html>

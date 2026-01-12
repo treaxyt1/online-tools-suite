@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PHP Regex Tester - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Test PHP preg_match regex patterns online. Free PHP regex tester with live matching.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/php/php-regex-tester.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">PHP Regex Tester</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Test PHP preg_match
+                                patterns with live matching</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="pattern">Regex Pattern (without delimiters)</label>
+                        <input type="text" id="pattern" class="form-input"
+                            placeholder="[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="flags">Flags</label>
+                        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+                            <label><input type="checkbox" id="flag-i"> i (case-insensitive)</label>
+                            <label><input type="checkbox" id="flag-g" checked> g (global)</label>
+                            <label><input type="checkbox" id="flag-m"> m (multiline)</label>
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="test-string">Test String</label>
+                        <textarea id="test-string" class="form-textarea" rows="6"
+                            placeholder="Enter text to test against..."></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="testRegex()">Test Pattern</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Matches</label>
+                        <div id="matches"
+                            style="padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg);min-height:100px;font-family:monospace">
+                        </div>
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">PHP Code</label>
+                        <textarea id="php-code" class="form-textarea" rows="4" readonly
+                            placeholder="PHP code will appear here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'PHP Developer', url: '/tools/php/' }, { name: 'PHP Regex Tester' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        function testRegex() {
+            const pattern = document.getElementById('pattern').value;
+            const testStr = document.getElementById('test-string').value;
+            if (!pattern) { Toast.warning('Please enter a regex pattern'); return; }
+            if (!testStr) { Toast.warning('Please enter a test string'); return; }
+            let flags = '';
+            if (document.getElementById('flag-i').checked) flags += 'i';
+            if (document.getElementById('flag-g').checked) flags += 'g';
+            if (document.getElementById('flag-m').checked) flags += 'm';
+            try {
+                const regex = new RegExp(pattern, flags);
+                const matches = testStr.match(regex);
+                const matchesDiv = document.getElementById('matches');
+                if (matches && matches.length > 0) {
+                    matchesDiv.innerHTML = '<strong style="color:var(--primary-600)">' + matches.length + ' match(es) found:</strong><br><br>' + matches.map((m, i) => '<span style="background:#e3f2fd;padding:2px 6px;border-radius:4px;margin:2px;display:inline-block">' + i + ': "' + m + '"</span>').join(' ');
+                    Toast.success(matches.length + ' matches found!');
+                } else {
+                    matchesDiv.innerHTML = '<span style="color:var(--text-muted)">No matches found</span>';
+                    Toast.warning('No matches');
+                }
+                const phpFlags = document.getElementById('flag-i').checked ? 'i' : '';
+                document.getElementById('php-code').value = "<?php\n$pattern = '/" + pattern.replace(/'/g, "\\'") + "/" + phpFlags + "';\n$subject = '" + testStr.replace(/'/g, "\\'").substring(0, 50) + "...';\npreg_match_all($pattern, $subject, $matches);\nprint_r($matches);";
+            } catch (e) { Toast.error('Invalid regex: ' + e.message); }
+        }
+        function clearAll() { document.getElementById('pattern').value = ''; document.getElementById('test-string').value = ''; document.getElementById('matches').innerHTML = ''; document.getElementById('php-code').value = ''; Toast.success('Cleared!'); }
+    </script>
+</body>
+
+</html>

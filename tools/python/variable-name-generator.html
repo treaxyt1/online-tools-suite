@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Python Variable Name Generator - Free Online Tool | OnlineToolFree</title>
+    <meta name="description"
+        content="Generate Python variable names following PEP8 conventions. Convert text to snake_case, camelCase, PascalCase.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/python/variable-name-generator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:800px;margin:0;padding:0">
+                <div class="tool-header" style="text-align:left;margin-bottom:var(--space-6)">
+                    <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)">
+                        <div class="tool-icon-large" style="margin:0"><svg class="icon icon-lg" viewBox="0 0 24 24">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size:var(--text-2xl)">Python Variable Name Generator</h1>
+                            <p class="tool-description" style="font-size:var(--text-base);margin:0">Generate PEP8
+                                compliant variable names</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="input-text">Input Text</label>
+                        <input type="text" id="input-text" class="form-input" placeholder="User Profile Data"
+                            value="User Profile Data">
+                    </div>
+                    <div class="tool-section">
+                        <label class="tool-section-title">Naming Convention</label>
+                        <div
+                            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-2)">
+                            <label><input type="radio" name="style" value="snake" checked> snake_case
+                                (variables)</label>
+                            <label><input type="radio" name="style" value="camel"> camelCase (JavaScript)</label>
+                            <label><input type="radio" name="style" value="pascal"> PascalCase (classes)</label>
+                            <label><input type="radio" name="style" value="upper"> UPPER_CASE (constants)</label>
+                            <label><input type="radio" name="style" value="kebab"> kebab-case (URLs)</label>
+                            <label><input type="radio" name="style" value="all"> All Formats</label>
+                        </div>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="generateNames()">Generate Names</button>
+                        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                    </div>
+                    <div id="results" style="margin-top:var(--space-4)"></div>
+                    <section class="info-section"
+                        style="margin-top:var(--space-6);padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                        <h3 style="margin-bottom:var(--space-2)">PEP8 Naming Conventions</h3>
+                        <ul style="margin:0;padding-left:var(--space-6);font-size:var(--text-sm)">
+                            <li><strong>snake_case:</strong> Variables and functions</li>
+                            <li><strong>PascalCase:</strong> Classes and exceptions</li>
+                            <li><strong>UPPER_CASE:</strong> Constants</li>
+                            <li><strong>_leading_underscore:</strong> Internal/private</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Python Developer', url: '/tools/python/' }, { name: 'Variable Name Generator' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+            generateNames();
+        });
+        function toSnakeCase(str) {
+            return str.trim().toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+        }
+        function toCamelCase(str) {
+            const snake = toSnakeCase(str);
+            return snake.replace(/_([a-z])/g, (m, c) => c.toUpperCase());
+        }
+        function toPascalCase(str) {
+            const camel = toCamelCase(str);
+            return camel.charAt(0).toUpperCase() + camel.slice(1);
+        }
+        function toUpperCase(str) {
+            return toSnakeCase(str).toUpperCase();
+        }
+        function toKebabCase(str) {
+            return toSnakeCase(str).replace(/_/g, '-');
+        }
+        function generateNames() {
+            const input = document.getElementById('input-text').value;
+            if (!input.trim()) { Toast.warning('Please enter text'); return; }
+            const style = document.querySelector('input[name="style"]:checked').value;
+            const resultsDiv = document.getElementById('results');
+            let html = '';
+            const formats = {
+                snake: { name: 'snake_case', value: toSnakeCase(input), desc: 'For variables and functions' },
+                camel: { name: 'camelCase', value: toCamelCase(input), desc: 'For JavaScript variables' },
+                pascal: { name: 'PascalCase', value: toPascalCase(input), desc: 'For classes and types' },
+                upper: { name: 'UPPER_CASE', value: toUpperCase(input), desc: 'For constants' },
+                kebab: { name: 'kebab-case', value: toKebabCase(input), desc: 'For URLs and CSS' }
+            };
+            if (style === 'all') {
+                Object.values(formats).forEach(f => {
+                    html += createCard(f.name, f.value, f.desc);
+                });
+            } else {
+                const f = formats[style];
+                html += createCard(f.name, f.value, f.desc);
+            }
+            // Add variations
+            html += `<div style="margin-top:var(--space-4);padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+<h4 style="margin-bottom:var(--space-2)">Common Variations</h4>
+<div style="display:grid;gap:var(--space-2);font-family:monospace;font-size:var(--text-sm)">
+<div><strong>Private:</strong> <code>_${toSnakeCase(input)}</code></div>
+<div><strong>Protected:</strong> <code>_${toPascalCase(input)}</code></div>
+<div><strong>Dunder:</strong> <code>__${toSnakeCase(input)}__</code></div>
+<div><strong>Boolean:</strong> <code>is_${toSnakeCase(input)}</code> or <code>has_${toSnakeCase(input)}</code></div>
+<div><strong>Getter:</strong> <code>get_${toSnakeCase(input)}()</code></div>
+<div><strong>Setter:</strong> <code>set_${toSnakeCase(input)}()</code></div>
+</div>
+</div>`;
+            resultsDiv.innerHTML = html;
+            Toast.success('Names generated!');
+        }
+        function createCard(name, value, desc) {
+            return `<div style="padding:var(--space-4);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg);margin-bottom:var(--space-3)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-2)">
+<strong style="color:var(--primary-600)">${name}</strong>
+<button class="btn btn-ghost" onclick="Clipboard.copy('${value}')" style="padding:var(--space-1) var(--space-2)">Copy</button>
+</div>
+<div style="font-family:monospace;font-size:var(--text-lg);padding:var(--space-2);background:var(--bg-secondary);border-radius:var(--radius-sm);cursor:pointer" onclick="Clipboard.copy('${value}')">${value}</div>
+<div style="font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--space-1)">${desc}</div>
+</div>`;
+        }
+        function clearAll() { document.getElementById('input-text').value = ''; document.getElementById('results').innerHTML = ''; Toast.success('Cleared!'); }
+    </script>
+</body>
+
+</html>

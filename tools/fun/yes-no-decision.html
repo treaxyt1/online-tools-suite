@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) } gtag('js', new Date()); gtag('config', 'G-EX25SFMRXZ');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Yes or No Decision Maker - Free Random Answer Generator | OnlineToolFree</title>
+    <meta name="description"
+        content="Can't decide? Get instant yes or no answers. Free decision maker tool for tough choices. No signup required.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/fun/yes-no-decision.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/design-system.css">
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="tool-layout">
+        <aside class="tool-sidebar" id="tool-sidebar"></aside>
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width:700px;margin:0 auto;padding:0">
+                <div class="tool-header" style="text-align:center;margin-bottom:var(--space-6)">
+                    <h1 class="tool-title" style="font-size:var(--text-3xl)">Yes or No?</h1>
+                    <p class="tool-description" style="font-size:var(--text-lg);margin:0">Let fate decide for you</p>
+                </div>
+                <div class="tool-interface">
+                    <div class="tool-section">
+                        <label class="tool-section-title" for="question"
+                            style="text-align:center;font-size:var(--text-lg)">Ask Your Question</label>
+                        <input type="text" id="question" class="form-input"
+                            placeholder="Should I go to the party tonight?"
+                            style="text-align:center;font-size:var(--text-lg);padding:var(--space-4)">
+                    </div>
+                    <div style="text-align:center;margin:var(--space-6) 0">
+                        <button class="btn btn-primary" onclick="getAnswer()"
+                            style="font-size:var(--text-xl);padding:var(--space-4) var(--space-8)">✨ Get Answer</button>
+                    </div>
+                    <div id="answer-box"
+                        style="min-height:200px;display:flex;align-items:center;justify-content:center"></div>
+                    <div
+                        style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-6)">
+                        <div
+                            style="text-align:center;padding:var(--space-3);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                            <div style="font-size:var(--text-2xl);font-weight:bold;color:#10b981" id="yes-count">0</div>
+                            <div style="font-size:var(--text-sm);color:var(--text-muted)">Yes</div>
+                        </div>
+                        <div
+                            style="text-align:center;padding:var(--space-3);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                            <div style="font-size:var(--text-2xl);font-weight:bold;color:#ef4444" id="no-count">0</div>
+                            <div style="font-size:var(--text-sm);color:var(--text-muted)">No</div>
+                        </div>
+                        <div
+                            style="text-align:center;padding:var(--space-3);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-lg)">
+                            <div style="font-size:var(--text-2xl);font-weight:bold;color:#f59e0b" id="maybe-count">0
+                            </div>
+                            <div style="font-size:var(--text-sm);color:var(--text-muted)">Maybe</div>
+                        </div>
+                    </div>
+                </div>
+                <section class="info-section"
+                    style="margin-top:var(--space-8);padding:var(--space-6);background:var(--bg-primary);border:1px solid var(--border-light);border-radius:var(--radius-xl)">
+                    <h2>How It Works</h2>
+                    <p>This yes or no decision maker helps you make quick decisions when you're stuck between choices.
+                        Simply type your question and get an instant random answer!</p>
+                    <p><strong>Possible answers include:</strong></p>
+                    <ul style="margin:var(--space-2) 0;padding-left:var(--space-6)">
+                        <li>✅ Yes - Go for it!</li>
+                        <li>❌ No - Better not</li>
+                        <li>🤔 Maybe - Think about it more</li>
+                        <li>And many more variations!</li>
+                    </ul>
+                    <p style="margin-top:var(--space-4);font-size:var(--text-sm);color:var(--text-muted)">
+                        <em>Disclaimer: This is for entertainment purposes only. Make important decisions wisely!</em>
+                    </p>
+                </section>
+            </div>
+        </main>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button>
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Components.renderHeader(); Components.renderMobileMenu(); Components.renderSidebar('tool-sidebar');
+            Components.renderBreadcrumb('breadcrumb-container', [{ name: 'Home', url: '/index.html' }, { name: 'Fun Tools', url: '/tools/fun/' }, { name: 'Yes or No Decision' }]);
+            Components.renderFooter();
+            document.getElementById('sidebar-toggle').addEventListener('click', () => { document.getElementById('tool-sidebar').classList.toggle('open') });
+            if (window.ThemeManager) ThemeManager.init();
+        });
+        let yesCount = 0, noCount = 0, maybeCount = 0;
+        const answers = [
+            { text: 'YES!', emoji: '✅', type: 'yes', color: '#10b981', message: 'Go for it!' },
+            { text: 'NO', emoji: '❌', type: 'no', color: '#ef4444', message: 'Better not' },
+            { text: 'MAYBE', emoji: '🤔', type: 'maybe', color: '#f59e0b', message: 'Think about it' },
+            { text: 'ABSOLUTELY!', emoji: '💯', type: 'yes', color: '#10b981', message: 'Without a doubt!' },
+            { text: 'DEFINITELY NOT', emoji: '🚫', type: 'no', color: '#ef4444', message: 'Not a good idea' },
+            { text: 'ASK AGAIN LATER', emoji: '⏰', type: 'maybe', color: '#f59e0b', message: 'The timing isn\'t right' },
+            { text: 'YES, BUT...', emoji: '⚠️', type: 'maybe', color: '#f59e0b', message: 'Proceed with caution' },
+            { text: 'PROBABLY', emoji: '👍', type: 'yes', color: '#10b981', message: 'Looks promising' },
+            { text: 'PROBABLY NOT', emoji: '👎', type: 'no', color: '#ef4444', message: 'I wouldn\'t recommend it' },
+            { text: 'IT IS CERTAIN', emoji: '🎯', type: 'yes', color: '#10b981', message: '100% sure!' },
+            { text: 'DON\'T COUNT ON IT', emoji: '🙅', type: 'no', color: '#ef4444', message: 'Not likely' },
+            { text: 'OUTLOOK GOOD', emoji: '🌟', type: 'yes', color: '#10b981', message: 'Things look positive' },
+            { text: 'VERY DOUBTFUL', emoji: '😕', type: 'no', color: '#ef4444', message: 'I have my doubts' },
+            { text: 'SIGNS POINT TO YES', emoji: '👉', type: 'yes', color: '#10b981', message: 'All indicators say yes' },
+            { text: 'MY SOURCES SAY NO', emoji: '📰', type: 'no', color: '#ef4444', message: 'The evidence says no' },
+        ];
+        function getAnswer() {
+            const question = document.getElementById('question').value.trim();
+            if (!question) {
+                Toast.warning('Please ask a question first!');
+                return;
+            }
+            const answerBox = document.getElementById('answer-box');
+            answerBox.innerHTML = '<div style="font-size:var(--text-4xl)">🔮</div>';
+            setTimeout(() => {
+                const answer = answers[Math.floor(Math.random() * answers.length)];
+                if (answer.type === 'yes') yesCount++;
+                else if (answer.type === 'no') noCount++;
+                else maybeCount++;
+                document.getElementById('yes-count').textContent = yesCount;
+                document.getElementById('no-count').textContent = noCount;
+                document.getElementById('maybe-count').textContent = maybeCount;
+                answerBox.innerHTML = `
+<div style="text-align:center;padding:var(--space-8);background:${answer.color};border-radius:var(--radius-2xl);color:white;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:bounce 0.5s ease-out">
+<div style="font-size:var(--text-6xl);margin-bottom:var(--space-4)">${answer.emoji}</div>
+<div style="font-size:var(--text-4xl);font-weight:bold;margin-bottom:var(--space-2)">${answer.text}</div>
+<div style="font-size:var(--text-lg);opacity:0.9">${answer.message}</div>
+</div>`;
+                Toast.success('Answer: ' + answer.text);
+            }, 500);
+        }
+        document.getElementById('question').addEventListener('keypress', e => {
+            if (e.key === 'Enter') getAnswer();
+        });
+    </script>
+    <style>
+        @keyframes bounce {
+            0% {
+                transform: scale(0.3);
+                opacity: 0
+            }
+
+            50% {
+                transform: scale(1.05)
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+    </style>
+</body>
+
+</html>
