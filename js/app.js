@@ -186,7 +186,7 @@ const SidebarManager = {
     init() {
         if (this.isInitialized) return;
 
-        this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
+        this.sidebar = document.querySelector('.sidebar, .layout-sidebar, .tool-sidebar');
 
         // Create sidebar overlay if it doesn't exist
         this.ensureOverlay();
@@ -275,7 +275,7 @@ const SidebarManager = {
     },
 
     open() {
-        this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
+        this.sidebar = document.querySelector('.sidebar, .layout-sidebar, .tool-sidebar');
         this.ensureOverlay();
         const sidebarOverlay = document.querySelector('.sidebar-overlay');
         const mobileOverlay = document.querySelector('.mobile-menu-overlay');
@@ -294,7 +294,7 @@ const SidebarManager = {
     },
 
     close() {
-        this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
+        this.sidebar = document.querySelector('.sidebar, .layout-sidebar, .tool-sidebar');
         const sidebarOverlay = document.querySelector('.sidebar-overlay');
         const mobileOverlay = document.querySelector('.mobile-menu-overlay');
 
