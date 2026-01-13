@@ -767,21 +767,46 @@ a:hover {
 }
 
 /* ========================================
-   SIDEBAR - FIXED & NO BLINKING
+   SIDEBAR - CONTENT-FIRST DESIGN
+   Sidebar hidden by default on mobile, visible on desktop
    ======================================== */
+
+/* Default: Hidden on mobile (CONTENT-FIRST) */
 .sidebar {
     position: fixed;
     left: 0;
-    top: var(--header-height);
+    top: 0;
     width: var(--sidebar-width);
-    height: calc(100vh - var(--header-height));
+    height: 100vh;
+    height: 100dvh;
     background: var(--bg-primary);
     border-right: 1px solid var(--border-light);
     overflow-y: auto;
-    z-index: var(--z-fixed);
+    z-index: var(--z-modal);
+    transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-overflow-scrolling: touch;
     padding: var(--space-4);
+    padding-top: calc(var(--header-height) + var(--space-4));
+    box-shadow: var(--shadow-2xl);
+}
+
+/* Sidebar opens when .open class is added */
+.sidebar.open {
+    transform: translateX(0);
+}
+
+/* Desktop: Sidebar visible by default, static positioning */
+@media (min-width: 1024px) {
+    .sidebar {
+        transform: translateX(0);
+        position: fixed;
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
+        padding-top: var(--space-4);
+        box-shadow: none;
+        z-index: var(--z-fixed);
+    }
 }
 
 .sidebar-header {
@@ -933,31 +958,15 @@ a:hover {
     font-weight: var(--font-medium);
 }
 
-/* Mobile Sidebar */
-@media (max-width: 1023px) {
-    .sidebar {
-        transform: translateX(-100%);
-        top: 0;
-        height: 100vh;
-        height: 100dvh;
-        box-shadow: var(--shadow-2xl);
-        z-index: var(--z-modal);
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-    }
-}
-
 /* ========================================
-   SIDEBAR TOGGLE BUTTON - NO BLINKING FIX
+   SIDEBAR TOGGLE BUTTON - MOBILE ONLY
    ======================================== */
 .sidebar-toggle {
     display: none;
     position: fixed;
     bottom: var(--space-6);
     left: var(--space-4);
-    z-index: calc(var(--z-fixed) - 1);
+    z-index: calc(var(--z-fixed) + 1);
     padding: var(--space-3) var(--space-5);
     background: var(--primary-900);
     color: white;
@@ -989,6 +998,7 @@ a:hover {
     margin-right: var(--space-2);
 }
 
+/* Show toggle button ONLY on mobile/tablet */
 @media (max-width: 1023px) {
     .sidebar-toggle {
         display: flex;
@@ -996,35 +1006,77 @@ a:hover {
     }
 }
 
+/* Hide toggle on desktop */
+@media (min-width: 1024px) {
+    .sidebar-toggle {
+        display: none !important;
+    }
+}
+
 /* ========================================
-   MAIN CONTENT
+   SIDEBAR OVERLAY - MOBILE ONLY
+   ======================================== */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: calc(var(--z-modal) - 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide overlay on desktop */
+@media (min-width: 1024px) {
+    .sidebar-overlay {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   MAIN CONTENT - CONTENT-FIRST LAYOUT
+   Tool content is ALWAYS visible first
    ======================================== */
 .main-content {
     min-height: calc(100vh - var(--header-height));
     padding: var(--space-8) 0;
+    width: 100%;
 }
 
+/* Desktop: Add margin for sidebar */
 @media (min-width: 1024px) {
-    .has-sidebar .main-content {
+
+    .has-sidebar .main-content,
+    .tool-page-layout .main-content {
         margin-left: var(--sidebar-width);
     }
 }
 
 /* ========================================
-   TOOL PAGE LAYOUT
+   TOOL PAGE LAYOUT - CONTENT-FIRST
+   Mobile: Full width content, no sidebar
+   Desktop: Sidebar + Content side by side
    ======================================== */
 .tool-page-layout {
     display: block;
+    width: 100%;
 }
 
+/* Desktop: Content gets margin for sidebar */
 @media (min-width: 1024px) {
     .tool-page-layout {
-        display: grid;
-        grid-template-columns: var(--sidebar-width) 1fr;
-        gap: 0;
+        padding-left: var(--sidebar-width);
     }
 }
 
+/* Tool Page Content */
 .tool-page {
     max-width: 900px;
     margin: 0 auto;
@@ -1075,6 +1127,7 @@ a:hover {
     padding: var(--space-6);
     box-shadow: var(--shadow-card);
 }
+
 
 /* ========================================
    FOOTER

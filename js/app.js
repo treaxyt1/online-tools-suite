@@ -174,7 +174,8 @@ const MobileNavManager = {
 };
 
 // ========================================
-// Sidebar Manager - NO BLINKING FIX
+// Sidebar Manager - CONTENT-FIRST UX
+// Sidebar hidden by default on mobile, opens via toggle
 // ========================================
 const SidebarManager = {
     sidebar: null,
@@ -187,8 +188,19 @@ const SidebarManager = {
 
         this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
 
+        // Create sidebar overlay if it doesn't exist
+        this.ensureOverlay();
+
         this.bindEvents();
         this.isInitialized = true;
+    },
+
+    ensureOverlay() {
+        if (!document.querySelector('.sidebar-overlay')) {
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            document.body.appendChild(overlay);
+        }
     },
 
     bindEvents() {
@@ -204,15 +216,24 @@ const SidebarManager = {
                 return;
             }
 
-            // Close when clicking overlay (only if sidebar is open)
-            if (this.isOpen && target.classList.contains('mobile-menu-overlay')) {
+            // Close when clicking sidebar overlay
+            if (target.classList.contains('sidebar-overlay') && this.isOpen) {
                 e.preventDefault();
+                e.stopPropagation();
+                this.close();
+                return;
+            }
+
+            // Close when clicking mobile-menu-overlay (if sidebar is open)
+            if (target.classList.contains('mobile-menu-overlay') && this.isOpen) {
+                e.preventDefault();
+                e.stopPropagation();
                 this.close();
                 return;
             }
         }, { passive: false, capture: true });
 
-        // Touch events
+        // Touch events for mobile
         document.addEventListener('touchend', (e) => {
             const target = e.target;
 
@@ -222,7 +243,8 @@ const SidebarManager = {
                 return;
             }
 
-            if (this.isOpen && target.classList.contains('mobile-menu-overlay')) {
+            if ((target.classList.contains('sidebar-overlay') ||
+                target.classList.contains('mobile-menu-overlay')) && this.isOpen) {
                 e.preventDefault();
                 this.close();
                 return;
@@ -236,7 +258,7 @@ const SidebarManager = {
             }
         });
 
-        // Close on resize to desktop
+        // Close on resize to desktop (sidebar visible by default there)
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 1024 && this.isOpen) {
                 this.close();
@@ -254,20 +276,18 @@ const SidebarManager = {
 
     open() {
         this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
-        let overlay = document.querySelector('.mobile-menu-overlay');
-
-        // Create overlay if it doesn't exist
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.className = 'mobile-menu-overlay';
-            document.body.appendChild(overlay);
-        }
+        this.ensureOverlay();
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const mobileOverlay = document.querySelector('.mobile-menu-overlay');
 
         if (this.sidebar) {
             this.sidebar.classList.add('open');
         }
-        if (overlay) {
-            overlay.classList.add('active');
+        if (sidebarOverlay) {
+            sidebarOverlay.classList.add('active');
+        }
+        if (mobileOverlay) {
+            mobileOverlay.classList.add('active');
         }
         document.body.style.overflow = 'hidden';
         this.isOpen = true;
@@ -275,13 +295,17 @@ const SidebarManager = {
 
     close() {
         this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
-        const overlay = document.querySelector('.mobile-menu-overlay');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const mobileOverlay = document.querySelector('.mobile-menu-overlay');
 
         if (this.sidebar) {
             this.sidebar.classList.remove('open');
         }
-        if (overlay) {
-            overlay.classList.remove('active');
+        if (sidebarOverlay) {
+            sidebarOverlay.classList.remove('active');
+        }
+        if (mobileOverlay) {
+            mobileOverlay.classList.remove('active');
         }
         document.body.style.overflow = '';
         this.isOpen = false;
