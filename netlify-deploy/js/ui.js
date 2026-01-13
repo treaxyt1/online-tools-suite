@@ -1,4 +1,4 @@
-﻿/**
+/**
  * OnlineToolFree - Premium UI Components
  * Version 2.1 - Modern SaaS Design with Dynamic Indexing
  */
@@ -47,7 +47,10 @@ const Icons = {
     grid: `<svg class="icon" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>`,
     history: `<svg class="icon" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>`,
     externalLink: `<svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
-    palette: `<svg class="icon" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.551-2.5 5.551-5.551C21.566 6.5 17.276 2 12 2z"/></svg>`
+    palette: `<svg class="icon" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.551-2.5 5.551-5.551C21.566 6.5 17.276 2 12 2z"/></svg>`,
+    // OTF Brand Logo - Enterprise minimalist design
+    otfLogo: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" stroke="#1d4ed8"/><path d="M12 16V8M12 8L8 12M12 8L16 12" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    otfLogoFilled: `<svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#2563eb"/><path d="M12 16V8M12 8L8 12M12 8L16 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 };
 
 // ========================================
@@ -203,8 +206,8 @@ const Components = {
         const html = `
             <div class="container header-inner">
                 <a href="${prefix}index.html" class="logo">
-                    <div class="logo-icon">${Icons.layers}</div>
-                    <span class="logo-text">OnlineTool<span>Free</span></span>
+                    <div class="logo-icon">${Icons.otfLogoFilled}</div>
+                    <span class="logo-text">OTF<span>Tools</span></span>
                 </a>
                 <nav class="nav-menu">
                     <a href="${prefix}index.html" class="nav-link">${Icons.home} Home</a>
@@ -307,10 +310,10 @@ const Components = {
         'Productivity': Icons.clock,
         'Finance': Icons.star,
         'Writing': Icons.edit,
-        'Calculator Tools': Icons.layers,
+        'Calculator Tools': Icons.otfLogoFilled,
         'Scanner Tools': Icons.search,
         'Social': Icons.twitter,
-        'Education': Icons.layers,
+        'Education': Icons.otfLogoFilled,
         'Health': Icons.heart,
         'Validators': Icons.checkCircle,
         'Audio Tools': Icons.zap,
@@ -370,8 +373,8 @@ const Components = {
         let html = `
             <div class="sidebar-header">
                 <a href="${prefix}index.html" class="sidebar-logo">
-                    ${Icons.layers}
-                    <span>OnlineToolFree</span>
+                    ${Icons.otfLogoFilled}
+                    <span>OTF</span>
                 </a>
             </div>
             <div class="sidebar-search" style="padding: 0 var(--space-4); margin-bottom: var(--space-2);">
@@ -457,8 +460,8 @@ const Components = {
                 <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-8);">
                     <div class="footer-brand">
                         <a href="${prefix}index.html" class="logo">
-                            <div class="logo-icon">${Icons.layers}</div>
-                            <span class="logo-text">OnlineTool<span>Free</span></span>
+                            <div class="logo-icon">${Icons.otfLogoFilled}</div>
+                            <span class="logo-text">OTF<span>Tools</span></span>
                         </a>
                         <p>The web's most complete collection of free online tools. No signup, no installation, just instant utilities for developers and creators.</p>
                         <div class="footer-social">
@@ -527,7 +530,7 @@ const Components = {
                         <a href="${prefix}tools/network/my-ip.html" style="color: inherit;">My IP</a>
                         <a href="${prefix}tools/datetime/timestamp.html" style="color: inherit;">Unix Timestamp</a>
                     </div>
-                    <p class="footer-copyright" style="margin-top: var(--space-4);">© 2026 OnlineToolFree. All rights reserved. Built for performance and privacy.</p>
+                    <p class="footer-copyright" style="margin-top: var(--space-4);">� 2026 OTF Tools. All rights reserved. Enterprise-grade utilities for everyone.</p>
                 </div>
             </div>
         `;
@@ -804,3 +807,4 @@ window.Loading = Loading;
 window.Components = Components;
 window.debounce = debounce;
 window.throttle = throttle;
+

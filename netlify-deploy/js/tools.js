@@ -568,6 +568,8 @@ const TOOLS_REGISTRY = [
     // ========================================
     // WRITING TOOLS - PREMIUM (720K+ searches/month)
     // ========================================
+    { id: 'dictionary', name: 'Word Dictionary', description: 'Look up word definitions and pronunciations', category: 'Writing', url: 'tools/writing/dictionary.html', icon: 'book' },
+
     { id: 'paraphrasing-tool', name: 'Paraphrasing Tool', description: 'Paraphrase text online', category: 'Writing', url: 'tools/writing/paraphrasing-tool.html', icon: 'refresh-cw' },
     { id: 'article-rewriter', name: 'Article Rewriter', description: 'Rewrite articles online', category: 'Writing', url: 'tools/writing/article-rewriter.html', icon: 'edit' },
     { id: 'plagiarism-checker', name: 'Plagiarism Checker', description: 'Check for plagiarism', category: 'Writing', url: 'tools/writing/plagiarism-checker.html', icon: 'shield' },
@@ -613,6 +615,11 @@ const TOOLS_REGISTRY = [
     { id: 'json-validator-advanced', name: 'JSON Validator', description: 'Validate JSON syntax', category: 'Validators', url: 'tools/validator/json-validator-advanced.html', icon: 'code' },
     { id: 'password-strength-validator', name: 'Password Strength Validator', description: 'Check password strength', category: 'Validators', url: 'tools/validator/password-strength-validator.html', icon: 'shield' },
     { id: 'iban-validator', name: 'IBAN Validator', description: 'Validate International Bank Account Numbers', category: 'Validators', url: 'tools/validator/iban-validator.html', icon: 'dollar-sign' },
+
+    // ========================================
+    // FUN & MISC TOOLS
+    // ========================================
+    { id: 'emoji-search', name: 'Emoji Search', description: 'Search and copy emojis with HTML codes', category: 'Fun', url: 'tools/fun/emoji-search.html', icon: 'smile' },
 ];
 
 /**

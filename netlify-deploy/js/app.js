@@ -145,6 +145,13 @@ const MobileNavManager = {
     },
 
     open() {
+        // Ensure menu exists in DOM
+        if (!document.querySelector('.mobile-menu')) {
+            if (window.Components && window.Components.renderMobileMenu) {
+                window.Components.renderMobileMenu();
+            }
+        }
+
         this.menu = document.querySelector('.mobile-menu');
         this.overlay = document.querySelector('.mobile-menu-overlay');
 
@@ -276,6 +283,14 @@ const SidebarManager = {
 
     open() {
         this.sidebar = document.querySelector('.sidebar, .layout-sidebar, .tool-sidebar');
+
+        // If sidebar exists but is empty, try to render it
+        if (this.sidebar && this.sidebar.children.length === 0) {
+            if (window.Components && window.Components.renderSidebar) {
+                window.Components.renderSidebar(this.sidebar.id || 'tool-sidebar');
+            }
+        }
+
         this.ensureOverlay();
         const sidebarOverlay = document.querySelector('.sidebar-overlay');
         const mobileOverlay = document.querySelector('.mobile-menu-overlay');
@@ -407,15 +422,187 @@ const Analytics = {
 };
 
 // ========================================
+// Cookie Consent Manager
+// ========================================
+const CookieManager = {
+    init() {
+        if (localStorage.getItem('cookie-consent')) return;
+
+        // Delay banner show for better UX
+        setTimeout(() => this.render(), 2000);
+    },
+
+    render() {
+        const banner = document.createElement('div');
+        banner.className = 'cookie-consent';
+        banner.id = 'cookie-consent';
+
+        banner.innerHTML = `
+            <div class="cookie-content">
+                <span class="cookie-title">Cookie Settings</span>
+                <p class="cookie-text">
+                    We use cookies to enhance your experience, serve personalized content, and analyze our traffic. 
+                    By clicking "Accept All", you consent to our use of cookies.
+                </p>
+            </div>
+            <div class="cookie-actions">
+                <a href="/privacy.html" class="btn btn-ghost btn-sm">Privacy Policy</a>
+                <button id="cookie-reject" class="btn btn-secondary btn-sm">Reject All</button>
+                <button id="cookie-accept" class="btn btn-primary btn-sm">Accept All</button>
+            </div>
+        `;
+
+        document.body.appendChild(banner);
+
+        // Trigger animation
+        setTimeout(() => banner.classList.add('show'), 100);
+
+        // Bind events
+        const acceptBtn = document.getElementById('cookie-accept');
+        const rejectBtn = document.getElementById('cookie-reject');
+
+        const dismiss = (consent) => {
+            localStorage.setItem('cookie-consent', consent);
+            banner.classList.remove('show');
+            setTimeout(() => banner.remove(), 600);
+        };
+
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => dismiss('true'));
+        }
+
+        if (rejectBtn) {
+            rejectBtn.addEventListener('click', () => dismiss('false'));
+        }
+    }
+};
+
+// ========================================
+// Global Layout Auto-Renderer
+// Automatically detects markers and renders components
+// ========================================
+const LayoutManager = {
+    init() {
+        if (window.Components) {
+            this.renderGlobal();
+            this.renderContextual();
+        }
+    },
+
+    renderGlobal() {
+        if (document.querySelector('.header')) window.Components.renderHeader();
+        if (document.querySelector('.footer')) window.Components.renderFooter();
+
+        // Mobile menu overlay and menu
+        window.Components.renderMobileMenu();
+    },
+
+    renderContextual() {
+        const sidebar = document.querySelector('.tool-sidebar, #tool-sidebar');
+        if (sidebar) window.Components.renderSidebar(sidebar.id || 'tool-sidebar');
+
+        const dashboard = document.getElementById('search-results');
+        if (dashboard) window.Components.renderCategoryToolsGrid('search-results');
+
+        // Automatic Tool Page Components
+        if (window.location.pathname.includes('/tools/')) {
+            const pathParts = window.location.pathname.split('/');
+            const category = pathParts[pathParts.length - 2];
+            const fileName = pathParts[pathParts.length - 1].replace('.html', '');
+            const toolName = document.title.split(' - ')[0];
+
+            // Related Tools
+            const related = document.getElementById('related-tools-container');
+            if (related) window.Components.renderRelatedTools('related-tools-container', fileName);
+
+            // Breadcrumbs
+            const breadcrumbContainer = document.getElementById('breadcrumb-container');
+            if (breadcrumbContainer) {
+                const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
+                window.Components.renderBreadcrumb('breadcrumb-container', [
+                    { name: 'Home', url: '/index.html' },
+                    { name: categoryLabel, url: `/tools/${category}/index.html` },
+                    { name: toolName }
+                ]);
+            }
+
+            // Schema
+            const description = document.querySelector('meta[name="description"]')?.content || 'Free online tool';
+            window.Components.renderToolSchema(toolName, category, description);
+        }
+    }
+};
+
+
+// ========================================
+// Dashboard Search Manager
+// ========================================
+const SearchManager = {
+    init() {
+        this.input = document.getElementById('dashboard-search');
+        if (!this.input) return;
+
+        this.bindEvents();
+    },
+
+    bindEvents() {
+        this.input.addEventListener('input', debounce((e) => {
+            const query = e.target.value.toLowerCase().trim();
+            this.filterTools(query);
+        }, 300));
+    },
+
+    filterTools(query) {
+        const sections = document.querySelectorAll('.category-section');
+        const cards = document.querySelectorAll('.category-tool-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const name = card.querySelector('.category-tool-name').textContent.toLowerCase();
+            const shouldShow = name.includes(query);
+            card.style.display = shouldShow ? 'flex' : 'none';
+            if (shouldShow) visibleCount++;
+        });
+
+        // Hide empty categories
+        sections.forEach(section => {
+            const visibleInCat = Array.from(section.querySelectorAll('.category-tool-card')).some(c => c.style.display !== 'none');
+            section.style.display = visibleInCat ? 'block' : 'none';
+        });
+
+        // Show "no results" if needed
+        let noResults = document.getElementById('no-results-msg');
+        if (visibleCount === 0 && query !== '') {
+            if (!noResults) {
+                noResults = document.createElement('div');
+                noResults.id = 'no-results-msg';
+                noResults.style.textAlign = 'center';
+                noResults.style.padding = '4rem 2rem';
+                noResults.innerHTML = `<h3>No tools found matching "${query}"</h3><p>Try searching for something else like "JSON", "PDF", or "Image".</p>`;
+                document.getElementById('search-results').appendChild(noResults);
+            }
+        } else if (noResults) {
+            noResults.remove();
+        }
+    }
+};
+
+
+// ========================================
 // Global Initialization
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize core modules
+    // Initialize Layout First (renders containers)
+    LayoutManager.init();
+
+    // Initialize core interaction modules
     ThemeManager.init();
     MobileNavManager.init();
     SidebarManager.init();
     SmoothScroll.init();
     Analytics.pageView();
+    CookieManager.init();
+    SearchManager.init();
 
     // Ensure overlay exists for mobile menu
     if (!document.querySelector('.mobile-menu-overlay')) {
@@ -424,6 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(overlay);
     }
 });
+
 
 // ========================================
 // Export to Window
@@ -435,3 +623,7 @@ window.ResponsiveManager = ResponsiveManager;
 window.SmoothScroll = SmoothScroll;
 window.FormHelpers = FormHelpers;
 window.Analytics = Analytics;
+window.CookieManager = CookieManager;
+window.LayoutManager = LayoutManager;
+window.SearchManager = SearchManager;
+
