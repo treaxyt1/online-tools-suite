@@ -1,6 +1,6 @@
 ﻿/**
  * OnlineToolFree - Core Application
- * Version 2.0 - Premium Design System
+ * Version 3.0 - Fixed Mobile Menu & Sidebar Toggle
  */
 
 // ========================================
@@ -48,7 +48,11 @@ const ThemeManager = {
 
     bindEvents() {
         if (this.toggle) {
-            this.toggle.addEventListener('click', () => this.toggleTheme());
+            this.toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggleTheme();
+            });
         }
 
         // Listen for system theme changes
@@ -61,71 +65,248 @@ const ThemeManager = {
 };
 
 // ========================================
-// Responsive Manager
+// Mobile Navigation Manager - CRITICAL FIX
 // ========================================
-const ResponsiveManager = {
+const MobileNavManager = {
+    menu: null,
+    overlay: null,
+    isOpen: false,
+    isInitialized: false,
+
     init() {
+        if (this.isInitialized) return;
+
+        this.menu = document.querySelector('.mobile-menu');
+        this.overlay = document.querySelector('.mobile-menu-overlay');
+
         this.bindEvents();
+        this.isInitialized = true;
     },
 
     bindEvents() {
-        // Mobile menu events
+        // Use event delegation on document for reliability
         document.addEventListener('click', (e) => {
-            const menuBtn = e.target.closest('.mobile-menu-btn');
-            const closeBtn = e.target.closest('.mobile-menu-close');
-            const overlay = e.target.closest('.mobile-menu-overlay');
-            const sidebarToggle = e.target.closest('.sidebar-toggle');
+            const target = e.target;
 
-            if (menuBtn) {
-                this.openMobileMenu();
-            } else if (closeBtn || overlay) {
-                this.closeMobileMenu();
-            } else if (sidebarToggle) {
-                this.toggleSidebar();
+            // Mobile menu button click
+            if (target.closest('.mobile-menu-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.open();
+                return;
             }
-        });
 
-        // Close menu on resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                this.closeMobileMenu();
+            // Close button click
+            if (target.closest('.mobile-menu-close')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+                return;
             }
-        });
 
-        // Close menu on escape
+            // Overlay click
+            if (target.classList.contains('mobile-menu-overlay')) {
+                e.preventDefault();
+                this.close();
+                return;
+            }
+        }, { passive: false, capture: true });
+
+        // Touch events for mobile
+        document.addEventListener('touchend', (e) => {
+            const target = e.target;
+
+            if (target.closest('.mobile-menu-btn')) {
+                e.preventDefault();
+                this.open();
+                return;
+            }
+
+            if (target.closest('.mobile-menu-close') || target.classList.contains('mobile-menu-overlay')) {
+                e.preventDefault();
+                this.close();
+                return;
+            }
+        }, { passive: false });
+
+        // Escape key to close
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeMobileMenu();
+            if (e.key === 'Escape' && this.isOpen) {
+                this.close();
             }
         });
+
+        // Close on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && this.isOpen) {
+                this.close();
+            }
+        });
+    },
+
+    open() {
+        this.menu = document.querySelector('.mobile-menu');
+        this.overlay = document.querySelector('.mobile-menu-overlay');
+
+        if (this.menu) {
+            this.menu.classList.add('open');
+        }
+        if (this.overlay) {
+            this.overlay.classList.add('active');
+        }
+        document.body.style.overflow = 'hidden';
+        this.isOpen = true;
+    },
+
+    close() {
+        this.menu = document.querySelector('.mobile-menu');
+        this.overlay = document.querySelector('.mobile-menu-overlay');
+
+        if (this.menu) {
+            this.menu.classList.remove('open');
+        }
+        if (this.overlay) {
+            this.overlay.classList.remove('active');
+        }
+        document.body.style.overflow = '';
+        this.isOpen = false;
+    }
+};
+
+// ========================================
+// Sidebar Manager - NO BLINKING FIX
+// ========================================
+const SidebarManager = {
+    sidebar: null,
+    overlay: null,
+    isOpen: false,
+    isInitialized: false,
+
+    init() {
+        if (this.isInitialized) return;
+
+        this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
+
+        this.bindEvents();
+        this.isInitialized = true;
+    },
+
+    bindEvents() {
+        // Use event delegation on document
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+
+            // Sidebar toggle button click
+            if (target.closest('.sidebar-toggle')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggle();
+                return;
+            }
+
+            // Close when clicking overlay (only if sidebar is open)
+            if (this.isOpen && target.classList.contains('mobile-menu-overlay')) {
+                e.preventDefault();
+                this.close();
+                return;
+            }
+        }, { passive: false, capture: true });
+
+        // Touch events
+        document.addEventListener('touchend', (e) => {
+            const target = e.target;
+
+            if (target.closest('.sidebar-toggle')) {
+                e.preventDefault();
+                this.toggle();
+                return;
+            }
+
+            if (this.isOpen && target.classList.contains('mobile-menu-overlay')) {
+                e.preventDefault();
+                this.close();
+                return;
+            }
+        }, { passive: false });
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.close();
+            }
+        });
+
+        // Close on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && this.isOpen) {
+                this.close();
+            }
+        });
+    },
+
+    toggle() {
+        if (this.isOpen) {
+            this.close();
+        } else {
+            this.open();
+        }
+    },
+
+    open() {
+        this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
+        let overlay = document.querySelector('.mobile-menu-overlay');
+
+        // Create overlay if it doesn't exist
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            document.body.appendChild(overlay);
+        }
+
+        if (this.sidebar) {
+            this.sidebar.classList.add('open');
+        }
+        if (overlay) {
+            overlay.classList.add('active');
+        }
+        document.body.style.overflow = 'hidden';
+        this.isOpen = true;
+    },
+
+    close() {
+        this.sidebar = document.querySelector('.sidebar, .layout-sidebar');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+
+        if (this.sidebar) {
+            this.sidebar.classList.remove('open');
+        }
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+        document.body.style.overflow = '';
+        this.isOpen = false;
+    }
+};
+
+// ========================================
+// Legacy ResponsiveManager (for backward compatibility)
+// ========================================
+const ResponsiveManager = {
+    init() {
+        MobileNavManager.init();
+        SidebarManager.init();
     },
 
     openMobileMenu() {
-        const menu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.mobile-menu-overlay');
-
-        if (menu) menu.classList.add('open');
-        if (overlay) overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        MobileNavManager.open();
     },
 
     closeMobileMenu() {
-        const menu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.mobile-menu-overlay');
-
-        if (menu) menu.classList.remove('open');
-        if (overlay) overlay.classList.remove('active');
-        document.body.style.overflow = '';
+        MobileNavManager.close();
     },
 
     toggleSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        const overlay = document.querySelector('.mobile-menu-overlay');
-
-        if (sidebar) {
-            sidebar.classList.toggle('open');
-            if (overlay) overlay.classList.toggle('active');
-        }
+        SidebarManager.toggle();
     }
 };
 
@@ -184,7 +365,9 @@ const FormHelpers = {
 const Analytics = {
     track(event, data = {}) {
         // Placeholder for analytics implementation
-        console.log('[Analytics]', event, data);
+        if (window.gtag) {
+            gtag('event', event, data);
+        }
     },
 
     pageView() {
@@ -205,15 +388,25 @@ const Analytics = {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize core modules
     ThemeManager.init();
-    ResponsiveManager.init();
+    MobileNavManager.init();
+    SidebarManager.init();
     SmoothScroll.init();
     Analytics.pageView();
+
+    // Ensure overlay exists for mobile menu
+    if (!document.querySelector('.mobile-menu-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'mobile-menu-overlay';
+        document.body.appendChild(overlay);
+    }
 });
 
 // ========================================
 // Export to Window
 // ========================================
 window.ThemeManager = ThemeManager;
+window.MobileNavManager = MobileNavManager;
+window.SidebarManager = SidebarManager;
 window.ResponsiveManager = ResponsiveManager;
 window.SmoothScroll = SmoothScroll;
 window.FormHelpers = FormHelpers;
