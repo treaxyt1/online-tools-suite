@@ -589,21 +589,29 @@ const Components = {
     },
 
     // Render Related Tools Section
-    renderRelatedTools(containerId, currentToolId, count = 5) {
+    // Shows only tools from the SAME CATEGORY - max 6 tools
+    // Must be placed AFTER the main tool interface
+    renderRelatedTools(containerId, currentToolId, count = 6) {
         const container = document.getElementById(containerId);
         if (!container) return;
         const tools = window.TOOLS_REGISTRY || [];
         const currentTool = tools.find(t => t.id === currentToolId);
         if (!currentTool) return;
+
+        // Filter tools from SAME category only (no random tools!)
         const relatedTools = tools
             .filter(t => t.category === currentTool.category && t.id !== currentToolId)
-            .slice(0, count);
+            .slice(0, Math.min(count, 6)); // Never show more than 6
+
+        // Don't render if no related tools
+        if (relatedTools.length === 0) return;
+
         const prefix = window.location.pathname.includes('/tools/') ? '../../' : '';
 
         const html = `
-            <section class="related-tools-section">
-                <h2 class="related-tools-title">Related Tools</h2>
-                <p class="related-tools-description">Explore more ${currentTool.category.toLowerCase()} that might help you:</p>
+            <section class="related-tools-section" aria-labelledby="related-tools-heading">
+                <h2 id="related-tools-heading" class="related-tools-title">Related ${currentTool.category}</h2>
+                <p class="related-tools-description">Explore more tools from the same category:</p>
                 <div class="related-tools-grid">
                     ${relatedTools.map(tool => {
             const icon = this.categoryIcons[tool.category] || Icons.zap;
@@ -622,8 +630,51 @@ const Components = {
             </section>
         `;
         container.innerHTML = html;
-        this.renderShareWidget(); // Auto-render share buttons if container exists (created by renderShareWidget logic)
     },
+
+    // Render Category-Based Homepage (Like reference image)
+    // Shows tools organized by category with icons, names, descriptions
+    renderCategoryToolsGrid(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const tools = window.TOOLS_REGISTRY || [];
+        const categories = [...new Set(tools.map(t => t.category))].sort();
+        const prefix = window.location.pathname.includes('/tools/') ? '../../' : '';
+
+        let html = '';
+
+        categories.forEach(categoryName => {
+            const categoryTools = tools.filter(t => t.category === categoryName);
+            const icon = this.categoryIcons[categoryName] || Icons.folder;
+            const catPathPart = this.categoryPaths[categoryName] || categoryName.split(' ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+            html += `
+                <section class="category-section" id="category-${catPathPart}">
+                    <div class="category-header">
+                        <div class="category-header-icon">${icon}</div>
+                        <div class="category-header-content">
+                            <h2 class="category-header-title">${categoryName}</h2>
+                            <p class="category-header-desc">A complete set of ${categoryName.toLowerCase()} is now at your fingertips.</p>
+                        </div>
+                    </div>
+                    <div class="category-tools-grid">
+                        ${categoryTools.map(tool => {
+                const toolIcon = this.categoryIcons[tool.category] || Icons.zap;
+                return `
+                            <a href="${prefix}${tool.url}" class="category-tool-card">
+                                <div class="category-tool-icon">${toolIcon}</div>
+                                <span class="category-tool-name">${tool.name}</span>
+                            </a>
+                        `;
+            }).join('')}
+                    </div>
+                </section>
+            `;
+        });
+
+        container.innerHTML = html;
+    },
+
 
     // Render Tool Page Schema
     renderToolSchema(toolName, category, description) {
