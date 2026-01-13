@@ -1881,6 +1881,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://onlinetoolfree.com/tools/writing/dictionary.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://onlinetoolfree.com/tools/writing/character-counter-advanced.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1957,6 +1962,11 @@
   </url>
   <url>
     <loc>https://onlinetoolfree.com/tools/xml/xml-to-json.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://onlinetoolfree.com/tools/fun/emoji-search.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

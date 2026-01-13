@@ -1,191 +1,274 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 
-  gtag('config', 'G-EX25SFMRXZ');
-</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KWQ2T7QS');</script>
-<!-- End Google Tag Manager --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- SEO Meta Tags --><title>Word Counter - Free Online Word & Character Counter | OnlineToolFree</title><meta name="description"
- content="Free online word counter tool. Count words, characters, sentences, paragraphs and reading time instantly. No signup required."><link rel="canonical" href="https://onlinetoolfree.com/tools/text/word-counter.html"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link
- href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
- rel="stylesheet"><!-- Styles --><link rel="stylesheet" href="../../css/design-system.css"><!-- Custom Tool Styles --><style>
- .tool-stats {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
- gap: var(--space-3);
- margin-bottom: var(--space-6);
- }
+<head>
+       <!-- Google tag (gtag.js) -->
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+       <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag() { dataLayer.push(arguments); }
+              gtag('js', new Date());
 
- .stat-card {
- text-align: center;
- padding: var(--space-4);
- background: var(--bg-primary);
- border: 1px solid var(--border-light);
- border-radius: var(--radius-lg);
- }
+              gtag('config', 'G-EX25SFMRXZ');
+       </script>
+       <!-- Google Tag Manager -->
+       <script>(function (w, d, s, l, i) {
+                     w[l] = w[l] || []; w[l].push({
+                            'gtm.start':
+                                   new Date().getTime(), event: 'gtm.js'
+                     }); var f = d.getElementsByTagName(s)[0],
+                            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                   'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+              })(window, document, 'script', 'dataLayer', 'GTM-KWQ2T7QS');</script>
+       <!-- End Google Tag Manager -->
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- SEO Meta Tags -->
+       <title>Word Counter - Free Online Word & Character Counter | OTF Tools</title>
+       <meta name="description"
+              content="Free online word counter tool. Count words, characters, sentences, paragraphs and reading time instantly. No signup required.">
+       <link rel="canonical" href="https://onlinetoolfree.com/tools/text/word-counter.html"><!-- Fonts -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+              rel="stylesheet"><!-- Styles -->
+       <link rel="stylesheet" href="../../css/design-system.css"><!-- Custom Tool Styles -->
+       <style>
+              .tool-stats {
+                     display: grid;
+                     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                     gap: var(--space-3);
+                     margin-bottom: var(--space-6);
+              }
 
- .stat-card-value {
- font-size: var(--text-2xl);
- font-weight: var(--font-bold);
- color: var(--primary-600);
- margin-bottom: var(--space-1);
- }
+              .stat-card {
+                     text-align: center;
+                     padding: var(--space-4);
+                     background: var(--bg-primary);
+                     border: 1px solid var(--border-light);
+                     border-radius: var(--radius-lg);
+              }
 
- .stat-card-label {
- font-size: var(--text-xs);
- color: var(--text-muted);
- text-transform: uppercase;
- letter-spacing: 0.05em;
- }
+              .stat-card-value {
+                     font-size: var(--text-2xl);
+                     font-weight: var(--font-bold);
+                     color: var(--primary-600);
+                     margin-bottom: var(--space-1);
+              }
 
- .info-section {
- margin-top: var(--space-12);
- padding: var(--space-6);
- background: var(--bg-primary);
- border: 1px solid var(--border-light);
- border-radius: var(--radius-xl);
- }
+              .stat-card-label {
+                     font-size: var(--text-xs);
+                     color: var(--text-muted);
+                     text-transform: uppercase;
+                     letter-spacing: 0.05em;
+              }
 
- .info-section h2 {
- font-size: var(--text-xl);
- font-weight: var(--font-semibold);
- margin-bottom: var(--space-4);
- }
+              .info-section {
+                     margin-top: var(--space-12);
+                     padding: var(--space-6);
+                     background: var(--bg-primary);
+                     border: 1px solid var(--border-light);
+                     border-radius: var(--radius-xl);
+              }
 
- .info-section p {
- margin-bottom: var(--space-4);
- }
+              .info-section h2 {
+                     font-size: var(--text-xl);
+                     font-weight: var(--font-semibold);
+                     margin-bottom: var(--space-4);
+              }
 
- @media (max-width: 640px) {
- .tool-stats {
- grid-template-columns: repeat(2, 1fr);
- }
- }
- </style><!-- Scripts --><script src="../../js/tools.js"></script><script src="../../js/ui.js"></script><script src="../../js/app.js"></script></head><body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --><!-- Header --><header class="header"></header><!-- Tool Layout with Sidebar --><div class="tool-layout"><!-- Sidebar --><aside class="tool-sidebar" id="tool-sidebar"><!-- Rendered by JavaScript --></aside><!-- Main Content --><main class="tool-main"><div id="breadcrumb-container"></div>
-            <div class="tool-page" style="max-width: 800px; margin: 0; padding: 0;"><!-- Tool Header --><div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);"><div
- style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);"><div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7" /><line x1="9" y1="20" x2="15" y2="20" /><line x1="12" y1="4" x2="12" y2="20" /></svg></div><div><h1 class="tool-title" style="font-size: var(--text-2xl);">Word Counter</h1><p class="tool-description" style="font-size: var(--text-base); margin: 0;">
- Count words, characters, sentences, and paragraphs instantly.
- </p></div></div></div><!-- Statistics Cards --><div class="tool-stats"><div class="stat-card"><div class="stat-card-value" id="word-count">0</div><div class="stat-card-label">Words</div></div><div class="stat-card"><div class="stat-card-value" id="char-count">0</div><div class="stat-card-label">Characters</div></div><div class="stat-card"><div class="stat-card-value" id="char-no-space">0</div><div class="stat-card-label">No Spaces</div></div><div class="stat-card"><div class="stat-card-value" id="sentence-count">0</div><div class="stat-card-label">Sentences</div></div><div class="stat-card"><div class="stat-card-value" id="paragraph-count">0</div><div class="stat-card-label">Paragraphs</div></div><div class="stat-card"><div class="stat-card-value" id="reading-time">0</div><div class="stat-card-label">Min Read</div></div></div><!-- Tool Interface --><div class="tool-interface"><div class="tool-section"><label class="tool-section-title" for="input-text"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7" /><line x1="9" y1="20" x2="15" y2="20" /><line x1="12" y1="4" x2="12" y2="20" /></svg>
- Enter Your Text
- </label><textarea id="input-text" class="form-textarea" rows="12"
- placeholder="Start typing or paste your text here to count words and characters..."></textarea></div><div class="tool-actions"><button id="clear-btn" class="btn btn-secondary"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
- Clear
- </button><button id="copy-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>
- Copy
- </button><button id="sample-btn" class="btn btn-ghost"><svg class="icon" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /></svg>
- Sample
- </button></div></div><!-- Information Section --><section class="info-section" style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);"><h2><a href="/tools/network/whats-my-ip.html" class="context-link" style="color: var(--primary-600); text-decoration: underline;">What</a> is a <a href="/tools/writing/word-counter-advanced.html" class="context-link" style="color: var(--primary-600); text-decoration: underline;">Word Counter</a>?</h2><p>
- A <a href="/tools/writing/word-counter-advanced.html" class="context-link" style="color: var(--primary-600); text-decoration: underline;">Word Counter</a> is a helpful tool that counts the number of words and characters in your text.
- Perfect for writers, students, bloggers, and anyone who needs to meet specific word count
- requirements.
- </p><p>
- Our tool also provides sentence count, paragraph count, and estimated reading time.
- </p></section></div><div id="related-tools-container"></div>
-        </main></div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button><!-- Footer --><footer class="footer"></footer><script>
- document.addEventListener('DOMContentLoaded', () => {
- // Render global components
- Components.renderHeader();
- Components.renderMobileMenu();
- Components.renderSidebar('tool-sidebar');
-        // SEO Components
-        Components.renderBreadcrumb('breadcrumb-container', [
-            { name: 'Home', url: '/index.html' },
-            { name: 'Text', url: '/tools/text/index.html' },
-            { name: 'Word Counter' }
-        ]);
-        Components.renderRelatedTools('related-tools-container', 'word-counter');
-        Components.renderToolSchema('Word Counter', 'text', 'Word Counter - Free online tool for your daily digital tasks.');
+              .info-section p {
+                     margin-bottom: var(--space-4);
+              }
 
- Components.renderFooter();
+              @media (max-width: 640px) {
+                     .tool-stats {
+                            grid-template-columns: repeat(2, 1fr);
+                     }
+              }
+       </style><!-- Scripts -->
+       <script src="../../js/tools.js"></script>
+       <script src="../../js/ui.js"></script>
+       <script src="../../js/app.js"></script>
+</head>
 
- // Mobile sidebar toggle
- const sidebarToggle = document.getElementById('sidebar-toggle');
- const sidebar = document.getElementById('tool-sidebar');
+<body>
+       <!-- Google Tag Manager (noscript) -->
+       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS" height="0" width="0"
+                     style="display:none;visibility:hidden"></iframe></noscript>
+       <!-- End Google Tag Manager (noscript) --><!-- Header -->
+       <header class="header"></header><!-- Tool Layout with Sidebar -->
+       <div class="tool-layout"><!-- Sidebar -->
+              <aside class="tool-sidebar" id="tool-sidebar"><!-- Rendered by JavaScript --></aside><!-- Main Content -->
+              <main class="tool-main">
+                     <div id="breadcrumb-container"></div>
+                     <div class="tool-page" style="max-width: 800px; margin: 0; padding: 0;"><!-- Tool Header -->
+                            <div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);">
+                                   <div
+                                          style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                                          <div class="tool-icon-large" style="margin: 0;"><svg class="icon icon-lg"
+                                                        viewBox="0 0 24 24">
+                                                        <polyline points="4 7 4 4 20 4 20 7" />
+                                                        <line x1="9" y1="20" x2="15" y2="20" />
+                                                        <line x1="12" y1="4" x2="12" y2="20" />
+                                                 </svg></div>
+                                          <div>
+                                                 <h1 class="tool-title" style="font-size: var(--text-2xl);">Word Counter
+                                                 </h1>
+                                                 <p class="tool-description"
+                                                        style="font-size: var(--text-base); margin: 0;">
+                                                        Count words, characters, sentences, and paragraphs instantly.
+                                                 </p>
+                                          </div>
+                                   </div>
+                            </div><!-- Statistics Cards -->
+                            <div class="tool-stats">
+                                   <div class="stat-card">
+                                          <div class="stat-card-value" id="word-count">0</div>
+                                          <div class="stat-card-label">Words</div>
+                                   </div>
+                                   <div class="stat-card">
+                                          <div class="stat-card-value" id="char-count">0</div>
+                                          <div class="stat-card-label">Characters</div>
+                                   </div>
+                                   <div class="stat-card">
+                                          <div class="stat-card-value" id="char-no-space">0</div>
+                                          <div class="stat-card-label">No Spaces</div>
+                                   </div>
+                                   <div class="stat-card">
+                                          <div class="stat-card-value" id="sentence-count">0</div>
+                                          <div class="stat-card-label">Sentences</div>
+                                   </div>
+                                   <div class="stat-card">
+                                          <div class="stat-card-value" id="paragraph-count">0</div>
+                                          <div class="stat-card-label">Paragraphs</div>
+                                   </div>
+                                   <div class="stat-card">
+                                          <div class="stat-card-value" id="reading-time">0</div>
+                                          <div class="stat-card-label">Min Read</div>
+                                   </div>
+                            </div><!-- Tool Interface -->
+                            <div class="tool-interface">
+                                   <div class="tool-section"><label class="tool-section-title" for="input-text"><svg
+                                                        class="icon icon-sm" viewBox="0 0 24 24">
+                                                        <polyline points="4 7 4 4 20 4 20 7" />
+                                                        <line x1="9" y1="20" x2="15" y2="20" />
+                                                        <line x1="12" y1="4" x2="12" y2="20" />
+                                                 </svg>
+                                                 Enter Your Text
+                                          </label><textarea id="input-text" class="form-textarea" rows="12"
+                                                 placeholder="Start typing or paste your text here to count words and characters..."></textarea>
+                                   </div>
+                                   <div class="tool-actions"><button id="clear-btn" class="btn btn-secondary"><svg
+                                                        class="icon" viewBox="0 0 24 24">
+                                                        <path d="M18 6 6 18" />
+                                                        <path d="m6 6 12 12" />
+                                                 </svg>
+                                                 Clear
+                                          </button><button id="copy-btn" class="btn btn-ghost"><svg class="icon"
+                                                        viewBox="0 0 24 24">
+                                                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                                                        <path
+                                                               d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                                                 </svg>
+                                                 Copy
+                                          </button><button id="sample-btn" class="btn btn-ghost"><svg class="icon"
+                                                        viewBox="0 0 24 24">
+                                                        <path
+                                                               d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                                        <polyline points="14 2 14 8 20 8" />
+                                                 </svg>
+                                                 Sample
+                                          </button></div>
+                            </div><!-- Information Section -->
+                            <section class="info-section"
+                                   style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: var(--radius-xl);">
+                                   <h2><a href="/tools/network/whats-my-ip.html" class="context-link"
+                                                 style="color: var(--primary-600); text-decoration: underline;">What</a>
+                                          is a <a href="/tools/writing/word-counter-advanced.html" class="context-link"
+                                                 style="color: var(--primary-600); text-decoration: underline;">Word
+                                                 Counter</a>?</h2>
+                                   <p>
+                                          A <a href="/tools/writing/word-counter-advanced.html" class="context-link"
+                                                 style="color: var(--primary-600); text-decoration: underline;">Word
+                                                 Counter</a> is a helpful tool that counts the number of words and
+                                          characters in your text.
+                                          Perfect for writers, students, bloggers, and anyone who needs to meet specific
+                                          word count
+                                          requirements.
+                                   </p>
+                                   <p>
+                                          Our tool also provides sentence count, paragraph count, and estimated reading
+                                          time.
+                                   </p>
+                            </section>
+                     </div>
+                     <div id="related-tools-container"></div>
+              </main>
+       </div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon"
+                     viewBox="0 0 24 24">
+                     <line x1="4" y1="12" x2="20" y2="12" />
+                     <line x1="4" y1="6" x2="20" y2="6" />
+                     <line x1="4" y1="18" x2="20" y2="18" />
+              </svg></button><!-- Footer -->
+       <footer class="footer"></footer>
+       <script>
+              document.addEventListener('DOMContentLoaded', () => {
+                     // Tool-specific logic only
+                     const input = document.getElementById('input-text');
+                     const wordCount = document.getElementById('word-count');
+                     const charCount = document.getElementById('char-count');
+                     const charNoSpace = document.getElementById('char-no-space');
+                     const sentenceCount = document.getElementById('sentence-count');
+                     const paragraphCount = document.getElementById('paragraph-count');
+                     const readingTime = document.getElementById('reading-time');
 
- sidebarToggle.addEventListener('click', () => {
- sidebar.classList.toggle('open');
- });
+                     const clearBtn = document.getElementById('clear-btn');
+                     const copyBtn = document.getElementById('copy-btn');
+                     const sampleBtn = document.getElementById('sample-btn');
 
- // DOM Elements
- const input = document.getElementById('input-text');
- const wordCount = document.getElementById('word-count');
- const charCount = document.getElementById('char-count');
- const charNoSpace = document.getElementById('char-no-space');
- const sentenceCount = document.getElementById('sentence-count');
- const paragraphCount = document.getElementById('paragraph-count');
- const readingTime = document.getElementById('reading-time');
+                     function updateCounts() {
+                            const text = input.value;
+                            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+                            wordCount.textContent = words;
+                            charCount.textContent = text.length;
+                            charNoSpace.textContent = text.replace(/\s/g, '').length;
+                            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+                            sentenceCount.textContent = sentences;
+                            const paragraphs = text.split(/\n\n+/).filter(p => p.trim().length > 0).length;
+                            paragraphCount.textContent = paragraphs;
+                            const minutes = Math.ceil(words / 200);
+                            readingTime.textContent = minutes;
+                     }
 
- const clearBtn = document.getElementById('clear-btn');
- const copyBtn = document.getElementById('copy-btn');
- const sampleBtn = document.getElementById('sample-btn');
+                     input.addEventListener('input', updateCounts);
 
- // Count function
- function updateCounts() {
- const text = input.value;
+                     clearBtn.addEventListener('click', () => {
+                            input.value = '';
+                            updateCounts();
+                            Toast.success('Text cleared');
+                     });
 
- // Words
- const words = text.trim() ? text.trim().split(/\s+/).length : 0;
- wordCount.textContent = words;
+                     copyBtn.addEventListener('click', () => {
+                            if (input.value) {
+                                   Clipboard.copy(input.value);
+                            } else {
+                                   Toast.warning('Nothing to copy');
+                            }
+                     });
 
- // Characters
- charCount.textContent = text.length;
- charNoSpace.textContent = text.replace(/\s/g, '').length;
-
- // Sentences
- const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
- sentenceCount.textContent = sentences;
-
- // Paragraphs
- const paragraphs = text.split(/\n\n+/).filter(p => p.trim().length > 0).length;
- paragraphCount.textContent = paragraphs;
-
- // Reading time (200 WPM average)
- const minutes = Math.ceil(words / 200);
- readingTime.textContent = minutes;
- }
-
- // Event listeners
- input.addEventListener('input', updateCounts);
-
- clearBtn.addEventListener('click', () => {
- input.value = '';
- updateCounts();
- Toast.success('Text cleared');
- });
-
- copyBtn.addEventListener('click', () => {
- if (input.value) {
- Clipboard.copy(input.value);
- } else {
- Toast.warning('Nothing to copy');
- }
- });
-
- sampleBtn.addEventListener('click', () => {
- input.value = `The quick brown fox jumps over the lazy dog. This is a sample text to demonstrate the word counter tool.
+                     sampleBtn.addEventListener('click', () => {
+                            input.value = `The quick brown fox jumps over the lazy dog. This is a sample text to demonstrate the word counter tool.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`;
- updateCounts();
- Toast.success('Sample text loaded');
- });
+                            updateCounts();
+                            Toast.success('Sample text loaded');
+                     });
+              });
+       </script>
+</body>
 
- // Initialize managers
- if (window.ThemeManager) ThemeManager.init();
- if (window.ResponsiveManager) ResponsiveManager.init();
- });
- </script></body></html>
+
+</html>

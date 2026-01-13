@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX25SFMRXZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-EX25SFMRXZ');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KWQ2T7QS');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- SEO Meta Tags -->
+    <title>Emoji Search & Random Emoji Generator | OTF Tools</title>
+    <meta name="description"
+        content="Find any emoji with our free Emoji Search tool. Search by name, browse categories, or generate random emojis. Get HTML codes and Unicode for your web projects instantly.">
+    <link rel="canonical" href="https://onlinetoolfree.com/tools/fun/emoji-search.html"><!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"><!-- Styles -->
+    <link rel="stylesheet" href="../../css/design-system.css"><!-- Custom Tool Styles -->
+    <style>
+        .emoji-dashboard {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-8);
+        }
+
+        .search-row {
+            display: flex;
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+        }
+
+        .emoji-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            text-align: center;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .emoji-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-300);
+        }
+
+        .emoji-display {
+            font-size: 3rem;
+            margin-bottom: var(--space-2);
+        }
+
+        .emoji-name {
+            font-size: var(--text-xs);
+            font-weight: var(--font-semibold);
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: capitalize;
+        }
+
+        .emoji-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: var(--space-1);
+        }
+
+        .random-section {
+            text-align: center;
+            padding: var(--space-8);
+            background: var(--primary-50);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-8);
+        }
+
+        .big-random-emoji {
+            font-size: 5rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-6);
+        }
+
+        .filter-tab {
+            padding: var(--space-2) var(--space-4);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .filter-tab.active {
+            background: var(--primary-600);
+            color: white;
+        }
+
+        .filter-tab:hover:not(.active) {
+            background: var(--border-light);
+        }
+
+        .info-section {
+            margin-top: var(--space-12);
+            padding: var(--space-6);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+        }
+
+        .loading-overlay {
+            text-align: center;
+            padding: var(--space-12);
+        }
+    </style><!-- Scripts -->
+    <script src="../../js/tools.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQ2T7QS" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --><!-- Header -->
+    <header class="header"></header><!-- Tool Layout with Sidebar -->
+    <div class="tool-layout"><!-- Sidebar -->
+        <aside class="tool-sidebar" id="tool-sidebar"><!-- Rendered by JavaScript --></aside><!-- Main Content -->
+        <main class="tool-main">
+            <div id="breadcrumb-container"></div>
+            <div class="tool-page" style="max-width: 900px; margin: 0; padding: 0;"><!-- Tool Header -->
+                <div class="tool-header" style="text-align: left; margin-bottom: var(--space-6);">
+                    <div
+                        style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                        <div class="tool-icon-large" style="margin: 0; background: #fff5f5; color: #ff4d4d;"><svg
+                                class="icon icon-lg" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                                <line x1="9" y1="9" x2="9.01" y2="9" />
+                                <line x1="15" y1="9" x2="15.01" y2="9" />
+                            </svg></div>
+                        <div>
+                            <h1 class="tool-title" style="font-size: var(--text-2xl);">Emoji Search & Generator</h1>
+                            <p class="tool-description" style="font-size: var(--text-base); margin: 0;">
+                                Search 1,700+ emojis, copy HTML codes, or get a random one.
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- Random Emoji Section -->
+                <div class="random-section">
+                    <h3>Random Emoji of the Moment</h3>
+                    <div id="random-emoji-display" class="big-random-emoji">✨</div>
+                    <div id="random-emoji-name" style="margin-bottom: var(--space-4); font-weight: 600;">Sparkles</div>
+                    <button id="btn-random" class="btn btn-primary">Generate Random Emoji</button>
+                </div><!-- Search & Interface -->
+                <div class="emoji-dashboard">
+                    <div class="search-row"><input type="text" id="emoji-search" class="form-input"
+                            placeholder="Search emojis (e.g., cat, heart, smile...)"
+                            style="height: 50px; font-size: 1.1rem;"><button id="btn-search"
+                            class="btn btn-secondary">Search</button></div>
+                    <div class="filter-tabs" id="category-tabs">
+                        <div class="filter-tab active" data-category="all">All Emojis</div>
+                        <!-- Categories injected by JS -->
+                    </div>
+                    <div id="loading" class="loading-overlay" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Fetching emojis...</p>
+                    </div>
+                    <div id="emoji-grid" class="emoji-grid">
+                        <!-- Results injected by JS -->
+                    </div>
+                </div><!-- Information Section -->
+                <section class="info-section">
+                    <h2>About the Emoji Search Tool</h2>
+                    <p>
+                        Our Emoji Search tool uses the EmojiHub API to give you instant access to over 1,791 objects
+                        organized into categories and groups.
+                        Whether you need a specific emoticon for your social media post or an HTML entity for your
+                        website code, we've got you covered.
+                    </p>
+                    <h3>How to Use:</h3>
+                    <ul>
+                        <li><strong>Search:</strong> Type any keyword in the search bar to find related emojis.</li>
+                        <li><strong>Categories:</strong> Filter through groups like "Food & Drink", "Animals & Nature",
+                            or "Activities".</li>
+                        <li><strong>Copy Code:</strong> Click on any emoji card to instantly copy its HTML code to your
+                            clipboard.</li>
+                        <li><strong>Randomizer:</strong> Use the generator at the top for quick inspiration.</li>
+                    </ul>
+                    <p>
+                        All emoji data is provided as HTML codes and Unicode strings, making it fully compatible with
+                        modern web applications and mobile platforms.
+                    </p>
+                </section>
+            </div>
+            <div id="related-tools-container"></div>
+        </main>
+    </div><!-- Mobile Sidebar Toggle --><button class="sidebar-toggle" id="sidebar-toggle"><svg class="icon pulse-blue"
+            viewBox="0 0 24 24">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+        </svg></button><!-- Footer -->
+    <footer class="footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render global components
+            Components.renderHeader();
+            Components.renderMobileMenu();
+            Components.renderSidebar('tool-sidebar');
+
+            // SEO Components
+            Components.renderBreadcrumb('breadcrumb-container', [
+                { name: 'Home', url: '/index.html' },
+                { name: 'Fun', url: '/tools/fun/index.html' },
+                { name: 'Emoji Search' }
+            ]);
+            Components.renderRelatedTools('related-tools-container', 'emoji-search');
+            Components.renderToolSchema('Emoji Search', 'fun', 'Find and copy emojis with HTML codes. Browse 1700+ emojis in categories.');
+
+            Components.renderFooter();
+
+            // DOM Elements
+            const searchInput = document.getElementById('emoji-search');
+            const searchBtn = document.getElementById('btn-search');
+            const randomBtn = document.getElementById('btn-random');
+            const emojiGrid = document.getElementById('emoji-grid');
+            const tabsContainer = document.getElementById('category-tabs');
+            const loading = document.getElementById('loading');
+            const randomDisplay = document.getElementById('random-emoji-display');
+            const randomName = document.getElementById('random-emoji-name');
+
+            // Categories Mapping
+            const categories = [
+                "smileys and people", "animals and nature", "food and drink",
+                "travel and places", "activities", "objects", "symbols", "flags"
+            ];
+
+            // Initialize Categories Tabs
+            categories.forEach(cat => {
+                const tab = document.createElement('div');
+                tab.className = 'filter-tab';
+                tab.dataset.category = cat;
+                tab.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+                tabsContainer.appendChild(tab);
+
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    fetchByCategory(cat);
+                });
+            });
+
+            async function fetchRandom() {
+                try {
+                    const res = await fetch('https://emojihub.yurace.pro/api/random');
+                    const data = await res.json();
+                    randomDisplay.innerHTML = data.htmlCode[0];
+                    randomName.textContent = data.name;
+                } catch (e) {
+                    console.error("Failed to fetch random emoji");
+                }
+            }
+
+            function renderEmojis(list) {
+                emojiGrid.innerHTML = list.map(item => `
+             <div class="emoji-card" data-code="${item.htmlCode[0]}">
+                 <div class="emoji-display">${item.htmlCode[0]}</div>
+                 <div class="emoji-name">${item.name}</div>
+                 <div class="emoji-code">${item.htmlCode[0]}</div>
+             </div>
+         `).join('');
+
+                // Add click to copy
+                document.querySelectorAll('.emoji-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const code = card.dataset.code;
+                        Clipboard.copy(code);
+                        Toast.success('HTML Code copied!');
+                    });
+                });
+            }
+
+            async function fetchByCategory(cat) {
+                loading.style.display = 'block';
+                emojiGrid.innerHTML = '';
+                try {
+                    const url = cat === 'all'
+                        ? 'https://emojihub.yurace.pro/api/all'
+                        : `https://emojihub.yurace.pro/api/all/category/${cat.replace(/\s+/g, '-')}`;
+
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    renderEmojis(data.slice(0, 500)); // Limit to first 500 for performance
+                } catch (e) {
+                    Toast.error("Failed to load emojis");
+                } finally {
+                    loading.style.display = 'none';
+                }
+            }
+
+            async function searchEmojis() {
+                const query = searchInput.value.trim();
+                if (!query) return;
+
+                loading.style.display = 'block';
+                emojiGrid.innerHTML = '';
+                try {
+                    // API Search endpoint
+                    const res = await fetch(`https://emojihub.yurace.pro/api/search?q=${query}`);
+                    const data = await res.json();
+                    if (data.length === 0) {
+                        emojiGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No emojis found for "' + query + '"</p>';
+                    } else {
+                        renderEmojis(data);
+                    }
+                } catch (e) {
+                    Toast.error("Search failed");
+                } finally {
+                    loading.style.display = 'none';
+                }
+            }
+
+            // Event Listeners
+            searchBtn.addEventListener('click', searchEmojis);
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') searchEmojis();
+            });
+            randomBtn.addEventListener('click', fetchRandom);
+
+            // Initial Load
+            fetchRandom();
+            fetchByCategory('smileys and people');
+
+            // Handle "All" tab click
+            document.querySelector('[data-category="all"]').addEventListener('click', () => {
+                fetchByCategory('all');
+            });
+
+            // Initialize managers
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.ResponsiveManager) ResponsiveManager.init();
+        });
+    </script>
+</body>
+
+</html>

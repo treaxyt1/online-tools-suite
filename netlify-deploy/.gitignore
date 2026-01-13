@@ -1,0 +1,29 @@
+# Automation & Generation Scripts
+*.py
+*.ps1
+*.bat
+*.sh
+
+# Tracking Installers (redundant with *.py but explicit for clarity)
+install_gtm.py
+install_ga4.py
+
+# Internal Documentation & Logs
+*.txt
+*.json
+!manifest.json
+!schema-*.json
+*.log
+.vscode/
+
+# Build/Dist folders (if any)
+node_modules/
+dist/
+build/
+
+# Local Environment
+.env
+
+# OS Files
+.DS_Store
+Thumbs.db

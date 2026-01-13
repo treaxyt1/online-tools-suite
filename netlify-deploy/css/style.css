@@ -1,0 +1,599 @@
+﻿/**
+ * OnlineToolFree - Style Overrides & Enhancements
+ * Version: 3.0
+ * Note: This file complements design-system.css
+ */
+
+/* ========================================
+   ADDITIONAL TOOL-SPECIFIC STYLES
+   ======================================== */
+
+/* Tool Interface Panels */
+.tool-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+    .tool-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.tool-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+}
+
+.panel-title {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+}
+
+.panel-actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+/* Tool Actions */
+.tool-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+    .tool-grid.with-actions {
+        grid-template-columns: 1fr auto 1fr;
+    }
+
+    .tool-actions {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+    }
+}
+
+/* Options Panel */
+.options-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-4);
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.option-label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   CONTENT SECTIONS
+   ======================================== */
+.content-section {
+    margin-bottom: var(--space-12);
+}
+
+.content-section h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--accent-100);
+}
+
+.content-section ul,
+.content-section ol {
+    padding-left: var(--space-6);
+    color: var(--text-secondary);
+}
+
+.content-section li {
+    margin-bottom: var(--space-2);
+}
+
+.content-section li strong {
+    color: var(--text-primary);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-xl);
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--success-500);
+}
+
+.feature-text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.feature-text strong {
+    color: var(--text-primary);
+}
+
+/* ========================================
+   FAQ ACCORDION
+   ======================================== */
+.faq-list,
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.faq-item {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    background: var(--bg-primary);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.faq-item:hover {
+    border-color: var(--accent-300);
+}
+
+.faq-item.active,
+.faq-item.open {
+    border-color: var(--accent-400);
+    box-shadow: var(--shadow-sm);
+}
+
+.faq-question {
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--transition-fast);
+}
+
+.faq-question:hover {
+    background: var(--bg-tertiary);
+}
+
+.faq-question svg,
+.faq-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-muted);
+    transition: transform var(--transition-base);
+}
+
+.faq-item.active .faq-question svg,
+.faq-item.open .faq-question svg,
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    color: var(--accent-600);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    padding: 0 var(--space-5);
+}
+
+.faq-item.active .faq-answer,
+.faq-item.open .faq-answer {
+    max-height: 500px;
+    padding: 0 var(--space-5) var(--space-5);
+    display: block;
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ========================================
+   RELATED TOOLS
+   ======================================== */
+.related-tools-section {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-light);
+}
+
+.related-tools-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+}
+
+.related-tools-description {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+}
+
+.related-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.related-tool-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.related-tool-card:hover {
+    border-color: var(--accent-300);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.related-tool-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-600);
+    flex-shrink: 0;
+}
+
+.related-tool-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.related-tool-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.related-tool-name {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+}
+
+.related-tool-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.related-tool-card>svg {
+    width: 18px;
+    height: 18px;
+    color: var(--accent-500);
+    flex-shrink: 0;
+}
+
+/* ========================================
+   CATEGORY PAGE STYLES
+   ======================================== */
+.category-hero {
+    text-align: center;
+    padding: var(--space-12) 0;
+    margin-bottom: var(--space-8);
+}
+
+.category-icon-large {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-900);
+    border-radius: var(--radius-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-6);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.category-icon-large svg {
+    width: 40px;
+    height: 40px;
+}
+
+.category-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.category-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   CATEGORY CARDS (Homepage)
+   ======================================== */
+.category-card {
+    display: block;
+    text-decoration: none;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-card);
+}
+
+.category-card:hover {
+    border-color: var(--accent-300);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+}
+
+.category-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--primary-900);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+    color: white;
+    font-size: 1.5rem;
+}
+
+.category-card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+}
+
+.category-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3);
+}
+
+.category-count {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: var(--accent-600);
+    background: var(--accent-50);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    display: inline-block;
+}
+
+/* ========================================
+   HERO SECTION ENHANCEMENTS
+   ======================================== */
+.hero-v2 {
+    padding: var(--space-20) 0;
+    text-align: center;
+}
+
+.hero-v2 h1 {
+    max-width: 800px;
+    margin: 0 auto var(--space-6);
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+    margin-top: var(--space-10);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-1);
+}
+
+/* ========================================
+   SHARE WIDGET
+   ======================================== */
+.share-widget {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+}
+
+.share-widget h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+}
+
+.share-widget .share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   SPINNER
+   ======================================== */
+.spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* ========================================
+   HOMEPAGE FEATURED CATEGORIES
+   ======================================== */
+.featured-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+}
+
+/* ========================================
+   STATS GRID (Homepage)
+   ======================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+}
+
+/* ========================================
+   ANIMATION CLASSES
+   ======================================== */
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-staggered>* {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in.visible {
+    opacity: 1;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 767px) {
+    .featured-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-v2 h1 {
+        font-size: var(--text-3xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-base);
+    }
+
+    .hero-stats {
+        gap: var(--space-6);
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .tool-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tool-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+
+    .header,
+    .sidebar,
+    .sidebar-toggle,
+    .mobile-menu-btn,
+    .footer,
+    .share-widget,
+    .related-tools-section {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+    }
+
+    .tool-interface {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}
