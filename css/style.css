@@ -3,9 +3,11 @@
    ======================================== */
 
 :root {
-    /* Primary Gradients */
+    /* Primary Gradients - Selly-inspired */
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradient-secondary: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+    --gradient-hero: linear-gradient(135deg, #667eea 0%, #a78bfa 50%, #f5d0fe 100%);
+    --gradient-bg: linear-gradient(180deg, #e0e7ff 0%, #fce7f3 100%);
 
     /* Colors */
     --primary: #6d66ea;
@@ -87,7 +89,7 @@
 }
 
 body {
-    background-color: var(--bg-body);
+    background: var(--gradient-bg);
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -600,20 +602,32 @@ pre {
 
 /* Mobile Menu */
 .mobile-menu-btn {
-    display: flex;
-    width: 40px;
-    height: 40px;
+    display: flex !important;
+    width: 44px;
+    height: 44px;
     align-items: center;
     justify-content: center;
     border: none;
-    background: transparent;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
     color: var(--text-primary);
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: var(--primary-50);
+    color: var(--primary-600);
+}
+
+.mobile-menu-btn svg {
+    width: 24px;
+    height: 24px;
 }
 
 @media (min-width: 768px) {
     .mobile-menu-btn {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -623,7 +637,20 @@ pre {
 .hero {
     padding: var(--space-16) 0;
     text-align: center;
-    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .hero h1 {
@@ -1515,10 +1542,24 @@ pre {
     0%,
     100% {
         opacity: 1;
+        transform: scale(1);
     }
 
     50% {
-        opacity: 0.5;
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
     }
 }
 
@@ -1941,22 +1982,45 @@ pre {
    ======================================== */
 
 /* Root Overrides for Typography */
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
-h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+}
 
 /* Responsive Utilities */
-.mobile-only { display: block; }
-.tablet-up { display: none; }
-.desktop-only { display: none; }
+.mobile-only {
+    display: block;
+}
+
+.tablet-up {
+    display: none;
+}
+
+.desktop-only {
+    display: none;
+}
 
 @media (min-width: 768px) {
-    .mobile-only { display: none; }
-    .tablet-up { display: block; }
+    .mobile-only {
+        display: none;
+    }
+
+    .tablet-up {
+        display: block;
+    }
 }
 
 @media (min-width: 1024px) {
-    .desktop-only { display: block; }
+    .desktop-only {
+        display: block;
+    }
 }
 
 /* Container Adjustments */
@@ -1967,8 +2031,17 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
     padding: 0 var(--space-4);
 }
 
-@media (min-width: 768px) { .container { padding: 0 var(--space-8); } }
-@media (min-width: 1024px) { .container { padding: 0 var(--space-12); } }
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--space-8);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 var(--space-12);
+    }
+}
 
 /* ========================================
    Header & Mobile Menu
@@ -1998,7 +2071,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
     z-index: 1001;
     padding: var(--space-8) var(--space-6);
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
 }
 
@@ -2012,7 +2085,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
     z-index: 1000;
     opacity: 0;
@@ -2114,7 +2187,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
         padding: var(--space-6);
         transition: left 0.3s ease;
         overflow-y: auto;
-        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
     }
 
     .sidebar.open {
@@ -2136,7 +2209,12 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
 
 /* Touch Targets */
 @media (hover: none) and (pointer: coarse) {
-    .btn, .mobile-nav-link, .nav-link, .sidebar-link, a {
+
+    .btn,
+    .mobile-nav-link,
+    .nav-link,
+    .sidebar-link,
+    a {
         min-height: 44px;
         display: inline-flex;
         align-items: center;
@@ -2144,7 +2222,9 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
 }
 
 /* IOS Zoom Prevention */
-input, textarea, select {
+input,
+textarea,
+select {
     font-size: 16px !important;
 }
 
@@ -2168,7 +2248,7 @@ input, textarea, select {
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         overflow-y: auto !important;
         padding: var(--space-8) var(--space-6) !important;
-        box-shadow: 10px 0 30px rgba(0,0,0,0.1) !important;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1) !important;
         display: block !important;
     }
 
@@ -2197,6 +2277,12 @@ input, textarea, select {
 
 .sidebar-toggle {
     display: none;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.sidebar-toggle svg {
+    width: 20px;
+    height: 20px;
 }
 
 /* Fix: Hide desktop nav on mobile */
